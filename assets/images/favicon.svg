@@ -1,29 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-  <!-- Nonagon (eneágono) network icon -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Solid nonagon favicon - optimized for 16x16 / 32x32 -->
 
-  <!-- Outer nonagon -->
+  <!-- Filled nonagon background -->
   <polygon
-    points="24,3 37.5,7.5 44,20 41.5,33.5 31,43 17,43 6.5,33.5 4,20 10.5,7.5"
-    fill="none" stroke="#078E8E" stroke-width="2.5" stroke-linejoin="round"/>
+    points="16,1 26,4.5 30,13 28,22.5 21,29 11,29 4,22.5 2,13 6,4.5"
+    fill="#006D6D"/>
 
-  <!-- Subtle inner connections -->
-  <line x1="24" y1="3" x2="31" y2="43" stroke="#078E8E" stroke-width="0.5" opacity="0.12"/>
-  <line x1="37.5" y1="7.5" x2="6.5" y2="33.5" stroke="#078E8E" stroke-width="0.5" opacity="0.12"/>
-  <line x1="44" y1="20" x2="17" y2="43" stroke="#078E8E" stroke-width="0.5" opacity="0.12"/>
-
-  <!-- Vertex nodes -->
-  <circle cx="24" cy="3" r="2.5" fill="#078E8E"/>
-  <circle cx="37.5" cy="7.5" r="2" fill="#078E8E"/>
-  <circle cx="44" cy="20" r="2.5" fill="#078E8E"/>
-  <circle cx="41.5" cy="33.5" r="2" fill="#078E8E"/>
-  <circle cx="31" cy="43" r="2.5" fill="#078E8E"/>
-  <circle cx="17" cy="43" r="2" fill="#078E8E"/>
-  <circle cx="6.5" cy="33.5" r="2.5" fill="#078E8E"/>
-  <circle cx="4" cy="20" r="2" fill="#078E8E"/>
-  <circle cx="10.5" cy="7.5" r="2.5" fill="#078E8E"/>
-
-  <!-- Bar chart -->
-  <rect x="15" y="24" width="5.5" height="13" rx="1.5" fill="#078E8E" opacity="0.8"/>
-  <rect x="21.5" y="18" width="5.5" height="19" rx="1.5" fill="#078E8E"/>
-  <rect x="28" y="13" width="5.5" height="24" rx="1.5" fill="#D4883A"/>
+  <!-- Bar chart inside (white, bold for visibility) -->
+  <rect x="9"  y="16" width="4" height="9"  rx="1.2" fill="white" opacity="0.85"/>
+  <rect x="14" y="12" width="4" height="13" rx="1.2" fill="white"/>
+  <rect x="19" y="8"  width="4" height="17" rx="1.2" fill="#D4883A"/>
 </svg>

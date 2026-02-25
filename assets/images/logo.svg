@@ -4,46 +4,46 @@
     <!-- Outer nonagon -->
     <polygon
       points="24,1 38,5.8 45,19 42,33 32,43 16,43 6,33 3,19 10,5.8"
-      fill="none" stroke="#078E8E" stroke-width="2.2" stroke-linejoin="round"/>
+      fill="none" stroke="#006D6D" stroke-width="2.2" stroke-linejoin="round"/>
 
     <!-- Subtle inner connection lines (network effect) -->
-    <line x1="24" y1="1" x2="32" y2="43" stroke="#078E8E" stroke-width="0.4" opacity="0.12"/>
-    <line x1="38" y1="5.8" x2="6" y2="33" stroke="#078E8E" stroke-width="0.4" opacity="0.12"/>
-    <line x1="45" y1="19" x2="16" y2="43" stroke="#078E8E" stroke-width="0.4" opacity="0.12"/>
-    <line x1="42" y1="33" x2="10" y2="5.8" stroke="#078E8E" stroke-width="0.4" opacity="0.12"/>
-    <line x1="3" y1="19" x2="38" y2="5.8" stroke="#078E8E" stroke-width="0.4" opacity="0.12"/>
+    <line x1="24" y1="1" x2="32" y2="43" stroke="#006D6D" stroke-width="0.4" opacity="0.12"/>
+    <line x1="38" y1="5.8" x2="6" y2="33" stroke="#006D6D" stroke-width="0.4" opacity="0.12"/>
+    <line x1="45" y1="19" x2="16" y2="43" stroke="#006D6D" stroke-width="0.4" opacity="0.12"/>
+    <line x1="42" y1="33" x2="10" y2="5.8" stroke="#006D6D" stroke-width="0.4" opacity="0.12"/>
+    <line x1="3" y1="19" x2="38" y2="5.8" stroke="#006D6D" stroke-width="0.4" opacity="0.12"/>
 
     <!-- Vertex nodes -->
-    <circle cx="24" cy="1" r="2.2" fill="#078E8E"/>
-    <circle cx="38" cy="5.8" r="1.7" fill="#078E8E"/>
-    <circle cx="45" cy="19" r="2.2" fill="#078E8E"/>
-    <circle cx="42" cy="33" r="1.7" fill="#078E8E"/>
-    <circle cx="32" cy="43" r="2.2" fill="#078E8E"/>
-    <circle cx="16" cy="43" r="1.7" fill="#078E8E"/>
-    <circle cx="6" cy="33" r="2.2" fill="#078E8E"/>
-    <circle cx="3" cy="19" r="1.7" fill="#078E8E"/>
-    <circle cx="10" cy="5.8" r="2.2" fill="#078E8E"/>
+    <circle cx="24" cy="1" r="2.2" fill="#006D6D"/>
+    <circle cx="38" cy="5.8" r="1.7" fill="#006D6D"/>
+    <circle cx="45" cy="19" r="2.2" fill="#006D6D"/>
+    <circle cx="42" cy="33" r="1.7" fill="#006D6D"/>
+    <circle cx="32" cy="43" r="2.2" fill="#006D6D"/>
+    <circle cx="16" cy="43" r="1.7" fill="#006D6D"/>
+    <circle cx="6" cy="33" r="2.2" fill="#006D6D"/>
+    <circle cx="3" cy="19" r="1.7" fill="#006D6D"/>
+    <circle cx="10" cy="5.8" r="2.2" fill="#006D6D"/>
 
     <!-- Bar chart -->
-    <rect x="15" y="23" width="5.5" height="14" rx="1.8" fill="#078E8E" opacity="0.8"/>
-    <rect x="21.5" y="17" width="5.5" height="20" rx="1.8" fill="#078E8E"/>
+    <rect x="15" y="23" width="5.5" height="14" rx="1.8" fill="#006D6D" opacity="0.8"/>
+    <rect x="21.5" y="17" width="5.5" height="20" rx="1.8" fill="#006D6D"/>
     <rect x="28" y="12" width="5.5" height="25" rx="1.8" fill="#D4883A"/>
   </g>
 
   <!-- Text: FastAnalytics — "a" and "i" in orange = AI -->
   <text x="58" y="28" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">
-    <tspan fill="#078E8E">F</tspan><tspan fill="#D4883A">a</tspan><tspan fill="#078E8E">stAnalyt</tspan><tspan fill="#D4883A">i</tspan><tspan fill="#078E8E">cs</tspan>
+    <tspan fill="#006D6D">F</tspan><tspan fill="#D4883A">a</tspan><tspan fill="#006D6D">stAnalyt</tspan><tspan fill="#D4883A">i</tspan><tspan fill="#006D6D">cs</tspan>
   </text>
 
   <!-- S.A.S. badge -->
   <g transform="translate(252, 12)">
-    <rect width="34" height="15" rx="4" fill="#078E8E" opacity="0.08"/>
-    <rect width="34" height="15" rx="4" fill="none" stroke="#078E8E" stroke-width="0.8"/>
-    <text x="17" y="11" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="8" font-weight="700" fill="#078E8E" letter-spacing="0.5">S.A.S</text>
+    <rect width="34" height="15" rx="4" fill="#006D6D" opacity="0.08"/>
+    <rect width="34" height="15" rx="4" fill="none" stroke="#006D6D" stroke-width="0.8"/>
+    <text x="17" y="11" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="8" font-weight="700" fill="#006D6D" letter-spacing="0.5">S.A.S</text>
   </g>
 
   <!-- Tagline divider -->
-  <line x1="58" y1="35" x2="286" y2="35" stroke="#078E8E" stroke-width="0.5" opacity="0.25"/>
+  <line x1="58" y1="35" x2="286" y2="35" stroke="#006D6D" stroke-width="0.5" opacity="0.25"/>
 
   <!-- Tagline text -->
   <text x="58" y="47" font-family="Inter, -apple-system, sans-serif" font-size="8.5" font-weight="500" fill="#8888A0" letter-spacing="1.8">

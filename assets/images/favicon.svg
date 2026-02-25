@@ -1,29 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-  <!-- Nonagon (eneágono) network icon - transparent background -->
+  <!-- Nonagon (eneágono) network icon -->
 
   <!-- Outer nonagon -->
   <polygon
     points="24,3 37.5,7.5 44,20 41.5,33.5 31,43 17,43 6.5,33.5 4,20 10.5,7.5"
-    fill="none" stroke="#26C6DA" stroke-width="2.5" stroke-linejoin="round"/>
+    fill="none" stroke="#078E8E" stroke-width="2.5" stroke-linejoin="round"/>
 
-  <!-- Vertex nodes - all teal -->
-  <circle cx="24" cy="3" r="2.5" fill="#26C6DA"/>
-  <circle cx="37.5" cy="7.5" r="2" fill="#26C6DA"/>
-  <circle cx="44" cy="20" r="2.5" fill="#26C6DA"/>
-  <circle cx="41.5" cy="33.5" r="2" fill="#26C6DA"/>
-  <circle cx="31" cy="43" r="2.5" fill="#26C6DA"/>
-  <circle cx="17" cy="43" r="2" fill="#26C6DA"/>
-  <circle cx="6.5" cy="33.5" r="2.5" fill="#26C6DA"/>
-  <circle cx="4" cy="20" r="2" fill="#26C6DA"/>
-  <circle cx="10.5" cy="7.5" r="2.5" fill="#26C6DA"/>
+  <!-- Subtle inner connections -->
+  <line x1="24" y1="3" x2="31" y2="43" stroke="#078E8E" stroke-width="0.5" opacity="0.12"/>
+  <line x1="37.5" y1="7.5" x2="6.5" y2="33.5" stroke="#078E8E" stroke-width="0.5" opacity="0.12"/>
+  <line x1="44" y1="20" x2="17" y2="43" stroke="#078E8E" stroke-width="0.5" opacity="0.12"/>
 
-  <!-- Inner nonagon (subtle) -->
-  <polygon
-    points="24,11 31.5,14 36,21 34.5,29 28.5,34 19.5,34 13.5,29 12,21 16.5,14"
-    fill="none" stroke="#0F1629" stroke-width="1" opacity="0.2"/>
+  <!-- Vertex nodes -->
+  <circle cx="24" cy="3" r="2.5" fill="#078E8E"/>
+  <circle cx="37.5" cy="7.5" r="2" fill="#078E8E"/>
+  <circle cx="44" cy="20" r="2.5" fill="#078E8E"/>
+  <circle cx="41.5" cy="33.5" r="2" fill="#078E8E"/>
+  <circle cx="31" cy="43" r="2.5" fill="#078E8E"/>
+  <circle cx="17" cy="43" r="2" fill="#078E8E"/>
+  <circle cx="6.5" cy="33.5" r="2.5" fill="#078E8E"/>
+  <circle cx="4" cy="20" r="2" fill="#078E8E"/>
+  <circle cx="10.5" cy="7.5" r="2.5" fill="#078E8E"/>
 
   <!-- Bar chart -->
-  <rect x="15" y="24" width="5.5" height="13" rx="1.5" fill="#26C6DA"/>
-  <rect x="21.5" y="18" width="5.5" height="19" rx="1.5" fill="#26C6DA"/>
+  <rect x="15" y="24" width="5.5" height="13" rx="1.5" fill="#078E8E" opacity="0.8"/>
+  <rect x="21.5" y="18" width="5.5" height="19" rx="1.5" fill="#078E8E"/>
   <rect x="28" y="13" width="5.5" height="24" rx="1.5" fill="#D4883A"/>
 </svg>

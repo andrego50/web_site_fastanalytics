@@ -1,28 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40">
-  <!-- Nonagon icon (simplified for navbar) -->
+  <!-- Nonagon icon (navbar) -->
   <g transform="translate(0, 0)">
+    <!-- Outer nonagon -->
     <polygon
       points="20,2 31,5.5 36,16 34,27 26,35 14,35 6,27 4,16 9,5.5"
-      fill="none" stroke="#26C6DA" stroke-width="1.8" stroke-linejoin="round"/>
-    <circle cx="20" cy="2" r="1.8" fill="#26C6DA"/>
-    <circle cx="31" cy="5.5" r="1.3" fill="#26C6DA"/>
-    <circle cx="36" cy="16" r="1.8" fill="#26C6DA"/>
-    <circle cx="34" cy="27" r="1.3" fill="#26C6DA"/>
-    <circle cx="26" cy="35" r="1.8" fill="#26C6DA"/>
-    <circle cx="14" cy="35" r="1.3" fill="#26C6DA"/>
-    <circle cx="6" cy="27" r="1.8" fill="#26C6DA"/>
-    <circle cx="4" cy="16" r="1.3" fill="#26C6DA"/>
-    <circle cx="9" cy="5.5" r="1.8" fill="#26C6DA"/>
-    <polygon
-      points="20,9 26,11 29,17 28,24 24,28 16,28 12,24 11,17 14,11"
-      fill="none" stroke="#0F1629" stroke-width="0.6" opacity="0.15"/>
-    <rect x="13" y="20" width="4" height="10" rx="1.2" fill="#26C6DA"/>
-    <rect x="18" y="15" width="4" height="15" rx="1.2" fill="#26C6DA"/>
+      fill="none" stroke="#078E8E" stroke-width="1.8" stroke-linejoin="round"/>
+
+    <!-- Subtle inner connections -->
+    <line x1="20" y1="2" x2="26" y2="35" stroke="#078E8E" stroke-width="0.3" opacity="0.12"/>
+    <line x1="31" y1="5.5" x2="6" y2="27" stroke="#078E8E" stroke-width="0.3" opacity="0.12"/>
+    <line x1="36" y1="16" x2="14" y2="35" stroke="#078E8E" stroke-width="0.3" opacity="0.12"/>
+
+    <!-- Vertex nodes -->
+    <circle cx="20" cy="2" r="1.8" fill="#078E8E"/>
+    <circle cx="31" cy="5.5" r="1.3" fill="#078E8E"/>
+    <circle cx="36" cy="16" r="1.8" fill="#078E8E"/>
+    <circle cx="34" cy="27" r="1.3" fill="#078E8E"/>
+    <circle cx="26" cy="35" r="1.8" fill="#078E8E"/>
+    <circle cx="14" cy="35" r="1.3" fill="#078E8E"/>
+    <circle cx="6" cy="27" r="1.8" fill="#078E8E"/>
+    <circle cx="4" cy="16" r="1.3" fill="#078E8E"/>
+    <circle cx="9" cy="5.5" r="1.8" fill="#078E8E"/>
+
+    <!-- Bar chart -->
+    <rect x="13" y="20" width="4" height="10" rx="1.2" fill="#078E8E" opacity="0.8"/>
+    <rect x="18" y="15" width="4" height="15" rx="1.2" fill="#078E8E"/>
     <rect x="23" y="11" width="4" height="19" rx="1.2" fill="#D4883A"/>
   </g>
 
   <!-- Text: only first "a" and "i" in orange -->
   <text x="44" y="25" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="800" letter-spacing="-0.5">
-    <tspan fill="#26C6DA">F</tspan><tspan fill="#D4883A">a</tspan><tspan fill="#26C6DA">stAnalyt</tspan><tspan fill="#D4883A">i</tspan><tspan fill="#26C6DA">cs</tspan>
+    <tspan fill="#078E8E">F</tspan><tspan fill="#D4883A">a</tspan><tspan fill="#078E8E">stAnalyt</tspan><tspan fill="#D4883A">i</tspan><tspan fill="#078E8E">cs</tspan>
   </text>
 </svg>

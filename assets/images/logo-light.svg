@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 52">
+  <!-- Icon: Nonagon network with bar chart (light version for dark backgrounds) -->
+  <g transform="translate(2, 2)">
+    <!-- Outer nonagon -->
+    <polygon
+      points="24,1 38,5.8 45,19 42,33 32,43 16,43 6,33 3,19 10,5.8"
+      fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round" opacity="0.9"/>
+
+    <!-- Subtle inner connection lines -->
+    <line x1="24" y1="1" x2="32" y2="43" stroke="#FFFFFF" stroke-width="0.4" opacity="0.15"/>
+    <line x1="38" y1="5.8" x2="6" y2="33" stroke="#FFFFFF" stroke-width="0.4" opacity="0.15"/>
+    <line x1="45" y1="19" x2="16" y2="43" stroke="#FFFFFF" stroke-width="0.4" opacity="0.15"/>
+    <line x1="42" y1="33" x2="10" y2="5.8" stroke="#FFFFFF" stroke-width="0.4" opacity="0.15"/>
+    <line x1="3" y1="19" x2="38" y2="5.8" stroke="#FFFFFF" stroke-width="0.4" opacity="0.15"/>
+
+    <!-- Vertex nodes -->
+    <circle cx="24" cy="1" r="2.2" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="38" cy="5.8" r="1.7" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="45" cy="19" r="2.2" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="42" cy="33" r="1.7" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="32" cy="43" r="2.2" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="16" cy="43" r="1.7" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="6" cy="33" r="2.2" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="3" cy="19" r="1.7" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="10" cy="5.8" r="2.2" fill="#FFFFFF" opacity="0.9"/>
+
+    <!-- Bar chart -->
+    <rect x="15" y="23" width="5.5" height="14" rx="1.8" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="21.5" y="17" width="5.5" height="20" rx="1.8" fill="#FFFFFF" opacity="0.85"/>
+    <rect x="28" y="12" width="5.5" height="25" rx="1.8" fill="#D4883A"/>
+  </g>
+
+  <!-- Text: FastAnalytics — "a" and "i" in orange = AI -->
+  <text x="58" y="28" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">
+    <tspan fill="#FFFFFF">F</tspan><tspan fill="#D4883A">a</tspan><tspan fill="#FFFFFF">stAnalyt</tspan><tspan fill="#D4883A">i</tspan><tspan fill="#FFFFFF">cs</tspan>
+  </text>
+
+  <!-- S.A.S. badge -->
+  <g transform="translate(252, 12)">
+    <rect width="34" height="15" rx="4" fill="#FFFFFF" opacity="0.08"/>
+    <rect width="34" height="15" rx="4" fill="none" stroke="#FFFFFF" stroke-width="0.8" opacity="0.5"/>
+    <text x="17" y="11" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="8" font-weight="700" fill="#FFFFFF" opacity="0.6" letter-spacing="0.5">S.A.S</text>
+  </g>
+
+  <!-- Tagline divider -->
+  <line x1="58" y1="35" x2="286" y2="35" stroke="#FFFFFF" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Tagline text -->
+  <text x="58" y="47" font-family="Inter, -apple-system, sans-serif" font-size="8.5" font-weight="500" fill="#FFFFFF" opacity="0.5" letter-spacing="1.8">
+    IA ESPACIOTEMPORAL PARA DECISIONES PREDICTIVAS
+  </text>
+</svg>

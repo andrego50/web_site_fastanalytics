@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48">
+  <defs>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A9396"/>
+      <stop offset="100%" style="stop-color:#005F73"/>
+    </linearGradient>
+  </defs>
+  <!-- Icon: abstract data/analytics mark -->
+  <g transform="translate(4, 4)">
+    <rect width="40" height="40" rx="10" fill="url(#iconGrad)"/>
+    <rect x="10" y="22" width="5" height="12" rx="2" fill="white" opacity="0.8"/>
+    <rect x="17.5" y="16" width="5" height="18" rx="2" fill="white" opacity="0.9"/>
+    <rect x="25" y="10" width="5" height="24" rx="2" fill="white"/>
+  </g>
+  <!-- Text -->
+  <text x="56" y="22" font-family="Inter, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#1A1A2E" letter-spacing="-0.5">
+    Fast<tspan fill="#0A9396">Analytics</tspan>
+  </text>
+  <text x="56" y="38" font-family="Inter, -apple-system, sans-serif" font-size="9" font-weight="500" fill="#8888A0" letter-spacing="0.5">
+    S.A.S.
+  </text>
+</svg>

@@ -1,0 +1,51 @@
+# FastAnalytics S.A.S.
+
+> FastAnalytics builds mathematical models and AI solutions for predictive decisions, specializing in spatiotemporal intelligence for citizen security, education, health, and transportation.
+
+## Company Info
+- Name: FastAnalytics S.A.S.
+- Website: https://fastanalytics.co
+- Email: hola@fastanalytics.co
+- Location: Colombia
+- Founded: 2024
+- Tagline: IA espaciotemporal para decisiones predictivas (Spatiotemporal AI for predictive decisions)
+
+## Founder
+- Name: Andrés Pérez Coronado
+- Role: Founder & CEO
+- Education: PhD in Mathematical Engineering (EAFIT University, 2025), Humphrey Fellow (University of Minnesota), Fulbright Scholar
+- Experience: 20+ years in citizen security analytics, led teams of 80+ analysts
+- LinkedIn: https://www.linkedin.com/in/andres-perez-coronado
+- Academia: https://independent.academia.edu/AndrésPérezCoronado
+
+## Services
+1. Spatiotemporal Modeling (ML/AI) — Predictive models crossing geography and time
+2. AI Agents for Decision-Making — Real-time data analysis assistants
+3. Data Collection (bots, surveys) — Massive surveys via bots, fast and frictionless
+4. Security & Coexistence Consulting — 20+ years of field experience in public safety
+5. Dashboards / Data Visualization — Actionable data dashboards
+6. Data Training & Education — Hands-on data training for teams
+7. Research & Publications — Applied research that becomes public policy
+8. Chatbot Development — Bots for Telegram, WhatsApp, and more
+
+## Products
+- AlejoSeguro (https://t.me/AlejoSeguro_bot) — Telegram bot collecting citizen security perceptions in Bogotá
+- Ceci Teaches (https://t.me/Ceci_Teaches_bot) — AI-powered educational chatbot on Telegram
+- VIGÍA — Real-time crime pattern anticipation system (in development)
+
+## Publications
+- Research Profile: https://independent.academia.edu/AndrésPérezCoronado (7+ academic papers)
+- Book: "Policía para el Desarrollo Humano" (Grupo Editorial Ibáñez, 2021)
+- Book Chapter: "Analítica de datos para la seguridad ciudadana" (Editorial Logos, 2024)
+
+## Markets
+- Citizen Security & Coexistence
+- Education
+- Health
+- Transportation
+- Private Enterprise
+
+## Social Media
+- Instagram: https://www.instagram.com/fast_analytics
+- LinkedIn: https://www.linkedin.com/company/fastanalytics-sas
+- Facebook: https://www.facebook.com/FastAnalyticsSAS

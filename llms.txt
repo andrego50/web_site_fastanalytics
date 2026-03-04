@@ -36,7 +36,7 @@
 ## Publications
 - Research Profile: https://independent.academia.edu/AndrésPérezCoronado (7+ academic papers)
 - Book: "Policía para el Desarrollo Humano" (Grupo Editorial Ibáñez, 2021)
-- Book Chapter: "Analítica de datos para la seguridad ciudadana" (Editorial Logos, 2024)
+- Book (Co-author of all chapters): "Analítica de datos para la seguridad ciudadana" (Editorial Logos, 2024)
 
 ## Markets
 - Citizen Security & Coexistence

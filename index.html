@@ -73,11 +73,11 @@
     "founder": {
       "@type": "Person",
       "name": "Andrés Pérez Coronado",
-      "jobTitle": "Founder & CEO",
-      "url": "https://www.linkedin.com/in/andres-perez-coronado",
+      "jobTitle": "Founder & AI Architect",
+      "url": "https://www.linkedin.com/in/andres-perez-coronado-63792618/",
       "sameAs": [
         "https://independent.academia.edu/AndrésPérezCoronado",
-        "https://www.linkedin.com/in/andres-perez-coronado"
+        "https://www.linkedin.com/in/andres-perez-coronado-63792618/"
       ],
       "alumniOf": [
         {
@@ -143,7 +143,7 @@
       "publisher": {"@type": "Organization", "name": "Grupo Editorial Ibáñez"},
       "datePublished": "2021",
       "about": "Convivencia y seguridad ciudadana en Latinoamérica",
-      "url": "https://grupoeditorialibañez.com/policia-para-el-desarrollo-humano-pdh/"
+      "url": "https://grupoeditorialibanez.com/policia-para-el-desarrollo-humano-pdh/"
     },
     {
       "@context": "https://schema.org",
@@ -368,12 +368,8 @@
 
         <div class="case-card case-card-featured animate-on-scroll">
           <div class="case-tag" data-es="Chatbot activo" data-en="Live chatbot">Chatbot activo</div>
-          <div class="case-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="20" fill="var(--primary)" opacity="0.1"/>
-              <path d="M24 12L18 18H14V24L8 30L24 36L40 30L34 24V18H30L24 12Z" stroke="var(--primary)" stroke-width="2" fill="none"/>
-              <circle cx="24" cy="24" r="4" fill="var(--primary)"/>
-            </svg>
+          <div class="case-icon case-icon-img">
+            <img src="assets/images/alejoseguro-bot.jpg" alt="AlejoSeguro Bot" class="case-logo" loading="lazy">
           </div>
           <h3>AlejoSeguro</h3>
           <p data-es="¿Cómo se siente la seguridad en tu barrio? Este bot recoge esa respuesta de miles de ciudadanos en Bogotá. Anónimo, en 2 minutos, directo desde Telegram." data-en="How safe does your neighborhood feel? This bot collects that answer from thousands of citizens in Bogotá. Anonymous, 2 minutes, straight from Telegram.">¿Cómo se siente la seguridad en tu barrio? Este bot recoge esa respuesta de miles de ciudadanos en Bogotá. Anónimo, en 2 minutos, directo desde Telegram.</p>
@@ -413,7 +409,7 @@
           </a>
         </div>
 
-        <div class="case-card animate-on-scroll">
+        <div class="case-card case-card-vigia animate-on-scroll">
           <div class="case-tag case-tag-dev" data-es="En desarrollo" data-en="In development">En desarrollo</div>
           <div class="case-icon">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -425,6 +421,11 @@
           </div>
           <h3>VIGÍA</h3>
           <p data-es="¿Y si pudieras anticipar dónde va a ocurrir el próximo delito? VIGÍA analiza patrones en tiempo real para que las operaciones lleguen primero." data-en="What if you could anticipate where the next crime will happen? VIGÍA analyzes patterns in real time so operations get there first.">¿Y si pudieras anticipar dónde va a ocurrir el próximo delito? VIGÍA analiza patrones en tiempo real para que las operaciones lleguen primero.</p>
+          <div class="vigia-screenshots">
+            <img src="assets/images/vigia-dashboard-risk.jpg" alt="VIGÍA - Panel de análisis de riesgos" class="vigia-screenshot" loading="lazy">
+            <img src="assets/images/vigia-dashboard-map.jpg" alt="VIGÍA - Mapa de zonas afectadas con predicciones ML" class="vigia-screenshot" loading="lazy">
+            <img src="assets/images/vigia-dashboard-ops.jpg" alt="VIGÍA - Órdenes activas y métricas operacionales" class="vigia-screenshot" loading="lazy">
+          </div>
           <ul class="case-features">
             <li data-es="Anticipa dónde y cuándo actuar" data-en="Anticipates where and when to act">Anticipa dónde y cuándo actuar</li>
             <li data-es="Detecta patrones que el ojo humano no ve" data-en="Detects patterns the human eye can't see">Detecta patrones que el ojo humano no ve</li>
@@ -446,22 +447,11 @@
       </div>
       <div class="about-content">
         <div class="about-photo animate-on-scroll">
-          <!-- Reemplazar con foto real -->
-          <div class="photo-placeholder">
-            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="200" height="200" rx="20" fill="var(--primary-light)"/>
-              <circle cx="100" cy="80" r="35" fill="var(--primary)" opacity="0.3"/>
-              <path d="M55 180c0-24.9 20.1-45 45-45s45 20.1 45 45" fill="var(--primary)" opacity="0.2"/>
-              <text x="100" y="195" text-anchor="middle" fill="var(--primary)" font-size="11" font-family="Inter, sans-serif" opacity="0.6">Foto</text>
-            </svg>
-          </div>
-          <!-- Descomentar cuando tengas la foto:
-          <img src="assets/images/andres-perez.jpg" alt="Andrés Pérez Coronado - Fundador & CEO de FastAnalytics" class="founder-photo">
-          -->
+          <img src="assets/images/andres-perez.jpg" alt="Andrés Pérez Coronado - Fundador & AI Architect de FastAnalytics" class="founder-photo">
         </div>
         <div class="about-text animate-on-scroll">
           <h3>Andrés Pérez Coronado</h3>
-          <p class="about-role" data-es="Fundador & CEO" data-en="Founder & CEO">Fundador & CEO</p>
+          <p class="about-role" data-es="Fundador & AI Architect" data-en="Founder & AI Architect">Fundador & AI Architect</p>
           <p class="about-bio" data-es="Más de 20 años en el terreno de la seguridad ciudadana, liderando equipos de hasta 80 analistas y diseñando la forma en que la policía colombiana usa los datos. Investigador, becario Fulbright y Humphrey Fellow." data-en="Over 20 years on the front lines of public safety, leading teams of up to 80 analysts and designing how Colombian police use data. Researcher, Fulbright grantee, and Humphrey Fellow.">Más de 20 años en el terreno de la seguridad ciudadana, liderando equipos de hasta 80 analistas y diseñando la forma en que la policía colombiana usa los datos. Investigador, becario Fulbright y Humphrey Fellow.</p>
           <div class="credentials">
             <div class="credential">
@@ -486,7 +476,7 @@
             <p class="talk-title">"Finding the Missing Links: Using AI to Map and Disrupt Transnational Crime Networks"</p>
             <p class="talk-event">IACP 2026 Technology Conference</p>
           </div>
-          <a href="https://www.linkedin.com/in/andres-perez-coronado" target="_blank" rel="noopener" class="btn btn-linkedin">
+          <a href="https://www.linkedin.com/in/andres-perez-coronado-63792618/" target="_blank" rel="noopener" class="btn btn-linkedin">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             <span data-es="Ver perfil completo en LinkedIn" data-en="See full profile on LinkedIn">Ver perfil completo en LinkedIn</span>
           </a>
@@ -518,7 +508,7 @@
           <div class="pub-type" data-es="Libro (2021)" data-en="Book (2021)">Libro (2021)</div>
           <h3 data-es="Policía para el Desarrollo Humano" data-en="Police for Human Development">Policía para el Desarrollo Humano</h3>
           <p data-es="Convivencia y seguridad ciudadana en Latinoamérica. Grupo Editorial Ibáñez." data-en="Coexistence and citizen security in Latin America. Grupo Editorial Ibáñez.">Convivencia y seguridad ciudadana en Latinoamérica. Grupo Editorial Ibáñez.</p>
-          <a href="https://grupoeditorialiba%C3%B1ez.com/policia-para-el-desarrollo-humano-pdh/" target="_blank" rel="noopener" class="pub-link">
+          <a href="https://grupoeditorialibanez.com/policia-para-el-desarrollo-humano-pdh/" target="_blank" rel="noopener" class="pub-link">
             <span data-es="Ver libro" data-en="View book">Ver libro</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </a>

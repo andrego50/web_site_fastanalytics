@@ -12,10 +12,10 @@
 
 ## Founder
 - Name: Andrés Pérez Coronado
-- Role: Founder & CEO
+- Role: Founder & AI Architect
 - Education: PhD in Mathematical Engineering (EAFIT University, 2025), Humphrey Fellow (University of Minnesota), Fulbright Scholar
 - Experience: 20+ years in citizen security analytics, led teams of 80+ analysts
-- LinkedIn: https://www.linkedin.com/in/andres-perez-coronado
+- LinkedIn: https://www.linkedin.com/in/andres-perez-coronado-63792618/
 - Academia: https://independent.academia.edu/AndrésPérezCoronado
 
 ## Services

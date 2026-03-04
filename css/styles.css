@@ -664,8 +664,32 @@ ul {
   object-fit: cover;
 }
 
+.case-card-alejo {
+  grid-column: 1 / -1;
+}
+
 .case-card-vigia {
   grid-column: 1 / -1;
+}
+
+.alejo-screenshots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.alejo-screenshot {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.alejo-screenshot:hover {
+  box-shadow: var(--shadow-lg);
+  transform: scale(1.02);
 }
 
 .vigia-screenshots {
@@ -1221,10 +1245,12 @@ ul {
     grid-template-columns: 1fr;
   }
 
+  .alejo-screenshots,
   .vigia-screenshots {
     grid-template-columns: 1fr;
   }
 
+  .case-card-alejo,
   .case-card-vigia {
     grid-column: auto;
   }

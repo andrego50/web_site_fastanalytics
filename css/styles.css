@@ -1019,9 +1019,9 @@ ul {
 /* ========== COURSES ========== */
 .courses-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
-  max-width: 720px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -1096,6 +1096,20 @@ ul {
   height: 8px;
   border-radius: 50%;
   background: var(--primary);
+}
+
+.course-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+}
+
+.course-audience {
+  color: var(--primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  line-height: 1.5;
 }
 
 /* ========== FOOTER ========== */
@@ -1405,6 +1419,10 @@ ul {
 
   .hero-content {
     padding: 48px 24px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
   }
 
   .hero-stats {

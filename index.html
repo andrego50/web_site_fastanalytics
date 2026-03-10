@@ -211,8 +211,7 @@
     <div class="container hero-content">
       <div class="hero-badge animate-on-scroll" data-es="Inteligencia artificial + datos geográficos" data-en="Artificial intelligence + geographic data">Inteligencia artificial + datos geográficos</div>
       <h1 class="hero-title animate-on-scroll">
-        <span data-es="Predecimos dónde y cuándo" data-en="We predict where and when to">Predecimos dónde y cuándo</span><br>
-        <span class="text-gradient" data-es="actuar" data-en="act">actuar</span>
+        <span data-es="Predecimos dónde y cuándo " data-en="We predict where and when to ">Predecimos dónde y cuándo </span><span class="text-gradient" data-es="actuar" data-en="act">actuar</span>
       </h1>
       <p class="hero-subtitle animate-on-scroll" data-es="Convertimos datos en decisiones. Tú actúas antes, no después." data-en="We turn data into decisions. You act before, not after.">Convertimos datos en decisiones. Tú actúas antes, no después.</p>
       <div class="hero-cta animate-on-scroll">
@@ -568,6 +567,50 @@
     </div>
   </section>
 
+  <!-- ========== RESULTADOS ========== -->
+  <section class="section results" id="resultados">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag" data-es="Impacto real" data-en="Real impact">Impacto real</span>
+        <h2 class="section-title" data-es="Resultados que hablan solos" data-en="Results that speak for themselves">Resultados que hablan solos</h2>
+        <p class="section-subtitle" data-es="Nuestro fundador diseñó, desplegó y propuso la estrategia basada en el modelo Cuadrantes Outliers. Generales y alcaldes dieron las ruedas de prensa. Estos fueron los resultados." data-en="Our founder designed, deployed and proposed the strategy based on the Cuadrantes Outliers model. Generals and mayors gave the press conferences. These were the results.">Nuestro fundador diseñó, desplegó y propuso la estrategia basada en el modelo Cuadrantes Outliers. Generales y alcaldes dieron las ruedas de prensa. Estos fueron los resultados.</p>
+      </div>
+      <div class="results-carousel animate-on-scroll">
+        <div class="results-track">
+          <div class="result-slide">
+            <img src="assets/images/resultado-2021.png" alt="Resultados Diciembre 2021 - Colombia vivió el diciembre más seguro en 19 años" loading="lazy">
+          </div>
+          <div class="result-slide">
+            <img src="assets/images/resultado-2024.png" alt="Resultados 2024 - Se rompió la tendencia del delito en Colombia" loading="lazy">
+          </div>
+          <div class="result-slide">
+            <img src="assets/images/resultado-modelo.png" alt="Modelo Cuadrantes Outliers - Metodología" loading="lazy">
+          </div>
+        </div>
+        <div class="results-controls">
+          <button class="results-btn results-prev" aria-label="Anterior">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div class="results-dots">
+            <button class="results-dot active" aria-label="Slide 1"></button>
+            <button class="results-dot" aria-label="Slide 2"></button>
+            <button class="results-dot" aria-label="Slide 3"></button>
+          </div>
+          <button class="results-btn results-next" aria-label="Siguiente">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="results-sources animate-on-scroll">
+        <p data-es="Fuentes:" data-en="Sources:">Fuentes:</p>
+        <a href="https://www.semana.com/nacion/articulo/colombia-vivio-el-diciembre-mas-seguro-de-los-ultimos-19-anos-policia/202226/" target="_blank" rel="noopener">Semana</a>
+        <a href="https://www.eltiempo.com/bogota/balance-de-seguridad-de-2021-en-bogota-homicidio-y-hurto-bajaron-642871" target="_blank" rel="noopener">El Tiempo</a>
+        <a href="https://bogota.gov.co/mi-ciudad/seguridad/bogota-rompio-la-tendencia-del-delito-y-redujo-el-hurto-en-bogota" target="_blank" rel="noopener">Bogotá.gov.co</a>
+        <a href="https://www.cali.gov.co/seguridad/publicaciones/170504/cali-registro-reduccion-historica-en-el-numero-de-homicidios/" target="_blank" rel="noopener">Cali.gov.co</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== INVESTIGACIÓN ========== -->
   <section class="section publications" id="investigacion">
     <div class="container">
@@ -687,5 +730,44 @@
 
   <script src="js/main.js"></script>
   <script src="js/hero-network.js"></script>
+  <script>
+    // Results carousel
+    (function() {
+      const track = document.querySelector('.results-track');
+      if (!track) return;
+      const slides = track.querySelectorAll('.result-slide');
+      const dots = document.querySelectorAll('.results-dot');
+      const prevBtn = document.querySelector('.results-prev');
+      const nextBtn = document.querySelector('.results-next');
+      let current = 0;
+      const total = slides.length;
+
+      function goTo(i) {
+        current = (i + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function(d, idx) { d.classList.toggle('active', idx === current); });
+      }
+
+      prevBtn.addEventListener('click', function() { goTo(current - 1); });
+      nextBtn.addEventListener('click', function() { goTo(current + 1); });
+      dots.forEach(function(dot, idx) {
+        dot.addEventListener('click', function() { goTo(idx); });
+      });
+
+      // Auto-advance every 5s
+      let timer = setInterval(function() { goTo(current + 1); }, 5000);
+      track.closest('.results-carousel').addEventListener('mouseenter', function() { clearInterval(timer); });
+      track.closest('.results-carousel').addEventListener('mouseleave', function() { timer = setInterval(function() { goTo(current + 1); }, 5000); });
+
+      // Swipe support
+      let startX = 0;
+      track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; clearInterval(timer); }, {passive: true});
+      track.addEventListener('touchend', function(e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+        timer = setInterval(function() { goTo(current + 1); }, 5000);
+      }, {passive: true});
+    })();
+  </script>
 </body>
 </html>

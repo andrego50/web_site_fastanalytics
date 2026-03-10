@@ -29,10 +29,17 @@
 8. Chatbot Development — Bots for Telegram, WhatsApp, and more
 
 ## Products
-- AlejoSeguro (https://t.me/AlejoSeguro_bot) — Telegram bot collecting georeferenced citizen security perceptions in Bogotá
-- AlejoGeo — Spatio-temporal territorial intelligence platform. Collects georeferenced audio, text, video and images via chatbot. Cross-references with vector databases. Delivers PDF reports, dashboards and AI chat for decision-making. Sectors: health, mining & energy, construction, education
+- AlejoSeguro (https://t.me/AlejoSeguro_bot) — Telegram bot collecting georeferenced citizen security perceptions in Bogotá. Tag: Citizen perception
+- AlejoGeo — AI + geospatial data · Spatiotemporal Intelligence platform. Collects georeferenced audio, text, video and images via chatbot. Cross-references with vector databases. Delivers PDF reports, dashboards and AI chat for decision-making. Sectors: health, mining & energy, construction, education
 - GabyVigía — Predictive decision-making system: Watch · Predict · Decide. Detects weak predictive signals using Machine Learning and spatio-temporal pattern analysis. 5 intelligence layers: Telegram chat, heatmap dashboards, actor graphs, PDF and audio reports. Coordinated AI assistants. 9-phase Decision Enneagon methodology
-- Ceci Teaches (https://t.me/Ceci_Teaches_bot) — AI-powered educational chatbot on Telegram
+
+## Courses
+- Ceci Teaches (https://t.me/Ceci_Teaches_bot) — AI-powered educational chatbot on Telegram. Personalized learning experiences, answers instantly, adapts to your level, available 24/7
+- IA/ML para Analítica de Redes Criminales (https://fastanalytics.co/curso-redes-criminales) — Hands-on course on AI/ML applied to criminal network analysis and fraud detection. 7 modules: AI/ML fundamentals for security, graph theory & network analysis, community detection & key actors, spatiotemporal crime pattern analysis, applied predictive models, fraud detection with ML, real cases from Colombia & Latin America. Target audience: law enforcement, security & justice sector, banking, insurance, and any organization facing criminal or fraud threats. Instructor: Andrés Pérez Coronado (PhD, 20+ years experience). Status: Coming soon
+
+## Proven Results
+- December 2021: Colombia's safest December in 19 years. -17% homicides nationwide, 772 municipalities with zero homicides, -33% homicides in Bogotá, Cali recorded days with zero homicides (30-year record). Model: Cuadrantes Outliers — designed and deployed by Andrés Pérez Coronado
+- Year 2024: Crime trend broken in Colombia. -17.8% robbery, -25.9% residential theft, -13% massacres, 7 of 11 crimes reduced in Bogotá, 28,243 fewer robbery reports. Multicrimen model — designed and deployed by Andrés Pérez Coronado
 
 ## Publications
 - Research Profile: https://independent.academia.edu/AndrésPérezCoronado (7+ academic papers)
@@ -44,9 +51,15 @@
 - Education
 - Health
 - Transportation
+- Banking & Insurance (fraud detection)
 - Private Enterprise
+
+## Pages
+- Home: https://fastanalytics.co
+- Course — IA/ML para Analítica de Redes Criminales: https://fastanalytics.co/curso-redes-criminales
 
 ## Social Media
 - Instagram: https://www.instagram.com/fast_analytics
 - LinkedIn: https://www.linkedin.com/company/fastanalytics-sas
 - Facebook: https://www.facebook.com/FastAnalyticsSAS
+- TikTok: https://www.tiktok.com/@fastanalytics

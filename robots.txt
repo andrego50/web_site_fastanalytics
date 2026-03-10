@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://fastanalytics.co/sitemap.xml
+
+# LLM-friendly structured info
+# See https://fastanalytics.co/llms.txt

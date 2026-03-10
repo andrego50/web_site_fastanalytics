@@ -29,9 +29,10 @@
 8. Chatbot Development — Bots for Telegram, WhatsApp, and more
 
 ## Products
-- AlejoSeguro (https://t.me/AlejoSeguro_bot) — Telegram bot collecting citizen security perceptions in Bogotá
+- AlejoSeguro (https://t.me/AlejoSeguro_bot) — Telegram bot collecting georeferenced citizen security perceptions in Bogotá
+- AlejoGeo — Spatio-temporal territorial intelligence platform. Collects georeferenced audio, text, video and images via chatbot. Cross-references with vector databases. Delivers PDF reports, dashboards and AI chat for decision-making. Sectors: health, mining & energy, construction, education
+- GabyVigía — Predictive decision-making system: Watch · Predict · Decide. Detects weak predictive signals using Machine Learning and spatio-temporal pattern analysis. 5 intelligence layers: Telegram chat, heatmap dashboards, actor graphs, PDF and audio reports. Coordinated AI assistants. 9-phase Decision Enneagon methodology
 - Ceci Teaches (https://t.me/Ceci_Teaches_bot) — AI-powered educational chatbot on Telegram
-- VIGÍA — Real-time crime pattern anticipation system (in development)
 
 ## Publications
 - Research Profile: https://independent.academia.edu/AndrésPérezCoronado (7+ academic papers)

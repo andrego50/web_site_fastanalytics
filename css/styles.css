@@ -386,6 +386,7 @@ ul {
 /* ========== SECTIONS ========== */
 .section {
   padding: 100px 0;
+  scroll-margin-top: var(--nav-height);
 }
 
 .section:nth-child(even) {
@@ -1348,6 +1349,7 @@ ul {
   background: var(--bg-dark);
   color: #FFFFFF;
   padding: 80px 0 32px;
+  min-height: 60vh;
 }
 
 .footer-main {

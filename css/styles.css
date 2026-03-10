@@ -664,12 +664,19 @@ ul {
   object-fit: cover;
 }
 
-.case-card-alejo {
+.case-card-alejo,
+.case-card-alejogeo {
   grid-column: 1 / -1;
   text-align: center;
 }
 
 .case-card-alejo .case-icon-img {
+  margin: 0 auto;
+}
+
+.case-card-alejogeo .case-features {
+  text-align: left;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -1381,6 +1388,7 @@ ul {
   }
 
   .case-card-alejo,
+  .case-card-alejogeo,
   .case-card-vigia {
     grid-column: auto;
   }

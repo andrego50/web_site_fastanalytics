@@ -694,6 +694,18 @@ ul {
 
 .case-card-vigia {
   grid-column: 1 / -1;
+  text-align: center;
+}
+
+.case-card-vigia p {
+  max-width: 700px;
+  margin: 0 auto 24px;
+}
+
+.case-card-vigia .case-features {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .alejo-screenshots {

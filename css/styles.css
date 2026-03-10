@@ -1183,13 +1183,9 @@ ul {
   text-align: center;
 }
 
-.course-section .section-title {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
 .course-section {
   border-top: 1px solid var(--border);
+  text-align: center;
 }
 
 .course-section-alt {

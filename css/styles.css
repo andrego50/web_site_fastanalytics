@@ -1152,6 +1152,15 @@ ul {
   margin-bottom: 20px;
 }
 
+.course-objective {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .course-section {
   border-top: 1px solid var(--border);
 }
@@ -1183,9 +1192,9 @@ ul {
 }
 
 .audience-icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 16px;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 12px;
 }
 
 .audience-card h3 {

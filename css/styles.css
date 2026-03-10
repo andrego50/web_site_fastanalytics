@@ -674,10 +674,22 @@ ul {
   margin: 0 auto;
 }
 
+.case-card-alejogeo .case-icon-img {
+  margin: 0 auto;
+}
+
+.case-card-alejogeo p {
+  max-width: 700px;
+  margin: 0 auto 24px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
 .case-card-alejogeo .case-features {
   text-align: left;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 32px;
+  font-size: 1rem;
 }
 
 .case-card-vigia {

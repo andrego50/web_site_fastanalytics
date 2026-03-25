@@ -1017,6 +1017,109 @@ ul {
   transform: translateY(-2px);
 }
 
+/* ========== DESIGN THINKING PROCESS ========== */
+.dt-process {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.dt-process-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.dt-process-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 48px;
+}
+
+.dt-phases {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+
+.dt-phase {
+  flex: 1;
+  max-width: 200px;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.dt-phase-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+}
+
+.dt-phase-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 12px;
+}
+
+.dt-phase h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+
+.dt-phase ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.dt-phase li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.dt-phase li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.dt-phase-arrow {
+  display: flex;
+  align-items: center;
+  padding-top: 50px;
+  flex-shrink: 0;
+}
+
+.dt-phase-arrow svg {
+  width: 20px;
+  height: 20px;
+  opacity: 0.4;
+}
+
 /* ========== COURSES ========== */
 .courses-grid {
   display: grid;
@@ -1592,6 +1695,21 @@ ul {
     font-size: 2rem;
   }
 
+  .dt-phases {
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .dt-phase {
+    flex: 0 0 calc(50% - 24px);
+    max-width: none;
+  }
+
+  .dt-phase-arrow {
+    display: none;
+  }
+
   .nav-links {
     display: none;
     position: fixed;
@@ -1715,6 +1833,10 @@ ul {
 
   .course-audience-grid {
     grid-template-columns: 1fr;
+  }
+
+  .dt-phase {
+    flex: 0 0 100%;
   }
 
   .course-hero-title {

@@ -23,10 +23,11 @@
 2. AI Agents for Decision-Making — Real-time data analysis assistants
 3. Data Collection (bots, surveys) — Massive surveys via bots, fast and frictionless
 4. Security & Coexistence Consulting — 20+ years of field experience in public safety
-5. Dashboards / Data Visualization — Actionable data dashboards
-6. Data Training & Education — Hands-on data training for teams
-7. Research & Publications — Applied research that becomes public policy
-8. Chatbot Development — Bots for Telegram, WhatsApp, and more
+5. Strategic Design Thinking — Design thinking workshops for security, defense and organized crime. We facilitate, design and deliver: strategies, solution prototypes, roadmaps and KPIs — from conception to implementation and measurement. Target: law enforcement, defense, banking, insurance, and enterprises facing organized crime threats (narcotrafficking, fraud, money laundering)
+6. Dashboards / Data Visualization — Actionable data dashboards
+7. Data Training & Education — Hands-on data training for teams
+8. Research & Publications — Applied research that becomes public policy
+9. Chatbot Development — Bots for Telegram, WhatsApp, and more
 
 ## Products
 - AlejoSeguro (https://t.me/AlejoSeguro_bot) — Telegram bot collecting georeferenced citizen security perceptions in Bogotá. Tag: Citizen perception

@@ -21,7 +21,7 @@
     document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
       var text = el.getAttribute('data-' + lang);
       if (text) {
-        el.textContent = text;
+        el.innerHTML = text;
       }
     });
 

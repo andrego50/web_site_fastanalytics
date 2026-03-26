@@ -26,20 +26,24 @@
     });
 
     // Update page title
-    if (lang === 'en') {
-      document.title = 'FastAnalytics | Spatiotemporal AI for Predictive Decisions';
-    } else {
-      document.title = 'FastAnalytics | IA espaciotemporal para decisiones predictivas';
-    }
+    var titles = {
+      es: 'FastAnalytics | IA espaciotemporal para decisiones predictivas',
+      en: 'FastAnalytics | Spatiotemporal AI for Predictive Decisions',
+      fr: 'FastAnalytics | IA spatiotemporelle pour des décisions prédictives'
+    };
+    document.title = titles[lang] || titles.es;
   }
+
+  var langCycle = ['es', 'en', 'fr'];
 
   langToggle.addEventListener('click', function (e) {
     var option = e.target.closest('.lang-option');
     if (option) {
       setLanguage(option.dataset.lang);
     } else {
-      // Toggle between languages when clicking anywhere on the button
-      setLanguage(currentLang === 'es' ? 'en' : 'es');
+      // Cycle through languages
+      var idx = langCycle.indexOf(currentLang);
+      setLanguage(langCycle[(idx + 1) % langCycle.length]);
     }
   });
 

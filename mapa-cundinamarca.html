@@ -76,11 +76,10 @@
     .search-box input { width:180px; padding:7px 10px; font-size:11px; }
     .stats-box { display:none; }
     .legend { display:none; }
-    .leaflet-control-zoom { margin-top:100px !important; margin-left:10px !important; }
-    .leaflet-control-layers { margin-right:10px !important; margin-top:100px !important; font-size:11px; }
-    .leaflet-popup-content-wrapper { max-width:70vw !important; }
-    .leaflet-popup-content { min-width:auto !important; max-width:65vw !important; width:auto !important; font-size:11px; }
-    .leaflet-popup-content h4 { font-size:13px !important; }
+    .leaflet-control-zoom { margin-top:100px !important; margin-left:14px !important; }
+    .leaflet-control-layers { margin-right:14px !important; margin-top:100px !important; font-size:11px; }
+    .leaflet-popup-content-wrapper { max-width:80vw !important; }
+    .leaflet-popup-content { min-width:auto !important; max-width:75vw !important; width:auto !important; font-size:12px; }
   }
 </style>
 </head>
@@ -219,7 +218,7 @@ var hexLayer = L.geoJSON(hexData, {
     return { color: c, weight: 2, fillColor: c, fillOpacity: 0.5 };
   },
   onEachFeature: function(feature, layer) {
-    var pw = window.innerWidth <= 768 ? 250 : 400;
+    var pw = window.innerWidth <= 768 ? 300 : 400;
     layer.bindPopup(makePopup(feature.properties), { maxWidth: pw });
     layer.bindTooltip(feature.properties.total.toLocaleString() + ' reportes | Click para análisis');
   }

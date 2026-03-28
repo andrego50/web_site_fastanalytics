@@ -269,6 +269,14 @@ function buscar(q) {
 map.on('click', function() {
   document.getElementById('searchResults').style.display = 'none';
 });
+
+// Mobile: reposition zoom and layer controls
+if (window.innerWidth <= 768) {
+  var zc = document.querySelector('.leaflet-control-zoom');
+  if (zc) { zc.style.marginTop = '100px'; zc.style.marginLeft = '12px'; }
+  var lc = document.querySelector('.leaflet-control-layers');
+  if (lc) { lc.style.marginTop = '100px'; lc.style.marginRight = '12px'; }
+}
 </script>
 </body>
 </html>

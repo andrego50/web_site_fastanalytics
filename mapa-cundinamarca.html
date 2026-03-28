@@ -66,20 +66,21 @@
   @media (max-width: 768px) {
     .home-btn {
       top:8px; left:50%; transform:translateX(-50%);
-      padding:7px 14px; font-size:12px;
+      padding:6px 12px; font-size:11px;
     }
     .title-bar {
-      font-size:10px; padding:6px 12px; top:42px;
-      white-space:normal; text-align:center; max-width:85%;
+      font-size:9px; padding:5px 10px; top:38px;
+      white-space:normal; text-align:center; max-width:80%;
     }
-    .search-box { top:78px; }
-    .search-box input { width:220px; padding:8px 10px; font-size:12px; }
+    .search-box { top:68px; }
+    .search-box input { width:180px; padding:7px 10px; font-size:11px; }
     .stats-box { display:none; }
     .legend { display:none; }
-    .leaflet-control-zoom { margin-top:115px !important; margin-left:8px !important; }
-    .leaflet-control-layers { margin-right:8px !important; margin-top:115px !important; font-size:11px; }
-    .leaflet-popup-content-wrapper { max-width:85vw !important; }
-    .leaflet-popup-content { min-width:auto !important; max-width:75vw !important; width:auto !important; font-size:12px; }
+    .leaflet-control-zoom { margin-top:100px !important; margin-left:10px !important; }
+    .leaflet-control-layers { margin-right:10px !important; margin-top:100px !important; font-size:11px; }
+    .leaflet-popup-content-wrapper { max-width:70vw !important; }
+    .leaflet-popup-content { min-width:auto !important; max-width:65vw !important; width:auto !important; font-size:11px; }
+    .leaflet-popup-content h4 { font-size:13px !important; }
   }
 </style>
 </head>
@@ -193,21 +194,22 @@ function makePopup(p) {
     }
   }
 
-  var isMobile = window.innerWidth <= 768;
-  var mw = isMobile ? '70vw' : '380px';
-  var mnw = isMobile ? 'auto' : '280px';
-  return '<div style="font-family:Arial,sans-serif;min-width:' + mnw + ';max-width:' + mw + '">' +
-    '<div style="background:linear-gradient(135deg,#2c3e50,#3498db);color:white;padding:12px 15px;border-radius:8px 8px 0 0;margin:-13px -20px 10px -20px">' +
-    '<h4 style="margin:0;font-size:15px">Zona de Análisis</h4>' +
-    '<span style="font-size:11px;opacity:0.8">Hexágono H3 · ~1.2km</span></div>' +
-    '<div style="text-align:center;margin:10px 0">' +
-    '<span style="font-size:32px;font-weight:bold;color:#2c3e50">' + p.total.toLocaleString() + '</span><br>' +
-    '<span style="font-size:12px;color:#888">reportes en esta zona</span></div>' +
-    '<div style="background:#f8f9fa;padding:10px;border-radius:6px;margin:8px 0;font-size:13px;line-height:1.5">' +
+  var mob = window.innerWidth <= 768;
+  var fs = mob ? '11px' : '13px';
+  var numFs = mob ? '22px' : '32px';
+  var hPad = mob ? '8px 10px' : '12px 15px';
+  var hMar = mob ? '-10px -15px 8px -15px' : '-13px -20px 10px -20px';
+  return '<div style="font-family:Arial,sans-serif">' +
+    '<div style="background:linear-gradient(135deg,#2c3e50,#3498db);color:white;padding:' + hPad + ';border-radius:8px 8px 0 0;margin:' + hMar + '">' +
+    '<h4 style="margin:0;font-size:' + (mob?'12px':'15px') + '">Zona de Análisis</h4>' +
+    '<span style="font-size:10px;opacity:0.8">~1.2km</span></div>' +
+    '<div style="text-align:center;margin:6px 0">' +
+    '<span style="font-size:' + numFs + ';font-weight:bold;color:#2c3e50">' + p.total.toLocaleString() + '</span> ' +
+    '<span style="font-size:11px;color:#888">reportes</span></div>' +
+    '<div style="background:#f8f9fa;padding:8px;border-radius:6px;margin:6px 0;font-size:' + fs + ';line-height:1.4">' +
     '<b>Análisis:</b> ' + escapeHtml(p.resumen) + '</div>' +
     textos +
-    '<hr style="margin:8px 0;border-color:#eee">' +
-    '<div style="text-align:center;font-size:10px;color:#999">@AlejoSeguro_bot · IA al servicio ciudadano</div></div>';
+    '<div style="text-align:center;font-size:9px;color:#999;margin-top:6px">@AlejoSeguro_bot</div></div>';
 }
 
 var hexLayer = L.geoJSON(hexData, {
@@ -217,7 +219,8 @@ var hexLayer = L.geoJSON(hexData, {
     return { color: c, weight: 2, fillColor: c, fillOpacity: 0.5 };
   },
   onEachFeature: function(feature, layer) {
-    layer.bindPopup(makePopup(feature.properties), { maxWidth: 400 });
+    var pw = window.innerWidth <= 768 ? 250 : 400;
+    layer.bindPopup(makePopup(feature.properties), { maxWidth: pw });
     layer.bindTooltip(feature.properties.total.toLocaleString() + ' reportes | Click para análisis');
   }
 }).addTo(map);

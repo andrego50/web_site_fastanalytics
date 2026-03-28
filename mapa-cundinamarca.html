@@ -78,6 +78,8 @@
     .legend { display:none; }
     .leaflet-control-zoom { margin-top:115px !important; margin-left:8px !important; }
     .leaflet-control-layers { margin-right:8px !important; margin-top:115px !important; font-size:11px; }
+    .leaflet-popup-content-wrapper { max-width:85vw !important; }
+    .leaflet-popup-content { min-width:auto !important; max-width:75vw !important; width:auto !important; font-size:12px; }
   }
 </style>
 </head>
@@ -191,7 +193,10 @@ function makePopup(p) {
     }
   }
 
-  return '<div style="font-family:Arial,sans-serif;min-width:280px;max-width:380px">' +
+  var isMobile = window.innerWidth <= 768;
+  var mw = isMobile ? '70vw' : '380px';
+  var mnw = isMobile ? 'auto' : '280px';
+  return '<div style="font-family:Arial,sans-serif;min-width:' + mnw + ';max-width:' + mw + '">' +
     '<div style="background:linear-gradient(135deg,#2c3e50,#3498db);color:white;padding:12px 15px;border-radius:8px 8px 0 0;margin:-13px -20px 10px -20px">' +
     '<h4 style="margin:0;font-size:15px">Zona de Análisis</h4>' +
     '<span style="font-size:11px;opacity:0.8">Hexágono H3 · ~1.2km</span></div>' +

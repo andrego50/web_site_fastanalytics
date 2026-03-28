@@ -64,13 +64,20 @@
   }
 
   @media (max-width: 768px) {
-    .title-bar { font-size:11px; padding:8px 12px; top:10px; }
-    .search-box { top:50px; }
-    .search-box input { width:200px; padding:8px 10px; font-size:12px; }
+    .home-btn {
+      top:8px; left:50%; transform:translateX(-50%);
+      padding:7px 14px; font-size:12px;
+    }
+    .title-bar {
+      font-size:10px; padding:6px 12px; top:42px;
+      white-space:normal; text-align:center; max-width:85%;
+    }
+    .search-box { top:78px; }
+    .search-box input { width:220px; padding:8px 10px; font-size:12px; }
     .stats-box { display:none; }
     .legend { display:none; }
-    .home-btn { top:10px; left:50px; padding:7px 10px; font-size:11px; }
-    .leaflet-control-layers { max-width:150px; font-size:11px; }
+    .leaflet-control-zoom { margin-top:115px !important; margin-left:8px !important; }
+    .leaflet-control-layers { margin-right:8px !important; margin-top:115px !important; font-size:11px; }
   }
 </style>
 </head>

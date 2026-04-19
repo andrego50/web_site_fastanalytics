@@ -132,4 +132,82 @@
     sectionObserver.observe(section);
   });
 
+  // ========== LIGHTBOX ==========
+  var lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    var lightboxImage = document.getElementById('lightboxImage');
+    var lightboxClose = document.getElementById('lightboxClose');
+    var lightboxPrev = document.getElementById('lightboxPrev');
+    var lightboxNext = document.getElementById('lightboxNext');
+    var lightboxCounter = document.getElementById('lightboxCounter');
+
+    var currentGallery = [];
+    var currentIndex = 0;
+
+    function updateLightbox() {
+      var img = currentGallery[currentIndex];
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt || '';
+      lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentGallery.length;
+      var multiple = currentGallery.length > 1;
+      lightboxPrev.style.display = multiple ? 'flex' : 'none';
+      lightboxNext.style.display = multiple ? 'flex' : 'none';
+      lightboxCounter.style.display = multiple ? 'block' : 'none';
+    }
+
+    function openLightbox(gallery, index) {
+      currentGallery = gallery;
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+      updateLightbox();
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % currentGallery.length;
+      updateLightbox();
+    }
+
+    var gallerySelectors = ['.alejo-screenshots', '.vigia-screenshots', '.tavodebate-screenshots'];
+    gallerySelectors.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (gallery) {
+        var images = Array.prototype.slice.call(gallery.querySelectorAll('img'));
+        images.forEach(function (img, idx) {
+          img.addEventListener('click', function () {
+            openLightbox(images, idx);
+          });
+        });
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', prevImage);
+    lightboxNext.addEventListener('click', nextImage);
+
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowLeft') prevImage();
+      else if (e.key === 'ArrowRight') nextImage();
+    });
+  }
+
 })();

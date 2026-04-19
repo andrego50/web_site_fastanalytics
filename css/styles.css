@@ -675,6 +675,15 @@ ul {
   margin: 0 auto;
 }
 
+.case-card-alejo .case-features li {
+  padding-left: 0;
+  text-align: center;
+}
+
+.case-card-alejo .case-features li::before {
+  display: none;
+}
+
 .case-card-alejogeo .case-icon-img {
   margin: 0 auto;
 }

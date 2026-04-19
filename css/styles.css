@@ -759,6 +759,59 @@ ul {
   transform: scale(1.02);
 }
 
+.case-card-tavodebate {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.case-card-tavodebate .case-icon {
+  margin: 0 auto;
+}
+
+.case-card-tavodebate p {
+  max-width: 700px;
+  margin: 0 auto 24px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.case-card-tavodebate .case-features {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto 32px;
+  font-size: 1rem;
+}
+
+.tavodebate-screenshots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.tavodebate-screenshot {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.tavodebate-screenshot:hover {
+  box-shadow: var(--shadow-lg);
+  transform: scale(1.02);
+}
+
+.tavodebate-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 /* ========== ABOUT ========== */
 .about-content {
   display: grid;
@@ -1867,18 +1920,21 @@ ul {
   }
 
   .alejo-screenshots,
-  .vigia-screenshots {
+  .vigia-screenshots,
+  .tavodebate-screenshots {
     grid-template-columns: 1fr;
   }
 
   .alejo-screenshot,
-  .vigia-screenshot {
+  .vigia-screenshot,
+  .tavodebate-screenshot {
     aspect-ratio: 16 / 9;
   }
 
   .case-card-alejo,
   .case-card-alejogeo,
-  .case-card-vigia {
+  .case-card-vigia,
+  .case-card-tavodebate {
     grid-column: auto;
   }
 }

@@ -95,11 +95,18 @@
   footer a { color: var(--teal); text-decoration: none; }
 
   /* Legends */
-  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 14px; font-weight: 600;
+  .legend { display: flex; gap: 14px 18px; flex-wrap: wrap; font-size: 14px; font-weight: 600;
             color: var(--ink); margin-top: 12px; line-height: 1.4; }
   .legend span { display: inline-flex; align-items: center; gap: 7px; }
   .legend i { display: inline-block; width: 16px; height: 16px; border-radius: 50%; }
   .legend i.line { width: 22px; height: 3px; border-radius: 0; }
+  .legend .lg-item { display: inline-flex; align-items: flex-start; gap: 7px; max-width: 320px; }
+  .legend .lg-item .lg-text { display: flex; flex-direction: column; line-height: 1.25; }
+  .legend .lg-item .lg-text small { font-size: 11px; font-weight: 500; color: var(--muted);
+                                    font-style: italic; margin-top: 2px; }
+  .legend .lg-item .lg-text code { font-family: ui-monospace, "SF Mono", Menlo, monospace;
+                                   font-size: 10.5px; background: rgba(15,42,68,0.06);
+                                   padding: 0 4px; border-radius: 3px; }
 
   /* Slot color tokens */
   .col-1 { background: #9CCED0 !important; }
@@ -273,10 +280,30 @@
         <span><i class="col-1"></i>t1</span>
         <span><i class="col-3"></i>t2</span>
         <span><i class="col-5"></i>t3</span>
-        <span><i class="line" style="background:#B23A3A"></i>known edge (t→t+1)</span>
-        <span><i class="line" style="background:#D8893C; border-top:2px dashed #D8893C; height:0; width:22px"></i>unknown edge</span>
-        <span><i class="line" style="background:#9CCED0; border-top:2px dashed #9CCED0; height:0; width:22px"></i>hidden edge</span>
-        <span><i style="background:rgba(156,206,208,0.30); border:2px dashed #9CCED0; width:18px; height:18px"></i>predicted hidden vertex</span>
+        <span class="lg-item">
+          <i class="line" style="background:#B23A3A; margin-top:7px"></i>
+          <span class="lg-text">known edge (t→t+1)
+            <small>weight = times the same (src→dst) pair repeats across slot transitions; line width = <code>1.6 + count × 1.6 px</code></small>
+          </span>
+        </span>
+        <span class="lg-item">
+          <i class="line" style="background:#D8893C; border-top:2px dashed #D8893C; height:0; width:22px; margin-top:7px"></i>
+          <span class="lg-text">unknown edge
+            <small>top-3 active-cell pairs without a known edge, scored by <code>200/distance + 1.2 × shared neighbors</code>; fixed width 2.2 px</small>
+          </span>
+        </span>
+        <span class="lg-item">
+          <i class="line" style="background:#9CCED0; border-top:2px dashed #9CCED0; height:0; width:22px; margin-top:7px"></i>
+          <span class="lg-text">hidden edge
+            <small>links each predicted hidden vertex to its nearest active cell (Euclidean); fixed width 2.4 px — no weight</small>
+          </span>
+        </span>
+        <span class="lg-item">
+          <i style="background:rgba(156,206,208,0.30); border:2px dashed #9CCED0; width:18px; height:18px; margin-top:5px"></i>
+          <span class="lg-text">predicted hidden vertex
+            <small>one cell picked per strategy — ATTRACTION (close to quarry, far from monitored), AVOIDANCE (far from monitored, covert backbone), TRADE-OFF (accepts the risk, near monitored zones)</small>
+          </span>
+        </span>
       </div>
 
     </section>

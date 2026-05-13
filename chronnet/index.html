@@ -301,20 +301,20 @@
         <h3>How weights &amp; scores are computed</h3>
         <ul>
           <li>
-            <span class="tag" style="background:#B23A3A">known</span>
-            <b>weight</b> — number of times the same <code>(src→dst)</code> pair repeats across slot transitions.
+            <span class="tag" style="background:#B23A3A">known · E<sub>k</sub></span>
+            <b>weight</b> — number of times the same <code>(src→dst)</code> pair repeats across slot transitions (the only true edge weight in the real case).
           </li>
           <li>
             <span class="tag" style="background:#D8893C">unknown</span>
-            <b>weight</b> — proximity-plus-shared-neighbors score: <code>200 / distance + 1.2 × shared_neighbors</code>.
+            <b>not a weight — score only</b>: <code>200 / distance + 1.2 × shared_neighbors</code>, used to rank candidate pairs without an observed edge.
           </li>
           <li>
             <span class="tag" style="background:#1F8A8E">hidden edge</span>
-            <b>weight</b> — Euclidean distance from the predicted vertex to its nearest active cell.
+            <b>not a weight — visual only</b>: dashed link from the predicted vertex to its nearest active cell (Euclidean).
           </li>
           <li>
             <span class="tag" style="background:#0F2A44">hidden vertex</span>
-            <b>weight</b> — strategy-lens score (ATTRACTION, AVOIDANCE or TRADE-OFF) combining active-neighbor count and distance to quarry vs. monitored zones.
+            <b>not a weight — strategy score</b>: ATTRACTION, AVOIDANCE or TRADE-OFF lens combining active-neighbor count and distance to quarry vs. monitored zones.
           </li>
         </ul>
       </div>

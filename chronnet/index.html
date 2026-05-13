@@ -298,23 +298,11 @@
       </div>
 
       <div class="weights-box">
-        <h3>How weights &amp; scores are computed</h3>
+        <h3>Edge weight</h3>
         <ul>
           <li>
             <span class="tag" style="background:#B23A3A">known · E<sub>k</sub></span>
-            <b>weight</b> — number of times the same <code>(src→dst)</code> pair repeats across slot transitions (the only true edge weight in the real case).
-          </li>
-          <li>
-            <span class="tag" style="background:#D8893C">unknown</span>
-            <b>not a weight — score only</b>: <code>200 / distance + 1.2 × shared_neighbors</code>, used to rank candidate pairs without an observed edge.
-          </li>
-          <li>
-            <span class="tag" style="background:#1F8A8E">hidden edge</span>
-            <b>not a weight — visual only</b>: dashed link from the predicted vertex to its nearest active cell (Euclidean).
-          </li>
-          <li>
-            <span class="tag" style="background:#0F2A44">hidden vertex</span>
-            <b>not a weight — strategy score</b>: ATTRACTION, AVOIDANCE or TRADE-OFF lens combining active-neighbor count and distance to quarry vs. monitored zones.
+            <b>weight</b> — number of times the same <code>(src→dst)</code> pair repeats across slot transitions.
           </li>
         </ul>
       </div>

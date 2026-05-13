@@ -302,19 +302,19 @@
         <ul>
           <li>
             <span class="tag" style="background:#B23A3A">known</span>
-            <b>weight = repeat count.</b> Same <code>(src→dst)</code> pair across slot transitions adds 1 each time. Line width grows as <code>1.6 + count × 1.6 px</code>.
+            <b>weight</b> — number of times the same <code>(src→dst)</code> pair repeats across slot transitions.
           </li>
           <li>
             <span class="tag" style="background:#D8893C">unknown</span>
-            <b>top-3 candidate pairs</b> of active cells with no known edge yet. Score: <code>200 / distance + 1.2 × shared_neighbors</code>. Fixed line width.
+            <b>weight</b> — proximity-plus-shared-neighbors score: <code>200 / distance + 1.2 × shared_neighbors</code>.
           </li>
           <li>
             <span class="tag" style="background:#1F8A8E">hidden edge</span>
-            <b>no weight</b> — each predicted hidden vertex draws a dashed link to its <i>nearest active cell</i> (Euclidean distance in screen space).
+            <b>weight</b> — Euclidean distance from the predicted vertex to its nearest active cell.
           </li>
           <li>
             <span class="tag" style="background:#0F2A44">hidden vertex</span>
-            <b>1 cell per strategy</b>: <b>ATTRACTION</b> (close to quarry, far from monitored), <b>AVOIDANCE</b> (covert backbone, far from monitored), <b>TRADE-OFF</b> (accepts risk, near monitored zones). All lenses add <code>5 × shared_active_neighbors</code> to the score.
+            <b>weight</b> — strategy-lens score (ATTRACTION, AVOIDANCE or TRADE-OFF) combining active-neighbor count and distance to quarry vs. monitored zones.
           </li>
         </ul>
       </div>

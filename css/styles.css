@@ -133,6 +133,39 @@ ul {
   border-radius: var(--radius);
 }
 
+.btn-chronnet {
+  border-color: #1F8A8E;
+  color: #1F8A8E;
+  position: relative;
+}
+
+.btn-chronnet::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1F8A8E;
+  margin-right: 8px;
+  vertical-align: middle;
+  animation: chronnetPulse 1.6s ease-in-out infinite;
+}
+
+.btn-chronnet:hover {
+  background: #1F8A8E;
+  color: #fff;
+  border-color: #1F8A8E;
+}
+
+.btn-chronnet:hover::before {
+  background: #fff;
+}
+
+@keyframes chronnetPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
 /* ========== NAVBAR ========== */
 .navbar {
   position: fixed;

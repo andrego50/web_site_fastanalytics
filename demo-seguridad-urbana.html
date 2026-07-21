@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FastAnalytics — Bloque de Seguridad Urbana</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(42,127,98,.4);border-radius:3px}
+
+:root{--fa-teal:#2A7F62;--fa-green:#1DB954;--fa-cyan:#00BFA6;--fa-dark:#080C14;--fa-card:rgba(255,255,255,.03);--fa-border:rgba(255,255,255,.06);--fa-alert:#FF6B35;--fa-danger:#E53E3E}
+
+.glass{background:var(--fa-card);backdrop-filter:blur(20px);border:1px solid var(--fa-border)}
+.glass-teal{background:rgba(42,127,98,.06);border:1px solid rgba(42,127,98,.2);box-shadow:0 0 20px rgba(42,127,98,.08)}
+.glass-alert{background:rgba(255,107,53,.06);border:1px solid rgba(255,107,53,.2);box-shadow:0 0 20px rgba(255,107,53,.08)}
+.glass-danger{background:rgba(229,62,62,.06);border:1px solid rgba(229,62,62,.2)}
+
+.btn-fa{background:linear-gradient(135deg,#2A7F62,#1DB954);box-shadow:0 4px 25px rgba(42,127,98,.4);transition:all .3s}
+.btn-fa:hover{box-shadow:0 6px 35px rgba(42,127,98,.6);transform:translateY(-2px)}
+
+.scene{display:none;opacity:0;transition:opacity .5s}.scene.active{display:block;opacity:1}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideL{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideR{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pulse-teal{0%,100%{box-shadow:0 0 15px rgba(42,127,98,.2)}50%{box-shadow:0 0 35px rgba(42,127,98,.5)}}
+@keyframes scan{0%{top:10%}100%{top:85%}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes ripple{0%{transform:scale(1);opacity:.6}100%{transform:scale(3);opacity:0}}
+@keyframes dash{to{stroke-dashoffset:0}}
+@keyframes typewriter{from{width:0}to{width:100%}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes barFill{from{width:0}}
+@keyframes nodeGlow{0%,100%{filter:drop-shadow(0 0 4px rgba(42,127,98,.3))}50%{filter:drop-shadow(0 0 12px rgba(42,127,98,.8))}}
+@keyframes dataFlow{0%{stroke-dashoffset:20}100%{stroke-dashoffset:0}}
+
+.anim-up{animation:fadeInUp .6s ease forwards}
+.anim-fade{animation:fadeIn .5s ease forwards}
+.anim-l{animation:slideL .5s ease forwards}
+.anim-r{animation:slideR .5s ease forwards}
+.anim-float{animation:float 3s ease-in-out infinite}
+.anim-pulse{animation:pulse-teal 2s ease-in-out infinite}
+.anim-blink{animation:blink 1s infinite}
+.anim-glow{animation:nodeGlow 2s ease-in-out infinite}
+
+.delay-1{animation-delay:.1s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.3s}
+.delay-4{animation-delay:.4s}.delay-5{animation-delay:.5s}.delay-6{animation-delay:.6s}
+
+.phone-frame{width:280px;height:500px;border-radius:32px;border:3px solid rgba(255,255,255,.1);background:#0F1724;box-shadow:0 20px 60px rgba(0,0,0,.5);overflow:hidden;position:relative}
+.phone-notch{width:120px;height:24px;background:#080C14;border-radius:0 0 16px 16px;margin:0 auto;position:relative;z-index:2}
+.chat-bubble{max-width:85%;padding:8px 12px;border-radius:12px;font-size:12px;line-height:1.5;margin-bottom:6px;opacity:0}
+.chat-user{background:rgba(42,127,98,.2);border:1px solid rgba(42,127,98,.3);margin-left:auto;border-bottom-right-radius:4px;color:#A7F3D0}
+.chat-bot{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);margin-right:auto;border-bottom-left-radius:4px;color:#CBD5E1}
+
+.eneagono-node{cursor:pointer;transition:all .3s}
+.eneagono-node:hover{filter:drop-shadow(0 0 15px rgba(42,127,98,.8))}
+.eneagono-node.active-node circle{fill:rgba(42,127,98,.8);stroke:#1DB954;stroke-width:3}
+.eneagono-node.active-node text{fill:#fff;font-weight:700}
+.eneagono-node.completed circle{fill:rgba(42,127,98,.3);stroke:rgba(42,127,98,.6)}
+
+.nav-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:all .3s}
+.nav-dot.active{background:var(--fa-teal);box-shadow:0 0 10px rgba(42,127,98,.5);transform:scale(1.3)}
+
+.detection-box{position:absolute;border:2px solid;border-radius:4px;opacity:0;transition:opacity .4s}
+
+.metric-bar{height:6px;border-radius:3px;background:rgba(255,255,255,.05);overflow:hidden}
+.metric-fill{height:100%;border-radius:3px;animation:barFill 1.2s ease forwards}
+
+.orb{position:fixed;border-radius:50%;filter:blur(100px);opacity:.08;pointer-events:none}
+</style>
+</head>
+<body>
+
+<div class="orb w-96 h-96 bg-teal-500 -top-48 -left-48"></div>
+<div class="orb w-80 h-80 bg-emerald-600 top-1/3 -right-40"></div>
+<div class="orb w-64 h-64 bg-cyan-600 bottom-20 left-1/4"></div>
+
+<!-- HEADER -->
+<header class="fixed top-0 w-full z-50 glass border-b border-white/5" id="mainHeader">
+<div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+    <svg width="32" height="32" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#2A7F62"/><g fill="#fff" opacity=".9"><rect x="10" y="22" width="5" height="10" rx="1"/><rect x="17.5" y="16" width="5" height="16" rx="1"/><rect x="25" y="10" width="5" height="22" rx="1"/></g></svg>
+    <div><span class="text-base font-bold tracking-tight" style="color:#2A7F62">Fast</span><span class="text-base font-bold text-white">Analytics</span><span class="text-xs text-slate-500 ml-2">Bloque de Seguridad Urbana</span></div>
+</div>
+<div class="flex items-center gap-4">
+    <div id="voiceStatus" class="flex items-center gap-2 text-xs text-slate-500"><span class="w-2 h-2 rounded-full bg-slate-600"></span>Audio listo</div>
+    <div id="sceneLabel" class="text-xs text-slate-500 font-medium tracking-wider uppercase hidden"></div>
+    <button onclick="resetDemo()" class="text-xs text-slate-500 hover:text-teal-400 transition px-3 py-1.5 rounded-lg hover:bg-white/5">↻ Reiniciar</button>
+</div>
+</div>
+</header>
+
+<!-- ======================= ESCENA 0: INTRO ======================= -->
+<section id="scene0" class="scene active min-h-screen flex items-center pt-16">
+<div class="max-w-7xl mx-auto px-6 w-full">
+<div class="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+<div class="anim-up">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-teal text-xs font-medium mb-6" style="color:#2A7F62">
+        <span class="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span>
+        Inteligencia Artificial + Datos Geoespaciales
+    </div>
+    <h1 class="text-5xl lg:text-6xl font-black leading-tight mb-6">
+        <span class="text-white">Colombia</span><br>
+        <span style="background:linear-gradient(135deg,#2A7F62,#1DB954,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">decide con datos,</span><br>
+        <span class="text-white">actúa con</span>
+        <span style="color:#00BFA6"> precisión.</span>
+    </h1>
+    <p class="text-lg text-slate-400 leading-relaxed mb-4 max-w-lg">Del reporte ciudadano en la calle hasta la estrategia nacional en el despacho presidencial. Un ecosistema de IA que transforma señales del territorio en decisiones que salvan vidas.</p>
+    <p class="text-sm text-slate-500 mb-8 max-w-lg">Dos productos. Una misión. Cero incertidumbre.</p>
+    <div class="flex flex-wrap items-center gap-4 mb-10">
+        <button onclick="startDemo()" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base anim-pulse">Iniciar Demostración →</button>
+    </div>
+    <div class="flex items-center gap-8 text-center">
+        <div><div class="text-2xl font-bold text-white">94%</div><div class="text-xs text-slate-500">Precisión predictiva</div></div>
+        <div class="w-px h-8 bg-white/10"></div>
+        <div><div class="text-2xl font-bold text-white">1.8s</div><div class="text-xs text-slate-500">Tiempo de respuesta</div></div>
+        <div class="w-px h-8 bg-white/10"></div>
+        <div><div class="text-2xl font-bold text-white">9</div><div class="text-xs text-slate-500">Fases decisionales</div></div>
+        <div class="w-px h-8 bg-white/10"></div>
+        <div><div class="text-2xl font-bold text-white">24/7</div><div class="text-xs text-slate-500">Monitoreo activo</div></div>
+    </div>
+</div>
+<div class="anim-r flex justify-center">
+    <!-- Visual: Colombia estilizado con flujo de datos -->
+    <div class="relative">
+        <svg width="420" height="480" viewBox="0 0 420 480" class="anim-float">
+            <!-- Mapa estilizado de Colombia -->
+            <defs>
+                <linearGradient id="gCol" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2A7F62" stop-opacity=".3"/><stop offset="100%" stop-color="#00BFA6" stop-opacity=".1"/></linearGradient>
+                <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <path d="M210 40 C180 50,140 60,120 90 C100 120,80 150,90 180 C95 200,110 220,100 250 C90 280,100 310,120 330 C135 345,150 360,160 380 C170 400,190 420,210 440 C230 420,250 400,260 380 C270 360,285 345,300 330 C320 310,330 280,320 250 C310 220,325 200,330 180 C340 150,320 120,300 90 C280 60,240 50,210 40Z" fill="url(#gCol)" stroke="rgba(42,127,98,.4)" stroke-width="1.5"/>
+            <!-- Nodos de ciudades -->
+            <g filter="url(#glow)">
+                <circle cx="200" cy="160" r="6" fill="#2A7F62" opacity=".8"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
+                <text x="200" y="150" text-anchor="middle" fill="#A7F3D0" font-size="9" font-weight="600">Bogotá</text>
+                <circle cx="150" cy="200" r="4" fill="#00BFA6" opacity=".6"><animate attributeName="r" values="3;6;3" dur="2.5s" repeatCount="indefinite"/></circle>
+                <text x="150" y="192" text-anchor="middle" fill="#6EE7B7" font-size="8">Cali</text>
+                <circle cx="260" cy="130" r="4" fill="#00BFA6" opacity=".6"><animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite"/></circle>
+                <text x="260" y="122" text-anchor="middle" fill="#6EE7B7" font-size="8">B/manga</text>
+                <circle cx="240" cy="100" r="4" fill="#00BFA6" opacity=".6"><animate attributeName="r" values="3;6;3" dur="2.2s" repeatCount="indefinite"/></circle>
+                <text x="240" y="92" text-anchor="middle" fill="#6EE7B7" font-size="8">Cúcuta</text>
+                <circle cx="170" cy="120" r="4" fill="#00BFA6" opacity=".6"><animate attributeName="r" values="3;6;3" dur="2.8s" repeatCount="indefinite"/></circle>
+                <text x="170" y="112" text-anchor="middle" fill="#6EE7B7" font-size="8">Medellín</text>
+                <circle cx="280" cy="180" r="3" fill="#00BFA6" opacity=".5"/>
+                <circle cx="130" cy="260" r="3" fill="#00BFA6" opacity=".5"/>
+                <circle cx="220" cy="300" r="3" fill="#00BFA6" opacity=".5"/>
+            </g>
+            <!-- Líneas de flujo de datos -->
+            <g stroke="#2A7F62" stroke-width="1" opacity=".3" stroke-dasharray="4 4">
+                <line x1="150" y1="200" x2="200" y2="160"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite"/></line>
+                <line x1="260" y1="130" x2="200" y2="160"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.8s" repeatCount="indefinite"/></line>
+                <line x1="170" y1="120" x2="200" y2="160"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.2s" repeatCount="indefinite"/></line>
+                <line x1="240" y1="100" x2="200" y2="160"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.5s" repeatCount="indefinite"/></line>
+            </g>
+            <!-- Labels -->
+            <g font-size="10" fill="rgba(255,255,255,.3)" font-weight="500">
+                <text x="210" y="470" text-anchor="middle">Datos en tiempo real desde todo el territorio</text>
+            </g>
+            <!-- AlejoSeguro badge -->
+            <g transform="translate(60,380)">
+                <rect width="120" height="32" rx="8" fill="rgba(42,127,98,.15)" stroke="rgba(42,127,98,.3)"/>
+                <text x="60" y="18" text-anchor="middle" fill="#2A7F62" font-size="10" font-weight="700">🤖 AlejoSeguro</text>
+                <text x="60" y="28" text-anchor="middle" fill="rgba(42,127,98,.6)" font-size="7">Terreno</text>
+            </g>
+            <!-- GabyPredice badge -->
+            <g transform="translate(240,380)">
+                <rect width="120" height="32" rx="8" fill="rgba(0,191,166,.15)" stroke="rgba(0,191,166,.3)"/>
+                <text x="60" y="18" text-anchor="middle" fill="#00BFA6" font-size="10" font-weight="700">🧠 GabyPredice</text>
+                <text x="60" y="28" text-anchor="middle" fill="rgba(0,191,166,.6)" font-size="7">Estrategia</text>
+            </g>
+            <!-- Arrow between -->
+            <line x1="180" y1="396" x2="240" y2="396" stroke="rgba(255,255,255,.2)" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="rgba(255,255,255,.3)"/></marker></defs>
+        </svg>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ======================= ESCENA 1: ALEJOSGURO - REPORTE CIUDADANO ======================= -->
+<section id="scene1" class="scene min-h-screen pt-20">
+<div class="max-w-7xl mx-auto px-6 py-6">
+<div class="text-center mb-8 anim-up">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-teal text-xs font-medium mb-3" style="color:#2A7F62">
+        <span class="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span>AlejoSeguro · Reporte Ciudadano
+    </div>
+    <h2 class="text-3xl font-bold text-white">Un ciudadano reporta una emergencia</h2>
+    <p class="text-slate-400 mt-2 max-w-2xl mx-auto">Desde su celular, cualquier persona puede enviar fotos, videos, audios y su ubicación. La IA procesa todo en segundos.</p>
+</div>
+
+<div class="grid lg:grid-cols-3 gap-6 items-start">
+    <!-- Celular simulado -->
+    <div class="flex justify-center anim-l">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="px-3 py-2 flex items-center gap-2 border-b border-white/5 bg-teal-900/20">
+                <div class="w-8 h-8 rounded-full bg-teal-600/30 flex items-center justify-center text-sm">🤖</div>
+                <div><div class="text-xs font-semibold text-white">AlejoSeguro</div><div class="text-[10px] text-teal-400">En línea</div></div>
+            </div>
+            <div class="p-3 space-y-0 overflow-y-auto" style="height:380px" id="chatArea">
+                <div class="chat-bubble chat-bot" id="msg0">¡Hola parce! 👋 Soy Alejo, tu vigía de barrio. Compartí tu ubicación pa' saber dónde estás.</div>
+                <div class="chat-bubble chat-user" id="msg1">📍 Ubicación compartida<br><span class="text-[10px] opacity-60">Bogotá, Kennedy</span></div>
+                <div class="chat-bubble chat-bot" id="msg2">Listo parcero. ¿Qué pasó? Mandame foto, video, audio o texto de lo que viste.</div>
+                <div class="chat-bubble chat-user" id="msg3">📷 <span class="italic">foto_emergencia.jpg</span><br><span class="text-[10px] opacity-60">Accidente vehicular Av. 1ro de Mayo</span></div>
+                <div class="chat-bubble chat-user" id="msg4">🎤 <span class="italic">audio_reporte.ogg — 0:12</span></div>
+                <div class="chat-bubble chat-bot" id="msg5">Recibido. Estoy analizando la foto, el audio y tu zona... Dame un momento. 🔍</div>
+                <div class="chat-bubble chat-bot" id="msg6">
+                    <span class="font-semibold text-teal-300">🌡️ Termómetro de Riesgo: 7/10</span><br>
+                    <span class="text-[10px]">▓▓▓▓▓▓▓░░░</span><br>
+                    Parce, esa zona tiene reportes recientes de hurto y accidentes. Te recomiendo la ruta segura por la Cra 80.
+                </div>
+                <div class="chat-bubble chat-bot" id="msg7">Tu reporte ya viajó al sistema. Los oficiales en terreno van a recibir la alerta. ¡Gracias por cuidar el barrio! 💪</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Centro: Flujo de procesamiento -->
+    <div class="space-y-4 anim-up">
+        <div class="text-center mb-4">
+            <h3 class="text-lg font-bold text-white mb-1">IA en Acción</h3>
+            <p class="text-xs text-slate-500">Procesamiento simultáneo en tiempo real</p>
+        </div>
+        <!-- Reconocimiento de imagen -->
+        <div class="glass-teal rounded-xl p-4 cursor-pointer hover:scale-[1.02] transition" onclick="showDetail('img')" id="proc-img">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 rounded-lg bg-teal-500/20 flex items-center justify-center text-sm">📷</div>
+                <div class="text-sm font-semibold text-white">Análisis de Imagen</div>
+                <span class="ml-auto text-[10px] px-2 py-0.5 rounded bg-teal-500/20 text-teal-400 anim-blink" id="proc-img-status">Procesando...</span>
+            </div>
+            <div class="relative bg-slate-900/50 rounded-lg overflow-hidden" style="height:120px" id="imgAnalysis">
+                <!-- SVG simulación de escena con detección -->
+                <svg width="100%" height="120" viewBox="0 0 300 120">
+                    <rect width="300" height="120" fill="#1a1a2e"/>
+                    <!-- Calle simulada -->
+                    <rect x="0" y="80" width="300" height="40" fill="#2d2d44"/>
+                    <line x1="0" y1="100" x2="300" y2="100" stroke="#444" stroke-width="1" stroke-dasharray="8 8"/>
+                    <!-- Vehículos -->
+                    <rect x="40" y="65" width="50" height="25" rx="4" fill="#4a5568" id="car1"/>
+                    <rect x="180" y="70" width="45" height="22" rx="4" fill="#5a6578"/>
+                    <!-- Persona -->
+                    <circle cx="140" cy="60" r="6" fill="#718096" id="person1"/>
+                    <rect x="135" y="66" width="10" height="16" rx="2" fill="#718096"/>
+                    <!-- Detección boxes (aparecen con animación) -->
+                    <rect x="30" y="55" width="70" height="42" rx="2" fill="none" stroke="#2A7F62" stroke-width="2" opacity="0" id="det-car"><animate attributeName="opacity" from="0" to="1" begin="1s" dur=".3s" fill="freeze"/></rect>
+                    <text x="33" y="53" fill="#2A7F62" font-size="7" font-weight="600" opacity="0" id="det-car-label"><animate attributeName="opacity" from="0" to="1" begin="1.2s" dur=".3s" fill="freeze"/>VEHÍCULO · Sedan gris · ABC-123</text>
+                    <rect x="126" y="48" width="28" height="38" rx="2" fill="none" stroke="#00BFA6" stroke-width="2" opacity="0" id="det-face"><animate attributeName="opacity" from="0" to="1" begin="1.5s" dur=".3s" fill="freeze"/></rect>
+                    <text x="129" y="46" fill="#00BFA6" font-size="7" font-weight="600" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.7s" dur=".3s" fill="freeze"/>ROSTRO · ID vectorizado</text>
+                    <!-- Scan line -->
+                    <line x1="0" y1="0" x2="300" y2="0" stroke="#2A7F62" stroke-width="2" opacity=".4"><animate attributeName="y1" from="10" to="110" dur="2s" repeatCount="indefinite"/><animate attributeName="y2" from="10" to="110" dur="2s" repeatCount="indefinite"/></line>
+                </svg>
+            </div>
+            <div class="mt-2 grid grid-cols-3 gap-2 text-center">
+                <div class="text-[10px] text-slate-400"><span class="text-teal-400 font-bold block">Rostros</span>1 detectado</div>
+                <div class="text-[10px] text-slate-400"><span class="text-teal-400 font-bold block">Placa</span>ABC-123</div>
+                <div class="text-[10px] text-slate-400"><span class="text-amber-400 font-bold block">Amenaza</span>MEDIA</div>
+            </div>
+        </div>
+
+        <!-- Transcripción de audio -->
+        <div class="glass-teal rounded-xl p-4 cursor-pointer hover:scale-[1.02] transition" onclick="showDetail('audio')">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 rounded-lg bg-teal-500/20 flex items-center justify-center text-sm">🎤</div>
+                <div class="text-sm font-semibold text-white">Transcripción de Audio</div>
+                <span class="ml-auto text-[10px] px-2 py-0.5 rounded bg-teal-500/20 text-teal-400">✓ Listo</span>
+            </div>
+            <!-- Waveform -->
+            <div class="flex items-center gap-0.5 h-8 justify-center mb-2">
+                <script>document.write(Array.from({length:40},(_,i)=>`<div style="width:3px;height:${4+Math.random()*24}px;background:rgba(42,127,98,${.3+Math.random()*.5});border-radius:2px;animation:float ${1.5+Math.random()}s ease-in-out infinite;animation-delay:${i*.05}s"></div>`).join(''))</script>
+            </div>
+            <p class="text-xs text-slate-300 italic">"Hubo un choque en la Primero de Mayo con 68, hay un carro volcado y la gente está asustada, manden ayuda rápido."</p>
+            <div class="text-[10px] text-slate-500 mt-1">Faster Whisper · es-CO · Confianza: 97%</div>
+        </div>
+
+        <!-- Vectorización y búsqueda -->
+        <div class="glass rounded-xl p-4">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center text-sm">🔗</div>
+                <div class="text-sm font-semibold text-white">Vectorización Semántica</div>
+            </div>
+            <div class="text-xs text-slate-400 mb-2">Embedding 768d generado → búsqueda en 500m de radio</div>
+            <div class="flex gap-2">
+                <div class="flex-1 metric-bar"><div class="metric-fill" style="width:87%;background:linear-gradient(90deg,#2A7F62,#00BFA6)"></div></div>
+                <span class="text-[10px] text-teal-400 font-bold">87% similitud</span>
+            </div>
+            <p class="text-[10px] text-slate-500 mt-1">3 reportes similares encontrados en la zona en las últimas 24h</p>
+        </div>
+    </div>
+
+    <!-- Derecha: Oficiales en terreno -->
+    <div class="space-y-4 anim-r">
+        <div class="text-center mb-4">
+            <h3 class="text-lg font-bold text-white mb-1">Respuesta en Terreno</h3>
+            <p class="text-xs text-slate-500">Oficiales reciben la alerta instantánea</p>
+        </div>
+        <!-- Alerta al oficial -->
+        <div class="glass-alert rounded-xl p-4">
+            <div class="flex items-center gap-2 mb-3">
+                <div class="w-3 h-3 rounded-full bg-orange-500 anim-blink"></div>
+                <span class="text-xs font-bold text-orange-400 uppercase tracking-wider">Alerta Entrante</span>
+            </div>
+            <div class="text-sm text-white font-semibold mb-1">🚨 Accidente vehicular</div>
+            <div class="text-xs text-slate-400 mb-3">Av. 1ro de Mayo con Cra 68 · Kennedy, Bogotá</div>
+            <div class="grid grid-cols-2 gap-2 mb-3">
+                <div class="glass rounded-lg p-2 text-center"><div class="text-lg font-bold text-orange-400">7/10</div><div class="text-[10px] text-slate-500">Riesgo</div></div>
+                <div class="glass rounded-lg p-2 text-center"><div class="text-lg font-bold text-white">350m</div><div class="text-[10px] text-slate-500">Distancia</div></div>
+            </div>
+            <div class="text-[10px] text-slate-500 mb-2">Evidencia adjunta:</div>
+            <div class="flex gap-2">
+                <span class="text-[10px] px-2 py-1 rounded bg-white/5 text-slate-300">📷 1 foto</span>
+                <span class="text-[10px] px-2 py-1 rounded bg-white/5 text-slate-300">🎤 1 audio</span>
+                <span class="text-[10px] px-2 py-1 rounded bg-white/5 text-slate-300">📍 GPS</span>
+            </div>
+        </div>
+
+        <!-- Mapa estilizado -->
+        <div class="glass rounded-xl p-4">
+            <div class="text-xs font-semibold text-white mb-2">Mapa de Situación</div>
+            <svg width="100%" height="160" viewBox="0 0 280 160">
+                <rect width="280" height="160" rx="8" fill="#0F1724"/>
+                <!-- Grid de calles -->
+                <g stroke="rgba(255,255,255,.06)" stroke-width="1">
+                    <line x1="0" y1="40" x2="280" y2="40"/><line x1="0" y1="80" x2="280" y2="80"/><line x1="0" y1="120" x2="280" y2="120"/>
+                    <line x1="70" y1="0" x2="70" y2="160"/><line x1="140" y1="0" x2="140" y2="160"/><line x1="210" y1="0" x2="210" y2="160"/>
+                </g>
+                <!-- Radio de búsqueda -->
+                <circle cx="140" cy="80" r="50" fill="rgba(42,127,98,.08)" stroke="rgba(42,127,98,.3)" stroke-width="1" stroke-dasharray="4 3"/>
+                <circle cx="140" cy="80" r="50" fill="none" stroke="rgba(42,127,98,.15)" stroke-width="20"><animate attributeName="r" from="30" to="60" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" from=".3" to="0" dur="2s" repeatCount="indefinite"/></circle>
+                <!-- Punto del incidente -->
+                <circle cx="140" cy="80" r="6" fill="#FF6B35"><animate attributeName="r" values="5;8;5" dur="1.5s" repeatCount="indefinite"/></circle>
+                <!-- Reportes cercanos -->
+                <circle cx="110" cy="60" r="3" fill="#E53E3E" opacity=".6"/><circle cx="170" cy="95" r="3" fill="#F59E0B" opacity=".6"/><circle cx="125" cy="100" r="3" fill="#2A7F62" opacity=".6"/>
+                <!-- Ruta segura -->
+                <path d="M140 80 L170 80 L170 40 L230 40" fill="none" stroke="#1DB954" stroke-width="2" stroke-dasharray="6 3" opacity=".6"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.5s" repeatCount="indefinite"/></path>
+                <text x="232" y="43" fill="#1DB954" font-size="7">Ruta segura →</text>
+                <!-- Leyenda -->
+                <g transform="translate(8,140)">
+                    <circle cx="4" cy="4" r="3" fill="#FF6B35"/><text x="12" y="7" fill="rgba(255,255,255,.4)" font-size="7">Incidente</text>
+                    <circle cx="74" cy="4" r="3" fill="#E53E3E"/><text x="82" y="7" fill="rgba(255,255,255,.4)" font-size="7">Peligro</text>
+                    <circle cx="134" cy="4" r="3" fill="#2A7F62"/><text x="142" y="7" fill="rgba(255,255,255,.4)" font-size="7">Seguro</text>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Info despachada -->
+        <div class="glass rounded-xl p-3">
+            <div class="flex items-center gap-2 text-xs">
+                <span class="text-teal-400">✓</span><span class="text-slate-400">Placa <strong class="text-white">ABC-123</strong> consultada en bases</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs mt-1">
+                <span class="text-teal-400">✓</span><span class="text-slate-400">Rostro vectorizado y almacenado (512d)</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs mt-1">
+                <span class="text-teal-400">✓</span><span class="text-slate-400">Embedding semántico en búsqueda activa</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Botón siguiente -->
+<div class="flex justify-center mt-8">
+    <button onclick="goScene(2)" class="btn-fa text-white font-semibold px-8 py-3 rounded-xl flex items-center gap-2">Ver Estrategia Nacional con GabyPredice <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
+</div>
+</div>
+</section>
+
+<!-- ======================= ESCENA 2: GABYPREDICE - ENEÁGONO DECISIONAL ======================= -->
+<section id="scene2" class="scene min-h-screen pt-20">
+<div class="max-w-7xl mx-auto px-6 py-6">
+<div class="text-center mb-6 anim-up">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-medium mb-3" style="color:#00BFA6;border-color:rgba(0,191,166,.3)">
+        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#00BFA6"></span>GabyPredice · Estrategia Nacional
+    </div>
+    <h2 class="text-3xl font-bold text-white">Eneágono Decisional</h2>
+    <p class="text-slate-400 mt-2 max-w-2xl mx-auto">9 fases que transforman miles de reportes ciudadanos en órdenes estratégicas para todo el país. Haga clic en cada fase.</p>
+</div>
+
+<div class="grid lg:grid-cols-5 gap-6">
+    <!-- Eneágono SVG -->
+    <div class="lg:col-span-2 flex justify-center items-start">
+        <svg id="eneagonoSvg" width="380" height="400" viewBox="0 0 380 400">
+            <defs>
+                <filter id="nodeGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- Conexiones (se dibujan en JS) -->
+            <g id="eneagonoEdges"></g>
+            <!-- Nodos (se dibujan en JS) -->
+            <g id="eneagonoNodes"></g>
+            <!-- Centro -->
+            <text x="190" y="195" text-anchor="middle" fill="rgba(255,255,255,.15)" font-size="10" font-weight="600">ENEÁGONO</text>
+            <text x="190" y="210" text-anchor="middle" fill="rgba(255,255,255,.1)" font-size="8">DECISIONAL</text>
+        </svg>
+    </div>
+
+    <!-- Panel de detalle de fase -->
+    <div class="lg:col-span-3 space-y-4">
+        <div class="glass-teal rounded-2xl p-6" id="phaseDetail">
+            <div class="text-center py-12">
+                <div class="text-4xl mb-4 anim-float">🧠</div>
+                <h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3>
+                <p class="text-sm text-slate-500 mt-2">Cada fase representa un paso en el proceso de toma de decisiones estratégicas de la Policía Nacional</p>
+            </div>
+        </div>
+
+        <!-- KPIs del sistema -->
+        <div class="grid grid-cols-4 gap-3" id="systemKpis">
+            <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold text-teal-400">47K</div><div class="text-[10px] text-slate-500">Reportes activos</div></div>
+            <div class="glass rounded-xl p-3 text-center anim-fade delay-1"><div class="text-xl font-bold text-cyan-400">156</div><div class="text-[10px] text-slate-500">Decisiones en curso</div></div>
+            <div class="glass rounded-xl p-3 text-center anim-fade delay-2"><div class="text-xl font-bold text-amber-400">23</div><div class="text-[10px] text-slate-500">Alertas predictivas</div></div>
+            <div class="glass rounded-xl p-3 text-center anim-fade delay-3"><div class="text-xl font-bold text-emerald-400">91.7%</div><div class="text-[10px] text-slate-500">Tasa de éxito</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- Botón siguiente -->
+<div class="flex justify-between items-center mt-8">
+    <button onclick="goScene(1)" class="glass rounded-xl px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> AlejoSeguro</button>
+    <div class="flex gap-2" id="navDots"></div>
+    <button onclick="goScene(3)" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2">Impacto Nacional <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
+</div>
+</div>
+</section>
+
+<!-- ======================= ESCENA 3: CIERRE IMPACTO ======================= -->
+<section id="scene3" class="scene min-h-screen pt-20">
+<div class="max-w-7xl mx-auto px-6 py-6">
+<div class="text-center mb-8 anim-up">
+    <h2 class="text-4xl font-black text-white mb-3">Un Ecosistema.<br><span style="color:#2A7F62">Una Misión.</span></h2>
+    <p class="text-lg text-slate-400 max-w-2xl mx-auto">Del celular del ciudadano al escritorio del Presidente. Así se ve la seguridad basada en datos.</p>
+</div>
+
+<!-- Flujo visual completo -->
+<div class="glass rounded-2xl p-6 mb-8">
+    <div class="flex items-center justify-between flex-wrap gap-4">
+        <div class="text-center flex-1 min-w-[140px] anim-fade">
+            <div class="w-14 h-14 mx-auto rounded-xl bg-teal-500/10 flex items-center justify-center text-2xl mb-2">📱</div>
+            <div class="text-sm font-semibold text-white">Ciudadano</div>
+            <div class="text-[10px] text-slate-500">Reporta desde Telegram</div>
+        </div>
+        <svg class="w-8 h-8 text-teal-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        <div class="text-center flex-1 min-w-[140px] anim-fade delay-1">
+            <div class="w-14 h-14 mx-auto rounded-xl bg-teal-500/10 flex items-center justify-center text-2xl mb-2">🤖</div>
+            <div class="text-sm font-semibold text-white">AlejoSeguro</div>
+            <div class="text-[10px] text-slate-500">IA procesa evidencia</div>
+        </div>
+        <svg class="w-8 h-8 text-teal-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        <div class="text-center flex-1 min-w-[140px] anim-fade delay-2">
+            <div class="w-14 h-14 mx-auto rounded-xl bg-orange-500/10 flex items-center justify-center text-2xl mb-2">👮</div>
+            <div class="text-sm font-semibold text-white">Oficiales</div>
+            <div class="text-[10px] text-slate-500">Respuesta en terreno</div>
+        </div>
+        <svg class="w-8 h-8 text-cyan-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        <div class="text-center flex-1 min-w-[140px] anim-fade delay-3">
+            <div class="w-14 h-14 mx-auto rounded-xl bg-cyan-500/10 flex items-center justify-center text-2xl mb-2">🧠</div>
+            <div class="text-sm font-semibold text-white">GabyPredice</div>
+            <div class="text-[10px] text-slate-500">Estrategia nacional</div>
+        </div>
+        <svg class="w-8 h-8 text-cyan-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        <div class="text-center flex-1 min-w-[140px] anim-fade delay-4">
+            <div class="w-14 h-14 mx-auto rounded-xl bg-emerald-500/10 flex items-center justify-center text-2xl mb-2">🏛️</div>
+            <div class="text-sm font-semibold text-white">Presidencia</div>
+            <div class="text-[10px] text-slate-500">Decisiones informadas</div>
+        </div>
+    </div>
+</div>
+
+<!-- Métricas de impacto -->
+<div class="grid md:grid-cols-3 gap-6 mb-8">
+    <div class="glass-teal rounded-2xl p-6 text-center anim-fade">
+        <div class="text-5xl font-black text-teal-400 mb-2">47K+</div>
+        <div class="text-sm text-white font-semibold mb-1">Reportes ciudadanos procesados</div>
+        <div class="text-xs text-slate-500">Fotos, videos, audios y ubicaciones analizados por IA en tiempo real</div>
+    </div>
+    <div class="glass rounded-2xl p-6 text-center anim-fade delay-2" style="border-color:rgba(0,191,166,.2)">
+        <div class="text-5xl font-black text-cyan-400 mb-2">9</div>
+        <div class="text-sm text-white font-semibold mb-1">Fases del Eneágono Decisional</div>
+        <div class="text-xs text-slate-500">De la postura estratégica a la orden ejecutiva con evaluación PDH</div>
+    </div>
+    <div class="glass rounded-2xl p-6 text-center anim-fade delay-4" style="border-color:rgba(16,185,129,.2)">
+        <div class="text-5xl font-black text-emerald-400 mb-2">94.2%</div>
+        <div class="text-sm text-white font-semibold mb-1">Precisión predictiva validada</div>
+        <div class="text-xs text-slate-500">Modelos KDE, Poisson, ChroNNet con backtesting de 18 meses</div>
+    </div>
+</div>
+
+<!-- Capacidades técnicas -->
+<div class="grid md:grid-cols-2 gap-4 mb-8">
+    <div class="glass rounded-xl p-5">
+        <h4 class="text-sm font-bold text-teal-400 mb-3">🤖 AlejoSeguro — Terreno</h4>
+        <div class="space-y-2 text-xs text-slate-400">
+            <div class="flex items-center gap-2"><span class="text-teal-400">✓</span>Reconocimiento facial (ArcFace 512d)</div>
+            <div class="flex items-center gap-2"><span class="text-teal-400">✓</span>Detección de placas vehiculares</div>
+            <div class="flex items-center gap-2"><span class="text-teal-400">✓</span>Transcripción de audio (Whisper)</div>
+            <div class="flex items-center gap-2"><span class="text-teal-400">✓</span>Análisis de escena con IA de visión</div>
+            <div class="flex items-center gap-2"><span class="text-teal-400">✓</span>Embeddings semánticos 768d + pgvector</div>
+            <div class="flex items-center gap-2"><span class="text-teal-400">✓</span>Termómetro de riesgo 1-10</div>
+            <div class="flex items-center gap-2"><span class="text-teal-400">✓</span>Clasificación de amenazas en tiempo real</div>
+            <div class="flex items-center gap-2"><span class="text-teal-400">✓</span>PostGIS + geolocalización precisa</div>
+        </div>
+    </div>
+    <div class="glass rounded-xl p-5">
+        <h4 class="text-sm font-bold text-cyan-400 mb-3">🧠 GabyPredice — Estrategia</h4>
+        <div class="space-y-2 text-xs text-slate-400">
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span>Eneágono Decisional de 9 fases (F0-F8)</div>
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span>Modelos predictivos: KDE, Poisson, ChroNNet</div>
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span>Grafos de actores con centralidad</div>
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span>Señales débiles + deliberación en comité</div>
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span>Evaluación PDH: 22 variables, 3 dimensiones</div>
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span>IPDH: 10 indicadores con semáforo V/A/R</div>
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span>Órdenes con plan de acción y rollback</div>
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span>Memoria institucional transversal</div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Final -->
+<div class="text-center glass-teal rounded-2xl p-8 anim-fade">
+    <div class="flex items-center justify-center gap-3 mb-4">
+        <svg width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#2A7F62"/><g fill="#fff" opacity=".9"><rect x="10" y="22" width="5" height="10" rx="1"/><rect x="17.5" y="16" width="5" height="16" rx="1"/><rect x="25" y="10" width="5" height="22" rx="1"/></g></svg>
+        <div class="text-left"><span class="text-xl font-bold" style="color:#2A7F62">Fast</span><span class="text-xl font-bold text-white">Analytics</span><br><span class="text-xs text-slate-400">Inteligencia Artificial + Datos Geoespaciales</span></div>
+    </div>
+    <p class="text-lg text-white font-semibold mb-2">Predecimos dónde y cuándo actuar.</p>
+    <p class="text-sm text-slate-400 mb-4">Convertimos datos en decisiones. Usted actúa antes, no después.</p>
+    <p class="text-xs text-slate-500">hola@fastanalytics.co · fastanalytics.co</p>
+</div>
+
+<div class="flex justify-between items-center mt-6 mb-6">
+    <button onclick="goScene(2)" class="glass rounded-xl px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> Eneágono</button>
+    <div class="flex gap-2" id="navDots3"></div>
+    <button onclick="resetDemo()" class="glass rounded-xl px-6 py-3 text-sm text-slate-400 hover:text-white transition">↻ Reiniciar Demo</button>
+</div>
+</div>
+</section>
+
+<!-- ======================= NAVIGATION DOTS (FIXED) ======================= -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass rounded-full px-4 py-2 flex gap-3 items-center" id="fixedNav" style="display:none">
+    <button onclick="goScene(0)" class="nav-dot" id="nd0"></button>
+    <button onclick="goScene(1)" class="nav-dot" id="nd1"></button>
+    <button onclick="goScene(2)" class="nav-dot" id="nd2"></button>
+    <button onclick="goScene(3)" class="nav-dot" id="nd3"></button>
+</div>
+
+<script>
+// ==================== STATE ====================
+let currentScene = 0;
+let chatAnimated = false;
+let eneagonoBuilt = false;
+const synth = window.speechSynthesis;
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+// ==================== ENEÁGONO DATA ====================
+const phases = [
+    {id:'F0',name:'Postura Estratégica',color:'#2A7F62',desc:'Define la preocupación de seguridad: zonas geográficas, actores involucrados, temas prioritarios y restricciones operacionales.',detail:'El director establece qué amenaza atender (narcotráfico, extorsión, grupos armados). El sistema alinea automáticamente con los 11 objetivos estratégicos del PEI 2023-2026 de la Policía Nacional (Res. 3409/2023). Soporta múltiples posturas simultáneas.',speech:'Fase cero: Postura Estratégica. Aquí el director define qué amenaza va a atender. El sistema alinea automáticamente con los once objetivos estratégicos del Plan Institucional de la Policía Nacional.'},
+    {id:'F1',name:'Análisis del Entorno',color:'#1DB954',desc:'Analiza datos reales de criminalidad: homicidios, hurtos, terrorismo. Cruza con percepción ciudadana de AlejoSeguro.',detail:'Consulta bases de datos nacionales de criminalidad (homicidios, hurtos, terrorismo) y las enriquece con datos de percepción ciudadana de AlejoSeguro y análisis de amenazas por cámaras. Usa intervalos de confianza Poisson (95%) para evaluación estadística.',speech:'Fase uno: Análisis del Entorno. El sistema consulta datos reales de criminalidad nacional y los cruza con reportes ciudadanos de Alejo Seguro. Intervalos de confianza Poisson al noventa y cinco por ciento.'},
+    {id:'F2',name:'Materia Decisional',color:'#00BFA6',desc:'Clasifica la decisión en 3 dimensiones de seguridad: Nacional, Pública y Ciudadana. Determina el rol PDH.',detail:'Clasifica cada decisión en la intersección de seguridad nacional, pública y ciudadana. Determina el rol de Policía de Desarrollo Humano (PDH) y evalúa el alcance de coordinación espacial: local, subnacional o nacional.',speech:'Fase dos: Materia Decisional. Clasifica la decisión en tres dimensiones de seguridad y determina el rol de Policía de Desarrollo Humano.'},
+    {id:'F3',name:'Grafo de Actores',color:'#38BDF8',desc:'Construye un grafo de actores criminales cruzados con temas. Calcula centralidad para identificar nodos clave.',detail:'La IA extrae actores del texto narrativo (grupos armados, bandas criminales, organizaciones transnacionales). El sistema construye un grafo actor-tema, calcula centralidad y persiste las relaciones para análisis de redes criminales.',speech:'Fase tres: Grafo de Actores. Se construye un grafo de actores criminales, se calcula la centralidad de cada nodo para identificar los actores más influyentes en la red.'},
+    {id:'F4',name:'Articular Información',color:'#818CF8',desc:'Checkpoint de aprobación: el director aprueba, envía a revisión o emite una orden directa (atajo a F8).',detail:'Punto de control donde el director aprueba el foco del análisis, lo envía a un funcionario para revisión, o emite una orden directa (atajo a F8). Es la bisagra entre el análisis y la acción.',speech:'Fase cuatro: Articular. Checkpoint de aprobación. El director puede aprobar el análisis, enviarlo a revisión o emitir una orden directa.'},
+    {id:'F5',name:'Señales Predictivas',color:'#F59E0B',desc:'El cerebro analítico: ejecuta modelos ML (KDE, Poisson, ChroNNet) y genera un checkpoint estratégico con 3 caminos.',detail:'Ejecuta modelos predictivos vía R/Plumber: hotspots KDE, alertas Poisson, redes temporales ChroNNet, outliers IQR y Mahalanobis, y más. Genera un checkpoint determinístico: (A) actuar solo → F8, (B) rehacer análisis → F1/F3, o (C) enviar a comité → F7.',speech:'Fase cinco: Señales Predictivas. El cerebro analítico del Eneágono. Ejecuta modelos de machine learning y genera tres caminos posibles: actuar, reanalizar o deliberar en comité.'},
+    {id:'F6',name:'Memoria Institucional',color:'#A78BFA',desc:'Fase transversal. Las demás fases la consultan para buscar antecedentes con búsqueda de texto completo.',detail:'No es secuencial sino transversal. Todas las fases pueden consultar la memoria institucional para buscar antecedentes relevantes usando búsqueda de texto completo con coincidencia difusa. Es la base de conocimiento acumulado del sistema.',speech:'Fase seis: Memoria Institucional. Una fase transversal que todas las demás consultan para buscar antecedentes. Es el conocimiento acumulado del sistema.'},
+    {id:'F7',name:'Puzzle de Señales',color:'#F472B6',desc:'Señales débiles + deliberación del comité. Dashboard Shiny con el Eneágono visual, mapas de calor y grafos.',detail:'Cualifica señales débiles con 5 criterios cerrados (fiabilidad, importancia, probabilidad, severidad, tiempo de reacción). Genera tokens para el Dashboard de Comité en Shiny donde se visualiza el Eneágono. El comité decide: aprobar → F8, más info → F4, o refocalizar → F3.',speech:'Fase siete: Puzzle de Señales Débiles. El comité delibera con un dashboard visual que muestra el Eneágono completo, mapas de calor y grafos de actores. Tres opciones: aprobar, pedir más información o refocalizar.'},
+    {id:'F8',name:'Órdenes y Acción',color:'#EF4444',desc:'Orden formal con clasificación de seguridad (Res. 05456/2019). Plan de acción + evaluación PDH/IPDH.',detail:'Registra la orden formal con clasificación según Resolución 05456/2019 (pública/clasificada/reservada). Crea plan de acción con indicadores sugeridos. Evalúa 22 variables PDH en 3 dimensiones (Personas/Comunidades/Gobernabilidad) y 10 indicadores IPDH con semáforo V/A/R.',speech:'Fase ocho: Órdenes y Acción. Se registra la orden formal, se crea el plan de acción con indicadores, y se evalúan veintidós variables de Policía de Desarrollo Humano. El ciclo decisional se cierra aquí.'},
+];
+
+// ==================== SOUNDS ====================
+function playTone(freq,dur,type='sine',vol=.08){
+    const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+    o.type=type;o.frequency.value=freq;g.gain.value=vol;
+    o.connect(g);g.connect(audioCtx.destination);
+    o.start();g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);
+    o.stop(audioCtx.currentTime+dur);
+}
+function playNotif(){playTone(880,.1);setTimeout(()=>playTone(1100,.15),120)}
+function playClick(){playTone(600,.05,'square',.04)}
+function playAlert(){playTone(440,.15);setTimeout(()=>playTone(550,.15),180);setTimeout(()=>playTone(660,.2),360)}
+function playSuccess(){playTone(523,.1);setTimeout(()=>playTone(659,.1),100);setTimeout(()=>playTone(784,.2),200)}
+
+// ==================== SPEECH ====================
+function speak(text){
+    synth.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang='es-ES';u.rate=1.05;u.pitch=1;u.volume=1;
+    const v=synth.getVoices();
+    const pick=v.find(x=>x.lang.startsWith('es')&&x.name.includes('Jorge'))||v.find(x=>x.lang.startsWith('es')&&x.name.includes('Paulina'))||v.find(x=>x.lang==='es-ES')||v.find(x=>x.lang.startsWith('es'));
+    if(pick)u.voice=pick;
+    u.onstart=()=>{document.getElementById('voiceStatus').innerHTML='<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span class="text-emerald-400">Hablando...</span>'};
+    u.onend=()=>{document.getElementById('voiceStatus').innerHTML='<span class="w-2 h-2 rounded-full bg-slate-600"></span>Audio listo'};
+    synth.speak(u);
+}
+if(synth.onvoiceschanged!==undefined)synth.onvoiceschanged=()=>{};
+synth.getVoices();
+
+// ==================== SCENE MANAGEMENT ====================
+function goScene(n){
+    synth.cancel();
+    playClick();
+    document.querySelectorAll('.scene').forEach(s=>{s.classList.remove('active');s.style.display='none'});
+    const el=document.getElementById('scene'+n);
+    el.style.display='block';
+    requestAnimationFrame(()=>{el.classList.add('active');el.style.opacity='1'});
+    currentScene=n;
+    window.scrollTo({top:0,behavior:'smooth'});
+
+    // Update nav
+    const nav=document.getElementById('fixedNav');
+    nav.style.display=n>0?'flex':'none';
+    for(let i=0;i<4;i++){const d=document.getElementById('nd'+i);if(d){d.classList.toggle('active',i===n)}}
+
+    // Scene label
+    const labels=['','AlejoSeguro · Reporte','GabyPredice · Eneágono','Impacto Nacional'];
+    const sl=document.getElementById('sceneLabel');
+    sl.textContent=labels[n]||'';sl.classList.toggle('hidden',n===0);
+
+    // Scene-specific
+    if(n===0){speak('Bienvenidos. FastAnalytics presenta el Bloque de Seguridad Urbana. Un ecosistema de inteligencia artificial que conecta el reporte ciudadano en la calle con la estrategia de seguridad nacional. Del dato a la decisión. De la señal a la acción.')}
+    if(n===1){animateChat();speak('Escena uno: Un ciudadano en Kennedy, Bogotá, reporta un accidente vehicular a través de AlejoSeguro en Telegram. Envía una foto, un audio y su ubicación GPS. La inteligencia artificial procesa la imagen en tiempo real: detecta un rostro, lee la placa del vehículo y transcribe el audio con Whisper. En menos de dos segundos, los oficiales en terreno reciben la alerta con toda la evidencia procesada y una ruta segura recomendada.')}
+    if(n===2){buildEneagono();speak('Escena dos: GabyPredice, el sistema de decisiones estratégicas. Aquí, los miles de reportes de AlejoSeguro se transforman en inteligencia accionable para toda Colombia. El Eneágono Decisional de nueve fases guía a los directores y generales desde la definición de la postura estratégica hasta la emisión de órdenes formales con evaluación de Policía de Desarrollo Humano. Haga clic en cada fase para conocer el detalle.')}
+    if(n===3){speak('Colombia puede decidir con datos. FastAnalytics ofrece un ecosistema completo: AlejoSeguro recolecta inteligencia ciudadana desde el terreno, y GabyPredice la transforma en estrategia nacional con nueve fases decisionales, modelos predictivos y evaluación de desarrollo humano. Noventa y cuatro por ciento de precisión. Veinticuatro siete. Para todo el país.')}
+}
+
+function startDemo(){
+    audioCtx.resume();
+    playSuccess();
+    goScene(1);
+}
+
+function resetDemo(){
+    synth.cancel();
+    chatAnimated=false;
+    currentScene=0;
+    document.querySelectorAll('.scene').forEach(s=>{s.classList.remove('active');s.style.display='none'});
+    const s0=document.getElementById('scene0');s0.style.display='block';
+    requestAnimationFrame(()=>{s0.classList.add('active');s0.style.opacity='1'});
+    document.getElementById('fixedNav').style.display='none';
+    document.getElementById('sceneLabel').classList.add('hidden');
+    document.querySelectorAll('#chatArea .chat-bubble').forEach(b=>{b.style.opacity='0'});
+    // Reset eneágono
+    document.querySelectorAll('.eneagono-node').forEach(n=>n.classList.remove('active-node','completed'));
+    document.getElementById('phaseDetail').innerHTML='<div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase representa un paso en el proceso de toma de decisiones estratégicas</p></div>';
+}
+
+// ==================== CHAT ANIMATION ====================
+function animateChat(){
+    if(chatAnimated)return;
+    chatAnimated=true;
+    const msgs=document.querySelectorAll('#chatArea .chat-bubble');
+    msgs.forEach((m,i)=>{
+        setTimeout(()=>{
+            m.style.opacity='1';m.style.animation='fadeInUp .3s ease forwards';
+            if(i<3)playTone(800+i*100,.06,'sine',.03);
+            if(i===3)playNotif();
+            if(i===5)playAlert();
+        },i*700);
+    });
+}
+
+// ==================== ENEÁGONO BUILD ====================
+function buildEneagono(){
+    if(eneagonoBuilt)return;
+    eneagonoBuilt=true;
+    const cx=190,cy=195,r=140;
+    const edgesG=document.getElementById('eneagonoEdges');
+    const nodesG=document.getElementById('eneagonoNodes');
+    const pts=phases.map((_,i)=>{
+        const ang=-Math.PI/2+(2*Math.PI*i/9);
+        return{x:cx+r*Math.cos(ang),y:cy+r*Math.sin(ang)};
+    });
+
+    // Draw edges
+    for(let i=0;i<9;i++){
+        const j=(i+1)%9;
+        // Skip F6 in sequence (transversal)
+        if(i===5&&j===6)continue;
+        if(i===6&&j===7)continue;
+        const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+        line.setAttribute('x1',pts[i].x);line.setAttribute('y1',pts[i].y);
+        line.setAttribute('x2',pts[j].x);line.setAttribute('y2',pts[j].y);
+        line.setAttribute('stroke','rgba(42,127,98,.2)');line.setAttribute('stroke-width','1.5');
+        line.setAttribute('stroke-dasharray','4 3');
+        edgesG.appendChild(line);
+    }
+    // F6 transversal connections (to center)
+    [0,1,2,3,4,5,7,8].forEach(i=>{
+        const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+        line.setAttribute('x1',pts[6].x);line.setAttribute('y1',pts[6].y);
+        line.setAttribute('x2',cx);line.setAttribute('y2',cy);
+        line.setAttribute('stroke','rgba(167,139,250,.1)');line.setAttribute('stroke-width','1');
+        line.setAttribute('stroke-dasharray','2 4');
+        edgesG.appendChild(line);
+    });
+
+    // Draw nodes
+    pts.forEach((p,i)=>{
+        const g=document.createElementNS('http://www.w3.org/2000/svg','g');
+        g.classList.add('eneagono-node');
+        g.setAttribute('filter','url(#nodeGlow)');
+        g.setAttribute('data-idx',i);
+        g.onclick=()=>selectPhase(i);
+
+        const circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
+        circle.setAttribute('cx',p.x);circle.setAttribute('cy',p.y);
+        circle.setAttribute('r','20');
+        circle.setAttribute('fill','rgba(255,255,255,.04)');
+        circle.setAttribute('stroke',phases[i].color);circle.setAttribute('stroke-width','1.5');
+
+        const txt=document.createElementNS('http://www.w3.org/2000/svg','text');
+        txt.setAttribute('x',p.x);txt.setAttribute('y',p.y+1);
+        txt.setAttribute('text-anchor','middle');txt.setAttribute('dominant-baseline','middle');
+        txt.setAttribute('fill',phases[i].color);txt.setAttribute('font-size','10');txt.setAttribute('font-weight','700');
+        txt.textContent=phases[i].id;
+
+        const label=document.createElementNS('http://www.w3.org/2000/svg','text');
+        const labelY=p.y<cy?p.y-28:p.y+32;
+        label.setAttribute('x',p.x);label.setAttribute('y',labelY);
+        label.setAttribute('text-anchor','middle');label.setAttribute('fill','rgba(255,255,255,.4)');
+        label.setAttribute('font-size','7');label.setAttribute('font-weight','500');
+        label.textContent=phases[i].name;
+
+        g.appendChild(circle);g.appendChild(txt);g.appendChild(label);
+        nodesG.appendChild(g);
+
+        // Animate in
+        g.style.opacity='0';
+        setTimeout(()=>{g.style.opacity='1';g.style.transition='opacity .3s'},i*120);
+    });
+}
+
+function selectPhase(idx){
+    playNotif();
+    const p=phases[idx];
+
+    // Update nodes
+    document.querySelectorAll('.eneagono-node').forEach((n,i)=>{
+        n.classList.remove('active-node');
+        if(i<idx)n.classList.add('completed');
+        if(i===idx)n.classList.add('active-node');
+    });
+
+    // Update detail panel
+    const panel=document.getElementById('phaseDetail');
+    panel.innerHTML=`
+        <div class="anim-fade">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:${p.color}30;border:1px solid ${p.color}50">${p.id}</div>
+                <div>
+                    <div class="text-base font-bold text-white">${p.name}</div>
+                    <div class="text-xs" style="color:${p.color}">${p.id} · Eneágono Decisional</div>
+                </div>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed mb-4">${p.desc}</p>
+            <div class="glass rounded-xl p-4 text-xs text-slate-400 leading-relaxed">${p.detail}</div>
+            ${idx===5?`
+            <div class="mt-4 grid grid-cols-3 gap-2">
+                <div class="glass rounded-lg p-2 text-center text-[10px]"><span class="text-amber-400 font-bold block">KDE</span>Hotspots</div>
+                <div class="glass rounded-lg p-2 text-center text-[10px]"><span class="text-amber-400 font-bold block">Poisson</span>Anomalías</div>
+                <div class="glass rounded-lg p-2 text-center text-[10px]"><span class="text-amber-400 font-bold block">ChroNNet</span>Temporal</div>
+            </div>`:''}
+            ${idx===8?`
+            <div class="mt-4 glass rounded-xl p-3">
+                <div class="text-xs font-semibold text-red-400 mb-2">Evaluación PDH</div>
+                <div class="grid grid-cols-3 gap-2 text-[10px] text-center">
+                    <div><span class="text-emerald-400 font-bold block">Personas</span>8 variables</div>
+                    <div><span class="text-cyan-400 font-bold block">Comunidades</span>7 variables</div>
+                    <div><span class="text-purple-400 font-bold block">Gobernabilidad</span>7 variables</div>
+                </div>
+            </div>`:''}
+            ${idx===7?`
+            <div class="mt-4 glass rounded-xl p-3">
+                <div class="text-xs font-semibold text-pink-400 mb-2">Criterios de Señales</div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/10 text-pink-300">Fiabilidad</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/10 text-pink-300">Importancia</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/10 text-pink-300">Probabilidad</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/10 text-pink-300">Severidad</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/10 text-pink-300">Tiempo reacción</span>
+                </div>
+            </div>`:''}
+        </div>
+    `;
+
+    // Speak
+    speak(p.speech);
+}
+
+// ==================== INIT ====================
+document.addEventListener('DOMContentLoaded',()=>{
+    document.getElementById('scene0').style.display='block';
+    document.getElementById('scene0').style.opacity='1';
+});
+</script>
+
+</body>
+</html>

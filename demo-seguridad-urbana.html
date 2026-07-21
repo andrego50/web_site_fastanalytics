@@ -112,29 +112,82 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
     </div>
 </div>
 <div class="anim-r flex justify-center">
-    <svg width="420" height="480" viewBox="0 0 420 480" class="anim-float">
-        <defs><linearGradient id="gCol" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#006D6D" stop-opacity=".3"/><stop offset="100%" stop-color="#00BFA6" stop-opacity=".1"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-        <path d="M210 40 C180 50,140 60,120 90 C100 120,80 150,90 180 C95 200,110 220,100 250 C90 280,100 310,120 330 C135 345,150 360,160 380 C170 400,190 420,210 440 C230 420,250 400,260 380 C270 360,285 345,300 330 C320 310,330 280,320 250 C310 220,325 200,330 180 C340 150,320 120,300 90 C280 60,240 50,210 40Z" fill="url(#gCol)" stroke="rgba(0,109,109,.4)" stroke-width="1.5"/>
+    <svg width="420" height="500" viewBox="0 0 420 500" class="anim-float">
+        <defs>
+            <linearGradient id="gCol" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#006D6D" stop-opacity=".3"/><stop offset="100%" stop-color="#00BFA6" stop-opacity=".1"/></linearGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="rgba(255,255,255,.3)"/></marker>
+        </defs>
+        <!-- Silueta de Colombia -->
+        <path d="M195 18 L215 20 L230 28 L248 25 L265 30 L280 38 L290 32 L305 40 L312 50 L305 58 L298 52 L290 55 L285 65 L278 72 L268 68 L258 72 L252 65 L260 58 L265 50 L258 48 L248 52 L240 48 L232 52 L225 48 L218 55 L210 52 L202 58 L195 55 L188 62 L180 58 L172 65 L165 60 L158 68 L150 65 L148 72 L155 80 L162 88 L170 92 L175 100 L180 108 L185 115 L190 125 L195 132 L200 140 L205 148 L210 155 L218 162 L225 170 L230 178 L235 188 L238 198 L235 208 L230 218 L225 228 L220 238 L215 250 L210 260 L205 272 L200 282 L195 295 L190 308 L188 318 L185 330 L182 342 L180 355 L178 365 L180 375 L185 382 L192 388 L200 392 L208 388 L215 382 L220 375 L228 368 L235 358 L240 348 L245 338 L250 328 L255 318 L258 308 L262 298 L265 288 L270 278 L275 268 L280 258 L285 248 L288 238 L290 228 L292 218 L295 208 L298 198 L300 188 L302 178 L305 168 L308 158 L310 148 L312 138 L315 128 L318 118 L320 108 L318 98 L315 88 L310 78 L305 70 L298 65 L290 60 L285 65 L280 72 L275 80 L268 85 L260 80 L255 72 L250 65 L248 58 L252 52 L258 48 L265 50 L270 55 L275 48 L280 42 L275 35 L265 30 L255 28 L245 25 L235 22 L225 20 L215 18 L205 16 L195 18Z" fill="url(#gCol)" stroke="rgba(0,109,109,.4)" stroke-width="1.5"/>
+        <!-- Amazonas (sur) -->
+        <path d="M180 355 L172 362 L165 370 L158 378 L152 385 L148 392 L155 398 L165 402 L178 398 L185 392 L188 385 L185 378 L182 370 L180 362Z" fill="url(#gCol)" stroke="rgba(0,109,109,.3)" stroke-width="1" opacity=".6"/>
+        <!-- San Andrés y Providencia -->
+        <ellipse cx="68" cy="82" rx="10" ry="6" fill="rgba(0,109,109,.15)" stroke="rgba(0,109,109,.5)" stroke-width="1.5"/>
+        <circle cx="68" cy="82" r="3.5" fill="#00BFA6" opacity=".7"><animate attributeName="r" values="3;5;3" dur="2.2s" repeatCount="indefinite"/></circle>
+        <text x="68" y="72" text-anchor="middle" fill="#5EEAD4" font-size="7" font-weight="600">San Andrés</text>
+        <ellipse cx="78" cy="62" rx="6" ry="4" fill="rgba(0,109,109,.1)" stroke="rgba(0,109,109,.4)" stroke-width="1"/>
+        <circle cx="78" cy="62" r="2" fill="#00BFA6" opacity=".5"/>
+        <text x="78" y="54" text-anchor="middle" fill="#6EE7B7" font-size="6">Providencia</text>
+        <line x1="82" y1="78" x2="150" y2="65" stroke="#006D6D" stroke-width=".5" opacity=".2" stroke-dasharray="3 3"/>
+        <!-- Ciudades -->
         <g filter="url(#glow)">
-            <circle cx="200" cy="160" r="6" fill="#006D6D" opacity=".8"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
-            <text x="200" y="150" text-anchor="middle" fill="#5EEAD4" font-size="9" font-weight="600">Bogotá</text>
-            <circle cx="260" cy="100" r="5" fill="#D4883A" opacity=".8"><animate attributeName="r" values="4;7;4" dur="1.8s" repeatCount="indefinite"/></circle>
-            <text x="260" y="90" text-anchor="middle" fill="#D4883A" font-size="9" font-weight="700">Barranquilla</text>
-            <circle cx="150" cy="200" r="4" fill="#00BFA6" opacity=".6"><animate attributeName="r" values="3;6;3" dur="2.5s" repeatCount="indefinite"/></circle>
-            <text x="150" y="192" text-anchor="middle" fill="#6EE7B7" font-size="8">Cali</text>
-            <circle cx="170" cy="120" r="4" fill="#00BFA6" opacity=".6"/><text x="170" y="112" text-anchor="middle" fill="#6EE7B7" font-size="8">Medellín</text>
-            <circle cx="240" cy="130" r="3" fill="#00BFA6" opacity=".5"/><text x="240" y="122" text-anchor="middle" fill="#6EE7B7" font-size="8">B/manga</text>
+            <!-- Bogotá (capital) -->
+            <circle cx="228" cy="170" r="6" fill="#006D6D" opacity=".8"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
+            <text x="228" y="160" text-anchor="middle" fill="#5EEAD4" font-size="9" font-weight="700">Bogotá</text>
+            <!-- Barranquilla (caso principal) -->
+            <circle cx="248" cy="48" r="5" fill="#D4883A" opacity=".9"><animate attributeName="r" values="4;7;4" dur="1.8s" repeatCount="indefinite"/></circle>
+            <text x="248" y="38" text-anchor="middle" fill="#D4883A" font-size="9" font-weight="700">Barranquilla</text>
+            <!-- Medellín -->
+            <circle cx="195" cy="115" r="4" fill="#00BFA6" opacity=".6"/><text x="180" y="110" text-anchor="middle" fill="#6EE7B7" font-size="8">Medellín</text>
+            <!-- Cali -->
+            <circle cx="188" cy="215" r="4" fill="#00BFA6" opacity=".6"/><text x="175" y="210" text-anchor="middle" fill="#6EE7B7" font-size="8">Cali</text>
+            <!-- Bucaramanga -->
+            <circle cx="258" cy="100" r="3" fill="#00BFA6" opacity=".5"/><text x="275" y="98" text-anchor="start" fill="#6EE7B7" font-size="7">B/manga</text>
+            <!-- Cartagena -->
+            <circle cx="222" cy="45" r="3.5" fill="#00BFA6" opacity=".6"/><text x="210" y="38" text-anchor="middle" fill="#6EE7B7" font-size="7">Cartagena</text>
+            <!-- Santa Marta -->
+            <circle cx="270" cy="38" r="3" fill="#00BFA6" opacity=".5"/><text x="270" y="29" text-anchor="middle" fill="#6EE7B7" font-size="7">Sta. Marta</text>
+            <!-- Pasto (sur) -->
+            <circle cx="178" cy="290" r="3" fill="#00BFA6" opacity=".5"/><text x="162" y="288" text-anchor="middle" fill="#6EE7B7" font-size="7">Pasto</text>
+            <!-- Leticia (Amazonas) -->
+            <circle cx="165" cy="390" r="3" fill="#00BFA6" opacity=".5"><animate attributeName="r" values="2.5;4;2.5" dur="3s" repeatCount="indefinite"/></circle>
+            <text x="165" y="404" text-anchor="middle" fill="#6EE7B7" font-size="7">Leticia</text>
+            <!-- Quibdó (Pacífico) -->
+            <circle cx="165" cy="152" r="3" fill="#00BFA6" opacity=".5"/><text x="148" y="150" text-anchor="middle" fill="#6EE7B7" font-size="7">Quibdó</text>
+            <!-- Cúcuta (frontera) -->
+            <circle cx="278" cy="82" r="3" fill="#00BFA6" opacity=".5"/><text x="295" y="80" text-anchor="start" fill="#6EE7B7" font-size="7">Cúcuta</text>
+            <!-- Villavicencio (Llanos) -->
+            <circle cx="252" cy="188" r="3" fill="#00BFA6" opacity=".5"/><text x="270" y="186" text-anchor="start" fill="#6EE7B7" font-size="7">Villavicencio</text>
+            <!-- Florencia (Caquetá) -->
+            <circle cx="215" cy="260" r="2.5" fill="#00BFA6" opacity=".4"/><text x="232" y="258" text-anchor="start" fill="#6EE7B7" font-size="6">Florencia</text>
+            <!-- Mitú (Vaupés) -->
+            <circle cx="268" cy="268" r="2.5" fill="#00BFA6" opacity=".4"><animate attributeName="r" values="2;3.5;2" dur="2.8s" repeatCount="indefinite"/></circle>
+            <text x="280" y="266" text-anchor="start" fill="#6EE7B7" font-size="6">Mitú</text>
+            <!-- Puerto Inírida (Guainía) -->
+            <circle cx="295" cy="218" r="2.5" fill="#00BFA6" opacity=".4"/><text x="308" y="216" text-anchor="start" fill="#6EE7B7" font-size="6">Pto. Inírida</text>
+            <!-- Riohacha (Guajira) -->
+            <circle cx="288" cy="30" r="3" fill="#00BFA6" opacity=".5"/><text x="288" y="22" text-anchor="middle" fill="#6EE7B7" font-size="7">Riohacha</text>
+            <!-- Buenaventura (Pacífico) -->
+            <circle cx="168" cy="195" r="2.5" fill="#00BFA6" opacity=".4"/><text x="148" y="198" text-anchor="middle" fill="#6EE7B7" font-size="6">B/ventura</text>
+            <!-- Tumaco (Pacífico sur) -->
+            <circle cx="158" cy="268" r="2.5" fill="#00BFA6" opacity=".4"/><text x="140" y="266" text-anchor="middle" fill="#6EE7B7" font-size="6">Tumaco</text>
         </g>
-        <g stroke="#006D6D" stroke-width="1" opacity=".3" stroke-dasharray="4 4">
-            <line x1="260" y1="100" x2="200" y2="160"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.8s" repeatCount="indefinite"/></line>
-            <line x1="150" y1="200" x2="200" y2="160"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite"/></line>
-            <line x1="170" y1="120" x2="200" y2="160"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.2s" repeatCount="indefinite"/></line>
+        <!-- Líneas de conexión a Bogotá -->
+        <g stroke="#006D6D" stroke-width=".8" opacity=".25" stroke-dasharray="4 4">
+            <line x1="248" y1="48" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.8s" repeatCount="indefinite"/></line>
+            <line x1="195" y1="115" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite"/></line>
+            <line x1="188" y1="215" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.2s" repeatCount="indefinite"/></line>
+            <line x1="165" y1="390" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.5s" repeatCount="indefinite"/></line>
+            <line x1="68" y1="82" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.8s" repeatCount="indefinite"/></line>
+            <line x1="268" y1="268" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.6s" repeatCount="indefinite"/></line>
+            <line x1="295" y1="218" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.4s" repeatCount="indefinite"/></line>
         </g>
-        <g transform="translate(60,400)"><rect width="130" height="32" rx="8" fill="rgba(0,109,109,.15)" stroke="rgba(0,109,109,.3)"/><text x="65" y="18" text-anchor="middle" fill="#006D6D" font-size="10" font-weight="700">AlejoSeguro</text><text x="65" y="28" text-anchor="middle" fill="rgba(0,109,109,.6)" font-size="7">Recolección en terreno</text></g>
-        <g transform="translate(230,400)"><rect width="130" height="32" rx="8" fill="rgba(212,136,58,.15)" stroke="rgba(212,136,58,.3)"/><text x="65" y="18" text-anchor="middle" fill="#D4883A" font-size="10" font-weight="700">GabyVigía</text><text x="65" y="28" text-anchor="middle" fill="rgba(212,136,58,.6)" font-size="7">Estrategia nacional</text></g>
-        <line x1="190" y1="416" x2="230" y2="416" stroke="rgba(255,255,255,.2)" stroke-width="1.5" marker-end="url(#arr)"/>
-        <defs><marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="rgba(255,255,255,.3)"/></marker></defs>
-        <text x="210" y="465" text-anchor="middle" fill="rgba(255,255,255,.25)" font-size="10">Datos en tiempo real desde todo el territorio</text>
+        <!-- Productos -->
+        <g transform="translate(60,430)"><rect width="130" height="32" rx="8" fill="rgba(0,109,109,.15)" stroke="rgba(0,109,109,.3)"/><text x="65" y="18" text-anchor="middle" fill="#006D6D" font-size="10" font-weight="700">AlejoSeguro</text><text x="65" y="28" text-anchor="middle" fill="rgba(0,109,109,.6)" font-size="7">Recolección en terreno</text></g>
+        <g transform="translate(230,430)"><rect width="130" height="32" rx="8" fill="rgba(212,136,58,.15)" stroke="rgba(212,136,58,.3)"/><text x="65" y="18" text-anchor="middle" fill="#D4883A" font-size="10" font-weight="700">GabyVigía</text><text x="65" y="28" text-anchor="middle" fill="rgba(212,136,58,.6)" font-size="7">Estrategia nacional</text></g>
+        <line x1="190" y1="446" x2="230" y2="446" stroke="rgba(255,255,255,.2)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <text x="210" y="485" text-anchor="middle" fill="rgba(255,255,255,.25)" font-size="10">Datos en tiempo real desde todo el territorio</text>
     </svg>
 </div>
 </div>

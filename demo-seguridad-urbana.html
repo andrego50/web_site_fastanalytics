@@ -43,11 +43,11 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 .chat-bubble.show{opacity:1;transform:translateY(0)}
 .chat-user{background:rgba(0,109,109,.2);border:1px solid rgba(0,109,109,.3);margin-left:auto;border-bottom-right-radius:4px;color:#A7F3D0}
 .chat-bot{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);margin-right:auto;border-bottom-left-radius:4px;color:#CBD5E1}
-.phase-box{cursor:pointer;transition:all .3s;border:2px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 8px;text-align:center;color:#fff;width:120px;flex-shrink:0}
-.phase-box:hover{transform:scale(1.06);box-shadow:0 4px 20px rgba(0,0,0,.4);border-color:rgba(255,255,255,.3)}
-.phase-box.active-phase{border-color:rgba(255,255,255,.85);box-shadow:0 0 30px rgba(255,255,255,.2);transform:scale(1.08)}
-.phase-box.completed-phase{opacity:.55;transform:scale(.96)}
-.flow-arrow{color:rgba(255,255,255,.3);font-size:18px;font-weight:bold;display:flex;align-items:center;flex-shrink:0;padding:0 2px}
+.eneagono-node{cursor:pointer;transition:all .3s}
+.eneagono-node:hover{filter:drop-shadow(0 0 15px rgba(0,109,109,.8))}
+.eneagono-node.active-node circle{fill:rgba(0,109,109,.8);stroke:#00BFA6;stroke-width:3}
+.eneagono-node.active-node text{fill:#fff;font-weight:700}
+.eneagono-node.completed circle{fill:rgba(0,109,109,.3);stroke:rgba(0,109,109,.6)}
 .nav-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:all .3s}
 .nav-dot.active{background:var(--teal);box-shadow:0 0 10px rgba(0,109,109,.5);transform:scale(1.3)}
 .step-indicator{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
@@ -515,61 +515,25 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
     <h2 class="text-3xl font-bold text-white">Eneágono Decisional</h2>
     <p class="text-slate-400 mt-2 max-w-2xl mx-auto">9 fases que articulan las capacidades del Estado para transformar reportes ciudadanos en decisiones estratégicas. Haga clic en cada fase.</p>
 </div>
-<!-- Flow diagram -->
-<div class="overflow-x-auto pb-2 mb-4 anim-up">
-<div style="min-width:700px" class="mx-auto px-2">
-    <!-- Top row: F0 → F1 → F2 → F3 → F4 → -->
-    <div class="flex items-stretch justify-center">
-        <div class="phase-box" id="pb0" onclick="selectPhase(0)" style="background:#3E5E8E"><div class="text-2xl font-black">F0</div><div class="text-[10px] leading-tight mt-1 opacity-90">Postura<br>Estratégica</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="phase-box" id="pb1" onclick="selectPhase(1)" style="background:#4A6FA5"><div class="text-2xl font-black">F1</div><div class="text-[10px] leading-tight mt-1 opacity-90">Entorno<br>Periferia</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="phase-box" id="pb2" onclick="selectPhase(2)" style="background:#5B7DB1"><div class="text-2xl font-black">F2</div><div class="text-[10px] leading-tight mt-1 opacity-90">Asunto<br>Decisional</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="phase-box" id="pb3" onclick="selectPhase(3)" style="background:#6B8DC0"><div class="text-2xl font-black">F3</div><div class="text-[10px] leading-tight mt-1 opacity-90">Enfocar Actores<br>y Temas</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="phase-box" id="pb4" onclick="selectPhase(4)" style="background:#7BA0D2"><div class="text-2xl font-black">F4</div><div class="text-[10px] leading-tight mt-1 opacity-90">Articular<br>Información</div></div>
-        <div class="flow-arrow">→</div>
+<div class="grid lg:grid-cols-5 gap-6">
+    <div class="lg:col-span-2 flex justify-center items-start">
+        <svg id="eneagonoSvg" width="380" height="400" viewBox="0 0 380 400">
+            <defs><filter id="nGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+            <g id="eneagonoEdges"></g><g id="eneagonoNodes"></g>
+            <text x="190" y="195" text-anchor="middle" fill="rgba(255,255,255,.12)" font-size="10" font-weight="600">ENEÁGONO</text>
+            <text x="190" y="210" text-anchor="middle" fill="rgba(255,255,255,.08)" font-size="8">DECISIONAL</text>
+        </svg>
     </div>
-    <!-- Down arrows between rows -->
-    <div class="flex items-center justify-center" style="height:28px">
-        <div style="width:120px"></div><div style="width:26px"></div>
-        <div style="width:120px"></div><div style="width:26px"></div>
-        <div style="width:120px"></div><div style="width:26px"></div>
-        <div class="text-white/25 text-center" style="width:120px">↕</div><div style="width:26px"></div>
-        <div class="text-white/25 text-center" style="width:120px">↕</div>
-        <div class="text-white/25 text-lg" style="width:26px;text-align:center">↓</div>
-    </div>
-    <!-- Bottom row: → F5 → F6 → F7 → F8 -->
-    <div class="flex items-stretch justify-center">
-        <div class="flow-arrow">→</div>
-        <div class="phase-box" id="pb5" onclick="selectPhase(5)" style="background:#C8A83E"><div class="text-2xl font-black">F5</div><div class="text-[9px] leading-tight mt-1 opacity-90">Señales<br>Predictivas</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="phase-box" id="pb6" onclick="selectPhase(6)" style="background:#5BA8A0"><div class="text-2xl font-black">F6</div><div class="text-[10px] leading-tight mt-1 opacity-90">Memoria<br>Institucional</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="phase-box" id="pb7" onclick="selectPhase(7)" style="background:#D4883A"><div class="text-2xl font-black">F7</div><div class="text-[10px] leading-tight mt-1 opacity-90">Puzzle de<br>Señales +<br>Comité</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="phase-box" id="pb8" onclick="selectPhase(8)" style="background:#C25B56"><div class="text-2xl font-black">F8</div><div class="text-[10px] leading-tight mt-1 opacity-90">Difusión<br>y Acción</div></div>
-    </div>
-    <!-- Feedback paths from F7 -->
-    <div class="flex justify-center gap-12 mt-3 text-[11px] font-medium">
-        <span style="color:#C25B56">F7 → F8 &nbsp;Comité aprueba</span>
-        <span style="color:#6B8DC0">F7 → F3 &nbsp;Re-enfocar actores</span>
-        <span style="color:#C8A83E">F7 → F4 &nbsp;Buscar más info</span>
-    </div>
-</div>
-</div>
-<!-- Phase detail + stats -->
-<div class="space-y-4">
-    <div class="glass-teal rounded-2xl p-6" id="phaseDetail">
-        <div class="text-center py-8"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase articula capacidades del Estado para la toma de decisiones estratégicas de seguridad</p></div>
-    </div>
-    <div class="grid grid-cols-4 gap-3">
-        <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold" style="color:#006D6D">47K</div><div class="text-[10px] text-slate-500">Reportes activos</div></div>
-        <div class="glass rounded-xl p-3 text-center anim-fade delay-1"><div class="text-xl font-bold" style="color:#D4883A">156</div><div class="text-[10px] text-slate-500">Decisiones en curso</div></div>
-        <div class="glass rounded-xl p-3 text-center anim-fade delay-2"><div class="text-xl font-bold text-amber-400">23</div><div class="text-[10px] text-slate-500">Alertas predictivas</div></div>
-        <div class="glass rounded-xl p-3 text-center anim-fade delay-3"><div class="text-xl font-bold text-emerald-400">91.7%</div><div class="text-[10px] text-slate-500">Tasa de éxito</div></div>
-    </div>
+    <div class="lg:col-span-3 space-y-4">
+        <div class="glass-teal rounded-2xl p-6" id="phaseDetail">
+            <div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase articula capacidades del Estado para la toma de decisiones estratégicas de seguridad</p></div>
+        </div>
+        <div class="grid grid-cols-4 gap-3">
+            <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold" style="color:#006D6D">47K</div><div class="text-[10px] text-slate-500">Reportes activos</div></div>
+            <div class="glass rounded-xl p-3 text-center anim-fade delay-1"><div class="text-xl font-bold" style="color:#D4883A">156</div><div class="text-[10px] text-slate-500">Decisiones en curso</div></div>
+            <div class="glass rounded-xl p-3 text-center anim-fade delay-2"><div class="text-xl font-bold text-amber-400">23</div><div class="text-[10px] text-slate-500">Alertas predictivas</div></div>
+            <div class="glass rounded-xl p-3 text-center anim-fade delay-3"><div class="text-xl font-bold text-emerald-400">91.7%</div><div class="text-[10px] text-slate-500">Tasa de éxito</div></div>
+        </div>
     </div>
 </div>
 <div class="flex justify-between items-center mt-8">
@@ -748,7 +712,7 @@ function goScene(n){
 }
 
 function startDemo(){audioCtx.resume();playSuccess();goScene(1)}
-function resetDemo(){synth.cancel();chatAnimated=false;currentScene=0;currentStep=0;document.querySelectorAll('.scene').forEach(function(s){s.classList.remove('active');s.style.display='none'});var s0=document.getElementById('scene0');s0.style.display='block';requestAnimationFrame(function(){s0.classList.add('active');s0.style.opacity='1'});document.getElementById('fixedNav').style.display='none';document.getElementById('sceneLabel').classList.add('hidden');document.querySelectorAll('#chatArea .chat-bubble').forEach(function(b){b.classList.remove('show')});for(var ri=0;ri<9;ri++){var rb=document.getElementById('pb'+ri);if(rb){rb.classList.remove('active-phase','completed-phase')}};document.getElementById('phaseDetail').innerHTML='<div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase articula capacidades del Estado para la toma de decisiones estratégicas de seguridad</p></div>';}
+function resetDemo(){synth.cancel();chatAnimated=false;currentScene=0;currentStep=0;document.querySelectorAll('.scene').forEach(function(s){s.classList.remove('active');s.style.display='none'});var s0=document.getElementById('scene0');s0.style.display='block';requestAnimationFrame(function(){s0.classList.add('active');s0.style.opacity='1'});document.getElementById('fixedNav').style.display='none';document.getElementById('sceneLabel').classList.add('hidden');document.querySelectorAll('#chatArea .chat-bubble').forEach(function(b){b.classList.remove('show')});document.querySelectorAll('.eneagono-node').forEach(function(n){n.classList.remove('active-node','completed')});document.getElementById('phaseDetail').innerHTML='<div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase articula capacidades del Estado para la toma de decisiones estratégicas de seguridad</p></div>';}
 
 function resetSteps(){for(var i=0;i<4;i++){var s=document.getElementById('step'+i);if(s){s.classList.remove('visible');s.style.display='none'}var d=document.getElementById('sd'+i);if(d){d.className='step-dot'}}}
 function showStep(n){
@@ -776,12 +740,31 @@ function animateChat(){
 
 function buildEneagono(){
     if(eneagonoBuilt)return;eneagonoBuilt=true;
-    for(var i=0;i<9;i++){var box=document.getElementById('pb'+i);if(box){box.style.opacity='0';(function(b,delay){setTimeout(function(){b.style.opacity='1';b.style.transition='opacity .3s'},delay)})(box,i*100)}}
+    var cx=190,cy=195,r=140,edgesG=document.getElementById('eneagonoEdges'),nodesG=document.getElementById('eneagonoNodes');
+    var pts=phases.map(function(_,i){var a=-Math.PI/2+(2*Math.PI*i/9);return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)}});
+    // Conexiones secuenciales F0→F1→...→F8
+    for(var i=0;i<9;i++){var j=(i+1)%9;var l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',pts[i].x);l.setAttribute('y1',pts[i].y);l.setAttribute('x2',pts[j].x);l.setAttribute('y2',pts[j].y);l.setAttribute('stroke','rgba(0,109,109,.2)');l.setAttribute('stroke-width','1.5');l.setAttribute('stroke-dasharray','4 3');edgesG.appendChild(l)}
+    // F6 (memoria) → centro (transversal)
+    var cl=document.createElementNS('http://www.w3.org/2000/svg','line');cl.setAttribute('x1',pts[6].x);cl.setAttribute('y1',pts[6].y);cl.setAttribute('x2',cx);cl.setAttribute('y2',cy);cl.setAttribute('stroke','rgba(91,168,160,.25)');cl.setAttribute('stroke-width','1.5');cl.setAttribute('stroke-dasharray','2 4');edgesG.appendChild(cl);
+    // F7→F3 (re-enfocar actores)
+    var f73=document.createElementNS('http://www.w3.org/2000/svg','line');f73.setAttribute('x1',pts[7].x);f73.setAttribute('y1',pts[7].y);f73.setAttribute('x2',pts[3].x);f73.setAttribute('y2',pts[3].y);f73.setAttribute('stroke','rgba(107,141,192,.3)');f73.setAttribute('stroke-width','1.5');f73.setAttribute('stroke-dasharray','3 3');edgesG.appendChild(f73);
+    // F7→F4 (buscar más info)
+    var f74=document.createElementNS('http://www.w3.org/2000/svg','line');f74.setAttribute('x1',pts[7].x);f74.setAttribute('y1',pts[7].y);f74.setAttribute('x2',pts[4].x);f74.setAttribute('y2',pts[4].y);f74.setAttribute('stroke','rgba(200,168,62,.3)');f74.setAttribute('stroke-width','1.5');f74.setAttribute('stroke-dasharray','3 3');edgesG.appendChild(f74);
+    // F7→F8 (comité aprueba)
+    var f78=document.createElementNS('http://www.w3.org/2000/svg','line');f78.setAttribute('x1',pts[7].x);f78.setAttribute('y1',pts[7].y);f78.setAttribute('x2',pts[8].x);f78.setAttribute('y2',pts[8].y);f78.setAttribute('stroke','rgba(194,91,86,.35)');f78.setAttribute('stroke-width','2');f78.setAttribute('stroke-dasharray','3 3');edgesG.appendChild(f78);
+    // Nodos
+    pts.forEach(function(p,i){
+        var g=document.createElementNS('http://www.w3.org/2000/svg','g');g.classList.add('eneagono-node');g.setAttribute('filter','url(#nGlow)');g.onclick=function(){selectPhase(i)};
+        var c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',p.x);c.setAttribute('cy',p.y);c.setAttribute('r','20');c.setAttribute('fill','rgba(255,255,255,.04)');c.setAttribute('stroke',phases[i].color);c.setAttribute('stroke-width','1.5');
+        var t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',p.x);t.setAttribute('y',p.y+1);t.setAttribute('text-anchor','middle');t.setAttribute('dominant-baseline','middle');t.setAttribute('fill',phases[i].color);t.setAttribute('font-size','10');t.setAttribute('font-weight','700');t.textContent=phases[i].id;
+        var lb=document.createElementNS('http://www.w3.org/2000/svg','text');lb.setAttribute('x',p.x);lb.setAttribute('y',p.y<cy?p.y-28:p.y+32);lb.setAttribute('text-anchor','middle');lb.setAttribute('fill','rgba(255,255,255,.4)');lb.setAttribute('font-size','7');lb.setAttribute('font-weight','500');lb.textContent=phases[i].name;
+        g.appendChild(c);g.appendChild(t);g.appendChild(lb);nodesG.appendChild(g);g.style.opacity='0';setTimeout(function(gg){return function(){gg.style.opacity='1';gg.style.transition='opacity .3s'}}(g),i*120)
+    });
 }
 
 function selectPhase(idx){
     playNotif();var p=phases[idx];
-    for(var i=0;i<9;i++){var box=document.getElementById('pb'+i);if(box){box.classList.remove('active-phase','completed-phase');if(i<idx)box.classList.add('completed-phase');if(i===idx)box.classList.add('active-phase')}}
+    document.querySelectorAll('.eneagono-node').forEach(function(n,i){n.classList.remove('active-node');if(i<idx)n.classList.add('completed');if(i===idx)n.classList.add('active-node')});
     var panel=document.getElementById('phaseDetail');
     var extra=p.example||'';
     panel.innerHTML='<div class="anim-fade"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:'+p.color+'30;border:1px solid '+p.color+'50">'+p.id+'</div><div><div class="text-base font-bold text-white">'+p.name+'</div><div class="text-xs" style="color:'+p.color+'">'+p.id+' · Eneágono Decisional</div></div></div><p class="text-sm text-slate-300 leading-relaxed mb-4">'+p.desc+'</p><div class="glass rounded-xl p-4 text-xs text-slate-400 leading-relaxed">'+p.detail+'</div>'+extra+'</div>';

@@ -43,11 +43,11 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 .chat-bubble.show{opacity:1;transform:translateY(0)}
 .chat-user{background:rgba(0,109,109,.2);border:1px solid rgba(0,109,109,.3);margin-left:auto;border-bottom-right-radius:4px;color:#A7F3D0}
 .chat-bot{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);margin-right:auto;border-bottom-left-radius:4px;color:#CBD5E1}
-.eneagono-node{cursor:pointer;transition:all .3s}
-.eneagono-node:hover{filter:drop-shadow(0 0 15px rgba(0,109,109,.8))}
-.eneagono-node.active-node circle{fill:rgba(0,109,109,.8);stroke:#00BFA6;stroke-width:3}
-.eneagono-node.active-node text{fill:#fff;font-weight:700}
-.eneagono-node.completed circle{fill:rgba(0,109,109,.3);stroke:rgba(0,109,109,.6)}
+.phase-box{cursor:pointer;transition:all .3s;border:2px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 8px;text-align:center;color:#fff;width:120px;flex-shrink:0}
+.phase-box:hover{transform:scale(1.06);box-shadow:0 4px 20px rgba(0,0,0,.4);border-color:rgba(255,255,255,.3)}
+.phase-box.active-phase{border-color:rgba(255,255,255,.85);box-shadow:0 0 30px rgba(255,255,255,.2);transform:scale(1.08)}
+.phase-box.completed-phase{opacity:.55;transform:scale(.96)}
+.flow-arrow{color:rgba(255,255,255,.3);font-size:18px;font-weight:bold;display:flex;align-items:center;flex-shrink:0;padding:0 2px}
 .nav-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:all .3s}
 .nav-dot.active{background:var(--teal);box-shadow:0 0 10px rgba(0,109,109,.5);transform:scale(1.3)}
 .step-indicator{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
@@ -458,25 +458,61 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
     <h2 class="text-3xl font-bold text-white">Eneágono Decisional</h2>
     <p class="text-slate-400 mt-2 max-w-2xl mx-auto">9 fases que articulan las capacidades del Estado para transformar reportes ciudadanos en decisiones estratégicas. Haga clic en cada fase.</p>
 </div>
-<div class="grid lg:grid-cols-5 gap-6">
-    <div class="lg:col-span-2 flex justify-center items-start">
-        <svg id="eneagonoSvg" width="380" height="400" viewBox="0 0 380 400">
-            <defs><filter id="nGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-            <g id="eneagonoEdges"></g><g id="eneagonoNodes"></g>
-            <text x="190" y="195" text-anchor="middle" fill="rgba(255,255,255,.12)" font-size="10" font-weight="600">ENEÁGONO</text>
-            <text x="190" y="210" text-anchor="middle" fill="rgba(255,255,255,.08)" font-size="8">DECISIONAL</text>
-        </svg>
+<!-- Flow diagram -->
+<div class="overflow-x-auto pb-2 mb-4 anim-up">
+<div style="min-width:700px" class="mx-auto px-2">
+    <!-- Top row: F0 → F1 → F2 → F3 → F4 → -->
+    <div class="flex items-stretch justify-center">
+        <div class="phase-box" id="pb0" onclick="selectPhase(0)" style="background:#3E5E8E"><div class="text-2xl font-black">F0</div><div class="text-[10px] leading-tight mt-1 opacity-90">Postura<br>Estratégica</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="phase-box" id="pb1" onclick="selectPhase(1)" style="background:#4A6FA5"><div class="text-2xl font-black">F1</div><div class="text-[10px] leading-tight mt-1 opacity-90">Entorno<br>Periferia</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="phase-box" id="pb2" onclick="selectPhase(2)" style="background:#5B7DB1"><div class="text-2xl font-black">F2</div><div class="text-[10px] leading-tight mt-1 opacity-90">Asunto<br>Decisional</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="phase-box" id="pb3" onclick="selectPhase(3)" style="background:#6B8DC0"><div class="text-2xl font-black">F3</div><div class="text-[10px] leading-tight mt-1 opacity-90">Enfocar<br>Actores</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="phase-box" id="pb4" onclick="selectPhase(4)" style="background:#7BA0D2"><div class="text-2xl font-black">F4</div><div class="text-[10px] leading-tight mt-1 opacity-90">Articular<br>Info</div></div>
+        <div class="flow-arrow">→</div>
     </div>
-    <div class="lg:col-span-3 space-y-4">
-        <div class="glass-teal rounded-2xl p-6" id="phaseDetail">
-            <div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase articula capacidades del Estado para la toma de decisiones estratégicas de seguridad</p></div>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-            <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold" style="color:#006D6D">47K</div><div class="text-[10px] text-slate-500">Reportes activos</div></div>
-            <div class="glass rounded-xl p-3 text-center anim-fade delay-1"><div class="text-xl font-bold" style="color:#D4883A">156</div><div class="text-[10px] text-slate-500">Decisiones en curso</div></div>
-            <div class="glass rounded-xl p-3 text-center anim-fade delay-2"><div class="text-xl font-bold text-amber-400">23</div><div class="text-[10px] text-slate-500">Alertas predictivas</div></div>
-            <div class="glass rounded-xl p-3 text-center anim-fade delay-3"><div class="text-xl font-bold text-emerald-400">91.7%</div><div class="text-[10px] text-slate-500">Tasa de éxito</div></div>
-        </div>
+    <!-- Down arrows between rows -->
+    <div class="flex items-center justify-center" style="height:28px">
+        <div style="width:120px"></div><div style="width:26px"></div>
+        <div style="width:120px"></div><div style="width:26px"></div>
+        <div style="width:120px"></div><div style="width:26px"></div>
+        <div class="text-white/25 text-center" style="width:120px">↕</div><div style="width:26px"></div>
+        <div class="text-white/25 text-center" style="width:120px">↕</div>
+        <div class="text-white/25 text-lg" style="width:26px;text-align:center">↓</div>
+    </div>
+    <!-- Bottom row: → F5 → F6 → F7 → F8 -->
+    <div class="flex items-stretch justify-center">
+        <div class="flow-arrow">→</div>
+        <div class="phase-box" id="pb5" onclick="selectPhase(5)" style="background:#C8A83E"><div class="text-2xl font-black">F5</div><div class="text-[9px] leading-tight mt-1 opacity-90">Señales<br>Predictivas<br>Machine Learning<br>Estadística Avanzada</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="phase-box" id="pb6" onclick="selectPhase(6)" style="background:#5BA8A0"><div class="text-2xl font-black">F6</div><div class="text-[10px] leading-tight mt-1 opacity-90">Memoria<br>Largo Plazo<br>Similaridad</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="phase-box" id="pb7" onclick="selectPhase(7)" style="background:#D4883A"><div class="text-2xl font-black">F7</div><div class="text-[10px] leading-tight mt-1 opacity-90">Puzzle<br>Sentido<br>Colectivo</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="phase-box" id="pb8" onclick="selectPhase(8)" style="background:#C25B56"><div class="text-2xl font-black">F8</div><div class="text-[10px] leading-tight mt-1 opacity-90">Difusión<br>Acción<br>Monitoreo</div></div>
+    </div>
+    <!-- Feedback paths from F7 -->
+    <div class="flex justify-center gap-12 mt-3 text-[11px] font-medium">
+        <span style="color:#C25B56">F7 → F8 &nbsp;Comité aprueba</span>
+        <span style="color:#6B8DC0">F7 → F3 &nbsp;Re-enfocar actores</span>
+        <span style="color:#C8A83E">F7 → F4 &nbsp;Buscar más info</span>
+    </div>
+</div>
+</div>
+<!-- Phase detail + stats -->
+<div class="space-y-4">
+    <div class="glass-teal rounded-2xl p-6" id="phaseDetail">
+        <div class="text-center py-8"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase articula capacidades del Estado para la toma de decisiones estratégicas de seguridad</p></div>
+    </div>
+    <div class="grid grid-cols-4 gap-3">
+        <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold" style="color:#006D6D">47K</div><div class="text-[10px] text-slate-500">Reportes activos</div></div>
+        <div class="glass rounded-xl p-3 text-center anim-fade delay-1"><div class="text-xl font-bold" style="color:#D4883A">156</div><div class="text-[10px] text-slate-500">Decisiones en curso</div></div>
+        <div class="glass rounded-xl p-3 text-center anim-fade delay-2"><div class="text-xl font-bold text-amber-400">23</div><div class="text-[10px] text-slate-500">Alertas predictivas</div></div>
+        <div class="glass rounded-xl p-3 text-center anim-fade delay-3"><div class="text-xl font-bold text-emerald-400">91.7%</div><div class="text-[10px] text-slate-500">Tasa de éxito</div></div>
+    </div>
     </div>
 </div>
 <div class="flex justify-between items-center mt-8">
@@ -571,47 +607,47 @@ const synth=window.speechSynthesis;
 const audioCtx=new(window.AudioContext||window.webkitAudioContext)();
 
 const phases=[
-    {id:'F0',name:'Postura Estratégica',color:'#006D6D',
+    {id:'F0',name:'Postura Estratégica',color:'#3E5E8E',
      desc:'Define la preocupación de seguridad a partir de texto libre: zonas geográficas, actores, temas y restricciones. Soporta múltiples posturas simultáneas alineadas con el PEI (Res. 3409/2023).',
      detail:'La IA extrae automáticamente los campos estructurados del texto narrativo del decisor. Se establece qué amenaza atender y se alinea con los objetivos estratégicos institucionales.',
      example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">El director escribe: <em>"Priorizar extorsión a comerciantes en el Atlántico, especialmente suroccidente de Barranquilla y Soledad. Actores: redes locales vinculadas a cobro de vacunas. Restricción: no afectar operaciones en curso del CTI."</em> El sistema extrae automáticamente zona, actores, tema y restricciones.</div></div>',
      speech:'Fase cero: Postura Estratégica. El director define la preocupación: priorizar extorsión a comerciantes en el Atlántico. El sistema extrae automáticamente zona, actores, tema y restricciones del texto libre.'},
-    {id:'F1',name:'Entorno y Periferia',color:'#1DB954',
+    {id:'F1',name:'Entorno-Periferia',color:'#4A6FA5',
      desc:'Construye el entorno operacional cruzando datos nacionales de criminalidad con la percepción ciudadana de AlejoSeguro. Evaluación estadística con intervalos de confianza Poisson al 95%. Incluye antecedentes de F6.',
      detail:'Consulta datos de homicidios, hurtos, terrorismo y población DANE. Los cruza con reportes ciudadanos de AlejoSeguro: fotos, videos, audios, ubicaciones. Genera análisis estadístico de tendencias.',
      example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">El sistema cruza: <strong>847 reportes de AlejoSeguro</strong> sobre extorsión en Atlántico (últimos 90 días) + datos oficiales de denuncias. Detecta <strong>incremento del 340%</strong> vs. trimestre anterior (IC 95%: 2.8x-3.9x). La percepción ciudadana confirma: 38% de reportes son extorsión, seguidos de venta de drogas (24%).</div></div>',
      speech:'Fase uno: Entorno y Periferia. Se cruzan ochocientos cuarenta y siete reportes de AlejoSeguro con datos oficiales de criminalidad. Se detecta un incremento del trescientos cuarenta por ciento en extorsión en el Atlántico.'},
-    {id:'F2',name:'Asunto Decisional',color:'#00BFA6',
+    {id:'F2',name:'Asunto Decisional',color:'#5B7DB1',
      desc:'Clasifica la decisión en la intersección de seguridad nacional, pública y ciudadana. Determina el rol del bloque de seguridad y el alcance de coordinación: local, subnacional o nacional.',
      detail:'La IA clasifica el asunto, evalúa las dimensiones de seguridad involucradas y determina el alcance espacial según los departamentos afectados. Registra las variables de evaluación para seguimiento.',
      example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Clasificación: <strong>Seguridad pública + ciudadana</strong>. Alcance: <strong>subnacional</strong> (Atlántico + Bolívar — la misma red opera en Cartagena). La extorsión impacta la convivencia y el desarrollo económico local. Se activa coordinación con Fiscalía y Gaula.</div></div>',
      speech:'Fase dos: Asunto Decisional. Se clasifica como seguridad pública y ciudadana. Alcance subnacional: la misma red opera en Atlántico y Bolívar. Se activa coordinación con Fiscalía y Gaula.'},
-    {id:'F3',name:'Enfocar Actores y Temas',color:'#38BDF8',
+    {id:'F3',name:'Enfocar Actores',color:'#6B8DC0',
      desc:'Construye un grafo de actores cruzados con temas, con pesos de relación de 1 a 10. Calcula centralidad (grado y peso promedio) para identificar nodos clave de la red criminal.',
      detail:'La IA extrae actores del texto narrativo. El sistema construye el grafo actor-tema con relaciones ponderadas, calcula la centralidad y persiste las conexiones para seguimiento espaciotemporal.',
      example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Grafo construido: <strong>"El Flaco"</strong> (centralidad 0.83) conecta con "Pipe" (cobrador), "La Mona" (logística), "Chucho" y "Tato" (cobradores). Temas cruzados: extorsión (peso 9), microtráfico (peso 6), lavado (peso 4). Se descubre que <strong>"La Mona" también opera en Cartagena</strong> con otra célula — punto de articulación para operación simultánea.</div></div>',
      speech:'Fase tres: Enfocar Actores y Temas. El grafo revela que El Flaco tiene centralidad cero punto ochenta y tres. Se descubre que La Mona también opera en Cartagena con otra célula. Esto habilita una operación simultánea en dos ciudades.'},
-    {id:'F4',name:'Articular Información',color:'#818CF8',
+    {id:'F4',name:'Articular Info',color:'#7BA0D2',
      desc:'Checkpoint de aprobación. El decisor puede aprobar el enfoque, enviar a revisión por un funcionario (con necesidad, responsable y plazo), o emitir una orden directa a F8. Presenta el catálogo de modelos predictivos disponibles.',
      detail:'Es la bisagra entre el análisis y la acción. Aquí se decide si la información es suficiente para actuar o si requiere más análisis. También presenta los modelos predictivos del catálogo disponible.',
      example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">El director revisa el grafo y la tendencia. Decisión: <strong>Aprobar y enviar a F5</strong> para ejecutar modelos predictivos — quiere saber dónde van a golpear la próxima semana. También ordena revisión del enlace Cartagena al Gaula Bolívar (responsable: Cnel. Rodríguez, plazo: 48h).</div></div>',
      speech:'Fase cuatro: Articular Información. El director aprueba el análisis y lo envía a señales predictivas para anticipar dónde va a golpear la red la próxima semana. Ordena verificar el enlace con Cartagena.'},
-    {id:'F5',name:'Señales Predictivas',color:'#F59E0B',
+    {id:'F5',name:'Señales Predictivas',color:'#C8A83E',
      desc:'El cerebro analítico del Eneágono. Ejecuta modelos predictivos espaciotemporales del catálogo, almacena predicciones y señales detectadas. Checkpoint estratégico con tres caminos: actuar solo (F8), comité (F7), o rehacer análisis (F1/F3/F4).',
      detail:'Invoca los modelos de predicción del catálogo (hotspots, anomalías, patrones temporales). Integra el panorama completo y genera una recomendación determinística sobre el camino a seguir.',
      example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Modelos ejecutados: <strong>3 hotspots predichos</strong> para la próxima semana en suroccidente B/quilla (confianza 89%). Anomalía detectada: pico inusual de reportes en Soledad (3.2σ). Patrón temporal: cobros los viernes entre 5-7 PM. <strong>Recomendación: enviar a Comité (F7)</strong> — la escala del operativo requiere coordinación interinstitucional para atacar simultáneamente B/quilla, Soledad y Cartagena.</div></div>',
      speech:'Fase cinco: Señales Predictivas. Los modelos predicen tres hotspots para la próxima semana. Detectan un patrón: los cobros ocurren los viernes entre cinco y siete de la tarde. Recomendación: enviar a comité porque la operación requiere coordinación interinstitucional en tres ciudades simultáneamente.'},
-    {id:'F6',name:'Memoria Institucional',color:'#A78BFA',
+    {id:'F6',name:'Memoria Largo Plazo',color:'#5BA8A0',
      desc:'Fase transversal — no secuencial. Todas las demás fases la consultan para buscar antecedentes: qué se decidió antes, qué quedó pendiente, qué funcionó y qué no. F1 consulta antecedentes de postura y F8 la consulta obligatoriamente antes de emitir cualquier orden.',
      detail:'Es el conocimiento acumulado del sistema. Registra decisiones, resultados y lecciones aprendidas. Permite que cada nueva decisión se tome con contexto histórico completo.',
      example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">La memoria reporta: en 2025 se ejecutó un operativo similar en el norte de B/quilla — <strong>se capturaron 8 personas pero la red se reconstituyó en 45 días</strong> porque no se atacó la estructura financiera. Lección aprendida: incluir unidad de extinción de dominio en el operativo. Esta información se inyecta en F7 para que el comité la considere.</div></div>',
      speech:'Fase seis: Memoria Institucional. Fase transversal. La memoria reporta que un operativo similar en dos mil veinticinco capturó ocho personas pero la red se reconstituyó en cuarenta y cinco días. Lección: hay que atacar también la estructura financiera.'},
-    {id:'F7',name:'Puzzle de Señales y Comité',color:'#F472B6',
+    {id:'F7',name:'Puzzle - Sentido Colectivo',color:'#D4883A',
      desc:'Cualifica señales débiles con 5 criterios cerrados: fiabilidad, importancia, probabilidad, severidad y tiempo de reacción. Identifica conexiones entre señales (confirmación, causalidad, contradicción). El comité delibera con dashboard visual y decide: aprobar (F8), pedir más info (F4), o refocalizar (F3).',
      detail:'Se genera un dashboard interactivo con token de acceso para el comité. Las señales se pre-puntúan, se consolida la narrativa, y el comité toma la decisión final sobre cómo proceder.',
      example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Comité interinstitucional revisa el dashboard. Señales cualificadas: patrón de cobro viernes PM (fiabilidad: 4/5, severidad: 5/5), conexión B/quilla-Cartagena vía "La Mona" (probabilidad: 4/5). Se incorpora la lección de F6: incluir extinción de dominio. <strong>Decisión del comité: APROBAR operativo simultáneo</strong> en 3 ciudades el próximo viernes, con Gaula + Fiscalía + unidad de lavado.</div></div>',
      speech:'Fase siete: Puzzle de Señales y Comité. El comité revisa las señales cualificadas y el dashboard. Incorpora la lección de memoria: incluir extinción de dominio. Decisión: aprobar operativo simultáneo en tres ciudades el próximo viernes.'},
-    {id:'F8',name:'Difusión y Acción',color:'#EF4444',
+    {id:'F8',name:'Difusión, Acción y Monitoreo',color:'#C25B56',
      desc:'Registra la orden formal con clasificación de seguridad (Res. 05456/2019). Crea plan de acción con indicadores, establece plazos según prioridad. Evalúa impacto en desarrollo humano con 22 variables en 3 dimensiones y genera semáforo IPDH con 10 indicadores.',
      detail:'La orden incluye las 5 preguntas del briefing: qué, cuándo, dónde, por qué y para qué. Se registra en pendientes del director y se crea el plan de acción con indicadores de seguimiento y evaluación PDH automática.',
      example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400"><strong>ORDEN EMITIDA — Clasificación: RESERVADO</strong><br>• Qué: Operativo simultáneo contra red de extorsión<br>• Cuándo: Viernes 25-Jul, 16:00h<br>• Dónde: B/quilla (suroccidente), Soledad (centro), Cartagena (Bazurto)<br>• Por qué: Red con 5 actores y 847 reportes ciudadanos en 90 días<br>• Para qué: Desarticular estructura criminal + financiera<br>PDH: <span style="color:#10B981">🟢</span> Personas (6.8) · <span style="color:#f59e0b">🟡</span> Comunidades (5.2) · <span style="color:#10B981">🟢</span> Gobernabilidad (7.1)</div></div>',
@@ -655,7 +691,7 @@ function goScene(n){
 }
 
 function startDemo(){audioCtx.resume();playSuccess();goScene(1)}
-function resetDemo(){synth.cancel();chatAnimated=false;currentScene=0;currentStep=0;document.querySelectorAll('.scene').forEach(function(s){s.classList.remove('active');s.style.display='none'});var s0=document.getElementById('scene0');s0.style.display='block';requestAnimationFrame(function(){s0.classList.add('active');s0.style.opacity='1'});document.getElementById('fixedNav').style.display='none';document.getElementById('sceneLabel').classList.add('hidden');document.querySelectorAll('#chatArea .chat-bubble').forEach(function(b){b.classList.remove('show')});document.querySelectorAll('.eneagono-node').forEach(function(n){n.classList.remove('active-node','completed')});document.getElementById('phaseDetail').innerHTML='<div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase articula capacidades del Estado para la toma de decisiones estratégicas de seguridad</p></div>';}
+function resetDemo(){synth.cancel();chatAnimated=false;currentScene=0;currentStep=0;document.querySelectorAll('.scene').forEach(function(s){s.classList.remove('active');s.style.display='none'});var s0=document.getElementById('scene0');s0.style.display='block';requestAnimationFrame(function(){s0.classList.add('active');s0.style.opacity='1'});document.getElementById('fixedNav').style.display='none';document.getElementById('sceneLabel').classList.add('hidden');document.querySelectorAll('#chatArea .chat-bubble').forEach(function(b){b.classList.remove('show')});for(var ri=0;ri<9;ri++){var rb=document.getElementById('pb'+ri);if(rb){rb.classList.remove('active-phase','completed-phase')}};document.getElementById('phaseDetail').innerHTML='<div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase articula capacidades del Estado para la toma de decisiones estratégicas de seguridad</p></div>';}
 
 function resetSteps(){for(var i=0;i<4;i++){var s=document.getElementById('step'+i);if(s){s.classList.remove('visible');s.style.display='none'}var d=document.getElementById('sd'+i);if(d){d.className='step-dot'}}}
 function showStep(n){
@@ -683,22 +719,12 @@ function animateChat(){
 
 function buildEneagono(){
     if(eneagonoBuilt)return;eneagonoBuilt=true;
-    var cx=190,cy=195,r=140,edgesG=document.getElementById('eneagonoEdges'),nodesG=document.getElementById('eneagonoNodes');
-    var pts=phases.map(function(_,i){var a=-Math.PI/2+(2*Math.PI*i/9);return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)}});
-    for(var i=0;i<9;i++){var j=(i+1)%9;var l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',pts[i].x);l.setAttribute('y1',pts[i].y);l.setAttribute('x2',pts[j].x);l.setAttribute('y2',pts[j].y);l.setAttribute('stroke','rgba(0,109,109,.2)');l.setAttribute('stroke-width','1.5');l.setAttribute('stroke-dasharray','4 3');edgesG.appendChild(l)}
-    var cl=document.createElementNS('http://www.w3.org/2000/svg','line');cl.setAttribute('x1',pts[6].x);cl.setAttribute('y1',pts[6].y);cl.setAttribute('x2',cx);cl.setAttribute('y2',cy);cl.setAttribute('stroke','rgba(167,139,250,.15)');cl.setAttribute('stroke-width','1');cl.setAttribute('stroke-dasharray','2 4');edgesG.appendChild(cl);
-    pts.forEach(function(p,i){
-        var g=document.createElementNS('http://www.w3.org/2000/svg','g');g.classList.add('eneagono-node');g.setAttribute('filter','url(#nGlow)');g.onclick=function(){selectPhase(i)};
-        var c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',p.x);c.setAttribute('cy',p.y);c.setAttribute('r','20');c.setAttribute('fill','rgba(255,255,255,.04)');c.setAttribute('stroke',phases[i].color);c.setAttribute('stroke-width','1.5');
-        var t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',p.x);t.setAttribute('y',p.y+1);t.setAttribute('text-anchor','middle');t.setAttribute('dominant-baseline','middle');t.setAttribute('fill',phases[i].color);t.setAttribute('font-size','10');t.setAttribute('font-weight','700');t.textContent=phases[i].id;
-        var lb=document.createElementNS('http://www.w3.org/2000/svg','text');lb.setAttribute('x',p.x);lb.setAttribute('y',p.y<cy?p.y-28:p.y+32);lb.setAttribute('text-anchor','middle');lb.setAttribute('fill','rgba(255,255,255,.4)');lb.setAttribute('font-size','7');lb.setAttribute('font-weight','500');lb.textContent=phases[i].name;
-        g.appendChild(c);g.appendChild(t);g.appendChild(lb);nodesG.appendChild(g);g.style.opacity='0';setTimeout(function(gg){return function(){gg.style.opacity='1';gg.style.transition='opacity .3s'}}(g),i*120)
-    });
+    for(var i=0;i<9;i++){var box=document.getElementById('pb'+i);if(box){box.style.opacity='0';(function(b,delay){setTimeout(function(){b.style.opacity='1';b.style.transition='opacity .3s'},delay)})(box,i*100)}}
 }
 
 function selectPhase(idx){
     playNotif();var p=phases[idx];
-    document.querySelectorAll('.eneagono-node').forEach(function(n,i){n.classList.remove('active-node');if(i<idx)n.classList.add('completed');if(i===idx)n.classList.add('active-node')});
+    for(var i=0;i<9;i++){var box=document.getElementById('pb'+i);if(box){box.classList.remove('active-phase','completed-phase');if(i<idx)box.classList.add('completed-phase');if(i===idx)box.classList.add('active-phase')}}
     var panel=document.getElementById('phaseDetail');
     var extra=p.example||'';
     panel.innerHTML='<div class="anim-fade"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:'+p.color+'30;border:1px solid '+p.color+'50">'+p.id+'</div><div><div class="text-base font-bold text-white">'+p.name+'</div><div class="text-xs" style="color:'+p.color+'">'+p.id+' · Eneágono Decisional</div></div></div><p class="text-sm text-slate-300 leading-relaxed mb-4">'+p.desc+'</p><div class="glass rounded-xl p-4 text-xs text-slate-400 leading-relaxed">'+p.detail+'</div>'+extra+'</div>';

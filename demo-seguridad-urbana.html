@@ -112,82 +112,81 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
     </div>
 </div>
 <div class="anim-r flex justify-center">
-    <svg width="420" height="500" viewBox="0 0 420 500" class="anim-float">
+    <svg width="420" height="520" viewBox="0 0 500 620" class="anim-float">
         <defs>
             <linearGradient id="gCol" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#006D6D" stop-opacity=".3"/><stop offset="100%" stop-color="#00BFA6" stop-opacity=".1"/></linearGradient>
             <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
             <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="rgba(255,255,255,.3)"/></marker>
         </defs>
-        <!-- Silueta de Colombia -->
-        <path d="M195 18 L215 20 L230 28 L248 25 L265 30 L280 38 L290 32 L305 40 L312 50 L305 58 L298 52 L290 55 L285 65 L278 72 L268 68 L258 72 L252 65 L260 58 L265 50 L258 48 L248 52 L240 48 L232 52 L225 48 L218 55 L210 52 L202 58 L195 55 L188 62 L180 58 L172 65 L165 60 L158 68 L150 65 L148 72 L155 80 L162 88 L170 92 L175 100 L180 108 L185 115 L190 125 L195 132 L200 140 L205 148 L210 155 L218 162 L225 170 L230 178 L235 188 L238 198 L235 208 L230 218 L225 228 L220 238 L215 250 L210 260 L205 272 L200 282 L195 295 L190 308 L188 318 L185 330 L182 342 L180 355 L178 365 L180 375 L185 382 L192 388 L200 392 L208 388 L215 382 L220 375 L228 368 L235 358 L240 348 L245 338 L250 328 L255 318 L258 308 L262 298 L265 288 L270 278 L275 268 L280 258 L285 248 L288 238 L290 228 L292 218 L295 208 L298 198 L300 188 L302 178 L305 168 L308 158 L310 148 L312 138 L315 128 L318 118 L320 108 L318 98 L315 88 L310 78 L305 70 L298 65 L290 60 L285 65 L280 72 L275 80 L268 85 L260 80 L255 72 L250 65 L248 58 L252 52 L258 48 L265 50 L270 55 L275 48 L280 42 L275 35 L265 30 L255 28 L245 25 L235 22 L225 20 L215 18 L205 16 L195 18Z" fill="url(#gCol)" stroke="rgba(0,109,109,.4)" stroke-width="1.5"/>
-        <!-- Amazonas (sur) -->
-        <path d="M180 355 L172 362 L165 370 L158 378 L152 385 L148 392 L155 398 L165 402 L178 398 L185 392 L188 385 L185 378 L182 370 L180 362Z" fill="url(#gCol)" stroke="rgba(0,109,109,.3)" stroke-width="1" opacity=".6"/>
-        <!-- San Andrés y Providencia -->
-        <ellipse cx="68" cy="82" rx="10" ry="6" fill="rgba(0,109,109,.15)" stroke="rgba(0,109,109,.5)" stroke-width="1.5"/>
-        <circle cx="68" cy="82" r="3.5" fill="#00BFA6" opacity=".7"><animate attributeName="r" values="3;5;3" dur="2.2s" repeatCount="indefinite"/></circle>
-        <text x="68" y="72" text-anchor="middle" fill="#5EEAD4" font-size="7" font-weight="600">San Andrés</text>
-        <ellipse cx="78" cy="62" rx="6" ry="4" fill="rgba(0,109,109,.1)" stroke="rgba(0,109,109,.4)" stroke-width="1"/>
-        <circle cx="78" cy="62" r="2" fill="#00BFA6" opacity=".5"/>
-        <text x="78" y="54" text-anchor="middle" fill="#6EE7B7" font-size="6">Providencia</text>
-        <line x1="82" y1="78" x2="150" y2="65" stroke="#006D6D" stroke-width=".5" opacity=".2" stroke-dasharray="3 3"/>
+        <!-- Silueta real de Colombia (Natural Earth) -->
+        <path d="M346.3 59.2L325.7 65.6L316.3 80.9L302.0 92.6L291.8 126.6L280.2 146.0L290.1 143.9L298.6 148.8L302.8 164.4L311.7 175.5L309.1 200.3L317.6 205.4L324.1 216.3L352.5 217.8L365.2 214.5L384.8 218.9L407.5 245.9L458.2 240.5L470.4 244.1L470.7 252.2L459.3 273.7L458.3 298.5L464.6 319.4L475.9 334.0L458.2 354.3L466.0 354.3L479.2 367.4L489.7 401.0L490.0 405.4L483.3 406.6L482.1 389.7L473.0 376.3L455.7 388.3L447.4 380.5L448.0 389.2L393.9 389.6L393.8 410.7L411.3 411.0L416.4 423.7L406.1 421.4L387.3 426.3L386.7 449.7L400.8 461.7L408.4 484.0L390.1 583.0L378.0 569.3L365.2 568.2L385.9 531.7L357.7 517.0L343.8 521.1L332.4 515.2L317.3 523.3L293.9 523.1L287.0 519.3L285.7 504.7L276.0 500.3L270.5 485.8L251.7 476.8L246.2 464.1L233.8 451.7L202.3 442.3L186.3 430.9L179.0 437.5L149.9 432.4L140.0 417.9L120.3 411.1L97.2 392.3L104.7 385.0L111.7 387.5L111.3 368.5L128.2 363.5L136.4 356.8L160.2 317.8L154.2 318.5L153.7 313.1L151.1 316.8L149.5 307.0L145.9 308.1L153.5 291.5L150.6 271.9L145.4 265.0L154.7 257.1L147.5 244.2L150.8 231.2L133.6 209.9L138.1 194.7L145.3 199.0L156.4 185.8L147.2 168.6L150.0 163.9L169.6 187.1L170.1 174.8L165.3 166.2L186.1 152.7L194.2 140.4L206.7 137.7L210.0 113.1L204.5 115.1L212.9 99.9L232.4 83.7L249.0 87.4L243.0 91.7L246.7 94.9L255.1 76.8L281.9 77.6L315.5 58.3L320.0 48.6L333.6 41.0L348.2 43.8L352.2 53.2L346.3 59.2Z" fill="url(#gCol)" stroke="rgba(0,109,109,.4)" stroke-width="1.5"/>
+        <!-- San Andrés (ampliado para visibilidad) -->
+        <ellipse cx="52" cy="140" rx="14" ry="8" fill="rgba(0,109,109,.12)" stroke="rgba(0,109,109,.5)" stroke-width="1.5"/>
+        <circle cx="52" cy="140" r="4" fill="#00BFA6" opacity=".7"><animate attributeName="r" values="3.5;5.5;3.5" dur="2.2s" repeatCount="indefinite"/></circle>
+        <text x="52" y="127" text-anchor="middle" fill="#5EEAD4" font-size="9" font-weight="600">San Andrés</text>
+        <!-- Providencia -->
+        <ellipse cx="68" cy="108" rx="8" ry="5" fill="rgba(0,109,109,.08)" stroke="rgba(0,109,109,.4)" stroke-width="1"/>
+        <circle cx="68" cy="108" r="2.5" fill="#00BFA6" opacity=".5"/>
+        <text x="68" y="97" text-anchor="middle" fill="#6EE7B7" font-size="7">Providencia</text>
+        <line x1="66" y1="140" x2="140" y2="170" stroke="#006D6D" stroke-width=".6" opacity=".2" stroke-dasharray="3 3"/>
         <!-- Ciudades -->
         <g filter="url(#glow)">
-            <!-- Bogotá (capital) -->
-            <circle cx="228" cy="170" r="6" fill="#006D6D" opacity=".8"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
-            <text x="228" y="160" text-anchor="middle" fill="#5EEAD4" font-size="9" font-weight="700">Bogotá</text>
+            <!-- Bogotá -->
+            <circle cx="225" cy="215" r="7" fill="#006D6D" opacity=".8"><animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite"/></circle>
+            <text x="200" y="210" text-anchor="end" fill="#5EEAD4" font-size="11" font-weight="700">Bogotá</text>
             <!-- Barranquilla (caso principal) -->
-            <circle cx="248" cy="48" r="5" fill="#D4883A" opacity=".9"><animate attributeName="r" values="4;7;4" dur="1.8s" repeatCount="indefinite"/></circle>
-            <text x="248" y="38" text-anchor="middle" fill="#D4883A" font-size="9" font-weight="700">Barranquilla</text>
-            <!-- Medellín -->
-            <circle cx="195" cy="115" r="4" fill="#00BFA6" opacity=".6"/><text x="180" y="110" text-anchor="middle" fill="#6EE7B7" font-size="8">Medellín</text>
-            <!-- Cali -->
-            <circle cx="188" cy="215" r="4" fill="#00BFA6" opacity=".6"/><text x="175" y="210" text-anchor="middle" fill="#6EE7B7" font-size="8">Cali</text>
-            <!-- Bucaramanga -->
-            <circle cx="258" cy="100" r="3" fill="#00BFA6" opacity=".5"/><text x="275" y="98" text-anchor="start" fill="#6EE7B7" font-size="7">B/manga</text>
+            <circle cx="272" cy="72" r="5.5" fill="#D4883A" opacity=".9"><animate attributeName="r" values="5;8;5" dur="1.8s" repeatCount="indefinite"/></circle>
+            <text x="272" y="60" text-anchor="middle" fill="#D4883A" font-size="10" font-weight="700">Barranquilla</text>
             <!-- Cartagena -->
-            <circle cx="222" cy="45" r="3.5" fill="#00BFA6" opacity=".6"/><text x="210" y="38" text-anchor="middle" fill="#6EE7B7" font-size="7">Cartagena</text>
+            <circle cx="232" cy="80" r="4" fill="#00BFA6" opacity=".6"/><text x="215" y="74" text-anchor="end" fill="#6EE7B7" font-size="8">Cartagena</text>
             <!-- Santa Marta -->
-            <circle cx="270" cy="38" r="3" fill="#00BFA6" opacity=".5"/><text x="270" y="29" text-anchor="middle" fill="#6EE7B7" font-size="7">Sta. Marta</text>
-            <!-- Pasto (sur) -->
-            <circle cx="178" cy="290" r="3" fill="#00BFA6" opacity=".5"/><text x="162" y="288" text-anchor="middle" fill="#6EE7B7" font-size="7">Pasto</text>
-            <!-- Leticia (Amazonas) -->
-            <circle cx="165" cy="390" r="3" fill="#00BFA6" opacity=".5"><animate attributeName="r" values="2.5;4;2.5" dur="3s" repeatCount="indefinite"/></circle>
-            <text x="165" y="404" text-anchor="middle" fill="#6EE7B7" font-size="7">Leticia</text>
-            <!-- Quibdó (Pacífico) -->
-            <circle cx="165" cy="152" r="3" fill="#00BFA6" opacity=".5"/><text x="148" y="150" text-anchor="middle" fill="#6EE7B7" font-size="7">Quibdó</text>
-            <!-- Cúcuta (frontera) -->
-            <circle cx="278" cy="82" r="3" fill="#00BFA6" opacity=".5"/><text x="295" y="80" text-anchor="start" fill="#6EE7B7" font-size="7">Cúcuta</text>
-            <!-- Villavicencio (Llanos) -->
-            <circle cx="252" cy="188" r="3" fill="#00BFA6" opacity=".5"/><text x="270" y="186" text-anchor="start" fill="#6EE7B7" font-size="7">Villavicencio</text>
-            <!-- Florencia (Caquetá) -->
-            <circle cx="215" cy="260" r="2.5" fill="#00BFA6" opacity=".4"/><text x="232" y="258" text-anchor="start" fill="#6EE7B7" font-size="6">Florencia</text>
-            <!-- Mitú (Vaupés) -->
-            <circle cx="268" cy="268" r="2.5" fill="#00BFA6" opacity=".4"><animate attributeName="r" values="2;3.5;2" dur="2.8s" repeatCount="indefinite"/></circle>
-            <text x="280" y="266" text-anchor="start" fill="#6EE7B7" font-size="6">Mitú</text>
-            <!-- Puerto Inírida (Guainía) -->
-            <circle cx="295" cy="218" r="2.5" fill="#00BFA6" opacity=".4"/><text x="308" y="216" text-anchor="start" fill="#6EE7B7" font-size="6">Pto. Inírida</text>
-            <!-- Riohacha (Guajira) -->
-            <circle cx="288" cy="30" r="3" fill="#00BFA6" opacity=".5"/><text x="288" y="22" text-anchor="middle" fill="#6EE7B7" font-size="7">Riohacha</text>
-            <!-- Buenaventura (Pacífico) -->
-            <circle cx="168" cy="195" r="2.5" fill="#00BFA6" opacity=".4"/><text x="148" y="198" text-anchor="middle" fill="#6EE7B7" font-size="6">B/ventura</text>
-            <!-- Tumaco (Pacífico sur) -->
-            <circle cx="158" cy="268" r="2.5" fill="#00BFA6" opacity=".4"/><text x="140" y="266" text-anchor="middle" fill="#6EE7B7" font-size="6">Tumaco</text>
+            <circle cx="298" cy="62" r="3.5" fill="#00BFA6" opacity=".5"/><text x="298" y="52" text-anchor="middle" fill="#6EE7B7" font-size="8">Sta. Marta</text>
+            <!-- Riohacha -->
+            <circle cx="330" cy="50" r="3" fill="#00BFA6" opacity=".5"/><text x="330" y="40" text-anchor="middle" fill="#6EE7B7" font-size="7">Riohacha</text>
+            <!-- Medellín -->
+            <circle cx="200" cy="148" r="4.5" fill="#00BFA6" opacity=".6"/><text x="178" y="145" text-anchor="end" fill="#6EE7B7" font-size="9">Medellín</text>
+            <!-- Bucaramanga -->
+            <circle cx="295" cy="118" r="3.5" fill="#00BFA6" opacity=".5"/><text x="314" y="116" text-anchor="start" fill="#6EE7B7" font-size="8">B/manga</text>
+            <!-- Cúcuta -->
+            <circle cx="315" cy="94" r="3" fill="#00BFA6" opacity=".5"/><text x="333" y="92" text-anchor="start" fill="#6EE7B7" font-size="7">Cúcuta</text>
+            <!-- Quibdó -->
+            <circle cx="160" cy="178" r="3" fill="#00BFA6" opacity=".5"/><text x="140" y="176" text-anchor="end" fill="#6EE7B7" font-size="7">Quibdó</text>
+            <!-- Cali -->
+            <circle cx="175" cy="275" r="4" fill="#00BFA6" opacity=".6"/><text x="155" y="272" text-anchor="end" fill="#6EE7B7" font-size="9">Cali</text>
+            <!-- Buenaventura -->
+            <circle cx="150" cy="265" r="2.5" fill="#00BFA6" opacity=".4"/><text x="130" y="263" text-anchor="end" fill="#6EE7B7" font-size="7">B/ventura</text>
+            <!-- Villavicencio -->
+            <circle cx="270" cy="230" r="3" fill="#00BFA6" opacity=".5"/><text x="290" y="228" text-anchor="start" fill="#6EE7B7" font-size="7">Villavicencio</text>
+            <!-- Pasto -->
+            <circle cx="155" cy="395" r="3" fill="#00BFA6" opacity=".5"/><text x="135" y="393" text-anchor="end" fill="#6EE7B7" font-size="7">Pasto</text>
+            <!-- Tumaco -->
+            <circle cx="118" cy="370" r="2.5" fill="#00BFA6" opacity=".4"/><text x="98" y="368" text-anchor="end" fill="#6EE7B7" font-size="7">Tumaco</text>
+            <!-- Florencia -->
+            <circle cx="220" cy="365" r="2.5" fill="#00BFA6" opacity=".4"/><text x="240" y="363" text-anchor="start" fill="#6EE7B7" font-size="7">Florencia</text>
+            <!-- Leticia -->
+            <circle cx="400" cy="570" r="3.5" fill="#00BFA6" opacity=".5"><animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/></circle>
+            <text x="400" y="560" text-anchor="middle" fill="#6EE7B7" font-size="8">Leticia</text>
+            <!-- Mitú -->
+            <circle cx="365" cy="385" r="2.5" fill="#00BFA6" opacity=".4"><animate attributeName="r" values="2;4;2" dur="2.8s" repeatCount="indefinite"/></circle>
+            <text x="382" y="383" text-anchor="start" fill="#6EE7B7" font-size="7">Mitú</text>
+            <!-- Puerto Inírida -->
+            <circle cx="425" cy="260" r="2.5" fill="#00BFA6" opacity=".4"/><text x="442" y="258" text-anchor="start" fill="#6EE7B7" font-size="7">Pto. Inírida</text>
         </g>
         <!-- Líneas de conexión a Bogotá -->
-        <g stroke="#006D6D" stroke-width=".8" opacity=".25" stroke-dasharray="4 4">
-            <line x1="248" y1="48" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.8s" repeatCount="indefinite"/></line>
-            <line x1="195" y1="115" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite"/></line>
-            <line x1="188" y1="215" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.2s" repeatCount="indefinite"/></line>
-            <line x1="165" y1="390" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.5s" repeatCount="indefinite"/></line>
-            <line x1="68" y1="82" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.8s" repeatCount="indefinite"/></line>
-            <line x1="268" y1="268" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.6s" repeatCount="indefinite"/></line>
-            <line x1="295" y1="218" x2="228" y2="170"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.4s" repeatCount="indefinite"/></line>
+        <g stroke="#006D6D" stroke-width="1" opacity=".2" stroke-dasharray="4 4">
+            <line x1="272" y1="72" x2="225" y2="215"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.8s" repeatCount="indefinite"/></line>
+            <line x1="200" y1="148" x2="225" y2="215"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite"/></line>
+            <line x1="175" y1="275" x2="225" y2="215"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.2s" repeatCount="indefinite"/></line>
+            <line x1="400" y1="570" x2="225" y2="215"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.5s" repeatCount="indefinite"/></line>
+            <line x1="52" y1="140" x2="225" y2="215"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.8s" repeatCount="indefinite"/></line>
+            <line x1="365" y1="385" x2="225" y2="215"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.6s" repeatCount="indefinite"/></line>
+            <line x1="425" y1="260" x2="225" y2="215"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.4s" repeatCount="indefinite"/></line>
+            <line x1="118" y1="370" x2="225" y2="215"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.3s" repeatCount="indefinite"/></line>
         </g>
         <!-- Productos -->
-        <g transform="translate(60,430)"><rect width="130" height="32" rx="8" fill="rgba(0,109,109,.15)" stroke="rgba(0,109,109,.3)"/><text x="65" y="18" text-anchor="middle" fill="#006D6D" font-size="10" font-weight="700">AlejoSeguro</text><text x="65" y="28" text-anchor="middle" fill="rgba(0,109,109,.6)" font-size="7">Recolección en terreno</text></g>
-        <g transform="translate(230,430)"><rect width="130" height="32" rx="8" fill="rgba(212,136,58,.15)" stroke="rgba(212,136,58,.3)"/><text x="65" y="18" text-anchor="middle" fill="#D4883A" font-size="10" font-weight="700">GabyPredice</text><text x="65" y="28" text-anchor="middle" fill="rgba(212,136,58,.6)" font-size="7">Estrategia nacional</text></g>
-        <line x1="190" y1="446" x2="230" y2="446" stroke="rgba(255,255,255,.2)" stroke-width="1.5" marker-end="url(#arr)"/>
-        <text x="210" y="485" text-anchor="middle" fill="rgba(255,255,255,.25)" font-size="10">Datos en tiempo real desde todo el territorio</text>
+        <g transform="translate(60,595)"><rect width="160" height="36" rx="8" fill="rgba(0,109,109,.15)" stroke="rgba(0,109,109,.3)"/><text x="80" y="20" text-anchor="middle" fill="#006D6D" font-size="12" font-weight="700">AlejoSeguro</text><text x="80" y="32" text-anchor="middle" fill="rgba(0,109,109,.6)" font-size="8">Recolección en terreno</text></g>
+        <g transform="translate(280,595)"><rect width="160" height="36" rx="8" fill="rgba(212,136,58,.15)" stroke="rgba(212,136,58,.3)"/><text x="80" y="20" text-anchor="middle" fill="#D4883A" font-size="12" font-weight="700">GabyPredice</text><text x="80" y="32" text-anchor="middle" fill="rgba(212,136,58,.6)" font-size="8">Estrategia nacional</text></g>
+        <line x1="220" y1="613" x2="280" y2="613" stroke="rgba(255,255,255,.2)" stroke-width="1.5" marker-end="url(#arr)"/>
     </svg>
 </div>
 </div>

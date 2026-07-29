@@ -721,7 +721,8 @@ ul {
 .case-card-alejo,
 .case-card-ceci,
 .case-card-predice,
-.case-card-tavodebate {
+.case-card-tavodebate,
+.case-card-guscoordina {
   grid-column: auto;
   text-align: left;
 }
@@ -729,7 +730,8 @@ ul {
 .case-card-alejo .case-icon-img,
 .case-card-ceci .case-icon,
 .case-card-predice .case-icon,
-.case-card-tavodebate .case-icon {
+.case-card-tavodebate .case-icon,
+.case-card-guscoordina .case-icon {
   margin: 0 0 20px 0;
 }
 
@@ -741,7 +743,8 @@ ul {
 .case-card-alejo p,
 .case-card-ceci p,
 .case-card-predice p,
-.case-card-tavodebate p {
+.case-card-tavodebate p,
+.case-card-guscoordina p {
   max-width: none;
   margin: 0 0 20px 0;
   font-size: 0.95rem;
@@ -750,7 +753,8 @@ ul {
 
 .case-card-ceci .case-features,
 .case-card-predice .case-features,
-.case-card-tavodebate .case-features {
+.case-card-tavodebate .case-features,
+.case-card-guscoordina .case-features {
   text-align: left;
   max-width: none;
   margin: 0 0 20px 0;
@@ -2152,7 +2156,8 @@ ul {
 
   .case-card-alejo,
   .case-card-predice,
-  .case-card-tavodebate {
+  .case-card-tavodebate,
+  .case-card-guscoordina {
     grid-column: auto;
   }
 }

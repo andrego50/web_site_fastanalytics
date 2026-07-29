@@ -24,7 +24,7 @@
 2. AI Agents for Decision-Making — Real-time data analysis assistants
 3. Data Collection (bots, surveys) — Massive surveys via bots, fast and frictionless
 4. Security & Coexistence Consulting — 20+ years of field experience in public safety
-5. Strategic Design Thinking — Design thinking workshops for security, defense and organized crime. We facilitate, design and deliver: strategies, solution prototypes, roadmaps and KPIs — from conception to implementation and measurement. Target: law enforcement, defense, banking, insurance, and enterprises facing organized crime threats (narcotrafficking, fraud, money laundering)
+5. Product Design — Tailor-made data and AI product design for security, defense and organized crime. We facilitate, design and deliver: diagnostics, functional prototypes, roadmaps and KPIs — from conception to implementation and measurement. Target: law enforcement, defense, banking, insurance, and enterprises facing organized crime threats (narcotrafficking, fraud, money laundering)
 6. Dashboards / Data Visualization — Actionable data dashboards
 7. Data Training & Education — Hands-on data training for teams
 8. Research & Publications — Applied research that becomes public policy

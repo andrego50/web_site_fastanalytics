@@ -180,7 +180,7 @@
       updateLightbox();
     }
 
-    var gallerySelectors = ['.alejo-screenshots', '.vigia-screenshots', '.tavodebate-screenshots'];
+    var gallerySelectors = ['.alejo-screenshots', '.predice-screenshots', '.tavodebate-screenshots'];
     gallerySelectors.forEach(function (sel) {
       document.querySelectorAll(sel).forEach(function (gallery) {
         var images = Array.prototype.slice.call(gallery.querySelectorAll('img'));

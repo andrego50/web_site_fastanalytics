@@ -701,7 +701,7 @@ ul {
 /* All product cards share the same small half-width layout */
 .case-card-alejo,
 .case-card-alejogeo,
-.case-card-vigia,
+.case-card-predice,
 .case-card-tavodebate {
   grid-column: auto;
   text-align: left;
@@ -709,7 +709,7 @@ ul {
 
 .case-card-alejo .case-icon-img,
 .case-card-alejogeo .case-icon-img,
-.case-card-vigia .case-icon,
+.case-card-predice .case-icon,
 .case-card-tavodebate .case-icon {
   margin: 0 0 20px 0;
 }
@@ -721,7 +721,7 @@ ul {
 
 .case-card-alejo p,
 .case-card-alejogeo p,
-.case-card-vigia p,
+.case-card-predice p,
 .case-card-tavodebate p {
   max-width: none;
   margin: 0 0 20px 0;
@@ -730,7 +730,7 @@ ul {
 }
 
 .case-card-alejogeo .case-features,
-.case-card-vigia .case-features,
+.case-card-predice .case-features,
 .case-card-tavodebate .case-features {
   text-align: left;
   max-width: none;
@@ -761,14 +761,14 @@ ul {
   transform: scale(1.02);
 }
 
-.vigia-screenshots {
+.predice-screenshots {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin: 20px 0;
 }
 
-.vigia-screenshot {
+.predice-screenshot {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
@@ -779,7 +779,7 @@ ul {
   transition: var(--transition);
 }
 
-.vigia-screenshot:hover {
+.predice-screenshot:hover {
   box-shadow: var(--shadow-lg);
   transform: scale(1.02);
 }
@@ -816,7 +816,7 @@ ul {
 
 /* ========== LIGHTBOX ========== */
 .alejo-screenshot,
-.vigia-screenshot,
+.predice-screenshot,
 .tavodebate-screenshot {
   cursor: zoom-in;
 }
@@ -2027,20 +2027,20 @@ ul {
   }
 
   .alejo-screenshots,
-  .vigia-screenshots,
+  .predice-screenshots,
   .tavodebate-screenshots {
     grid-template-columns: 1fr;
   }
 
   .alejo-screenshot,
-  .vigia-screenshot,
+  .predice-screenshot,
   .tavodebate-screenshot {
     aspect-ratio: 16 / 9;
   }
 
   .case-card-alejo,
   .case-card-alejogeo,
-  .case-card-vigia,
+  .case-card-predice,
   .case-card-tavodebate {
     grid-column: auto;
   }

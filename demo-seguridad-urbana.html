@@ -8,7 +8,8 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:hidden}
+html{overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:hidden;max-width:100vw}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(0,109,109,.4);border-radius:3px}
 :root{--teal:#006D6D;--orange:#D4883A;--dark:#080C14;--card:rgba(255,255,255,.03);--border:rgba(255,255,255,.06)}
 .glass{background:var(--card);backdrop-filter:blur(20px);border:1px solid var(--border)}
@@ -71,36 +72,42 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 
 <!-- HEADER -->
 <header class="fixed top-0 w-full z-50 glass border-b border-white/5">
-<div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-<div class="flex items-center gap-3">
+<div class="max-w-7xl mx-auto px-3 sm:px-6 py-3 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 sm:gap-3 min-w-0">
     <svg width="36" height="36" viewBox="0 0 48 48"><g transform="translate(2,2)"><polygon points="24,1 38,5.8 45,19 42,33 32,43 16,43 6,33 3,19 10,5.8" fill="none" stroke="#006D6D" stroke-width="2.2" stroke-linejoin="round"/><line x1="24" y1="1" x2="32" y2="43" stroke="#006D6D" stroke-width=".4" opacity=".12"/><line x1="38" y1="5.8" x2="6" y2="33" stroke="#006D6D" stroke-width=".4" opacity=".12"/><line x1="45" y1="19" x2="16" y2="43" stroke="#006D6D" stroke-width=".4" opacity=".12"/><circle cx="24" cy="1" r="2.2" fill="#006D6D"/><circle cx="38" cy="5.8" r="1.7" fill="#006D6D"/><circle cx="45" cy="19" r="2.2" fill="#006D6D"/><circle cx="42" cy="33" r="1.7" fill="#006D6D"/><circle cx="32" cy="43" r="2.2" fill="#006D6D"/><circle cx="16" cy="43" r="1.7" fill="#006D6D"/><circle cx="6" cy="33" r="2.2" fill="#006D6D"/><circle cx="3" cy="19" r="1.7" fill="#006D6D"/><circle cx="10" cy="5.8" r="2.2" fill="#006D6D"/><rect x="15" y="23" width="5.5" height="14" rx="1.8" fill="#006D6D" opacity=".8"/><rect x="21.5" y="17" width="5.5" height="20" rx="1.8" fill="#006D6D"/><rect x="28" y="12" width="5.5" height="25" rx="1.8" fill="#D4883A"/></g></svg>
     <div>
         <span class="text-base font-extrabold tracking-tight"><span style="color:#006D6D">F</span><span style="color:#D4883A">a</span><span style="color:#006D6D">stAnalyt</span><span style="color:#D4883A">i</span><span style="color:#006D6D">cs</span></span>
-        <span class="text-xs text-slate-500 ml-2">Seguridad Ciudadana Inteligente</span>
+        <span class="hidden sm:inline text-xs text-slate-500 ml-2">Seguridad Ciudadana Inteligente</span>
     </div>
 </div>
-<div class="flex items-center gap-4">
-    <div id="voiceStatus" class="flex items-center gap-2 text-xs text-slate-500"><span class="w-2 h-2 rounded-full bg-slate-600"></span>Audio listo</div>
-    <div id="sceneLabel" class="text-xs text-slate-500 font-medium tracking-wider uppercase hidden"></div>
-    <a href="index.html#casos" class="text-xs text-slate-300 hover:text-teal-400 transition px-3 py-1.5 rounded-lg hover:bg-white/5 inline-flex items-center gap-1">
+<div class="flex items-center gap-1 sm:gap-3 flex-shrink-0">
+    <button id="voiceToggle" onclick="toggleVoice()" title="Silenciar narración" aria-label="Silenciar narración" class="flex items-center gap-2 text-xs text-slate-500 hover:text-teal-400 transition px-2 py-1.5 rounded-lg hover:bg-white/5">
+      <span id="voiceDot" class="w-2 h-2 rounded-full bg-slate-600 flex-shrink-0"></span><span id="voiceLabel" class="hidden md:inline whitespace-nowrap">Audio listo</span>
+    </button>
+    <div class="hidden xl:block"><div id="sceneLabel" class="text-xs text-slate-500 font-medium tracking-wider uppercase hidden"></div></div>
+    <a href="index.html#casos" class="hidden sm:inline-flex text-xs text-slate-300 hover:text-teal-400 transition px-3 py-1.5 rounded-lg hover:bg-white/5 items-center gap-1 whitespace-nowrap">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
       Productos
     </a>
-    <button onclick="resetDemo()" class="text-xs text-slate-500 hover:text-teal-400 transition px-3 py-1.5 rounded-lg hover:bg-white/5">&#8635; Reiniciar</button>
+    <button onclick="resetDemo()" class="hidden lg:block text-xs text-slate-500 hover:text-teal-400 transition px-3 py-1.5 rounded-lg hover:bg-white/5 whitespace-nowrap">&#8635; Reiniciar</button>
+    <a href="mailto:hola@fastanalytics.co?subject=Demo Seguridad Ciudadana Inteligente" class="btn-fa text-white font-semibold text-xs px-3 sm:px-4 py-2 rounded-lg inline-flex items-center gap-1.5 whitespace-nowrap flex-shrink-0">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span class="hidden sm:inline">Solicitar demo</span><span class="sm:hidden">Demo</span>
+    </a>
 </div>
 </div>
 </header>
 
 <!-- ======================= ESCENA 0: INTRO ======================= -->
 <section id="scene0" class="scene active min-h-screen flex items-center pt-16">
-<div class="max-w-7xl mx-auto px-6 w-full">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 w-full">
 <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
 <div class="anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-teal text-xs font-medium mb-6" style="color:#006D6D">
         <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#006D6D"></span>
         IA Espaciotemporal para Decisiones Predictivas
     </div>
-    <h1 class="text-5xl lg:text-6xl font-black leading-tight mb-6">
+    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
         <span class="text-white">Colombia</span><br>
         <span style="background:linear-gradient(135deg,#006D6D,#008080,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">decide con datos,</span><br>
         <span class="text-white">actúa con</span>
@@ -111,18 +118,18 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
     <div class="flex flex-wrap items-center gap-4 mb-10">
         <button onclick="startDemo()" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base anim-pulse">Iniciar Demostración &#8594;</button>
     </div>
-    <div class="flex items-center gap-8 text-center">
-        <div><div class="text-2xl font-bold text-white">94%</div><div class="text-xs text-slate-500">Precisión predictiva</div></div>
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-3 sm:gap-x-8 text-center">
+        <div><div class="text-xl sm:text-2xl font-bold text-white">3</div><div class="text-[11px] sm:text-xs text-slate-500">Sistemas integrados</div></div>
         <div class="w-px h-8 bg-white/10"></div>
-        <div><div class="text-2xl font-bold text-white">&lt; 2s</div><div class="text-xs text-slate-500">Tiempo de respuesta</div></div>
+        <div><div class="text-xl sm:text-2xl font-bold text-white">6</div><div class="text-[11px] sm:text-xs text-slate-500">Agentes del PMU</div></div>
         <div class="w-px h-8 bg-white/10"></div>
-        <div><div class="text-2xl font-bold text-white">9</div><div class="text-xs text-slate-500">Fases decisionales</div></div>
+        <div><div class="text-xl sm:text-2xl font-bold text-white">9</div><div class="text-[11px] sm:text-xs text-slate-500">Fases decisionales</div></div>
         <div class="w-px h-8 bg-white/10"></div>
-        <div><div class="text-2xl font-bold text-white">24/7</div><div class="text-xs text-slate-500">Monitoreo activo</div></div>
+        <div><div class="text-xl sm:text-2xl font-bold text-white">24/7</div><div class="text-[11px] sm:text-xs text-slate-500">Monitoreo activo</div></div>
     </div>
 </div>
 <div class="anim-r flex justify-center">
-    <svg width="420" height="520" viewBox="0 0 500 620" class="anim-float">
+    <svg width="100%" height="auto" viewBox="0 0 500 620" class="anim-float" style="max-width:420px">
         <defs>
             <linearGradient id="gCol" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#006D6D" stop-opacity=".3"/><stop offset="100%" stop-color="#00BFA6" stop-opacity=".1"/></linearGradient>
             <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -227,7 +234,7 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 
 <!-- ======================= ESCENA 1: FLUJO COMPLETO ======================= -->
 <section id="scene1" class="scene min-h-screen pt-20">
-<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
 <div class="text-center mb-4 anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-teal text-xs font-medium mb-3" style="color:#006D6D">
         <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#006D6D"></span>Caso: Extorsión a comerciantes en Barranquilla
@@ -537,7 +544,7 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 
 <!-- ======================= ESCENA 2: GUSCOORDINA (PMU) ======================= -->
 <section id="scene2" class="scene min-h-screen pt-20">
-<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
 <div class="text-center mb-6 anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-violet text-xs font-medium mb-3" style="color:#9F91E8">
         <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#7C6CDC"></span>GusCoordina · Puesto de Mando Unificado
@@ -547,7 +554,7 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 </div>
 <div class="grid lg:grid-cols-5 gap-6">
     <div class="lg:col-span-2 flex justify-center items-start">
-        <svg id="comandoSvg" width="380" height="400" viewBox="0 0 380 400">
+        <svg id="comandoSvg" width="100%" height="auto" viewBox="0 0 380 400" style="max-width:380px">
             <defs><filter id="cGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
             <g id="comandoEdges"></g><g id="comandoNodes"></g>
             <circle cx="190" cy="195" r="38" fill="rgba(124,108,220,.08)" stroke="rgba(124,108,220,.3)" stroke-width="1.5" stroke-dasharray="3 3"/>
@@ -559,7 +566,7 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
         <div class="glass-violet rounded-2xl p-6" id="agentDetail">
             <div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧭</div><h3 class="text-lg font-semibold text-white/60">Seleccione un agente del PMU</h3><p class="text-sm text-slate-500 mt-2">Cada agente coordina una capacidad distinta del Puesto de Mando Unificado en tiempo real</p></div>
         </div>
-        <div class="grid grid-cols-4 gap-3">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold" style="color:#9F91E8">4</div><div class="text-[10px] text-slate-500">Instituciones convocadas</div></div>
             <div class="glass rounded-xl p-3 text-center anim-fade delay-1"><div class="text-xl font-bold" style="color:#9F91E8">6</div><div class="text-[10px] text-slate-500">Agentes especializados</div></div>
             <div class="glass rounded-xl p-3 text-center anim-fade delay-2"><div class="text-xl font-bold text-amber-400">3</div><div class="text-[10px] text-slate-500">Interfaces en tiempo real</div></div>
@@ -568,15 +575,19 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
     </div>
 </div>
 <div class="flex justify-between items-center mt-8">
-    <button onclick="goScene(1)" class="glass rounded-xl px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> Caso Barranquilla</button>
-    <button onclick="goScene(3)" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2">Estrategia Nacional <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
+    <button onclick="goScene(1)" class="glass rounded-xl px-4 sm:px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> <span class="hidden sm:inline">Caso Barranquilla</span><span class="sm:hidden">Atrás</span></button>
+    <a href="https://guscoordina.fastanalytics.co/" target="_blank" rel="noopener" class="hidden md:inline-flex glass-violet rounded-xl px-5 py-3 text-sm font-semibold transition items-center gap-2 hover:brightness-125" style="color:#9F91E8">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Abrir GusCoordina real
+    </a>
+    <button onclick="goScene(3)" class="btn-fa text-white font-semibold px-4 sm:px-6 py-3 rounded-xl flex items-center gap-2"><span class="hidden sm:inline">Estrategia Nacional</span><span class="sm:hidden">Siguiente</span> <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
 </div>
 </div>
 </section>
 
 <!-- ======================= ESCENA 3: GABYPREDICE (ENEÁGONO) ======================= -->
 <section id="scene3" class="scene min-h-screen pt-20">
-<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
 <div class="text-center mb-6 anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-orange text-xs font-medium mb-3" style="color:#D4883A">
         <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#D4883A"></span>GabyPredice · Estrategia Nacional
@@ -586,7 +597,7 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 </div>
 <div class="grid lg:grid-cols-5 gap-6">
     <div class="lg:col-span-2 flex justify-center items-start">
-        <svg id="eneagonoSvg" width="380" height="400" viewBox="0 0 380 400">
+        <svg id="eneagonoSvg" width="100%" height="auto" viewBox="0 0 380 400" style="max-width:380px">
             <defs><filter id="nGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
             <g id="eneagonoEdges"></g><g id="eneagonoNodes"></g>
             <text x="190" y="195" text-anchor="middle" fill="rgba(255,255,255,.12)" font-size="10" font-weight="600">ENEÁGONO</text>
@@ -597,7 +608,7 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
         <div class="glass-teal rounded-2xl p-6" id="phaseDetail">
             <div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase articula capacidades del Estado para la toma de decisiones estratégicas de seguridad</p></div>
         </div>
-        <div class="grid grid-cols-4 gap-3">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold" style="color:#006D6D">47K</div><div class="text-[10px] text-slate-500">Reportes activos</div></div>
             <div class="glass rounded-xl p-3 text-center anim-fade delay-1"><div class="text-xl font-bold" style="color:#D4883A">156</div><div class="text-[10px] text-slate-500">Decisiones en curso</div></div>
             <div class="glass rounded-xl p-3 text-center anim-fade delay-2"><div class="text-xl font-bold text-amber-400">23</div><div class="text-[10px] text-slate-500">Alertas predictivas</div></div>
@@ -614,9 +625,9 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 
 <!-- ======================= ESCENA 4: CIERRE ======================= -->
 <section id="scene4" class="scene min-h-screen pt-20">
-<div class="max-w-7xl mx-auto px-6 py-6">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
 <div class="text-center mb-8 anim-up">
-    <h2 class="text-4xl font-black text-white mb-3">Un Ecosistema.<br><span style="color:#006D6D">Una Misión.</span></h2>
+    <h2 class="text-3xl sm:text-4xl font-black text-white mb-3">Un Ecosistema.<br><span style="color:#006D6D">Una Misión.</span></h2>
     <p class="text-lg text-slate-400 max-w-2xl mx-auto">Del celular del ciudadano al escritorio presidencial. Así se articula la seguridad basada en datos.</p>
 </div>
 <div class="glass rounded-2xl p-6 mb-8">
@@ -636,11 +647,12 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
         <div class="text-center flex-1 min-w-[110px] anim-fade delay-4"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-2 bg-emerald-500/10">🏛️</div><div class="text-sm font-semibold text-white">Gobierno</div><div class="text-[10px] text-slate-500">Decisiones informadas</div></div>
     </div>
 </div>
-<div class="grid md:grid-cols-4 gap-6 mb-8">
-    <div class="glass-teal rounded-2xl p-6 text-center anim-fade"><div class="text-5xl font-black mb-2" style="color:#006D6D">47K+</div><div class="text-sm text-white font-semibold mb-1">Reportes ciudadanos procesados</div><div class="text-xs text-slate-500">Fotos, videos, audios y ubicaciones analizados en tiempo real</div></div>
-    <div class="glass-orange rounded-2xl p-6 text-center anim-fade delay-2"><div class="text-5xl font-black mb-2" style="color:#D4883A">9</div><div class="text-sm text-white font-semibold mb-1">Fases del Eneágono Decisional</div><div class="text-xs text-slate-500">De la postura estratégica a la orden ejecutiva con evaluación de impacto</div></div>
-    <div class="glass-violet rounded-2xl p-6 text-center anim-fade delay-3"><div class="text-5xl font-black mb-2" style="color:#9F91E8">6</div><div class="text-sm text-white font-semibold mb-1">Agentes del Puesto de Mando Unificado</div><div class="text-xs text-slate-500">Coordinación interinstitucional en tiempo real por incidente</div></div>
-    <div class="glass rounded-2xl p-6 text-center anim-fade delay-4" style="border-color:rgba(16,185,129,.2)"><div class="text-5xl font-black text-emerald-400 mb-2">94.2%</div><div class="text-sm text-white font-semibold mb-1">Precisión predictiva estimada</div><div class="text-xs text-slate-500">Cifra de referencia del demo para modelos de predicción espaciotemporal</div></div>
+<div class="text-center mb-4"><span class="text-[10px] text-slate-500 uppercase tracking-wider">Lo que acaba de ver en esta demostración</span></div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mb-10">
+    <div class="glass-teal rounded-2xl p-6 text-center anim-fade"><div class="text-4xl sm:text-5xl font-black mb-2" style="color:#006D6D">47K+</div><div class="text-sm text-white font-semibold mb-1">Reportes ciudadanos procesados</div><div class="text-xs text-slate-500">Fotos, videos, audios y ubicaciones analizados en tiempo real</div></div>
+    <div class="glass-orange rounded-2xl p-6 text-center anim-fade delay-2"><div class="text-4xl sm:text-5xl font-black mb-2" style="color:#D4883A">9</div><div class="text-sm text-white font-semibold mb-1">Fases del Eneágono Decisional</div><div class="text-xs text-slate-500">De la postura estratégica a la orden ejecutiva con evaluación de impacto</div></div>
+    <div class="glass-violet rounded-2xl p-6 text-center anim-fade delay-3"><div class="text-4xl sm:text-5xl font-black mb-2" style="color:#9F91E8">6</div><div class="text-sm text-white font-semibold mb-1">Agentes del Puesto de Mando Unificado</div><div class="text-xs text-slate-500">Coordinación interinstitucional en tiempo real por incidente</div></div>
+    <div class="glass rounded-2xl p-6 text-center anim-fade delay-4" style="border-color:rgba(16,185,129,.2)"><div class="text-4xl sm:text-5xl font-black text-emerald-400 mb-2">3</div><div class="text-sm text-white font-semibold mb-1">Sistemas que trabajan como uno</div><div class="text-xs text-slate-500">AlejoSeguro en terreno · GusCoordina en el PMU · GabyPredice en la estrategia</div></div>
 </div>
 <div class="grid md:grid-cols-3 gap-4 mb-8">
     <div class="glass rounded-xl p-5">
@@ -683,14 +695,93 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
         </div>
     </div>
 </div>
+<!-- ESTO YA PASÓ · resultados reales verificables en prensa -->
+<div class="glass rounded-2xl p-5 sm:p-8 mb-8 anim-fade" style="border-color:rgba(16,185,129,.25)">
+    <div class="text-center mb-6">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-3" style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);color:#10B981">
+            <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#10B981"></span>Impacto real · Esto no es una simulación
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-black text-white mb-2">Esto ya pasó.</h3>
+        <p class="text-sm text-slate-400 max-w-2xl mx-auto">Nuestro fundador diseñó, desplegó y propuso las estrategias basadas en sus modelos. Generales y alcaldes dieron las ruedas de prensa. Estos fueron los resultados.</p>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
+        <div class="glass rounded-xl p-4 text-center">
+            <div class="text-3xl sm:text-4xl font-black text-emerald-400 mb-1">772</div>
+            <div class="text-[11px] text-white font-semibold leading-snug">municipios sin un solo homicidio</div>
+            <div class="text-[10px] text-slate-500 mt-1">Colombia · diciembre 2021</div>
+        </div>
+        <div class="glass rounded-xl p-4 text-center">
+            <div class="text-3xl sm:text-4xl font-black text-emerald-400 mb-1">19</div>
+            <div class="text-[11px] text-white font-semibold leading-snug">años sin un diciembre tan seguro</div>
+            <div class="text-[10px] text-slate-500 mt-1">Récord nacional</div>
+        </div>
+        <div class="glass rounded-xl p-4 text-center">
+            <div class="text-3xl sm:text-4xl font-black text-emerald-400 mb-1">18</div>
+            <div class="text-[11px] text-white font-semibold leading-snug">años: homicidios en Bogotá al nivel más bajo</div>
+            <div class="text-[10px] text-slate-500 mt-1">Bajo 100 casos por primera vez desde 2003</div>
+        </div>
+        <div class="glass rounded-xl p-4 text-center">
+            <div class="text-3xl sm:text-4xl font-black text-emerald-400 mb-1">29</div>
+            <div class="text-[11px] text-white font-semibold leading-snug">años: Cali, dos días seguidos sin homicidios</div>
+            <div class="text-[10px] text-slate-500 mt-1">Primera vez en tres décadas</div>
+        </div>
+    </div>
+    <div class="text-center">
+        <div class="text-[10px] text-slate-500 uppercase tracking-wider mb-3">Verifíquelo usted mismo en la prensa</div>
+        <div class="flex flex-wrap items-center justify-center gap-2">
+            <a href="https://www.semana.com/nacion/articulo/colombia-vivio-el-diciembre-mas-seguro-de-los-ultimos-19-anos-policia/202226/" target="_blank" rel="noopener" class="text-[11px] px-3 py-1.5 rounded-lg glass text-slate-300 hover:text-emerald-400 transition">Semana ↗</a>
+            <a href="https://www.eltiempo.com/bogota/balance-de-seguridad-de-2021-en-bogota-homicidio-y-hurto-bajaron-642871" target="_blank" rel="noopener" class="text-[11px] px-3 py-1.5 rounded-lg glass text-slate-300 hover:text-emerald-400 transition">El Tiempo ↗</a>
+            <a href="https://bogota.gov.co/mi-ciudad/seguridad/bogota-rompio-la-tendencia-del-delito-y-redujo-el-hurto-en-bogota" target="_blank" rel="noopener" class="text-[11px] px-3 py-1.5 rounded-lg glass text-slate-300 hover:text-emerald-400 transition">Bogotá.gov.co ↗</a>
+            <a href="https://www.cali.gov.co/seguridad/publicaciones/170504/cali-registro-reduccion-historica-en-el-numero-de-homicidios/" target="_blank" rel="noopener" class="text-[11px] px-3 py-1.5 rounded-lg glass text-slate-300 hover:text-emerald-400 transition">Cali.gov.co ↗</a>
+        </div>
+    </div>
+</div>
+
+<!-- FUNDADOR -->
+<div class="glass rounded-2xl p-5 sm:p-6 mb-8 anim-fade">
+    <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 text-center sm:text-left">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-xl font-black flex-shrink-0" style="background:rgba(0,109,109,.12);border:1px solid rgba(0,109,109,.35);color:#006D6D">APC</div>
+        <div class="flex-1">
+            <div class="text-base font-bold text-white">Andrés Pérez Coronado</div>
+            <div class="text-xs mb-2" style="color:#006D6D">Fundador · Arquitecto de IA/ML</div>
+            <p class="text-xs text-slate-400 leading-relaxed">PhD en Ingeniería Matemática (EAFIT) · Humphrey Fellow (University of Minnesota) · Becario Fulbright · 20+ años en analítica de seguridad ciudadana liderando equipos de más de 80 analistas · Autor de dos libros sobre seguridad y analítica de datos.</p>
+        </div>
+        <a href="andres-perez-coronado.html" class="text-xs text-slate-300 hover:text-teal-400 transition px-4 py-2 rounded-lg glass whitespace-nowrap flex-shrink-0">Ver perfil →</a>
+    </div>
+</div>
+
 <div class="text-center glass-teal rounded-2xl p-8 anim-fade">
     <div class="flex items-center justify-center gap-3 mb-4">
         <svg width="44" height="44" viewBox="0 0 48 48"><g transform="translate(2,2)"><polygon points="24,1 38,5.8 45,19 42,33 32,43 16,43 6,33 3,19 10,5.8" fill="none" stroke="#006D6D" stroke-width="2.2" stroke-linejoin="round"/><line x1="24" y1="1" x2="32" y2="43" stroke="#006D6D" stroke-width=".4" opacity=".12"/><line x1="38" y1="5.8" x2="6" y2="33" stroke="#006D6D" stroke-width=".4" opacity=".12"/><rect x="15" y="23" width="5.5" height="14" rx="1.8" fill="#006D6D" opacity=".8"/><rect x="21.5" y="17" width="5.5" height="20" rx="1.8" fill="#006D6D"/><rect x="28" y="12" width="5.5" height="25" rx="1.8" fill="#D4883A"/></g></svg>
         <div class="text-left"><span class="text-xl font-extrabold"><span style="color:#006D6D">F</span><span style="color:#D4883A">a</span><span style="color:#006D6D">stAnalyt</span><span style="color:#D4883A">i</span><span style="color:#006D6D">cs</span></span><br><span class="text-xs text-slate-400">IA Espaciotemporal para Decisiones Predictivas</span></div>
     </div>
     <p class="text-lg text-white font-semibold mb-2">Predecimos dónde y cuándo actuar.</p>
-    <p class="text-sm text-slate-400 mb-4">Convertimos datos en decisiones. Usted actúa antes, no después.</p>
-    <p class="text-xs text-slate-500">hola@fastanalytics.co · fastanalytics.co</p>
+    <p class="text-sm text-slate-400 mb-6">Convertimos datos en decisiones. Usted actúa antes, no después.</p>
+
+    <div class="grid sm:grid-cols-3 gap-3 max-w-2xl mx-auto mb-6 text-left">
+        <div class="glass rounded-xl p-4">
+            <div class="text-xs font-bold text-white mb-1">1 · Diagnóstico</div>
+            <div class="text-[11px] text-slate-400 leading-relaxed">Revisamos sus datos y definimos los KPI del piloto desde el primer día.</div>
+        </div>
+        <div class="glass rounded-xl p-4">
+            <div class="text-xs font-bold text-white mb-1">2 · Prototipo</div>
+            <div class="text-[11px] text-slate-400 leading-relaxed">Prototipo funcional en <strong class="text-white">semanas, no meses</strong>, sobre su territorio real.</div>
+        </div>
+        <div class="glass rounded-xl p-4">
+            <div class="text-xs font-bold text-white mb-1">3 · Despliegue</div>
+            <div class="text-[11px] text-slate-400 leading-relaxed">Puesta en marcha con su equipo y medición de resultados contra los KPI.</div>
+        </div>
+    </div>
+
+    <a href="mailto:hola@fastanalytics.co?subject=Demo Seguridad Ciudadana Inteligente&amp;body=Hola,%20vi%20la%20demostración%20de%20Seguridad%20Ciudadana%20Inteligente%20(AlejoSeguro,%20GusCoordina%20y%20GabyPredice)%20y%20quiero%20agendar%20una%20conversación.%0A%0AEntidad:%0ACargo:%0ATeléfono:%0A" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base inline-flex items-center gap-2 anim-pulse">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Solicitar demostración
+    </a>
+    <p class="text-xs text-slate-500 mt-4">
+        <a href="mailto:hola@fastanalytics.co" class="hover:text-teal-400 transition">hola@fastanalytics.co</a>
+        ·
+        <a href="https://fastanalytics.co" class="hover:text-teal-400 transition">fastanalytics.co</a>
+    </p>
 </div>
 <div class="flex justify-between items-center mt-6 mb-6">
     <button onclick="goScene(3)" class="glass rounded-xl px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> PMU</button>
@@ -799,12 +890,29 @@ function playNotif(){playTone(880,.1);setTimeout(function(){playTone(1100,.15)},
 function playClick(){playTone(600,.05,'square',.04)}
 function playSuccess(){playTone(523,.1);setTimeout(function(){playTone(659,.1)},100);setTimeout(function(){playTone(784,.2)},200)}
 
+var voiceMuted=false;
+function setVoiceUI(state){
+    var dot=document.getElementById('voiceDot'),lab=document.getElementById('voiceLabel');
+    if(!dot||!lab)return;
+    var base='w-2 h-2 rounded-full flex-shrink-0 ',lbase='hidden md:inline whitespace-nowrap ';
+    if(state==='muted'){dot.className=base+'bg-slate-700';lab.className=lbase+'text-slate-600';lab.textContent='Audio silenciado'}
+    else if(state==='speaking'){dot.className=base+'bg-emerald-400 animate-pulse';lab.className=lbase+'text-emerald-400';lab.textContent='Hablando...'}
+    else{dot.className=base+'bg-slate-600';lab.className=lbase+'text-slate-500';lab.textContent='Audio listo'}
+}
+function toggleVoice(){
+    playClick();voiceMuted=!voiceMuted;
+    var btn=document.getElementById('voiceToggle');
+    if(voiceMuted){synth.cancel();setVoiceUI('muted')}else{setVoiceUI('ready')}
+    if(btn){var t=voiceMuted?'Activar narración':'Silenciar narración';btn.title=t;btn.setAttribute('aria-label',t)}
+}
 function speak(text){
-    synth.cancel();var u=new SpeechSynthesisUtterance(text);u.lang='es-ES';u.rate=1.05;u.pitch=1;u.volume=1;
+    synth.cancel();
+    if(voiceMuted)return;
+    var u=new SpeechSynthesisUtterance(text);u.lang='es-ES';u.rate=1.05;u.pitch=1;u.volume=1;
     var v=synth.getVoices();var pick=v.find(function(x){return x.lang.startsWith('es')&&x.name.indexOf('Jorge')>=0})||v.find(function(x){return x.lang.startsWith('es')&&x.name.indexOf('Paulina')>=0})||v.find(function(x){return x.lang==='es-ES'})||v.find(function(x){return x.lang.startsWith('es')});
     if(pick)u.voice=pick;
-    u.onstart=function(){document.getElementById('voiceStatus').innerHTML='<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span class="text-emerald-400">Hablando...</span>'};
-    u.onend=function(){document.getElementById('voiceStatus').innerHTML='<span class="w-2 h-2 rounded-full bg-slate-600"></span>Audio listo'};
+    u.onstart=function(){setVoiceUI('speaking')};
+    u.onend=function(){setVoiceUI(voiceMuted?'muted':'ready')};
     synth.speak(u);
 }
 if(synth.onvoiceschanged!==undefined)synth.onvoiceschanged=function(){};synth.getVoices();
@@ -828,7 +936,7 @@ function goScene(n){
     if(n===1){resetSteps();showStep(0);animateChat();speak('Escena uno: Un comerciante en Barranquilla recibe un panfleto de extorsión. Desde Telegram, reporta con fotos, video del sospechoso y un audio describiendo lo ocurrido. Todo geolocalizado. La inteligencia artificial lo procesa en segundos, y activa de inmediato al Puesto de Mando Unificado.');}
     if(n===2){buildComando();speak('Escena dos: GusCoordina, el Puesto de Mando Unificado. En cuanto llega el reporte de AlejoSeguro, seis agentes especializados coordinan una respuesta institucional inmediata entre Policía, Gaula, Fiscalía y Alcaldía. Todo lo que aquí se coordina queda registrado, y alimentará después las decisiones estratégicas de GabyPredice. Haga clic en cada agente.');}
     if(n===3){buildEneagono();speak('Escena tres: GabyPredice, el sistema de decisiones organizacionales. Aquí, los incidentes que reportó AlejoSeguro y que coordinó GusCoordina en todo el país se transforman en decisiones anticipativas, a corto y mediano plazo. El Eneágono Decisional de nueve fases articula las capacidades del Estado desde la postura estratégica hasta la orden ejecutiva. Haga clic en cada fase.');}
-    if(n===4)speak('Colombia puede decidir con datos. FastAnalytics ofrece un ecosistema completo: AlejoSeguro recolecta inteligencia ciudadana desde el terreno, GusCoordina la coordina interinstitucionalmente en tiempo real a través del Puesto de Mando Unificado, y GabyPredice transforma esa información acumulada en decisiones organizacionales anticipativas, a corto y mediano plazo. Predecimos dónde y cuándo actuar.');
+    if(n===4)speak('Colombia puede decidir con datos. AlejoSeguro recolecta inteligencia ciudadana desde el terreno, GusCoordina articula la respuesta institucional en tiempo real, y GabyPredice transforma esa información en decisiones anticipativas. Y esto no es solo una promesa: los modelos de nuestro fundador ya dejaron resultados. Setecientos setenta y dos municipios sin un solo homicidio. El diciembre más seguro en diecinueve años. Bogotá en su nivel más bajo desde dos mil tres. Cali, dos días seguidos sin homicidios por primera vez en veintinueve años. Puede verificarlo en la prensa. Predecimos dónde y cuándo actuar.');
 }
 
 function startDemo(){audioCtx.resume();playSuccess();goScene(1)}

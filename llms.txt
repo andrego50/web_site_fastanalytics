@@ -8,7 +8,7 @@
 - Email: hola@fastanalytics.co
 - Location: Colombia
 - Founded: 2024
-- Tagline: IA espaciotemporal para decisiones predictivas (Spatiotemporal AI for predictive decisions)
+- Tagline: Base científica y tecnológica para seguridad predictiva (Science and technology-based predictive security)
 
 ## Founder
 - Name: Andrés Pérez Coronado

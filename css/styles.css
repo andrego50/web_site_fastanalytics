@@ -698,61 +698,44 @@ ul {
   object-fit: cover;
 }
 
+/* All product cards share the same small half-width layout */
 .case-card-alejo,
-.case-card-alejogeo {
-  grid-column: 1 / -1;
-  text-align: center;
+.case-card-alejogeo,
+.case-card-vigia,
+.case-card-tavodebate {
+  grid-column: auto;
+  text-align: left;
 }
 
-.case-card-alejo .case-icon-img {
-  margin: 0 auto;
+.case-card-alejo .case-icon-img,
+.case-card-alejogeo .case-icon-img,
+.case-card-vigia .case-icon,
+.case-card-tavodebate .case-icon {
+  margin: 0 0 20px 0;
 }
 
-.case-card-alejo .case-features li {
-  padding-left: 0;
-  text-align: center;
-}
-
+.case-card-alejo .case-features li,
 .case-card-alejo .case-features li::before {
-  display: none;
-}
-
-.case-card-alejogeo .case-icon-img {
-  margin: 0 auto;
-}
-
-.case-card-alejogeo p {
-  max-width: 700px;
-  margin: 0 auto 24px;
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-.case-card-alejogeo .case-features {
   text-align: left;
-  max-width: 600px;
-  margin: 0 auto 32px;
-  font-size: 1rem;
 }
 
-.case-card-vigia {
-  grid-column: 1 / -1;
-  text-align: center;
+.case-card-alejo p,
+.case-card-alejogeo p,
+.case-card-vigia p,
+.case-card-tavodebate p {
+  max-width: none;
+  margin: 0 0 20px 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.case-card-vigia .case-icon {
-  margin: 0 auto;
-}
-
-.case-card-vigia p {
-  max-width: 700px;
-  margin: 0 auto 24px;
-}
-
-.case-card-vigia .case-features {
+.case-card-alejogeo .case-features,
+.case-card-vigia .case-features,
+.case-card-tavodebate .case-features {
   text-align: left;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0 0 20px 0;
+  font-size: 0.95rem;
 }
 
 .alejo-screenshots {
@@ -799,29 +782,6 @@ ul {
 .vigia-screenshot:hover {
   box-shadow: var(--shadow-lg);
   transform: scale(1.02);
-}
-
-.case-card-tavodebate {
-  grid-column: 1 / -1;
-  text-align: center;
-}
-
-.case-card-tavodebate .case-icon {
-  margin: 0 auto;
-}
-
-.case-card-tavodebate p {
-  max-width: 700px;
-  margin: 0 auto 24px;
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-.case-card-tavodebate .case-features {
-  text-align: left;
-  max-width: 600px;
-  margin: 0 auto 32px;
-  font-size: 1rem;
 }
 
 .tavodebate-screenshots {

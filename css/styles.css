@@ -719,6 +719,7 @@ ul {
 
 /* All product cards share the same small half-width layout */
 .case-card-alejo,
+.case-card-ceci,
 .case-card-predice,
 .case-card-tavodebate {
   grid-column: auto;
@@ -726,6 +727,7 @@ ul {
 }
 
 .case-card-alejo .case-icon-img,
+.case-card-ceci .case-icon,
 .case-card-predice .case-icon,
 .case-card-tavodebate .case-icon {
   margin: 0 0 20px 0;
@@ -737,6 +739,7 @@ ul {
 }
 
 .case-card-alejo p,
+.case-card-ceci p,
 .case-card-predice p,
 .case-card-tavodebate p {
   max-width: none;
@@ -745,6 +748,7 @@ ul {
   line-height: 1.6;
 }
 
+.case-card-ceci .case-features,
 .case-card-predice .case-features,
 .case-card-tavodebate .case-features {
   text-align: left;

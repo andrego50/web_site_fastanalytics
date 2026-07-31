@@ -101,6 +101,12 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 /* ── Gráfica predictiva: dibujo animado ── */
 @keyframes drawLine{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
 .draw-line{stroke-dasharray:1000;stroke-dashoffset:1000;animation:drawLine 2.2s ease forwards}
+@keyframes chipRun{0%,100%{background:rgba(255,255,255,.04);color:rgba(255,255,255,.55);border-color:rgba(255,255,255,.08)}12%,28%{background:rgba(0,191,166,.28);color:#fff;border-color:rgba(0,191,166,.5)}}
+.chip-run{animation:chipRun 4.2s ease-in-out infinite;border:1px solid rgba(255,255,255,.08)}
+@keyframes alertGlow{0%,100%{box-shadow:0 0 16px rgba(239,68,68,.10)}50%{box-shadow:0 0 36px rgba(239,68,68,.40)}}
+.alert-glow{animation:alertGlow 2.2s ease-in-out infinite}
+@keyframes radarSweep{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.radar-wedge{transform-origin:160px 140px;animation:radarSweep 4.5s linear infinite}
 .fade-proj{opacity:0;animation:fadeIn 1s ease 1.4s forwards}
 
 /* ── Boletín IA máquina de escribir ── */
@@ -406,6 +412,19 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     <div class="space-y-4">
         <h3 class="text-xl font-bold text-white">2. La IA investiga la evidencia — MileInvestiga</h3>
         <p class="text-slate-400 text-sm">En menos de 2 segundos, el sistema procesa simultáneamente imagen, video, audio y texto. Detrás no hay solo gestión de datos: corren <strong class="text-white">más de 20 modelos de analítica avanzada y machine learning</strong> integrados en el flujo — el mismo motor de MileInvestiga que investiga desde fraude financiero hasta redes criminales.</p>
+        <div class="rounded-xl px-3 py-2.5 flex flex-wrap items-center gap-1.5" style="background:rgba(0,109,109,.06);border:1px solid rgba(0,109,109,.18)">
+            <span class="text-[10px] font-bold mr-1" style="color:#00BFA6">⚙️ PIPELINE EN VIVO</span>
+            <span class="chip-run text-[9px] px-2 py-0.5 rounded-full" style="animation-delay:0s">👁 Visión</span>
+            <span class="chip-run text-[9px] px-2 py-0.5 rounded-full" style="animation-delay:.3s">📄 OCR panfleto</span>
+            <span class="chip-run text-[9px] px-2 py-0.5 rounded-full" style="animation-delay:.6s">🙂 Rostro</span>
+            <span class="chip-run text-[9px] px-2 py-0.5 rounded-full" style="animation-delay:.9s">🔢 Placas LPR</span>
+            <span class="chip-run text-[9px] px-2 py-0.5 rounded-full" style="animation-delay:1.2s">🎙 ASR audio</span>
+            <span class="chip-run text-[9px] px-2 py-0.5 rounded-full" style="animation-delay:1.5s">🧠 NLP amenaza</span>
+            <span class="chip-run text-[9px] px-2 py-0.5 rounded-full" style="animation-delay:1.8s">🕸 Grafos</span>
+            <span class="chip-run text-[9px] px-2 py-0.5 rounded-full" style="animation-delay:2.1s">📍 Geo</span>
+            <span class="chip-run text-[9px] px-2 py-0.5 rounded-full" style="animation-delay:2.4s">⏱ Patrones temporales</span>
+            <span class="text-[9px] px-2 py-0.5 rounded-full" style="background:rgba(212,136,58,.15);color:#D4883A;border:1px solid rgba(212,136,58,.3)">+12 modelos más</span>
+        </div>
         <div class="glass-teal rounded-xl p-4">
             <div class="flex items-center gap-3 mb-3">
                 <div class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:rgba(0,109,109,.2)">📷</div>
@@ -486,11 +505,11 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
             <div class="mt-3 space-y-2">
                 <div class="flex items-start gap-2 text-xs text-slate-300">
                     <span style="color:#00BFA6">✓</span>
-                    <div><strong class="text-white">Rostro identificado:</strong> Hombre ~30 años, cicatriz en ceja derecha. Alias <strong style="color:#D4883A">"El Flaco"</strong><br><span class="text-slate-500">Visto anteriormente: 14-Jul Cra 38 con 44, 9-Jul Mercado de Granos, 3-Jul Centro de Soledad</span></div>
+                    <div><strong class="text-white">Rostro identificado:</strong> Hombre ~30 años, cicatriz en ceja derecha. Alias <strong style="color:#D4883A">"El Flaco"</strong><br><span class="text-slate-500">Visto anteriormente: 14-Jul Cra 38 con 44, 9-Jul Mercado de Granos, 3-Jul Zona Centro</span></div>
                 </div>
                 <div class="flex items-start gap-2 text-xs text-slate-300">
                     <span style="color:#00BFA6">✓</span>
-                    <div><strong class="text-white">Placa detectada:</strong> <strong style="color:#D4883A">BQA-452</strong> · Moto Bajaj negra<br><span class="text-slate-500">Registrada en: 12-Jul Calle 30 sur, 8-Jul Av. Circunvalar, 1-Jul Soledad centro</span></div>
+                    <div><strong class="text-white">Placa detectada:</strong> <strong style="color:#D4883A">BQA-452</strong> · Moto Bajaj negra<br><span class="text-slate-500">Registrada en: 12-Jul Calle 30 sur, 8-Jul Av. Circunvalar, 1-Jul Zona Centro</span></div>
                 </div>
                 <div class="flex items-start gap-2 text-xs text-slate-300">
                     <span style="color:#D4883A">⚠</span>
@@ -529,7 +548,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
                 <line x1="150" y1="90" x2="220" y2="140" stroke="rgba(212,136,58,.3)" stroke-width="1.5" stroke-dasharray="3 3"/>
                 <line x1="230" y1="50" x2="260" y2="110" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="2 4"/>
                 <line x1="70" y1="50" x2="80" y2="140" stroke="rgba(245,158,11,.2)" stroke-width="1"/>
-                <text x="150" y="15" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="8">Red de extorsión · Suroccidente B/quilla</text>
+                <text x="150" y="15" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="8">Red de extorsión · Suroccidente de la ciudad</text>
                 <g transform="translate(10,165)"><circle cx="4" cy="4" r="3" fill="#D4883A"/><text x="12" y="7" fill="rgba(255,255,255,.3)" font-size="6">Nodo central</text><circle cx="90" cy="4" r="3" fill="#ef4444"/><text x="98" y="7" fill="rgba(255,255,255,.3)" font-size="6">Operativo</text><circle cx="160" cy="4" r="3" fill="#f59e0b"/><text x="168" y="7" fill="rgba(255,255,255,.3)" font-size="6">Cobrador</text></g>
             </svg>
             <div class="text-[10px] text-slate-500 mt-2">5 actores vinculados · 1 enlace no identificado · Centralidad: "El Flaco" (0.83)</div>
@@ -555,7 +574,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     <div class="space-y-4">
         <h3 class="text-xl font-bold text-white">3. Respuesta coordinada en terreno</h3>
         <p class="text-slate-400 text-sm">Las autoridades reciben la alerta con toda la evidencia procesada. El mapa de situación muestra el contexto completo de la zona.</p>
-        <div class="glass-alert rounded-xl p-4">
+        <div class="glass-alert rounded-xl p-4 alert-glow">
             <div class="flex items-center gap-2 mb-3">
                 <div class="w-3 h-3 rounded-full bg-red-500 anim-blink"></div>
                 <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Alerta · Extorsión Activa</span>
@@ -575,6 +594,10 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
                 <span class="text-[10px] px-2 py-1 rounded bg-white/5 text-slate-300">🕸️ Red criminal mapeada</span>
                 <span class="text-[10px] px-2 py-1 rounded bg-white/5 text-slate-300">📍 GPS exacto</span>
             </div>
+            <div class="mt-3 rounded-lg px-3 py-2 flex items-center gap-2" style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25)">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 anim-blink flex-shrink-0"></span>
+                <span class="text-[11px] text-emerald-300">🚔 <strong>Patrulla despachada</strong> por GusCoordina · ETA 4 min · Gaula y Fiscalía notificados</span>
+            </div>
         </div>
         <div class="glass rounded-xl p-4">
             <div class="text-xs font-semibold text-white mb-3">Historial de avistamientos</div>
@@ -583,7 +606,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
                     <div class="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold" style="background:rgba(212,136,58,.2);color:#D4883A">EF</div>
                     <div class="flex-1">
                         <div class="text-white font-medium">Carlos Mendoza, alias "El Flaco" · Moto <span style="color:#D4883A">BQA-452</span></div>
-                        <div class="text-slate-500">14-Jul Cra 38/44 · 9-Jul Mercado Granos · 3-Jul Soledad</div>
+                        <div class="text-slate-500">14-Jul Cra 38/44 · 9-Jul Mercado Granos · 3-Jul Zona Centro</div>
                     </div>
                     <span class="text-[10px] px-2 py-0.5 rounded bg-red-500/10 text-red-400">3 avistamientos</span>
                 </div>
@@ -591,7 +614,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
                     <div class="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold" style="background:rgba(239,68,68,.15);color:#ef4444">P</div>
                     <div class="flex-1">
                         <div class="text-white font-medium">Felipe Herrera, alias "Pipe" · A pie</div>
-                        <div class="text-slate-500">11-Jul Calle 30 sur · 5-Jul Centro B/quilla</div>
+                        <div class="text-slate-500">11-Jul Calle 30 sur · 5-Jul Centro</div>
                     </div>
                     <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/10 text-amber-400">2 avistamientos</span>
                 </div>
@@ -638,6 +661,11 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
                     <g transform="translate(0,48)"><rect width="8" height="8" rx="2" fill="rgba(168,85,247,.3)"/><text x="12" y="7" fill="rgba(255,255,255,.4)" font-size="6">Falta de acceso a la justicia (17%)</text></g>
                 </g>
                 <g transform="translate(8,280)"><circle cx="4" cy="4" r="3" fill="#ef4444"/><text x="12" y="7" fill="rgba(255,255,255,.3)" font-size="6">Extorsión</text><circle cx="80" cy="4" r="3" fill="#D4883A"/><text x="88" y="7" fill="rgba(255,255,255,.3)" font-size="6">Sospechoso</text><circle cx="170" cy="4" r="3" fill="#10B981"/><text x="178" y="7" fill="rgba(255,255,255,.3)" font-size="6">Zona segura</text></g>
+                <!-- Barrido radar + unidad en camino -->
+                <g class="radar-wedge" opacity=".22"><path d="M160 140 L160 45 A95 95 0 0 1 227 73 Z" fill="#2DD4BF"/></g>
+                <circle r="4.5" fill="#10B981" stroke="#064e3b" stroke-width="1.5"><animateMotion dur="6s" repeatCount="indefinite" path="M160 140 L200 140 L200 200 L260 200"/></circle>
+                <circle r="8" fill="none" stroke="#10B981" stroke-width="1" opacity=".5"><animateMotion dur="6s" repeatCount="indefinite" path="M160 140 L200 140 L200 200 L260 200"/><animate attributeName="r" values="5;11" dur="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0" dur="1.2s" repeatCount="indefinite"/></circle>
+                <text x="10" y="18" fill="rgba(45,212,191,.7)" font-size="7" font-weight="700">● RADAR ACTIVO — UNIDAD EN RUTA</text>
             </svg>
         </div>
         <button onclick="nextStep()" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2 text-sm w-full justify-center">Ver cómo se coordina la respuesta institucional <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
@@ -757,21 +785,39 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
                 <span class="text-[10px] uppercase tracking-wider font-bold" style="color:#00BFA6">Así se ve anticipar · extorsiones por semana</span>
                 <span class="text-[10px] text-slate-500">Suroccidente</span>
             </div>
-            <svg viewBox="0 0 420 150" width="100%" height="150">
+            <svg viewBox="0 0 420 190" width="100%" height="190">
                 <defs>
                     <linearGradient id="projBand" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D4883A" stop-opacity=".16"/><stop offset="100%" stop-color="#D4883A" stop-opacity="0"/></linearGradient>
+                    <linearGradient id="areaReal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2DD4BF" stop-opacity=".28"/><stop offset="100%" stop-color="#2DD4BF" stop-opacity="0"/></linearGradient>
+                    <filter id="chartGlow"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
                 </defs>
-                <g stroke="rgba(255,255,255,.05)"><line x1="0" y1="40" x2="420" y2="40"/><line x1="0" y1="80" x2="420" y2="80"/><line x1="0" y1="120" x2="420" y2="120"/></g>
+                <rect width="420" height="190" rx="10" fill="#0B1220"/>
+                <g stroke="rgba(255,255,255,.05)"><line x1="34" y1="45" x2="415" y2="45"/><line x1="34" y1="85" x2="415" y2="85"/><line x1="34" y1="125" x2="415" y2="125"/></g>
+                <g fill="rgba(255,255,255,.25)" font-size="8"><text x="8" y="48">40</text><text x="8" y="88">25</text><text x="8" y="128">10</text></g>
+                <!-- Área bajo el histórico -->
+                <path class="fade-proj" d="M40,120 L75,105 L110,114 L145,92 L180,100 L215,82 L250,90 L270,80 L270,150 L40,150 Z" fill="url(#areaReal)"/>
                 <!-- Banda de confianza de la proyección -->
-                <path class="fade-proj" d="M270,58 L415,32 L415,110 L270,92 Z" fill="url(#projBand)"/>
+                <path class="fade-proj" d="M270,58 L412,34 L412,118 L270,100 Z" fill="url(#projBand)"/>
+                <!-- Línea HOY -->
+                <line x1="270" y1="30" x2="270" y2="150" stroke="#D4883A" stroke-width="1" stroke-dasharray="3 4" opacity=".6"><animate attributeName="opacity" values=".6;.15;.6" dur="2.4s" repeatCount="indefinite"/></line>
                 <!-- Histórico real -->
-                <polyline class="draw-line" points="20,110 55,95 90,104 125,82 160,90 195,72 230,80 270,70" fill="none" stroke="#2DD4BF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline class="draw-line" points="40,120 75,105 110,114 145,92 180,100 215,82 250,90 270,80" fill="none" stroke="#2DD4BF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#chartGlow)"/>
                 <!-- Proyección -->
-                <polyline class="fade-proj" points="270,70 305,62 340,55 375,49 410,44" fill="none" stroke="#D4883A" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round"/>
-                <circle cx="270" cy="70" r="4" fill="#D4883A"><animate attributeName="r" values="3.5;5.5;3.5" dur="1.8s" repeatCount="indefinite"/></circle>
-                <text x="283" y="58" fill="#D4883A" font-size="8" font-weight="700">hoy</text>
-                <text x="20" y="138" fill="rgba(255,255,255,.35)" font-size="9">— Histórico real (8 semanas)</text>
-                <text x="272" y="138" fill="#D4883A" font-size="9" font-weight="700">- - Proyección +4 semanas</text>
+                <polyline class="fade-proj" points="270,80 305,70 340,62 375,54 408,48" fill="none" stroke="#D4883A" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round" filter="url(#chartGlow)"/>
+                <!-- Hotspots predichos -->
+                <g class="fade-proj" filter="url(#chartGlow)">
+                    <circle cx="322" cy="66" r="4" fill="#D4883A"><animate attributeName="r" values="3;6;3" dur="1.6s" repeatCount="indefinite"/></circle>
+                    <circle cx="364" cy="56" r="4" fill="#D4883A"><animate attributeName="r" values="3;6;3" dur="1.6s .4s repeatCount="indefinite"/></circle>
+                    <circle cx="404" cy="48" r="4" fill="#ef4444"><animate attributeName="r" values="3;6.5;3" dur="1.6s .8s repeatCount="indefinite"/></circle>
+                </g>
+                <g class="fade-proj" font-size="7" font-weight="700" fill="#D4883A"><text x="312" y="56">H1</text><text x="354" y="46">H2</text><text x="396" y="38" fill="#ef4444">H3</text></g>
+                <!-- Punto HOY + etiqueta -->
+                <circle cx="270" cy="80" r="4.5" fill="#D4883A" filter="url(#chartGlow)"><animate attributeName="r" values="3.5;6;3.5" dur="1.8s" repeatCount="indefinite"/></circle>
+                <g class="fade-proj"><rect x="246" y="14" width="48" height="13" rx="6" fill="rgba(212,136,58,.2)" stroke="#D4883A" stroke-width=".8"/><text x="270" y="23.5" text-anchor="middle" fill="#D4883A" font-size="8" font-weight="800">HOY</text></g>
+                <!-- Badge confianza -->
+                <g class="fade-proj"><rect x="318" y="160" width="96" height="16" rx="8" fill="rgba(212,136,58,.12)" stroke="rgba(212,136,58,.5)" stroke-width=".8"/><text x="366" y="171" text-anchor="middle" fill="#D4883A" font-size="8" font-weight="700">CONFIANZA 89%</text></g>
+                <text x="40" y="172" fill="rgba(45,212,191,.8)" font-size="9">— Histórico real (8 semanas)</text>
+                <text x="40" y="184" fill="rgba(255,255,255,.3)" font-size="8">3 hotspots predichos · cobros viernes 5–7 PM</text>
             </svg>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -1034,46 +1080,46 @@ const phases=[
      desc:'Define la preocupación de seguridad a partir de texto libre: zonas geográficas, actores, temas y restricciones. Soporta múltiples posturas simultáneas alineadas con el PEI (Res. 3409/2023).',
      detail:'La IA extrae automáticamente los campos estructurados del texto narrativo del decisor. Se establece qué amenaza atender y se alinea con los objetivos estratégicos institucionales.',
      example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">El director escribe: <em>"Priorizar extorsión a comerciantes en el suroccidente de la ciudad. Actores: redes locales vinculadas a cobro de vacunas. Restricción: no afectar operaciones en curso del CTI."</em> El sistema extrae automáticamente zona, actores, tema y restricciones.</div></div>',
-     speech:'Fase cero: Postura Estratégica. El director define la preocupación: priorizar extorsión a comerciantes en el Atlántico. El sistema extrae automáticamente zona, actores, tema y restricciones del texto libre.'},
+     speech:'Fase cero: Postura Estratégica. El director define la preocupación: priorizar extorsión a comerciantes en el suroccidente de la ciudad. El sistema extrae automáticamente zona, actores, tema y restricciones del texto libre.'},
     {id:'F1',name:'Entorno-Periferia',color:'#4A6FA5',
      desc:'Construye el entorno operacional cruzando datos nacionales de criminalidad con la percepción ciudadana de AlejoSeguro. Evaluación estadística con intervalos de confianza Poisson al 95%. Incluye antecedentes de F6.',
      detail:'Consulta datos de homicidios, hurtos, terrorismo y población DANE. Los cruza con reportes ciudadanos de AlejoSeguro: fotos, videos, audios, ubicaciones. Genera análisis estadístico de tendencias.',
-     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">El sistema cruza: <strong>847 reportes de AlejoSeguro</strong> sobre extorsión en Atlántico (últimos 90 días) + datos oficiales de denuncias. Detecta <strong>incremento del 340%</strong> vs. trimestre anterior (IC 95%: 2.8x-3.9x). La percepción ciudadana confirma: 38% de reportes son extorsión, seguidos de venta de drogas (24%).</div></div>',
-     speech:'Fase uno: Entorno y Periferia. Se cruzan ochocientos cuarenta y siete reportes de AlejoSeguro con datos oficiales de criminalidad. Se detecta un incremento del trescientos cuarenta por ciento en extorsión en el Atlántico.'},
+     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">El sistema cruza: <strong>847 reportes de AlejoSeguro</strong> sobre extorsión en la ciudad (últimos 90 días) + datos oficiales de denuncias. Detecta <strong>incremento del 340%</strong> vs. trimestre anterior (IC 95%: 2.8x-3.9x). La percepción ciudadana confirma: 38% de reportes son extorsión, seguidos de venta de drogas (24%).</div></div>',
+     speech:'Fase uno: Entorno y Periferia. Se cruzan ochocientos cuarenta y siete reportes de AlejoSeguro con datos oficiales de criminalidad. Se detecta un incremento del trescientos cuarenta por ciento en extorsión en la ciudad.'},
     {id:'F2',name:'Asunto Decisional',color:'#5B7DB1',
      desc:'Clasifica la decisión en la intersección de seguridad nacional, pública y ciudadana. Determina el rol del bloque de seguridad y el alcance de coordinación: local, subnacional o nacional.',
      detail:'La IA clasifica el asunto, evalúa las dimensiones de seguridad involucradas y determina el alcance espacial según los departamentos afectados. Registra las variables de evaluación para seguimiento.',
-     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Clasificación: <strong>Seguridad pública + ciudadana</strong>. Alcance: <strong>subnacional</strong> (Atlántico + Bolívar — la misma red opera en Cartagena). La extorsión impacta la convivencia y el desarrollo económico local. Se activa coordinación con Fiscalía y Gaula.</div></div>',
-     speech:'Fase dos: Asunto Decisional. Se clasifica como seguridad pública y ciudadana. Alcance subnacional: la misma red opera en Atlántico y Bolívar. Se activa coordinación con Fiscalía y Gaula.'},
+     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Clasificación: <strong>Seguridad pública + ciudadana</strong>. Alcance: <strong>subnacional</strong> (dos departamentos — la misma red opera en una segunda ciudad). La extorsión impacta la convivencia y el desarrollo económico local. Se activa coordinación con Fiscalía y Gaula.</div></div>',
+     speech:'Fase dos: Asunto Decisional. Se clasifica como seguridad pública y ciudadana. Alcance subnacional: la misma red opera en dos departamentos. Se activa coordinación con Fiscalía y Gaula.'},
     {id:'F3',name:'Enfocar Actores y Temas',color:'#6B8DC0',
      desc:'Construye un grafo de actores cruzados con temas, con pesos de relación de 1 a 10. Calcula centralidad (grado y peso promedio) para identificar nodos clave de la red criminal.',
      detail:'La IA extrae actores del texto narrativo. El sistema construye el grafo actor-tema con relaciones ponderadas, calcula la centralidad y persiste las conexiones para seguimiento espaciotemporal.',
-     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Grafo construido: <strong>"El Flaco"</strong> (centralidad 0.83) conecta con "Pipe" (cobrador), "La Mona" (logística), "Chucho" y "Tato" (cobradores). Temas cruzados: extorsión (peso 9), microtráfico (peso 6), lavado (peso 4). Se descubre que <strong>"La Mona" también opera en Cartagena</strong> con otra célula — punto de articulación para operación simultánea.</div></div>',
-     speech:'Fase tres: Enfocar Actores y Temas. El grafo revela que El Flaco tiene centralidad cero punto ochenta y tres. Se descubre que La Mona también opera en Cartagena con otra célula. Esto habilita una operación simultánea en dos ciudades.'},
+     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Grafo construido: <strong>"El Flaco"</strong> (centralidad 0.83) conecta con "Pipe" (cobrador), "La Mona" (logística), "Chucho" y "Tato" (cobradores). Temas cruzados: extorsión (peso 9), microtráfico (peso 6), lavado (peso 4). Se descubre que <strong>"La Mona" también opera en otra ciudad</strong> con una segunda célula — punto de articulación para operación simultánea.</div></div>',
+     speech:'Fase tres: Enfocar Actores y Temas. El grafo revela que El Flaco tiene centralidad cero punto ochenta y tres. Se descubre que La Mona también opera en otra ciudad con una segunda célula. Esto habilita una operación simultánea en dos frentes.'},
     {id:'F4',name:'Articular Información',color:'#7BA0D2',
      desc:'Checkpoint de aprobación. El decisor puede aprobar el enfoque, enviar a revisión por un funcionario (con necesidad, responsable y plazo), o emitir una orden directa a F8. Presenta el catálogo de modelos predictivos disponibles.',
      detail:'Es la bisagra entre el análisis y la acción. Aquí se decide si la información es suficiente para actuar o si requiere más análisis. También presenta los modelos predictivos del catálogo disponible.',
-     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">El director revisa el grafo y la tendencia. Decisión: <strong>Aprobar y enviar a F5</strong> para ejecutar modelos predictivos — quiere saber dónde van a golpear la próxima semana. También ordena revisión del enlace Cartagena al Gaula Bolívar (responsable: Cnel. Rodríguez, plazo: 48h).</div></div>',
-     speech:'Fase cuatro: Articular Información. El director aprueba el análisis y lo envía a señales predictivas para anticipar dónde va a golpear la red la próxima semana. Ordena verificar el enlace con Cartagena.'},
+     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">El director revisa el grafo y la tendencia. Decisión: <strong>Aprobar y enviar a F5</strong> para ejecutar modelos predictivos — quiere saber dónde van a golpear la próxima semana. También ordena revisión del enlace con la segunda ciudad al Gaula seccional (responsable: Cnel. Rodríguez, plazo: 48h).</div></div>',
+     speech:'Fase cuatro: Articular Información. El director aprueba el análisis y lo envía a señales predictivas para anticipar dónde va a golpear la red la próxima semana. Ordena verificar el enlace con la segunda ciudad.'},
     {id:'F5',name:'Señales Predictivas',color:'#C8A83E',
      desc:'El cerebro analítico del Eneágono. Ejecuta modelos predictivos espaciotemporales del catálogo, almacena predicciones y señales detectadas. Checkpoint estratégico con tres caminos: actuar solo (F8), comité (F7), o rehacer análisis (F1/F3/F4).',
      detail:'Invoca los modelos de predicción del catálogo (hotspots, anomalías, patrones temporales). Integra el panorama completo y genera una recomendación determinística sobre el camino a seguir.',
-     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Modelos ejecutados: <strong>3 hotspots predichos</strong> para la próxima semana en suroccidente B/quilla (confianza 89%). Anomalía detectada: pico inusual de reportes en Soledad (3.2σ). Patrón temporal: cobros los viernes entre 5-7 PM. <strong>Recomendación: enviar a Comité (F7)</strong> — la escala del operativo requiere coordinación interinstitucional para atacar simultáneamente B/quilla, Soledad y Cartagena.</div></div>',
-     speech:'Fase cinco: Señales Predictivas. Los modelos predicen tres hotspots para la próxima semana. Detectan un patrón: los cobros ocurren los viernes entre cinco y siete de la tarde. Recomendación: enviar a comité porque la operación requiere coordinación interinstitucional en tres ciudades simultáneamente.'},
+     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Modelos ejecutados: <strong>3 hotspots predichos</strong> para la próxima semana en el suroccidente de la ciudad (confianza 89%). Anomalía detectada: pico inusual de reportes en la zona norte (3.2σ). Patrón temporal: cobros los viernes entre 5-7 PM. <strong>Recomendación: enviar a Comité (F7)</strong> — la escala del operativo requiere coordinación interinstitucional para atacar simultáneamente las tres zonas de influencia.</div></div>',
+     speech:'Fase cinco: Señales Predictivas. Los modelos predicen tres hotspots para la próxima semana. Detectan un patrón: los cobros ocurren los viernes entre cinco y siete de la tarde. Recomendación: enviar a comité porque la operación requiere coordinación interinstitucional en tres zonas simultáneamente.'},
     {id:'F6',name:'Memoria Institucional',color:'#5BA8A0',
      desc:'Fase transversal — no secuencial. Todas las demás fases la consultan para buscar antecedentes: qué se decidió antes, qué quedó pendiente, qué funcionó y qué no. F1 consulta antecedentes de postura y F8 la consulta obligatoriamente antes de emitir cualquier orden.',
      detail:'Es el conocimiento acumulado del sistema. Registra decisiones, resultados y lecciones aprendidas. Permite que cada nueva decisión se tome con contexto histórico completo.',
-     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">La memoria reporta: en 2025 se ejecutó un operativo similar en el norte de B/quilla — <strong>se capturaron 8 personas pero la red se reconstituyó en 45 días</strong> porque no se atacó la estructura financiera. Lección aprendida: incluir unidad de extinción de dominio en el operativo. Esta información se inyecta en F7 para que el comité la considere.</div></div>',
+     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">La memoria reporta: en 2025 se ejecutó un operativo similar en el norte de la ciudad — <strong>se capturaron 8 personas pero la red se reconstituyó en 45 días</strong> porque no se atacó la estructura financiera. Lección aprendida: incluir unidad de extinción de dominio en el operativo. Esta información se inyecta en F7 para que el comité la considere.</div></div>',
      speech:'Fase seis: Memoria Institucional. Fase transversal. La memoria reporta que un operativo similar en dos mil veinticinco capturó ocho personas pero la red se reconstituyó en cuarenta y cinco días. Lección: hay que atacar también la estructura financiera.'},
     {id:'F7',name:'Puzzle de Señales + Comité',color:'#D4883A',
      desc:'Cualifica señales débiles con 5 criterios cerrados: fiabilidad, importancia, probabilidad, severidad y tiempo de reacción. Identifica conexiones entre señales (confirmación, causalidad, contradicción). El comité delibera con dashboard visual y decide: aprobar (F8), pedir más info (F4), o refocalizar (F3).',
      detail:'Se genera un dashboard interactivo con token de acceso para el comité. Las señales se pre-puntúan, se consolida la narrativa, y el comité toma la decisión final sobre cómo proceder.',
-     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Comité interinstitucional revisa el dashboard. Señales cualificadas: patrón de cobro viernes PM (fiabilidad: 4/5, severidad: 5/5), conexión B/quilla-Cartagena vía "La Mona" (probabilidad: 4/5). Se incorpora la lección de F6: incluir extinción de dominio. <strong>Decisión del comité: APROBAR operativo simultáneo</strong> en 3 ciudades el próximo viernes, con Gaula + Fiscalía + unidad de lavado.</div></div>',
-     speech:'Fase siete: Puzzle de Señales y Comité. El comité revisa las señales cualificadas y el dashboard. Incorpora la lección de memoria: incluir extinción de dominio. Decisión: aprobar operativo simultáneo en tres ciudades el próximo viernes.'},
+     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">Comité interinstitucional revisa el dashboard. Señales cualificadas: patrón de cobro viernes PM (fiabilidad: 4/5, severidad: 5/5), conexión con una segunda ciudad vía "La Mona" (probabilidad: 4/5). Se incorpora la lección de F6: incluir extinción de dominio. <strong>Decisión del comité: APROBAR operativo simultáneo</strong> en las 3 zonas el próximo viernes, con Gaula + Fiscalía + unidad de lavado.</div></div>',
+     speech:'Fase siete: Puzzle de Señales y Comité. El comité revisa las señales cualificadas y el dashboard. Incorpora la lección de memoria: incluir extinción de dominio. Decisión: aprobar operativo simultáneo en las tres zonas el próximo viernes.'},
     {id:'F8',name:'Difusión y Acción',color:'#C25B56',
      desc:'Registra la orden formal con clasificación de seguridad (Res. 05456/2019). Crea plan de acción con indicadores, establece plazos según prioridad. Evalúa impacto en desarrollo humano con 22 variables en 3 dimensiones y genera semáforo IPDH con 10 indicadores.',
      detail:'La orden incluye las 5 preguntas del briefing: qué, cuándo, dónde, por qué y para qué. Se registra en pendientes del director y se crea el plan de acción con indicadores de seguimiento y evaluación PDH automática.',
-     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400"><strong>ORDEN EMITIDA — Clasificación: RESERVADO</strong><br>• Qué: Operativo simultáneo contra red de extorsión<br>• Cuándo: Viernes 25-Jul, 16:00h<br>• Dónde: B/quilla (suroccidente), Soledad (centro), Cartagena (Bazurto)<br>• Por qué: Red con 5 actores y 847 reportes ciudadanos en 90 días<br>• Para qué: Desarticular estructura criminal + financiera<br>PDH: <span style="color:#10B981">🟢</span> Personas (6.8) · <span style="color:#f59e0b">🟡</span> Comunidades (5.2) · <span style="color:#10B981">🟢</span> Gobernabilidad (7.1)</div></div>',
+     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400"><strong>ORDEN EMITIDA — Clasificación: RESERVADO</strong><br>• Qué: Operativo simultáneo contra red de extorsión<br>• Cuándo: Viernes 25-Jul, 16:00h<br>• Dónde: Suroccidente · Centro · Periferia norte<br>• Por qué: Red con 5 actores y 847 reportes ciudadanos en 90 días<br>• Para qué: Desarticular estructura criminal + financiera<br>PDH: <span style="color:#10B981">🟢</span> Personas (6.8) · <span style="color:#f59e0b">🟡</span> Comunidades (5.2) · <span style="color:#10B981">🟢</span> Gobernabilidad (7.1)</div></div>',
      speech:'Fase ocho: Difusión y Acción. Se emite la orden formal clasificada como reservado. Operativo simultáneo el viernes en las tres zonas de influencia de la red. Se incluye desarticulación financiera. La evaluación de desarrollo humano muestra semáforo verde en personas y gobernabilidad, amarillo en comunidades.'},
 ];
 
@@ -1108,6 +1154,58 @@ const agents=[
      detail:'Sincroniza vía WebSocket con el Centro de Comando y el geodashboard para que todas las instituciones vean la misma información en tiempo real, sin reportes duplicados ni versiones distintas.',
      example:'<div class="rounded-lg p-3 mt-3" style="background:rgba(124,108,220,.08);border:1px solid rgba(124,108,220,.2)"><div class="text-[10px] font-bold mb-1" style="color:#9F91E8">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">La pantalla del PMU muestra en vivo la ubicación de las unidades desplegadas y el estado de la respuesta al reporte de extorsión en el suroccidente.</div></div>',
      speech:'Agente de Pantalla. Proyecta en vivo la ubicación de las unidades desplegadas y el estado de la respuesta, visible para todas las instituciones del PMU.'},
+];
+
+// ── Visualizaciones dinámicas: cada agente y cada fase muestra SU gráfica ──
+function _vb(data,labels,color,w,h){w=w||300;h=h||130;var n=data.length,max=Math.max.apply(null,data),gap=(w-56)/n,bw=gap*.52,out='<svg viewBox="0 0 '+w+' '+h+'" width="100%" height="'+h+'">';
+    out+='<g stroke="rgba(255,255,255,.05)"><line x1="28" y1="'+(h*.3)+'" x2="'+(w-8)+'" y2="'+(h*.3)+'"/><line x1="28" y1="'+(h*.6)+'" x2="'+(w-8)+'" y2="'+(h*.6)+'"/></g><line x1="28" y1="'+(h-26)+'" x2="'+(w-8)+'" y2="'+(h-26)+'" stroke="rgba(255,255,255,.14)"/>';
+    for(var i=0;i<n;i++){var bh=(data[i]/max)*(h-58),x=32+i*gap,y=h-26-bh;
+        out+='<rect x="'+x+'" y="'+(h-26)+'" width="'+bw+'" height="0" rx="2" fill="'+color+'" opacity="'+(0.4+0.6*data[i]/max)+'"><animate attributeName="height" from="0" to="'+bh+'" dur=".7s" begin="'+(i*.13)+'s" fill="freeze" calcMode="spline" keySplines="0.25 0.1 0.25 1" keyTimes="0;1" values="0;'+bh+'"/><animate attributeName="y" from="'+(h-26)+'" to="'+y+'" dur=".7s" begin="'+(i*.13)+'s" fill="freeze"/></rect>';
+        out+='<text x="'+(x+bw/2)+'" y="'+(y-4)+'" text-anchor="middle" fill="'+color+'" font-size="8" font-weight="700" opacity="0"><animate attributeName="opacity" to="1" begin="'+(i*.13+.5)+'s" dur=".3s" fill="freeze"/>'+data[i]+'</text>';
+        out+='<text x="'+(x+bw/2)+'" y="'+(h-12)+'" text-anchor="middle" fill="rgba(255,255,255,.45)" font-size="7">'+labels[i]+'</text>'}
+    return out+'</svg>'}
+function _hb(rows,w,h){w=w||300;h=h||(rows.length*26+14);var max=0;rows.forEach(function(r){if(r[1]>max)max=r[1]});var out='<svg viewBox="0 0 '+w+' '+h+'" width="100%" height="'+h+'">';
+    rows.forEach(function(r,i){var y=8+i*26,c=r[3]||'#9F91E8',bw=(r[1]/max)*(w-160);
+        out+='<text x="0" y="'+(y+9)+'" fill="rgba(255,255,255,.55)" font-size="7.5">'+r[0]+'</text>';
+        out+='<rect x="112" y="'+y+'" width="0" height="11" rx="3" fill="'+c+'" opacity=".85"><animate attributeName="width" from="0" to="'+bw+'" dur=".8s" begin="'+(i*.15)+'s" fill="freeze"/></rect>';
+        out+='<text x="'+(116+bw)+'" y="'+(y+9)+'" fill="'+c+'" font-size="8" font-weight="700" opacity="0"><animate attributeName="opacity" to="1" begin="'+(i*.15+.6)+'s" dur=".3s" fill="freeze"/>'+r[1]+(r[2]||'')+'</text>'});
+    return out+'</svg>'}
+function _ln(pts,color,proj,w,h){w=w||300;h=h||120;var max=Math.max.apply(null,pts.concat(proj||[])),min=Math.min.apply(null,pts.concat(proj||[])),span=(max-min)||1;
+    function Y(v){return h-24-((v-min)/span)*(h-46)}
+    var step=(w-46)/(pts.length+(proj?proj.length-1:0)-1);
+    var pp=pts.map(function(v,i){return (22+i*step)+','+Y(v)}).join(' ');
+    var out='<svg viewBox="0 0 '+w+' '+h+'" width="100%" height="'+h+'"><g stroke="rgba(255,255,255,.05)"><line x1="16" y1="'+(h*.35)+'" x2="'+(w-8)+'" y2="'+(h*.35)+'"/><line x1="16" y1="'+(h*.65)+'" x2="'+(w-8)+'" y2="'+(h*.65)+'"/></g>';
+    out+='<polyline points="'+pp+'" fill="none" stroke="'+color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="draw-line"/>';
+    if(proj){var x0=22+(pts.length-1)*step,qp=[x0+','+Y(pts[pts.length-1])];proj.forEach(function(v,i){qp.push((22+(pts.length+i)*step)+','+Y(v))});
+        out+='<polyline points="'+qp.join(' ')+'" fill="none" stroke="#D4883A" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" class="fade-proj"/>';
+        var lx=22+(pts.length+proj.length-1)*step;out+='<circle cx="'+lx+'" cy="'+Y(proj[proj.length-1])+'" r="3.5" fill="#D4883A" class="fade-proj"><animate attributeName="r" values="2.5;5;2.5" dur="1.8s" repeatCount="indefinite"/></circle>'}
+    return out+'</svg>'}
+
+var AGENT_VIZ=[
+ {t:'⏱ Tiempo de activación del PMU',h:'<svg viewBox="0 0 300 96" width="100%" height="96"><line x1="20" y1="46" x2="285" y2="46" stroke="rgba(159,145,232,.25)" stroke-width="2" stroke-dasharray="4 3"/><g font-size="7" fill="rgba(255,255,255,.5)" text-anchor="middle">'
+   +[['Reporte','0s','#9F91E8',30],['Incidente creado','2.8s','#8B7CD6',110],['Instituciones convocadas','5.1s','#7A6FCB',195],['Canales abiertos','8.4s','#6C63C4',272]].map(function(e,i){
+   return '<circle cx="'+e[3]+'" cy="46" r="0" fill="'+e[2]+'"><animate attributeName="r" from="0" to="5" dur=".4s" begin="'+(i*.35)+'s" fill="freeze"/></circle>'
+   +'<text x="'+e[3]+'" y="30" opacity="0"><animate attributeName="opacity" to="1" begin="'+(i*.35+.2)+'s" dur=".3s" fill="freeze"/>'+e[0]+'</text>'
+   +'<text x="'+e[3]+'" y="68" fill="'+e[2]+'" font-weight="700" opacity="0"><animate attributeName="opacity" to="1" begin="'+(i*.35+.2)+'s" dur=".3s" fill="freeze"/>'+e[1]+'</text>'}).join('')
+   +'</g><text x="20" y="90" fill="rgba(255,255,255,.3)" font-size="7">Activación total del PMU: <tspan fill="#9F91E8" font-weight="700">8.4 segundos</tspan> desde el reporte ciudadano</text></svg>'},
+ {t:'🔗 Confianza del cruce de evidencia por fuente (%)',h:_vb([92,78,64,88],['Video','Cámaras','Audio','Historial'],'#7A6FCB')},
+ {t:'🛣 Simulación de rutas — tiempo estimado de llegada (min)',h:_hb([['Cra 46 ✓ recomendada',4.2,' min','#10B981'],['Calle 44',6.8,' min','#6C63C4'],['Av. Circunvalar',8.1,' min','#6C63C4']])},
+ {t:'🎙 Tráfico de radio transcrito en vivo — picos de riesgo',h:'<svg viewBox="0 0 300 100" width="100%" height="100">'+Array.from({length:36},function(_,i){var hh=[4,7,5,9,6,8,5,7,6,10,8,6,5,34,12,7,6,8,5,7,6,5,8,6,9,5,6,7,5,6,30,11,6,5,7,4][i];var hot=(hh>20);var x=10+i*8;return '<rect x="'+x+'" y="'+(50-hh)+'" width="4" height="'+(hh*2)+'" rx="2" fill="'+(hot?'#D4883A':'#5F58BB')+'" opacity="'+(hot?1:.6)+'"><animate attributeName="height" values="'+(hh*2)+';'+(hh*1.4)+';'+(hh*2)+'" dur="'+(0.8+i*.07)+'s" repeatCount="indefinite"/><animate attributeName="y" values="'+(50-hh)+';'+(50-hh*.7)+';'+(50-hh)+'" dur="'+(0.8+i*.07)+'s" repeatCount="indefinite"/></rect>'}).join('')+'<text x="96" y="14" fill="#D4883A" font-size="7" font-weight="700">⚠ "contacto visual" · Policía</text><text x="230" y="14" fill="#D4883A" font-size="7" font-weight="700">⚠ "sujeto armado"</text></svg>'},
+ {t:'🚦 Semáforo operativo por institución',h:_hb([['Policía · llegada 6 min',92,'%','#10B981'],['Gaula · canal activo',88,'%','#10B981'],['Fiscalía · orden en trámite',61,'%','#f59e0b'],['Secretaría · en sitio',85,'%','#10B981']])},
+ {t:'📺 Dashboard unificado — unidades en vivo',h:'<svg viewBox="0 0 300 130" width="100%" height="130"><rect width="300" height="130" rx="8" fill="#0F1724"/><g stroke="rgba(255,255,255,.05)"><line x1="0" y1="43" x2="300" y2="43"/><line x1="0" y1="86" x2="300" y2="86"/><line x1="100" y1="0" x2="100" y2="130"/><line x1="200" y1="0" x2="200" y2="130"/></g><circle cx="150" cy="70" r="6" fill="#ef4444"><animate attributeName="r" values="5;8;5" dur="1.5s" repeatCount="indefinite"/></circle><circle cx="150" cy="70" r="12" fill="none" stroke="#ef4444" opacity=".4"><animate attributeName="r" values="8;20" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".4;0" dur="1.8s" repeatCount="indefinite"/></circle><circle r="4" fill="#433F97" stroke="#9F91E8" stroke-width="1"><animateMotion dur="5s" repeatCount="indefinite" path="M60 100 L110 80 L140 72"/></circle><circle r="4" fill="#433F97" stroke="#9F91E8" stroke-width="1"><animateMotion dur="6.5s" repeatCount="indefinite" path="M250 110 L200 90 L162 76"/></circle><circle r="4" fill="#433F97" stroke="#9F91E8" stroke-width="1"><animateMotion dur="7s" repeatCount="indefinite" path="M90 20 L120 45 L142 62"/></circle><text x="10" y="16" fill="rgba(159,145,232,.8)" font-size="7" font-weight="700">3 UNIDADES CONVERGIENDO · WebSocket sync 40ms</text></svg>'},
+];
+
+var PHASE_VIZ=[
+ {t:'🏛 Pilares de la postura institucional (%)',h:_vb([95,88,92],['Legal','Estratégica','Ética'],'#006D6D')},
+ {t:'📡 Cruce del entorno operacional por fuente (miles)',h:_vb([47,31,22],['Ciudadanas','Instituc.','OSINT'],'#00BFA6')},
+ {t:'🧭 Dimensiones de seguridad del asunto',h:'<svg viewBox="0 0 300 120" width="100%" height="120"><g transform="translate(70,60)"><circle r="34" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="14"/><circle r="34" fill="none" stroke="#5B7DB1" stroke-width="14" stroke-dasharray="156.8 156.8" transform="rotate(-90)"><animate attributeName="stroke-dasharray" from="0 313.6" to="156.8 156.8" dur="1s" fill="freeze"/></circle><circle r="34" fill="none" stroke="#00BFA6" stroke-width="14" stroke-dasharray="109.8 203.8" transform="rotate(90)"><animate attributeName="stroke-dasharray" from="0 313.6" to="109.8 203.8" dur="1s .2s" fill="freeze"/></circle><circle r="34" fill="none" stroke="#D4883A" stroke-width="14" stroke-dasharray="47 266.6" transform="rotate(216)"><animate attributeName="stroke-dasharray" from="0 313.6" to="47 266.6" dur="1s .4s" fill="freeze"/></circle><text y="4" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">SUB</text></g><g font-size="8" fill="rgba(255,255,255,.55)"><circle cx="135" cy="40" r="4" fill="#5B7DB1"/><text x="145" y="43">Seguridad pública (50%)</text><circle cx="135" cy="62" r="4" fill="#00BFA6"/><text x="145" y="65">Seguridad ciudadana (35%)</text><circle cx="135" cy="84" r="4" fill="#D4883A"/><text x="145" y="87">Seg. nacional (15%)</text><text x="135" y="105" fill="rgba(255,255,255,.35)" font-size="7">Alcance: subnacional · 2 dptos</text></g></svg>'},
+
+ {t:'🕸 Temas cruzados del grafo actor-tema (peso)',h:'<svg viewBox="0 0 300 120" width="100%" height="120"><g transform="translate(70,60)"><circle r="34" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="14"/><circle r="34" fill="none" stroke="#D4883A" stroke-width="14" stroke-dasharray="101.7 211.9" transform="rotate(-90)"><animate attributeName="stroke-dasharray" from="0 313.6" to="101.7 211.9" dur="1s" fill="freeze"/></circle><circle r="34" fill="none" stroke="#ef4444" stroke-width="14" stroke-dasharray="67.8 245.8" transform="rotate(27)"><animate attributeName="stroke-dasharray" from="0 313.6" to="67.8 245.8" dur="1s .2s" fill="freeze"/></circle><circle r="34" fill="none" stroke="#f59e0b" stroke-width="14" stroke-dasharray="45.2 268.4" transform="rotate(105)"><animate attributeName="stroke-dasharray" from="0 313.6" to="45.2 268.4" dur="1s .4s" fill="freeze"/></circle><text y="4" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">0.83</text></g><g font-size="8" fill="rgba(255,255,255,.55)"><circle cx="135" cy="40" r="4" fill="#D4883A"/><text x="145" y="43">Extorsión (peso 9)</text><circle cx="135" cy="62" r="4" fill="#ef4444"/><text x="145" y="65">Microtráfico (peso 6)</text><circle cx="135" cy="84" r="4" fill="#f59e0b"/><text x="145" y="87">Lavado (peso 4)</text><text x="135" y="105" fill="rgba(255,255,255,.35)" font-size="7">Centralidad máx: "El Flaco" (0.83)</text></g></svg>'},
+ {t:'📈 Tendencia que revisa el decisor · 12 semanas',h:_ln([18,21,19,24,28,26,31,34,32,38,41,47],'#2DD4BF')},
+ {t:'🔮 Modelos predictivos en ejecución',h:_ln([26,29,27,32,36,34,39],'#2DD4BF',[42,46,51],'#2DD4BF')+'<div class="flex gap-2 mt-1"><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:rgba(212,136,58,.12);color:#D4883A">3 hotspots · 89%</span><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:rgba(239,68,68,.1);color:#ef4444">Anomalía 3.2σ</span><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:rgba(45,212,191,.1);color:#2DD4BF">Viernes 5–7 PM</span></div>'},
+ {t:'🧠 Línea de tiempo de la memoria institucional',h:'<svg viewBox="0 0 300 92" width="100%" height="92"><line x1="18" y1="44" x2="286" y2="44" stroke="rgba(91,168,160,.3)" stroke-width="2"/>'+[['2024 · Operativo norte','8 capturas',40],['2025 · Red reconstituida','45 días',152],['2026 · Lección aplicada','extinción dominio',262]].map(function(e,i){return '<circle cx="'+e[2]+'" cy="44" r="5" fill="#5BA8A0"><animate attributeName="r" values="4;6;4" dur="2s '+(i*.4)+'s" repeatCount="indefinite"/></circle><text x="'+e[2]+'" y="26" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="7">'+e[0]+'</text><text x="'+e[2]+'" y="66" text-anchor="middle" fill="#5BA8A0" font-size="7" font-weight="700">'+e[1]+'</text>'}).join('')+'</svg>'},
+ {t:'⚖ Cualificación de señales del comité (/5)',h:_hb([['Fiabilidad',4,'','#C8A83E'],['Importancia',5,'','#D4883A'],['Probabilidad',4,'','#C8A83E'],['Severidad',5,'','#ef4444'],['Tiempo reacción',4,'','#C8A83E']])},
+ {t:'🚦 Semáforo IPDH — impacto en desarrollo humano',h:_hb([['Personas',6.8,' /10','#10B981'],['Comunidades',5.2,' /10','#f59e0b'],['Gobernabilidad',7.1,' /10','#10B981']])},
 ];
 
 function playTone(f,d,t,v){t=t||'sine';v=v||.08;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=t;o.frequency.value=f;g.gain.value=v;o.connect(g);g.connect(audioCtx.destination);o.start();g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+d);o.stop(audioCtx.currentTime+d)}
@@ -1269,7 +1367,9 @@ function selectPhase(idx){
     document.querySelectorAll('.eneagono-node').forEach(function(n,i){n.classList.remove('active-node');if(i<idx)n.classList.add('completed');if(i===idx)n.classList.add('active-node')});
     var panel=document.getElementById('phaseDetail');
     var extra=p.example||'';
-    panel.innerHTML='<div class="anim-fade"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:'+p.color+'30;border:1px solid '+p.color+'50">'+p.id+'</div><div><div class="text-base font-bold text-white">'+p.name+'</div><div class="text-xs" style="color:'+p.color+'">'+p.id+' · Eneágono Decisional</div></div></div><p class="text-sm text-slate-300 leading-relaxed mb-4">'+p.desc+'</p><div class="glass rounded-xl p-4 text-xs text-slate-400 leading-relaxed">'+p.detail+'</div>'+extra+'</div>';
+    var vz=PHASE_VIZ[idx];
+    var vblock=vz?'<div class="rounded-xl p-3 mt-3" style="background:rgba(255,255,255,.03);border:1px solid rgba(0,191,166,.15)"><div class="text-[10px] font-bold mb-2" style="color:'+p.color+'">'+vz.t+'</div>'+vz.h+'</div>':'';
+    panel.innerHTML='<div class="anim-fade"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:'+p.color+'30;border:1px solid '+p.color+'50">'+p.id+'</div><div><div class="text-base font-bold text-white">'+p.name+'</div><div class="text-xs" style="color:'+p.color+'">'+p.id+' · Eneágono Decisional</div></div></div><p class="text-sm text-slate-300 leading-relaxed mb-4">'+p.desc+'</p><div class="glass rounded-xl p-4 text-xs text-slate-400 leading-relaxed">'+p.detail+'</div>'+vblock+extra+'</div>';
     speak(p.speech);
 }
 
@@ -1326,7 +1426,9 @@ function selectAgent(idx){    playNotif();var p=agents[idx];
     document.querySelectorAll('.agent-node').forEach(function(n,i){n.classList.remove('active-node');if(i<idx)n.classList.add('completed');if(i===idx)n.classList.add('active-node')});
     var panel=document.getElementById('agentDetail');
     var extra=p.example||'';
-    panel.innerHTML='<div class="anim-fade"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:'+p.color+'30;border:1px solid '+p.color+'50">'+p.id+'</div><div><div class="text-base font-bold text-white">'+p.name+'</div><div class="text-xs" style="color:'+p.color+'">Agente · Puesto de Mando Unificado</div></div></div><p class="text-sm text-slate-300 leading-relaxed mb-4">'+p.desc+'</p><div class="glass rounded-xl p-4 text-xs text-slate-400 leading-relaxed">'+p.detail+'</div>'+extra+'</div>';
+    var vz=AGENT_VIZ[idx];
+    var vblock=vz?'<div class="rounded-xl p-3 mt-3" style="background:rgba(255,255,255,.03);border:1px solid rgba(159,145,232,.18)"><div class="text-[10px] font-bold mb-2" style="color:'+p.color+'">'+vz.t+'</div>'+vz.h+'</div>':'';
+    panel.innerHTML='<div class="anim-fade"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:'+p.color+'30;border:1px solid '+p.color+'50">'+p.id+'</div><div><div class="text-base font-bold text-white">'+p.name+'</div><div class="text-xs" style="color:'+p.color+'">Agente · Puesto de Mando Unificado</div></div></div><p class="text-sm text-slate-300 leading-relaxed mb-4">'+p.desc+'</p><div class="glass rounded-xl p-4 text-xs text-slate-400 leading-relaxed">'+p.detail+'</div>'+vblock+extra+'</div>';
     speak(p.speech);
 }
 

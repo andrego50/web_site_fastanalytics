@@ -94,3 +94,12 @@ python3 -m http.server 52415
 
 En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-request`
 (servicio `fastanalytics-api` local) en lugar de la API de producción.
+
+### Demo v3 (ago 2026): paneles cinematográficos + gráficas dinámicas
+- **GusCoordina (PMU)**: cada agente muestra SU visualización al hacer clic — línea de tiempo de activación (Ingreso), confianza de cruce por fuente (Inteligencia), comparador de rutas (Simulación), onda de radio con picos de riesgo (Audio), semáforo por institución (Control), mapa de unidades en vivo (Pantalla).
+- **GabyPredice (Eneágono)**: cada fase F0–F8 muestra SU gráfica — pilares de postura, cruce por fuente, donut de dimensiones, temas del grafo con centralidad, tendencia 12 semanas, línea+proyección con hotspots, línea de tiempo de memoria, criterios del comité (/5), semáforo IPDH.
+- Paso "La IA investiga": strip **PIPELINE EN VIVO** con los modelos encendiéndose en secuencia.
+- Paso "Respuesta coordinada": alerta con pulso luminoso, strip "Patrulla despachada", mapa con barrido radar y unidad moviéndose por la ruta segura.
+- Gráfica predictiva principal v2: área bajo la curva, glow, línea HOY, hotspots H1–H3 pulsantes, badge de confianza.
+- Nota técnica: las visualizaciones dinámicas inyectadas por JS usan estado final directo + animaciones SMIL `repeatCount="indefinite"` (SMIL con `begin` en el pasado no corre al inyectar tarde en el DOM).
+- Referencias de ciudad neutralizadas: "el suroccidente de la ciudad" en todo el demo.

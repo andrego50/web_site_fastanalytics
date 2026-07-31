@@ -114,7 +114,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="orb w-64 h-64" style="background:#D4883A;bottom:5rem;left:25%"></div>
 <div class="grid-overlay"></div>
 <div id="sceneProgress"></div>
-<audio id="bgMusic" src="assets/demo/epic.mp3" loop preload="auto"></audio>
+<audio id="bgMusic" src="assets/demo/cinematic-theme.mp3" loop preload="auto"></audio>
 
 <!-- HEADER -->
 <header class="fixed top-0 w-full z-50 glass border-b border-white/5">
@@ -183,21 +183,25 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     <!-- Selector por línea: el visitante elige qué le interesa -->
     <div class="text-[10px] text-slate-500 uppercase tracking-wider mb-2">¿Poco tiempo? Elige qué línea te interesa</div>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6 max-w-xl">
-        <button onclick="goLine(1,0)" class="glass-teal rounded-xl p-3 text-left hover:scale-[1.03] transition-transform cursor-pointer">
-            <div class="text-[10px] font-bold uppercase tracking-wider" style="color:#00BFA6">01 · Escucha</div>
-            <div class="text-[10px] text-slate-400 mt-1">AlejoSeguro + CatheAsiste</div>
+        <button onclick="goLine(1,0)" class="glass-teal rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
+            <img src="assets/demo/escucha-ciudadano.webp" alt="Escucha" class="w-full h-14 object-cover" loading="lazy">
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#00BFA6">01 · Escucha</div>
+            <div class="text-[10px] text-slate-400 mt-1">AlejoSeguro + CatheAsiste</div></div>
         </button>
-        <button onclick="goLine(1,1)" class="glass rounded-xl p-3 text-left hover:scale-[1.03] transition-transform cursor-pointer" style="border-color:rgba(59,155,217,.3)">
-            <div class="text-[10px] font-bold uppercase tracking-wider" style="color:#3B9BD9">02 · Investiga</div>
-            <div class="text-[10px] text-slate-400 mt-1">MileInvestiga</div>
+        <button onclick="goLine(1,1)" class="glass rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer" style="border-color:rgba(59,155,217,.3)">
+            <img src="assets/demo/investiga-red.webp" alt="Investiga" class="w-full h-14 object-cover" loading="lazy">
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#3B9BD9">02 · Investiga</div>
+            <div class="text-[10px] text-slate-400 mt-1">MileInvestiga</div></div>
         </button>
-        <button onclick="goLine(2,null)" class="glass-violet rounded-xl p-3 text-left hover:scale-[1.03] transition-transform cursor-pointer">
-            <div class="text-[10px] font-bold uppercase tracking-wider" style="color:#9F91E8">03 · Coordina</div>
-            <div class="text-[10px] text-slate-400 mt-1">GusCoordina</div>
+        <button onclick="goLine(2,null)" class="glass-violet rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
+            <img src="assets/demo/coordina-pmu.webp" alt="Coordina" class="w-full h-14 object-cover" loading="lazy">
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#9F91E8">03 · Coordina</div>
+            <div class="text-[10px] text-slate-400 mt-1">GusCoordina</div></div>
         </button>
-        <button onclick="goLine(3,null)" class="glass-orange rounded-xl p-3 text-left hover:scale-[1.03] transition-transform cursor-pointer">
-            <div class="text-[10px] font-bold uppercase tracking-wider" style="color:#D4883A">04 · Predice</div>
-            <div class="text-[10px] text-slate-400 mt-1">GabyPredice</div>
+        <button onclick="goLine(3,null)" class="glass-orange rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
+            <img src="assets/demo/predice-ciudad.webp" alt="Predice" class="w-full h-14 object-cover" loading="lazy">
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#D4883A">04 · Predice</div>
+            <div class="text-[10px] text-slate-400 mt-1">GabyPredice</div></div>
         </button>
     </div>
 
@@ -365,15 +369,16 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     <div class="space-y-4">
         <div class="rounded-xl overflow-hidden relative" style="border:1px solid rgba(45,212,191,.35);box-shadow:0 0 30px rgba(45,212,191,.12)">
             <video autoplay muted loop playsinline class="w-full block" style="aspect-ratio:16/9;object-fit:cover">
-                <source src="assets/demo/acto1.mp4" type="video/mp4">
+                <source src="assets/demo/v-escucha.mp4" type="video/mp4">
             </video>
             <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">El comerciante encuentra el panfleto al abrir su tienda · video generado con IA</div>
         </div>
         <h3 class="text-xl font-bold text-white">1. El ciudadano reporta — AlejoSeguro escucha</h3>
         <p class="text-slate-400 text-sm leading-relaxed">Un comerciante en el suroccidente de la ciudad recibe un panfleto extorsivo. Desde Telegram, envía fotos del panfleto, un video del sospechoso captado por su cámara, y un audio describiendo lo ocurrido. Todo geolocalizado automáticamente.</p>
-        <div class="glass rounded-xl p-3 flex items-center gap-3" style="border-color:rgba(0,191,166,.25)">
-            <div class="text-lg">📞</div>
-            <div class="text-[11px] text-slate-400 leading-relaxed"><span class="font-semibold" style="color:#00BFA6">¿Sin Telegram ni datos?</span> CatheAsiste atiende la llamada, conversa con naturalidad y convierte la voz en el mismo dato estructurado. Nadie queda por fuera: adultos mayores, zonas rurales, personas sin smartphone.</div>
+        <div class="glass rounded-xl overflow-hidden flex items-center gap-3" style="border-color:rgba(0,191,166,.25)">
+            <img src="assets/demo/escucha-llamada.webp" alt="CatheAsiste por teléfono" class="w-24 h-20 object-cover flex-shrink-0" loading="lazy">
+            <div class="text-lg hidden">📞</div>
+            <div class="text-[11px] text-slate-400 leading-relaxed p-3"><span class="font-semibold" style="color:#00BFA6">¿Sin Telegram ni datos?</span> CatheAsiste atiende la llamada, conversa con naturalidad y convierte la voz en el mismo dato estructurado. Nadie queda por fuera: adultos mayores, zonas rurales, personas sin smartphone.</div>
         </div>
         <div class="glass rounded-xl p-4">
             <div class="text-xs font-semibold text-white mb-2">Evidencia recolectada:</div>
@@ -391,6 +396,12 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 
 <!-- PASO 2: IA procesa -->
 <div class="step" id="step1">
+<div class="rounded-xl overflow-hidden relative mb-6" style="border:1px solid rgba(59,155,217,.35);box-shadow:0 0 30px rgba(59,155,217,.12)">
+    <video autoplay muted loop playsinline class="w-full block" style="height:200px;object-fit:cover;object-position:center 40%">
+        <source src="assets/demo/v-investiga.mp4" type="video/mp4">
+    </video>
+    <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">MileInvestiga revela la red detrás de los reportes · video generado con IA</div>
+</div>
 <div class="grid lg:grid-cols-2 gap-8">
     <div class="space-y-4">
         <h3 class="text-xl font-bold text-white">2. La IA investiga la evidencia — MileInvestiga</h3>
@@ -666,7 +677,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 </div>
 <div class="rounded-xl overflow-hidden relative mb-6" style="border:1px solid rgba(124,108,220,.35);box-shadow:0 0 30px rgba(124,108,220,.12)">
     <video autoplay muted loop playsinline class="w-full block" style="height:200px;object-fit:cover;object-position:center 30%">
-        <source src="assets/demo/acto2.mp4" type="video/mp4">
+        <source src="assets/demo/v-coordina.mp4" type="video/mp4">
     </video>
     <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">Tu Puesto de Mando Unificado, en tiempo real · video generado con IA</div>
 </div>
@@ -720,6 +731,12 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     </div>
     <h2 class="text-3xl font-bold text-white">Decides con anticipación: el Eneágono Decisional</h2>
     <p class="text-slate-400 mt-2 max-w-2xl mx-auto">9 fases que transforman los incidentes que acabas de coordinar en decisiones organizacionales anticipativas, a corto y mediano plazo. Haz clic en cada fase.</p>
+</div>
+<div class="rounded-xl overflow-hidden relative mb-6" style="border:1px solid rgba(212,136,58,.35);box-shadow:0 0 30px rgba(212,136,58,.12)">
+    <video autoplay muted loop playsinline class="w-full block" style="height:200px;object-fit:cover;object-position:center 40%">
+        <source src="assets/demo/v-predice.mp4" type="video/mp4">
+    </video>
+    <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">GabyPredice: la zona de riesgo de los próximos días, antes de que ocurra · video generado con IA</div>
 </div>
 <div class="grid lg:grid-cols-5 gap-6">
     <div class="lg:col-span-2 flex justify-center items-start">

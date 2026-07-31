@@ -154,7 +154,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-orange text-xs font-medium mb-6" style="color:#D4883A">
         <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#D4883A"></span>
-        Demo inmersiva · Caso real de extorsión — Barranquilla
+        Demo inmersiva · Extorsión en el suroccidente de la ciudad
     </div>
     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5">
         <span class="text-white">Un panfleto de extorsión.</span><br>
@@ -177,14 +177,36 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     </div>
 
     <div class="flex flex-wrap items-center gap-4 mb-6">
-        <button onclick="startDemo()" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base anim-pulse">Acto 1 · Ser el comerciante &#8594;</button>
+        <button onclick="startDemo()" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base anim-pulse">Vivir el caso completo &#8594;</button>
+    </div>
+
+    <!-- Selector por línea: el visitante elige qué le interesa -->
+    <div class="text-[10px] text-slate-500 uppercase tracking-wider mb-2">¿Poco tiempo? Elige qué línea te interesa</div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6 max-w-xl">
+        <button onclick="goLine(1,0)" class="glass-teal rounded-xl p-3 text-left hover:scale-[1.03] transition-transform cursor-pointer">
+            <div class="text-[10px] font-bold uppercase tracking-wider" style="color:#00BFA6">01 · Escucha</div>
+            <div class="text-[10px] text-slate-400 mt-1">AlejoSeguro + CatheAsiste</div>
+        </button>
+        <button onclick="goLine(1,1)" class="glass rounded-xl p-3 text-left hover:scale-[1.03] transition-transform cursor-pointer" style="border-color:rgba(59,155,217,.3)">
+            <div class="text-[10px] font-bold uppercase tracking-wider" style="color:#3B9BD9">02 · Investiga</div>
+            <div class="text-[10px] text-slate-400 mt-1">MileInvestiga</div>
+        </button>
+        <button onclick="goLine(2,null)" class="glass-violet rounded-xl p-3 text-left hover:scale-[1.03] transition-transform cursor-pointer">
+            <div class="text-[10px] font-bold uppercase tracking-wider" style="color:#9F91E8">03 · Coordina</div>
+            <div class="text-[10px] text-slate-400 mt-1">GusCoordina</div>
+        </button>
+        <button onclick="goLine(3,null)" class="glass-orange rounded-xl p-3 text-left hover:scale-[1.03] transition-transform cursor-pointer">
+            <div class="text-[10px] font-bold uppercase tracking-wider" style="color:#D4883A">04 · Predice</div>
+            <div class="text-[10px] text-slate-400 mt-1">GabyPredice</div>
+        </button>
     </div>
 
     <!-- El ecosistema explicado en 5 segundos -->
     <div class="text-[10px] text-slate-500 uppercase tracking-wider mb-2">El ecosistema, en 5 segundos</div>
     <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
         <span class="font-semibold text-white">📱 Ciudadano reporta</span><span style="color:#006D6D">→</span>
-        <span class="font-semibold" style="color:#3B9BD9">AlejoSeguro analiza</span><span style="color:#006D6D">→</span>
+        <span class="font-semibold" style="color:#00BFA6">AlejoSeguro + CatheAsiste escuchan</span><span style="color:#006D6D">→</span>
+        <span class="font-semibold" style="color:#3B9BD9">MileInvestiga investiga</span><span style="color:#006D6D">→</span>
         <span class="font-semibold" style="color:#9F91E8">GusCoordina coordina</span><span style="color:#006D6D">→</span>
         <span class="font-semibold" style="color:#D4883A">GabyPredice anticipa</span><span style="color:#006D6D">→</span>
         <span class="font-semibold text-emerald-400">🏛️ Gobierno decide</span>
@@ -214,9 +236,9 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
             <!-- Bogotá (4.71°N, 74.07°W) -->
             <circle cx="252" cy="294" r="7" fill="#006D6D" opacity=".8"><animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite"/></circle>
             <text x="228" y="290" text-anchor="end" fill="#5EEAD4" font-size="11" font-weight="700">Bogotá</text>
-            <!-- Barranquilla (10.96°N, 74.78°W) — caso principal -->
+            <!-- Suroccidente de la ciudad — caso principal -->
             <circle cx="229" cy="91" r="5.5" fill="#D4883A" opacity=".9"><animate attributeName="r" values="5;8;5" dur="1.8s" repeatCount="indefinite"/></circle>
-            <text x="229" y="79" text-anchor="middle" fill="#D4883A" font-size="10" font-weight="700">Barranquilla</text>
+            <text x="229" y="79" text-anchor="middle" fill="#D4883A" font-size="10" font-weight="700">Tu ciudad</text>
             <!-- Cartagena (10.39°N, 75.51°W) -->
             <circle cx="205" cy="110" r="4" fill="#00BFA6" opacity=".6"/><text x="185" y="107" text-anchor="end" fill="#6EE7B7" font-size="8">Cartagena</text>
             <!-- Santa Marta (11.24°N, 74.20°W) -->
@@ -305,7 +327,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
 <div class="text-center mb-4 anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-teal text-xs font-medium mb-3" style="color:#006D6D">
-        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#006D6D"></span>Acto 1 · Eres el comerciante — Extorsión en Barranquilla
+        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#006D6D"></span>Acto 1 · Eres el comerciante — Extorsión en el suroccidente de la ciudad
     </div>
     <h2 class="text-3xl font-bold text-white">Del reporte ciudadano a la acción en terreno</h2>
 </div>
@@ -328,7 +350,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
             </div>
             <div class="p-3 space-y-0 overflow-y-auto" style="height:380px" id="chatArea">
                 <div class="chat-bubble chat-bot" id="m0">¡Hola parce! Soy Alejo, tu vigía de barrio. Compartí tu ubicación pa' saber dónde estás.</div>
-                <div class="chat-bubble chat-user" id="m1">📍 Ubicación compartida<br><span class="text-[10px] opacity-60">Barranquilla, Suroccidente</span></div>
+                <div class="chat-bubble chat-user" id="m1">📍 Ubicación compartida<br><span class="text-[10px] opacity-60">Suroccidente de la ciudad</span></div>
                 <div class="chat-bubble chat-bot" id="m2">Listo parcero. ¿Qué pasó? Mandame foto, video, audio o texto de lo que viste.</div>
                 <div class="chat-bubble chat-user" id="m3">Vine a abrir mi tienda y encontré un panfleto de extorsión. Me piden 2 millones o me queman el local. Tengo miedo.</div>
                 <div class="chat-bubble chat-user" id="m4">📷 <span class="italic">foto_panfleto.jpg</span></div>
@@ -347,8 +369,12 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
             </video>
             <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">El comerciante encuentra el panfleto al abrir su tienda · video generado con IA</div>
         </div>
-        <h3 class="text-xl font-bold text-white">1. El ciudadano reporta</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Un comerciante en el suroccidente de Barranquilla recibe un panfleto extorsivo. Desde Telegram, envía fotos del panfleto, un video del sospechoso captado por su cámara, y un audio describiendo lo ocurrido. Todo geolocalizado automáticamente.</p>
+        <h3 class="text-xl font-bold text-white">1. El ciudadano reporta — AlejoSeguro escucha</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Un comerciante en el suroccidente de la ciudad recibe un panfleto extorsivo. Desde Telegram, envía fotos del panfleto, un video del sospechoso captado por su cámara, y un audio describiendo lo ocurrido. Todo geolocalizado automáticamente.</p>
+        <div class="glass rounded-xl p-3 flex items-center gap-3" style="border-color:rgba(0,191,166,.25)">
+            <div class="text-lg">📞</div>
+            <div class="text-[11px] text-slate-400 leading-relaxed"><span class="font-semibold" style="color:#00BFA6">¿Sin Telegram ni datos?</span> CatheAsiste atiende la llamada, conversa con naturalidad y convierte la voz en el mismo dato estructurado. Nadie queda por fuera: adultos mayores, zonas rurales, personas sin smartphone.</div>
+        </div>
         <div class="glass rounded-xl p-4">
             <div class="text-xs font-semibold text-white mb-2">Evidencia recolectada:</div>
             <div class="flex flex-wrap gap-2">
@@ -367,8 +393,8 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="step" id="step1">
 <div class="grid lg:grid-cols-2 gap-8">
     <div class="space-y-4">
-        <h3 class="text-xl font-bold text-white">2. La IA analiza toda la evidencia</h3>
-        <p class="text-slate-400 text-sm">En menos de 2 segundos, el sistema procesa simultáneamente imagen, video, audio y texto para extraer información accionable.</p>
+        <h3 class="text-xl font-bold text-white">2. La IA investiga la evidencia — MileInvestiga</h3>
+        <p class="text-slate-400 text-sm">En menos de 2 segundos, el sistema procesa simultáneamente imagen, video, audio y texto. Detrás no hay solo gestión de datos: corren <strong class="text-white">más de 20 modelos de analítica avanzada y machine learning</strong> integrados en el flujo — el mismo motor de MileInvestiga que investiga desde fraude financiero hasta redes criminales.</p>
         <div class="glass-teal rounded-xl p-4">
             <div class="flex items-center gap-3 mb-3">
                 <div class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:rgba(0,109,109,.2)">📷</div>
@@ -500,12 +526,12 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
         <div class="glass rounded-xl p-4">
             <div class="flex items-center gap-3 mb-3">
                 <div class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:rgba(239,68,68,.15)">📹</div>
-                <div class="text-sm font-semibold text-white">Contexto: extorsión en Barranquilla</div>
+                <div class="text-sm font-semibold text-white">Contexto: extorsión en el suroccidente de la ciudad</div>
             </div>
             <div class="rounded-lg overflow-hidden" style="aspect-ratio:16/9">
                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/sjCjIC7NeDQ?rel=0&modestbranding=1" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="aspect-ratio:16/9"></iframe>
             </div>
-            <div class="text-[10px] text-slate-500 mt-2">Caso real: extorsión a comerciantes en Barranquilla · Fuente: noticias públicas</div>
+            <div class="text-[10px] text-slate-500 mt-2">Caso basado en hechos reales de extorsión a comerciantes · Fuente: noticias públicas</div>
         </div>
         <button onclick="nextStep()" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2 text-sm w-full justify-center">Ver respuesta en terreno <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
     </div>
@@ -523,7 +549,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
                 <div class="w-3 h-3 rounded-full bg-red-500 anim-blink"></div>
                 <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Alerta · Extorsión Activa</span>
             </div>
-            <div class="text-sm text-white font-semibold mb-1">Extorsión a comerciante — Suroccidente, Barranquilla</div>
+            <div class="text-sm text-white font-semibold mb-1">Extorsión a comerciante — Suroccidente de la ciudad</div>
             <div class="text-xs text-slate-400 mb-3">Cra 21B con Calle 44 · Barrio San Isidro · Hoy 06:42 AM</div>
             <div class="grid grid-cols-3 gap-2 mb-3">
                 <div class="glass rounded-lg p-2 text-center"><div class="text-lg font-bold" style="color:#ef4444">8/10</div><div class="text-[10px] text-slate-500">Riesgo</div></div>
@@ -563,7 +589,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     </div>
     <div class="space-y-4">
         <div class="glass rounded-xl p-4">
-            <div class="text-xs font-semibold text-white mb-2">Mapa de Situación · Suroccidente Barranquilla</div>
+            <div class="text-xs font-semibold text-white mb-2">Mapa de Situación · Suroccidente de la ciudad</div>
             <svg width="100%" height="300" viewBox="0 0 320 300">
                 <rect width="320" height="300" rx="8" fill="#0F1724"/>
                 <defs>
@@ -613,7 +639,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="glass-teal rounded-2xl p-8 text-center max-w-3xl mx-auto">
     <div class="text-4xl mb-4">🔄</div>
     <h3 class="text-2xl font-bold text-white mb-3">De la calle a la coordinación institucional</h3>
-    <p class="text-slate-400 mb-6">Casos como este en Barranquilla se replican en todo el país: Tumaco, Buenaventura, Cúcuta, San Andrés. Cada reporte de AlejoSeguro activa a <strong class="text-white">GusCoordina</strong>, el Puesto de Mando Unificado que coordina la respuesta interinstitucional en tiempo real. Seis agentes especializados articulan a las instituciones convocadas mientras el incidente está en curso.</p>
+    <p class="text-slate-400 mb-6">Casos como este se replican en todo el país: Tumaco, Buenaventura, Cúcuta, San Andrés. Cada reporte de AlejoSeguro activa a <strong class="text-white">GusCoordina</strong>, el Puesto de Mando Unificado que coordina la respuesta interinstitucional en tiempo real. Seis agentes especializados articulan a las instituciones convocadas mientras el incidente está en curso.</p>
     <div class="flex justify-center gap-8 mb-6 flex-wrap">
         <div class="text-center"><div class="text-3xl font-black" style="color:#006D6D">47K+</div><div class="text-xs text-slate-500">Reportes ciudadanos</div></div>
         <div class="text-2xl text-slate-600 flex items-center">&#8594;</div>
@@ -675,7 +701,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     </div>
 </div>
 <div class="flex justify-between items-center mt-8">
-    <button onclick="goScene(1)" class="glass rounded-xl px-4 sm:px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> <span class="hidden sm:inline">Caso Barranquilla</span><span class="sm:hidden">Atrás</span></button>
+    <button onclick="goScene(1)" class="glass rounded-xl px-4 sm:px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> <span class="hidden sm:inline">Caso ciudadano</span><span class="sm:hidden">Atrás</span></button>
     <a href="https://guscoordina.fastanalytics.co/" target="_blank" rel="noopener" class="hidden md:inline-flex glass-violet rounded-xl px-5 py-3 text-sm font-semibold transition items-center gap-2 hover:brightness-125" style="color:#9F91E8">
         <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         Abrir GusCoordina real
@@ -755,7 +781,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 </div>
 <div class="glass rounded-2xl p-6 mb-8">
     <div class="flex items-center justify-between flex-wrap gap-4">
-        <div class="text-center flex-1 min-w-[110px] anim-fade"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-2" style="background:rgba(0,109,109,.1)">📱</div><div class="text-sm font-semibold text-white">Ciudadano</div><div class="text-[10px] text-slate-500">Reporta desde Telegram</div></div>
+        <div class="text-center flex-1 min-w-[110px] anim-fade"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-2" style="background:rgba(0,109,109,.1)">📱</div><div class="text-sm font-semibold text-white">Ciudadano</div><div class="text-[10px] text-slate-500">Telegram o llamada (CatheAsiste)</div></div>
         <svg class="w-5 h-5 flex-shrink-0" style="color:#006D6D" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         <div class="text-center flex-1 min-w-[110px] anim-fade delay-1"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-2" style="background:rgba(0,109,109,.1)">
             <svg width="24" height="24" viewBox="0 0 48 48"><g transform="translate(2,2)"><polygon points="24,1 38,5.8 45,19 42,33 32,43 16,43 6,33 3,19 10,5.8" fill="none" stroke="#006D6D" stroke-width="2" stroke-linejoin="round"/><rect x="15" y="23" width="5.5" height="14" rx="1.8" fill="#006D6D" opacity=".8"/><rect x="21.5" y="17" width="5.5" height="20" rx="1.8" fill="#006D6D"/><rect x="28" y="12" width="5.5" height="25" rx="1.8" fill="#D4883A"/></g></svg>
@@ -984,7 +1010,7 @@ const phases=[
     {id:'F0',name:'Postura Estratégica',color:'#3E5E8E',
      desc:'Define la preocupación de seguridad a partir de texto libre: zonas geográficas, actores, temas y restricciones. Soporta múltiples posturas simultáneas alineadas con el PEI (Res. 3409/2023).',
      detail:'La IA extrae automáticamente los campos estructurados del texto narrativo del decisor. Se establece qué amenaza atender y se alinea con los objetivos estratégicos institucionales.',
-     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">El director escribe: <em>"Priorizar extorsión a comerciantes en el Atlántico, especialmente suroccidente de Barranquilla y Soledad. Actores: redes locales vinculadas a cobro de vacunas. Restricción: no afectar operaciones en curso del CTI."</em> El sistema extrae automáticamente zona, actores, tema y restricciones.</div></div>',
+     example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">El director escribe: <em>"Priorizar extorsión a comerciantes en el suroccidente de la ciudad. Actores: redes locales vinculadas a cobro de vacunas. Restricción: no afectar operaciones en curso del CTI."</em> El sistema extrae automáticamente zona, actores, tema y restricciones.</div></div>',
      speech:'Fase cero: Postura Estratégica. El director define la preocupación: priorizar extorsión a comerciantes en el Atlántico. El sistema extrae automáticamente zona, actores, tema y restricciones del texto libre.'},
     {id:'F1',name:'Entorno-Periferia',color:'#4A6FA5',
      desc:'Construye el entorno operacional cruzando datos nacionales de criminalidad con la percepción ciudadana de AlejoSeguro. Evaluación estadística con intervalos de confianza Poisson al 95%. Incluye antecedentes de F6.',
@@ -1025,14 +1051,14 @@ const phases=[
      desc:'Registra la orden formal con clasificación de seguridad (Res. 05456/2019). Crea plan de acción con indicadores, establece plazos según prioridad. Evalúa impacto en desarrollo humano con 22 variables en 3 dimensiones y genera semáforo IPDH con 10 indicadores.',
      detail:'La orden incluye las 5 preguntas del briefing: qué, cuándo, dónde, por qué y para qué. Se registra en pendientes del director y se crea el plan de acción con indicadores de seguimiento y evaluación PDH automática.',
      example:'<div class="glass-orange rounded-lg p-3 mt-3"><div class="text-[10px] font-bold mb-1" style="color:#D4883A">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400"><strong>ORDEN EMITIDA — Clasificación: RESERVADO</strong><br>• Qué: Operativo simultáneo contra red de extorsión<br>• Cuándo: Viernes 25-Jul, 16:00h<br>• Dónde: B/quilla (suroccidente), Soledad (centro), Cartagena (Bazurto)<br>• Por qué: Red con 5 actores y 847 reportes ciudadanos en 90 días<br>• Para qué: Desarticular estructura criminal + financiera<br>PDH: <span style="color:#10B981">🟢</span> Personas (6.8) · <span style="color:#f59e0b">🟡</span> Comunidades (5.2) · <span style="color:#10B981">🟢</span> Gobernabilidad (7.1)</div></div>',
-     speech:'Fase ocho: Difusión y Acción. Se emite la orden formal clasificada como reservado. Operativo simultáneo el viernes en Barranquilla, Soledad y Cartagena. Se incluye desarticulación financiera. La evaluación de desarrollo humano muestra semáforo verde en personas y gobernabilidad, amarillo en comunidades.'},
+     speech:'Fase ocho: Difusión y Acción. Se emite la orden formal clasificada como reservado. Operativo simultáneo el viernes en las tres zonas de influencia de la red. Se incluye desarticulación financiera. La evaluación de desarrollo humano muestra semáforo verde en personas y gobernabilidad, amarillo en comunidades.'},
 ];
 
 const agents=[
     {id:'IN',name:'Ingreso',color:'#8B7CD6',
      desc:'Recibe el reporte georreferenciado de AlejoSeguro vía web/API y activa el Puesto de Mando Unificado. Convoca automáticamente a las instituciones según el tipo de incidente.',
      detail:'Crea el incidente en la base de datos PostGIS, define las instituciones participantes y abre los canales de comunicación del PMU en cuestión de segundos.',
-     example:'<div class="rounded-lg p-3 mt-3" style="background:rgba(124,108,220,.08);border:1px solid rgba(124,108,220,.2)"><div class="text-[10px] font-bold mb-1" style="color:#9F91E8">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">En cuanto AlejoSeguro geolocaliza el reporte de extorsión en el suroccidente de Barranquilla, GusCoordina abre el incidente y convoca a Policía Metropolitana, Gaula, Fiscalía Seccional Atlántico y la Secretaría de Gobierno.</div></div>',
+     example:'<div class="rounded-lg p-3 mt-3" style="background:rgba(124,108,220,.08);border:1px solid rgba(124,108,220,.2)"><div class="text-[10px] font-bold mb-1" style="color:#9F91E8">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">En cuanto AlejoSeguro geolocaliza el reporte de extorsión en el suroccidente de la ciudad, GusCoordina abre el incidente y convoca a Policía, Gaula, Fiscalía y la Secretaría de Gobierno.</div></div>',
      speech:'Agente de Ingreso. En cuanto AlejoSeguro geolocaliza el reporte de extorsión, el Puesto de Mando Unificado convoca en segundos a Policía, Gaula, Fiscalía y la Secretaría de Gobierno.'},
     {id:'IT',name:'Inteligencia',color:'#7A6FCB',
      desc:'Consolida en tiempo real la información que aportan las instituciones convocadas y la cruza con la evidencia recolectada por AlejoSeguro: fotos, video, audio y red criminal.',
@@ -1057,7 +1083,7 @@ const agents=[
     {id:'PA',name:'Pantalla',color:'#433F97',
      desc:'Proyecta el dashboard unificado del PMU: mapa en vivo, unidades desplegadas y estado del incidente, visible para todas las instituciones convocadas.',
      detail:'Sincroniza vía WebSocket con el Centro de Comando y el geodashboard para que todas las instituciones vean la misma información en tiempo real, sin reportes duplicados ni versiones distintas.',
-     example:'<div class="rounded-lg p-3 mt-3" style="background:rgba(124,108,220,.08);border:1px solid rgba(124,108,220,.2)"><div class="text-[10px] font-bold mb-1" style="color:#9F91E8">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">La pantalla del PMU muestra en vivo la ubicación de las unidades desplegadas y el estado de la respuesta al reporte de extorsión en Barranquilla.</div></div>',
+     example:'<div class="rounded-lg p-3 mt-3" style="background:rgba(124,108,220,.08);border:1px solid rgba(124,108,220,.2)"><div class="text-[10px] font-bold mb-1" style="color:#9F91E8">📌 Caso extorsión:</div><div class="text-[10px] text-slate-400">La pantalla del PMU muestra en vivo la ubicación de las unidades desplegadas y el estado de la respuesta al reporte de extorsión en el suroccidente.</div></div>',
      speech:'Agente de Pantalla. Proyecta en vivo la ubicación de las unidades desplegadas y el estado de la respuesta, visible para todas las instituciones del PMU.'},
 ];
 
@@ -1107,10 +1133,10 @@ function goScene(n){
     var sp=document.getElementById('sceneProgress');if(sp)sp.style.width=((n+1)/5*100)+'%';
     var nav=document.getElementById('fixedNav');nav.style.display=n>0?'flex':'none';
     for(var i=0;i<5;i++){var d=document.getElementById('nd'+i);if(d){d.classList.toggle('active',i===n)}}
-    var labels=['','AlejoSeguro · Barranquilla','GusCoordina · PMU','GabyPredice · Eneágono','Impacto Nacional'];
+    var labels=['','Escucha · AlejoSeguro + CatheAsiste','Coordina · GusCoordina (PMU)','Predice · GabyPredice','Impacto Nacional'];
     var sl=document.getElementById('sceneLabel');sl.textContent=labels[n]||'';sl.classList.toggle('hidden',n===0);
     if(n===0)speak('Bienvenidos. FastAnalytics presenta el Seguridad Ciudadana Inteligente: un ecosistema de tres sistemas de inteligencia artificial. AlejoSeguro recoge el reporte en la calle. GusCoordina coordina la respuesta institucional en tiempo real. Y GabyPredice convierte lo aprendido en decisiones que anticipan el futuro. Del dato, a la coordinación, a la decisión.');
-    if(n===1){resetSteps();showStep(0);animateChat();speak('Escena uno: Un comerciante en Barranquilla recibe un panfleto de extorsión. Desde Telegram, reporta con fotos, video del sospechoso y un audio describiendo lo ocurrido. Todo geolocalizado. La inteligencia artificial lo procesa en segundos, y activa de inmediato al Puesto de Mando Unificado.');}
+    if(n===1){resetSteps();showStep(0);animateChat();speak('Escena uno: Un comerciante en el suroccidente de la ciudad recibe un panfleto de extorsión. Desde Telegram, reporta con fotos, video del sospechoso y un audio describiendo lo ocurrido. Todo geolocalizado. La inteligencia artificial lo procesa en segundos, y activa de inmediato al Puesto de Mando Unificado.');}
     if(n===2){buildComando();flowEdges('#comandoEdges');typeBoletin();countUp('#scene2');speak('Escena dos: GusCoordina, el Puesto de Mando Unificado. En cuanto llega el reporte de AlejoSeguro, seis agentes especializados coordinan una respuesta institucional inmediata entre Policía, Gaula, Fiscalía y Alcaldía. Todo lo que aquí se coordina queda registrado, y alimentará después las decisiones estratégicas de GabyPredice. Haga clic en cada agente.');}
     if(n===3){buildEneagono();flowEdges('#eneagonoEdges');countUp('#scene3');replayChart();speak('Escena tres: GabyPredice, el sistema de decisiones organizacionales. Aquí, los incidentes que reportó AlejoSeguro y que coordinó GusCoordina en todo el país se transforman en decisiones anticipativas, a corto y mediano plazo. El Eneágono Decisional de nueve fases articula las capacidades del Estado desde la postura estratégica hasta la orden ejecutiva. Haga clic en cada fase.');}
     if(n===4)speak('Colombia puede decidir con datos. AlejoSeguro recolecta inteligencia ciudadana desde el terreno, GusCoordina articula la respuesta institucional en tiempo real, y GabyPredice transforma esa información en decisiones anticipativas. Y esto no es solo una promesa: los modelos de nuestro fundador ya dejaron resultados. Setecientos setenta y dos municipios sin un solo homicidio. El diciembre más seguro en diecinueve años. Bogotá en su nivel más bajo desde dos mil tres. Cali, dos días seguidos sin homicidios por primera vez en veintinueve años. Puede verificarlo en la prensa. Predecimos dónde y cuándo actuar.');
@@ -1133,7 +1159,7 @@ function toggleMusic(){
 
 // ── Feed de reportes en vivo (escena 0) ──
 var feedData=[
-    {c:'#00BFA6',t:'📍 Nuevo reporte · Suroccidente, Barranquilla · Extorsión · hace 1 min'},
+    {c:'#00BFA6',t:'📍 Nuevo reporte · Suroccidente de la ciudad · Extorsión · hace 1 min'},
     {c:'#D4883A',t:'🌡️ Riesgo de zona actualizado: 8/10 · 12 reportes esta semana'},
     {c:'#9F91E8',t:'🎤 Audio transcrito · confianza 97% · evidencia adjunta al caso'},
     {c:'#00BFA6',t:'📷 Placa BQA-452 detectada en 3 puntos de la ciudad'},
@@ -1163,7 +1189,7 @@ function showStep(n){
     window.scrollTo({top:document.getElementById('stepIndicator').offsetTop-80,behavior:'smooth'});
     if(n===1)buildWaveform();
     var speeches=[
-        'Un comerciante en el suroccidente de Barranquilla reporta extorsión a través de Telegram. Envía fotos del panfleto, un video del sospechoso y un audio con su testimonio. Todo queda geolocalizado automáticamente.',
+        'Un comerciante en el suroccidente de la ciudad reporta extorsión a través de Telegram. Envía fotos del panfleto, un video del sospechoso y un audio con su testimonio. Todo queda geolocalizado automáticamente.',
         'La inteligencia artificial analiza toda la evidencia en menos de dos segundos. Identifica un rostro conocido como alias El Flaco, lee la placa de la moto, transcribe el audio y mapea la red criminal asociada con seguimiento espaciotemporal.',
         'Las autoridades en terreno reciben la alerta completa con el paquete de evidencia, el historial de avistamientos del sospechoso, y el mapa de situación con las causas que reporta la comunidad: extorsión, venta de drogas, hurtos y falta de acceso a la justicia.',
         'Reportes como este activan a GusCoordina, el Puesto de Mando Unificado que coordina la respuesta institucional en tiempo real. Todo lo que se coordina en terreno alimentará después las decisiones estratégicas de GabyPredice.'
@@ -1171,6 +1197,7 @@ function showStep(n){
     if(speeches[n])speak(speeches[n]);playNotif();
 }
 function nextStep(){if(currentStep<3)showStep(currentStep+1)}
+function goLine(scene,step){playClick();goScene(scene);if(scene===1&&step!==null){setTimeout(function(){showStep(step)},80)}}
 
 function animateChat(){
     if(chatAnimated)return;chatAnimated=true;
@@ -1244,7 +1271,7 @@ function countUp(scope){
 // ── Boletín IA con efecto máquina de escribir ──
 function typeBoletin(){
     var el=document.getElementById('boletinText');if(!el)return;
-    var txt='BOLETÍN PMU · 06:47 AM\nExtorsión a comerciante en Suroccidente, Barranquilla.\nEvidencia: foto + video + audio (conf. 97%).\nSospechoso: "El Flaco" · moto BQA-452.\nRecomendación: patrullaje Cra 46 + alerta al Gaula.\nPróxima actualización en 15 minutos.';
+    var txt='BOLETÍN PMU · 06:47 AM\nExtorsión a comerciante en el suroccidente de la ciudad.\nEvidencia: foto + video + audio (conf. 97%).\nSospechoso: "El Flaco" · moto BQA-452.\nRecomendación: patrullaje Cra 46 + alerta al Gaula.\nPróxima actualización en 15 minutos.';
     el.textContent='';var i=0;clearInterval(window._bolTimer);
     window._bolTimer=setInterval(function(){
         el.textContent=txt.slice(0,++i)+(i<txt.length?'▌':'');

@@ -104,7 +104,14 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Nota técnica: las visualizaciones dinámicas inyectadas por JS usan estado final directo + animaciones SMIL `repeatCount="indefinite"` (SMIL con `begin` en el pasado no corre al inyectar tarde en el DOM).
 - Referencias de ciudad neutralizadas: "el suroccidente de la ciudad" en todo el demo.
 
+### Demo v5 (ago 2026): imágenes cinematográficas FLUX + una gráfica por nodo
+- Paso 1 (Escucha): escena CCTV generada con FLUX (`assets/demo/cctv-escena.webp`) — calle nocturna, sospechoso + moto — con cajas de detección SVG animadas encima (ROSTRO/VEHÍCULO + línea de escaneo).
+- Paso 2 (Investiga): fondo aéreo nocturno (`red-bg.webp`) bajo el grafo animado de la red criminal.
+- Paso 3 (Respuesta): mapa táctico top-down (`mapa-tactico.webp`) bajo radar, hotspots y unidad en ruta.
+- Generación: `/mnt/modelos/comfygen/gen_demo3.py` (FLUX schnell fp8 vía ComfyUI, requiere pausar fa-vllm por GPU).
+- Eneágono: el panel estático de predicción se OCULTA al seleccionar un nodo (`anticiparPanel`); cada fase muestra UNA sola visualización sincronizada con su narración (F0 extracción, F1 +340%, F3 centralidad, F4 checkpoint, F5 proyección, etc.).
+
 ### Narración profesional + logos completos (ago 2026, v4)
 - **Narración con voz real**: 20 clips MP3 generados con **Kokoro-82M TTS** en el servidor (`/home/andrego50/gen_narr.py`, venv `/mnt/modelos/kokoro-venv`, CPU). 3 voces: narrador principal (em_alex), GabyPredice (ef_dora), agentes PMU (em_santa). Textos reescritos en tono cinematográfico. El demo usa `assets/demo/narr/*.mp3` con fallback automático a SpeechSynthesis. Kokoro OOM en GPU con vLLM activo → correr con `CUDA_VISIBLE_DEVICES=""`.
 - **Logos nuevos**: `tavodebate.svg` (globos de debate naranja/teal), `veteranos.svg` (boina + estrella), `chronnet.svg` (constelación de red) en `assets/images/logos/`.
-- **Versiones v2 modernas** de los 5 logos del ecosistema (`*-v2.svg`): relleno degradado sutil, cresta de eneágono corporativa, trazos refinados. Los actuales siguen activos; los v2 quedan para A/B.
+- **Versiones v2 modernas** de los 5 logos del ecosistema (`*-v2.svg`): relleno degradado sutil, cresta de eneágono corporativa, trazos refinados. **ACTIVADOS (ago 2026)**: los v2 reemplazan a los originales en el demo (AlejoSeguro, GusCoordina, GabyPredice + logos añadidos de MileInvestiga y CatheAsiste) y en la home (`index.html`, tarjetas de GabyPredice y GusCoordina). Las tarjetas de TavoDebate, Chronnet y Veteranos en la home ahora usan sus logos nuevos. Los SVG originales se conservan en `assets/images/logos/` por si se quiere volver atrás.

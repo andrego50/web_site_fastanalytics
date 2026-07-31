@@ -149,3 +149,10 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Hero: los 5 logos ya no van en linea vertical sino en formacion de cuna
   (manada) convergiendo con flechas al punto "Tu ciudad" del mapa.
 
+### Audio y música (2026-08-01, commit 7b7f1da)
+- Eliminada la voz TTS duplicada de los pasos (hablaba encima de la narracion mp3);
+  el respaldo TTS solo actua si el mp3 realmente no carga (error 2/4), nunca por AbortError.
+- Videos de pasos: de banda fija 200px (se veian cortados en desktop) a aspect-ratio 16/9.
+- Arco musical por escena (MusicGen, musicgen-venv): m1-suspenso (escenas 0-1),
+  m2-construccion (PMU), m3-confianza (Eneagono), m4-jubilo (cierre).
+

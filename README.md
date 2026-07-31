@@ -143,3 +143,9 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
   `assets/images/logos/{nombre}-v3.png`. Referencias actualizadas en demo y home
   (los v2 SVG quedan como respaldo).
 
+### Logos v4 (2026-08-01) — Multicolor + manada
+- Logos regenerados con FLUX (`gen_logos2.py`): color principal + 2-3 acentos
+  (ej. Alejo teal+navy+naranja, Gaby naranja+teal). PNG `-v4.png` en demo y home.
+- Hero: los 5 logos ya no van en linea vertical sino en formacion de cuna
+  (manada) convergiendo con flechas al punto "Tu ciudad" del mapa.
+

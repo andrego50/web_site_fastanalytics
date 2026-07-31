@@ -62,6 +62,33 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 .step-dot.active{background:var(--teal);width:48px}
 .step-dot.done{background:rgba(0,109,109,.4)}
 .orb{position:fixed;border-radius:50%;filter:blur(100px);opacity:.07;pointer-events:none}
+
+/* ── Fondo cinematográfico ── */
+body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.07),transparent 60%),radial-gradient(900px 500px at 10% 110%,rgba(212,136,58,.06),transparent 60%)}
+.grid-overlay{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(148,163,184,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.045) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at 50% 30%,black 25%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 30%,black 25%,transparent 75%)}
+
+/* ── Barra de progreso de escenas ── */
+#sceneProgress{position:fixed;top:0;left:0;height:2px;width:20%;z-index:60;background:linear-gradient(90deg,#006D6D,#00BFA6,#D4883A);box-shadow:0 0 12px rgba(45,212,191,.5);transition:width .6s ease}
+
+/* ── Radar giratorio detrás del mapa ── */
+.radar{position:absolute;top:44%;left:50%;width:560px;height:560px;transform:translate(-50%,-50%);border-radius:50%;background:conic-gradient(from 0deg,rgba(45,212,191,.13),transparent 22%);animation:radarSpin 5.5s linear infinite;pointer-events:none}
+.radar::before{content:'';position:absolute;inset:14%;border-radius:50%;border:1px solid rgba(45,212,191,.08)}
+.radar::after{content:'';position:absolute;inset:32%;border-radius:50%;border:1px solid rgba(45,212,191,.06)}
+@keyframes radarSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@media(max-width:640px){.radar{width:340px;height:340px}}
+
+/* ── Feed de reportes en vivo ── */
+.live-feed{display:flex;flex-direction:column;gap:8px;margin-top:16px;min-height:110px;width:100%;max-width:420px}
+.feed-item{display:flex;align-items:center;gap:10px;padding:9px 13px;border-radius:12px;background:rgba(15,23,42,.72);border:1px solid rgba(45,212,191,.18);backdrop-filter:blur(8px);font-size:11px;line-height:1.45;color:#CBD5E1;opacity:0;transform:translateY(10px);transition:all .5s ease}
+.feed-item.show{opacity:1;transform:translateY(0)}
+.feed-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;box-shadow:0 0 8px currentColor}
+
+/* ── Tarjetas de rol con hover glow ── */
+.role-card{transition:all .35s ease;cursor:default}
+.role-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4),0 0 24px rgba(45,212,191,.12)}
+
+/* ── Glow en el titular ── */
+.hero-glowtext{text-shadow:0 0 44px rgba(45,212,191,.3)}
 </style>
 </head>
 <body>
@@ -69,6 +96,8 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 <div class="orb w-96 h-96" style="background:#006D6D;top:-12rem;left:-12rem"></div>
 <div class="orb w-80 h-80" style="background:#008080;top:33%;right:-10rem"></div>
 <div class="orb w-64 h-64" style="background:#D4883A;bottom:5rem;left:25%"></div>
+<div class="grid-overlay"></div>
+<div id="sceneProgress"></div>
 
 <!-- HEADER -->
 <header class="fixed top-0 w-full z-50 glass border-b border-white/5">
@@ -107,27 +136,27 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
         <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#D4883A"></span>
         Demo inmersiva · Caso real de extorsión — Barranquilla
     </div>
-    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5">
         <span class="text-white">Un panfleto de extorsión.</span><br>
         <span class="text-white">Un ciudadano con miedo.</span><br>
-        <span style="background:linear-gradient(135deg,#006D6D,#008080,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Y un Estado que</span><br>
-        <span style="background:linear-gradient(135deg,#006D6D,#008080,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">responde a tiempo.</span>
+        <span class="hero-glowtext" style="background:linear-gradient(135deg,#2DD4BF,#0D9488,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Y un Estado que</span><br>
+        <span class="hero-glowtext" style="background:linear-gradient(135deg,#2DD4BF,#0D9488,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">responde a tiempo.</span>
     </h1>
-    <p class="text-lg text-slate-400 leading-relaxed mb-8 max-w-lg">Vas a vivir este caso <strong class="text-white">dos veces</strong>: primero como el comerciante que reporta desde su celular; después como el comandante que recibe la alerta y debe decidir. Todo con la tecnología real del ecosistema FastAnalytics.</p>
+    <p class="text-lg text-slate-400 leading-relaxed mb-6 max-w-lg">Vas a vivir este caso <strong class="text-white">dos veces</strong>: primero como el comerciante que reporta desde su celular; después como el comandante que recibe la alerta y debe decidir. Todo con la tecnología real del ecosistema FastAnalytics.</p>
 
     <!-- Los dos roles que va a vivir el visitante -->
-    <div class="grid sm:grid-cols-2 gap-3 mb-8 max-w-lg">
-        <div class="glass-teal rounded-xl p-4">
+    <div class="grid sm:grid-cols-2 gap-3 mb-6 max-w-lg">
+        <div class="glass-teal rounded-xl p-4 role-card">
             <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:#00BFA6">Acto 1 · Eres el comerciante</div>
             <div class="text-xs text-slate-400 leading-relaxed">Reportas la extorsión por Telegram y ves cómo la IA procesa tu evidencia en segundos.</div>
         </div>
-        <div class="glass-violet rounded-xl p-4">
+        <div class="glass-violet rounded-xl p-4 role-card">
             <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:#9F91E8">Acto 2 · Eres el comandante</div>
             <div class="text-xs text-slate-400 leading-relaxed">La alerta llega a tu Puesto de Mando: coordinas instituciones y decides con datos predictivos.</div>
         </div>
     </div>
 
-    <div class="flex flex-wrap items-center gap-4 mb-8">
+    <div class="flex flex-wrap items-center gap-4 mb-6">
         <button onclick="startDemo()" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base anim-pulse">Acto 1 · Ser el comerciante &#8594;</button>
     </div>
 
@@ -141,8 +170,9 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
         <span class="font-semibold text-emerald-400">🏛️ Gobierno decide</span>
     </div>
 </div>
-<div class="anim-r flex justify-center">
-    <svg width="100%" height="auto" viewBox="0 0 500 620" class="anim-float" style="max-width:420px">
+<div class="anim-r flex flex-col items-center relative">
+    <div class="radar"></div>
+    <svg width="100%" height="auto" viewBox="0 0 500 620" class="anim-float relative" style="max-width:420px;z-index:1">
         <defs>
             <linearGradient id="gCol" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#006D6D" stop-opacity=".3"/><stop offset="100%" stop-color="#00BFA6" stop-opacity=".1"/></linearGradient>
             <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -244,6 +274,7 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
         </g>
         <text x="47" y="427" text-anchor="middle" fill="#9F91E8" font-size="11" font-weight="bold" font-family="sans-serif">GusCoordina</text>
     </svg>
+    <div class="live-feed" id="liveFeed"></div>
 </div>
 </div>
 </div>
@@ -998,6 +1029,7 @@ function goScene(n){
     var el=document.getElementById('scene'+n);el.style.display='block';
     requestAnimationFrame(function(){el.classList.add('active');el.style.opacity='1'});
     currentScene=n;currentStep=0;window.scrollTo({top:0,behavior:'smooth'});
+    var sp=document.getElementById('sceneProgress');if(sp)sp.style.width=((n+1)/5*100)+'%';
     var nav=document.getElementById('fixedNav');nav.style.display=n>0?'flex':'none';
     for(var i=0;i<5;i++){var d=document.getElementById('nd'+i);if(d){d.classList.toggle('active',i===n)}}
     var labels=['','AlejoSeguro · Barranquilla','GusCoordina · PMU','GabyPredice · Eneágono','Impacto Nacional'];
@@ -1010,6 +1042,28 @@ function goScene(n){
 }
 
 function startDemo(){audioCtx.resume();playSuccess();goScene(1)}
+
+// ── Feed de reportes en vivo (escena 0) ──
+var feedData=[
+    {c:'#00BFA6',t:'📍 Nuevo reporte · Suroccidente, Barranquilla · Extorsión · hace 1 min'},
+    {c:'#D4883A',t:'🌡️ Riesgo de zona actualizado: 8/10 · 12 reportes esta semana'},
+    {c:'#9F91E8',t:'🎤 Audio transcrito · confianza 97% · evidencia adjunta al caso'},
+    {c:'#00BFA6',t:'📷 Placa BQA-452 detectada en 3 puntos de la ciudad'},
+    {c:'#ef4444',t:'🕸️ Red de extorsión: 5 actores vinculados · nodo central identificado'},
+    {c:'#D4883A',t:'⚡ Señal débil detectada · patrón similar en 2 barrios más'}
+];
+(function(){
+    var f=document.getElementById('liveFeed');if(!f)return;var i=0;
+    function push(){
+        var d=feedData[i%feedData.length];i++;
+        var el=document.createElement('div');el.className='feed-item';
+        el.innerHTML='<span class="feed-dot" style="background:'+d.c+';color:'+d.c+'"></span><span>'+d.t+'</span>';
+        f.prepend(el);
+        requestAnimationFrame(function(){requestAnimationFrame(function(){el.classList.add('show')})});
+        while(f.children.length>3)f.removeChild(f.lastChild);
+    }
+    push();push();setInterval(push,3400);
+})();
 function resetDemo(){synth.cancel();chatAnimated=false;currentScene=0;currentStep=0;document.querySelectorAll('.scene').forEach(function(s){s.classList.remove('active');s.style.display='none'});var s0=document.getElementById('scene0');s0.style.display='block';requestAnimationFrame(function(){s0.classList.add('active');s0.style.opacity='1'});document.getElementById('fixedNav').style.display='none';document.getElementById('sceneLabel').classList.add('hidden');document.querySelectorAll('#chatArea .chat-bubble').forEach(function(b){b.classList.remove('show')});document.querySelectorAll('.eneagono-node').forEach(function(n){n.classList.remove('active-node','completed')});document.getElementById('phaseDetail').innerHTML='<div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase articula capacidades del Estado para la toma de decisiones estratégicas de seguridad</p></div>';document.querySelectorAll('.agent-node').forEach(function(n){n.classList.remove('active-node','completed')});var ad=document.getElementById('agentDetail');if(ad)ad.innerHTML='<div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧭</div><h3 class="text-lg font-semibold text-white/60">Seleccione un agente del PMU</h3><p class="text-sm text-slate-500 mt-2">Cada agente coordina una capacidad distinta del Puesto de Mando Unificado en tiempo real</p></div>';}
 
 function resetSteps(){for(var i=0;i<4;i++){var s=document.getElementById('step'+i);if(s){s.classList.remove('visible');s.style.display='none'}var d=document.getElementById('sd'+i);if(d){d.className='step-dot'}}}

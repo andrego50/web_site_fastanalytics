@@ -134,3 +134,12 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
   9 fases y 6 agentes, re-renderiza paneles activos en silencio y ajusta SpeechSynthesis
   (es-ES/en-US/fr-FR). Micro-etiquetas dentro de graficas SVG quedan en ES.
 
+### Logos v3 (2026-08-01) — Mascotas FLUX
+- Los 5 logos del ecosistema regenerados con FLUX schnell (GPU local, script
+  `/mnt/modelos/comfygen/gen_logos.py`, 3 candidatos por personaje).
+- Estilo: mascota escudo flat con carita, casco+brujula (Alejo), headset (Cathe),
+  fedora+lupa (Mile), antena con ondas (Gus), flecha ascendente (Gaby).
+- Exportados como PNG 512x512 con mascara circular transparente:
+  `assets/images/logos/{nombre}-v3.png`. Referencias actualizadas en demo y home
+  (los v2 SVG quedan como respaldo).
+

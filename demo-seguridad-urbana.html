@@ -130,24 +130,27 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     <div>
         <span class="text-base font-extrabold tracking-tight"><span style="color:#006D6D">F</span><span style="color:#D4883A">a</span><span style="color:#006D6D">stAnalyt</span><span style="color:#D4883A">i</span><span style="color:#006D6D">cs</span></span>
         <span class="hidden sm:inline text-xs text-slate-500 ml-2">Seguridad Ciudadana Inteligente</span>
+    <div class="flex items-center gap-0.5 ml-2 rounded-lg overflow-hidden" style="border:1px solid rgba(255,255,255,.12)" id="langSel">
+      <button onclick="setLang('es')" data-lang="es" class="lang-btn px-2 py-1 text-[10px] font-bold">ES</button><button onclick="setLang('en')" data-lang="en" class="lang-btn px-2 py-1 text-[10px] font-bold">EN</button><button onclick="setLang('fr')" data-lang="fr" class="lang-btn px-2 py-1 text-[10px] font-bold">FR</button>
+    </div>
     </div>
 </div>
 <div class="flex items-center gap-1 sm:gap-3 flex-shrink-0">
     <button id="voiceToggle" onclick="toggleVoice()" title="Silenciar narración" aria-label="Silenciar narración" class="flex items-center gap-2 text-xs text-slate-500 hover:text-teal-400 transition px-2 py-1.5 rounded-lg hover:bg-white/5">
-      <span id="voiceDot" class="w-2 h-2 rounded-full bg-slate-600 flex-shrink-0"></span><span id="voiceLabel" class="hidden md:inline whitespace-nowrap">Audio listo</span>
+      <span id="voiceDot" class="w-2 h-2 rounded-full bg-slate-600 flex-shrink-0"></span><span id="voiceLabel" class="hidden md:inline whitespace-nowrap" data-i18n-voice>Audio listo</span>
     </button>
     <button id="musicToggle" onclick="toggleMusic()" title="Música épica de fondo" aria-label="Música de fondo" class="flex items-center gap-2 text-xs text-slate-500 hover:text-teal-400 transition px-2 py-1.5 rounded-lg hover:bg-white/5">
-      <span id="musicDot" class="w-2 h-2 rounded-full bg-slate-600 flex-shrink-0"></span><span class="hidden md:inline whitespace-nowrap">🎵 Música</span>
+      <span id="musicDot" class="w-2 h-2 rounded-full bg-slate-600 flex-shrink-0"></span><span class="hidden md:inline whitespace-nowrap" data-i18n="hdrMusic">🎵 Música</span>
     </button>
     <div class="hidden xl:block"><div id="sceneLabel" class="text-xs text-slate-500 font-medium tracking-wider uppercase hidden"></div></div>
     <a href="index.html#casos" class="hidden sm:inline-flex text-xs text-slate-300 hover:text-teal-400 transition px-3 py-1.5 rounded-lg hover:bg-white/5 items-center gap-1 whitespace-nowrap">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-      Productos
+      <span data-i18n="hdrProducts">Productos</span>
     </a>
-    <button onclick="resetDemo()" class="hidden lg:block text-xs text-slate-500 hover:text-teal-400 transition px-3 py-1.5 rounded-lg hover:bg-white/5 whitespace-nowrap">&#8635; Reiniciar</button>
+    <button onclick="resetDemo()" class="hidden lg:block text-xs text-slate-500 hover:text-teal-400 transition px-3 py-1.5 rounded-lg hover:bg-white/5 whitespace-nowrap" data-i18n="hdrReset">&#8635; Reiniciar</button>
     <a href="index.html#agenda" class="btn-fa text-white font-semibold text-xs px-3 sm:px-4 py-2 rounded-lg inline-flex items-center gap-1.5 whitespace-nowrap flex-shrink-0">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      <span class="hidden sm:inline">Agendar demo</span><span class="sm:hidden">Demo</span>
+      <span class="hidden sm:inline" data-i18n="hdrAgenda">Agendar demo</span><span class="sm:hidden" data-i18n="hdrAgendaM">Demo</span>
     </a>
 </div>
 </div>
@@ -160,18 +163,18 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-orange text-xs font-medium mb-6" style="color:#D4883A">
         <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#D4883A"></span>
-        Demo inmersiva · Extorsión en el suroccidente de la ciudad
+        <span data-i18n="badge0">Demo inmersiva · Extorsión en el suroccidente de la ciudad</span>
     </div>
     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5">
-        <span class="text-white">Un panfleto de extorsión.</span><br>
-        <span class="text-white">Un ciudadano con miedo.</span><br>
-        <span class="hero-glowtext" style="background:linear-gradient(135deg,#2DD4BF,#0D9488,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Y un Estado que</span><br>
-        <span class="hero-glowtext" style="background:linear-gradient(135deg,#2DD4BF,#0D9488,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">responde a tiempo.</span>
+        <span class="text-white" data-i18n="h1a">Un panfleto de extorsión.</span><br>
+        <span class="text-white" data-i18n="h1b">Un ciudadano con miedo.</span><br>
+        <span class="hero-glowtext" style="background:linear-gradient(135deg,#2DD4BF,#0D9488,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent" data-i18n="h1c">Y un Estado que</span><br>
+        <span class="hero-glowtext" style="background:linear-gradient(135deg,#2DD4BF,#0D9488,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent" data-i18n="h1d">responde a tiempo.</span>
     </h1>
-    <p class="text-lg text-slate-400 leading-relaxed mb-6 max-w-lg">Vive el caso <strong class="text-white">dos veces</strong>: como el comerciante que reporta y como el comandante que decide.</p>
+    <p class="text-lg text-slate-400 leading-relaxed mb-6 max-w-lg" data-i18n="heroSub">Vive el caso <strong class="text-white">dos veces</strong>: como el comerciante que reporta y como el comandante que decide.</p>
 
     <div class="flex flex-wrap items-center gap-4 mb-6">
-        <button onclick="startDemo()" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base anim-pulse">Vivir el caso completo &#8594;</button>
+        <button onclick="startDemo()" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base anim-pulse" data-i18n="ctaStart">Vivir el caso completo &#8594;</button>
     </div>
 
 </div>
@@ -281,26 +284,26 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 </div>
 <div class="mt-8">
     <!-- Selector por línea: el visitante elige qué le interesa -->
-    <div class="text-[10px] text-slate-500 uppercase tracking-wider mb-2">¿Poco tiempo? Elige qué línea te interesa</div>
+    <div class="text-[10px] text-slate-500 uppercase tracking-wider mb-2" data-i18n="lineTitle">¿Poco tiempo? Elige qué línea te interesa</div>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-4xl mx-auto">
         <button onclick="goLine(1,0)" class="glass-teal rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
             <img src="assets/demo/escucha-ciudadano.webp" alt="Escucha" class="w-full h-14 object-cover" loading="lazy">
-            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#00BFA6">01 · Escucha</div>
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#00BFA6" data-i18n="line1">01 · Escucha</div>
             <div class="text-[10px] text-slate-400 mt-1">AlejoSeguro + CatheAsiste</div></div>
         </button>
         <button onclick="goLine(1,1)" class="glass rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer" style="border-color:rgba(59,155,217,.3)">
             <img src="assets/demo/investiga-red.webp" alt="Investiga" class="w-full h-14 object-cover" loading="lazy">
-            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#3B9BD9">02 · Investiga</div>
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#3B9BD9" data-i18n="line2">02 · Investiga</div>
             <div class="text-[10px] text-slate-400 mt-1">MileInvestiga</div></div>
         </button>
         <button onclick="goLine(2,null)" class="glass-violet rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
             <img src="assets/demo/coordina-pmu.webp" alt="Coordina" class="w-full h-14 object-cover" loading="lazy">
-            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#9F91E8">03 · Coordina</div>
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#9F91E8" data-i18n="line3">03 · Coordina</div>
             <div class="text-[10px] text-slate-400 mt-1">GusCoordina</div></div>
         </button>
         <button onclick="goLine(3,null)" class="glass-orange rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
             <img src="assets/demo/predice-ciudad.webp" alt="Predice" class="w-full h-14 object-cover" loading="lazy">
-            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#D4883A">04 · Predice</div>
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#D4883A" data-i18n="line4">04 · Predice</div>
             <div class="text-[10px] text-slate-400 mt-1">GabyPredice</div></div>
         </button>
     </div>
@@ -316,9 +319,9 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
 <div class="text-center mb-4 anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-teal text-xs font-medium mb-3" style="color:#006D6D">
-        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#006D6D"></span>Acto 1 · Eres el comerciante — Extorsión en el suroccidente de la ciudad
+        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#006D6D"></span><span data-i18n="badge1">Acto 1 · Eres el comerciante — Extorsión en el suroccidente de la ciudad</span>
     </div>
-    <h2 class="text-3xl font-bold text-white">Del reporte ciudadano a la acción en terreno</h2>
+    <h2 class="text-3xl font-bold text-white" data-i18n="h2act1">Del reporte ciudadano a la acción en terreno</h2>
 </div>
 <div class="step-indicator" id="stepIndicator">
     <div class="step-dot active" id="sd0"></div>
@@ -356,10 +359,10 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
             <video autoplay muted loop playsinline class="w-full block" style="aspect-ratio:16/9;object-fit:cover">
                 <source src="assets/demo/v-escucha.mp4" type="video/mp4">
             </video>
-            <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">El comerciante encuentra el panfleto al abrir su tienda · video generado con IA</div>
+            <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))"><span data-i18n="cap1">El comerciante encuentra el panfleto al abrir su tienda · video generado con IA</span></div>
         </div>
-        <h3 class="text-xl font-bold text-white">1. El ciudadano reporta — AlejoSeguro escucha</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Un comerciante reporta una extorsión desde Telegram: fotos, video y audio, todo geolocalizado.</p>
+        <h3 class="text-xl font-bold text-white" data-i18n="h3s1">1. El ciudadano reporta — AlejoSeguro escucha</h3>
+        <p class="text-slate-400 text-sm leading-relaxed"><span data-i18n="p1s1">Un comerciante reporta una extorsión desde Telegram: fotos, video y audio, todo geolocalizado.</span></p>
         <div class="glass rounded-xl overflow-hidden flex items-center gap-3" style="border-color:rgba(0,191,166,.25)">
             <div class="relative flex-shrink-0"><img src="assets/demo/escucha-llamada.webp" alt="CatheAsiste por teléfono" class="w-24 h-20 object-cover" loading="lazy"><img src="assets/images/logos/catheastiste-v2.svg" alt="CatheAsiste" class="absolute -bottom-2 -right-2 w-9 h-9 rounded-full bg-white p-0.5 shadow-lg"></div>
             <div class="text-lg hidden">📞</div>
@@ -374,7 +377,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
                 <span class="text-[10px] px-3 py-1 rounded-full glass-teal" style="color:#006D6D">🎤 Audio testimonio</span>
             </div>
         </div>
-        <button onclick="nextStep()" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2 text-sm">Ver cómo la IA procesa la evidencia <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
+        <button onclick="nextStep()" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2 text-sm"><span data-i18n="btn1">Ver cómo la IA procesa la evidencia</span> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
     </div>
 </div>
 </div>
@@ -385,12 +388,12 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     <video autoplay muted loop playsinline class="w-full block" style="height:200px;object-fit:cover;object-position:center 40%">
         <source src="assets/demo/v-investiga.mp4" type="video/mp4">
     </video>
-    <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">MileInvestiga revela la red detrás de los reportes · video generado con IA</div>
+    <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))"><span data-i18n="cap2">MileInvestiga revela la red detrás de los reportes · video generado con IA</span></div>
 </div>
 <div class="grid lg:grid-cols-2 gap-8">
     <div class="space-y-4">
-        <h3 class="text-xl font-bold text-white flex items-center gap-2"><img src="assets/images/logos/mileinvestiga-v2.svg" alt="MileInvestiga" class="w-9 h-9 rounded-full bg-white p-0.5">2. La IA investiga la evidencia — MileInvestiga</h3>
-        <p class="text-slate-400 text-sm"><strong class="text-white">Más de 20 modelos de IA</strong> procesan imagen, video, audio y texto en menos de 2 segundos.</p>
+        <h3 class="text-xl font-bold text-white flex items-center gap-2"><img src="assets/images/logos/mileinvestiga-v2.svg" alt="MileInvestiga" class="w-9 h-9 rounded-full bg-white p-0.5"><span data-i18n="h3s2">2. La IA investiga la evidencia — MileInvestiga</span></h3>
+        <p class="text-slate-400 text-sm"><span data-i18n="p1s2"><strong class="text-white">Más de 20 modelos de IA</strong> procesan imagen, video, audio y texto en menos de 2 segundos.</span></p>
         <div class="rounded-xl px-3 py-2.5 flex flex-wrap items-center gap-1.5" style="background:rgba(0,109,109,.06);border:1px solid rgba(0,109,109,.18)">
             <span class="text-[10px] font-bold mr-1" style="color:#00BFA6">⚙️ PIPELINE EN VIVO</span>
             <span class="chip-run text-[9px] px-2 py-0.5 rounded-full" style="animation-delay:0s">👁 Visión</span>
@@ -512,7 +515,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
             </div>
             <div class="text-[10px] text-slate-500 mt-2">Basado en hechos reales · Video generado con IA</div>
         </div>
-        <button onclick="nextStep()" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2 text-sm w-full justify-center">Ver respuesta en terreno <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
+        <button onclick="nextStep()" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2 text-sm w-full justify-center"><span data-i18n="btn2">Ver respuesta en terreno</span> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
     </div>
 </div>
 </div>
@@ -521,8 +524,8 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="step" id="step2">
 <div class="grid lg:grid-cols-2 gap-8">
     <div class="space-y-4">
-        <h3 class="text-xl font-bold text-white">3. Respuesta coordinada en terreno</h3>
-        <p class="text-slate-400 text-sm">Las autoridades reciben la alerta con toda la evidencia procesada.</p>
+        <h3 class="text-xl font-bold text-white" data-i18n="h3s3">3. Respuesta coordinada en terreno</h3>
+        <p class="text-slate-400 text-sm"><span data-i18n="p1s3">Las autoridades reciben la alerta con toda la evidencia procesada.</span></p>
         <div class="glass-alert rounded-xl p-4 alert-glow">
             <div class="flex items-center gap-2 mb-3">
                 <div class="w-3 h-3 rounded-full bg-red-500 anim-blink"></div>
@@ -618,7 +621,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
                 <text x="10" y="18" fill="rgba(45,212,191,.7)" font-size="7" font-weight="700">● RADAR ACTIVO — UNIDAD EN RUTA</text>
             </svg>
         </div>
-        <button onclick="nextStep()" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2 text-sm w-full justify-center">Ver cómo se coordina la respuesta institucional <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
+        <button onclick="nextStep()" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2 text-sm w-full justify-center"><span data-i18n="btn3">Ver cómo se coordina la respuesta institucional</span> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
     </div>
 </div>
 </div>
@@ -627,8 +630,8 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="step" id="step3">
 <div class="glass-teal rounded-2xl p-8 text-center max-w-3xl mx-auto">
     <div class="text-4xl mb-4">🔄</div>
-    <h3 class="text-2xl font-bold text-white mb-3">De la calle a la coordinación institucional</h3>
-    <p class="text-slate-400 mb-6">Cada reporte activa a <strong class="text-white">GusCoordina</strong>: seis agentes que articulan a las instituciones en tiempo real.</p>
+    <h3 class="text-2xl font-bold text-white mb-3" data-i18n="h3s4">De la calle a la coordinación institucional</h3>
+    <p class="text-slate-400 mb-6" data-i18n="p1s4">Cada reporte activa a <strong class="text-white">GusCoordina</strong>: seis agentes que articulan a las instituciones en tiempo real.</p>
     <div class="flex justify-center gap-8 mb-6 flex-wrap">
         <div class="text-center"><div class="text-3xl font-black" style="color:#006D6D">47K+</div><div class="text-xs text-slate-500">Reportes ciudadanos</div></div>
         <div class="text-2xl text-slate-600 flex items-center">&#8594;</div>
@@ -636,7 +639,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
         <div class="text-2xl text-slate-600 flex items-center">&#8594;</div>
         <div class="text-center"><div class="text-3xl font-black text-emerald-400">3</div><div class="text-xs text-slate-500">Interfaces en tiempo real</div></div>
     </div>
-    <button onclick="goScene(2)" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base">Coordinar respuesta en el PMU &#8594;</button>
+    <button onclick="goScene(2)" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base" data-i18n="btn4">Coordinar respuesta en el PMU &#8594;</button>
 </div>
 </div>
 
@@ -648,10 +651,10 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
 <div class="text-center mb-6 anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-violet text-xs font-medium mb-3" style="color:#9F91E8">
-        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#7C6CDC"></span>Acto 2 · Eres el comandante — GusCoordina · Puesto de Mando Unificado
+        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#7C6CDC"></span><span data-i18n="badge2">Acto 2 · Eres el comandante — GusCoordina · Puesto de Mando Unificado</span>
     </div>
-    <h2 class="text-3xl font-bold text-white">La alerta llega a tu puesto de mando</h2>
-    <p class="text-slate-400 mt-2 max-w-2xl mx-auto">Seis agentes coordinan a las instituciones en tiempo real. Haz clic en cada uno.</p>
+    <h2 class="text-3xl font-bold text-white" data-i18n="h2act2">La alerta llega a tu puesto de mando</h2>
+    <p class="text-slate-400 mt-2 max-w-2xl mx-auto"><span data-i18n="sub2">Seis agentes coordinan a las instituciones en tiempo real. Haz clic en cada uno.</span></p>
 </div>
 <div class="rounded-xl overflow-hidden relative mb-6" style="border:1px solid rgba(124,108,220,.35);box-shadow:0 0 30px rgba(124,108,220,.12)">
     <video autoplay muted loop playsinline class="w-full block" style="height:200px;object-fit:cover;object-position:center 30%">
@@ -671,7 +674,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     </div>
     <div class="lg:col-span-3 space-y-4">
         <div class="glass-violet rounded-2xl p-6" id="agentDetail">
-            <div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧭</div><h3 class="text-lg font-semibold text-white/60">Seleccione un agente del PMU</h3><p class="text-sm text-slate-500 mt-2">Cada agente coordina una capacidad del PMU en tiempo real</p></div>
+            <div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧭</div><h3 class="text-lg font-semibold text-white/60" data-i18n="agentPromptH">Seleccione un agente del PMU</h3><p class="text-sm text-slate-500 mt-2" data-i18n="agentPromptP">Cada agente coordina una capacidad del PMU en tiempo real</p></div>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold" style="color:#9F91E8">4</div><div class="text-[10px] text-slate-500">Instituciones convocadas</div></div>
@@ -690,12 +693,12 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     </div>
 </div>
 <div class="flex justify-between items-center mt-8">
-    <button onclick="goScene(1)" class="glass rounded-xl px-4 sm:px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> <span class="hidden sm:inline">Caso ciudadano</span><span class="sm:hidden">Atrás</span></button>
+    <button onclick="goScene(1)" class="glass rounded-xl px-4 sm:px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> <span class="hidden sm:inline" data-i18n="navBack1">Caso ciudadano</span><span class="sm:hidden" data-i18n="navBackLbl">Atrás</span></button>
     <a href="https://guscoordina.fastanalytics.co/" target="_blank" rel="noopener" class="hidden md:inline-flex glass-violet rounded-xl px-5 py-3 text-sm font-semibold transition items-center gap-2 hover:brightness-125" style="color:#9F91E8">
         <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         Abrir GusCoordina real
     </a>
-    <button onclick="goScene(3)" class="btn-fa text-white font-semibold px-4 sm:px-6 py-3 rounded-xl flex items-center gap-2"><span class="hidden sm:inline">Estrategia Nacional</span><span class="sm:hidden">Siguiente</span> <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
+    <button onclick="goScene(3)" class="btn-fa text-white font-semibold px-4 sm:px-6 py-3 rounded-xl flex items-center gap-2"><span class="hidden sm:inline" data-i18n="navNext1">Estrategia Nacional</span><span class="sm:hidden" data-i18n="navNextLbl">Siguiente</span> <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
 </div>
 </div>
 </section>
@@ -705,10 +708,10 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
 <div class="text-center mb-6 anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-orange text-xs font-medium mb-3" style="color:#D4883A">
-        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#D4883A"></span>Acto 2 · Eres el comandante — GabyPredice · Estrategia
+        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#D4883A"></span><span data-i18n="badge3">Acto 2 · Eres el comandante — GabyPredice · Estrategia</span>
     </div>
-    <h2 class="text-3xl font-bold text-white">Decides con anticipación: el Eneágono Decisional</h2>
-    <p class="text-slate-400 mt-2 max-w-2xl mx-auto">9 fases que convierten incidentes en decisiones anticipativas. Haz clic en cada fase.</p>
+    <h2 class="text-3xl font-bold text-white" data-i18n="h2act3">Decides con anticipación: el Eneágono Decisional</h2>
+    <p class="text-slate-400 mt-2 max-w-2xl mx-auto"><span data-i18n="sub3">9 fases que convierten incidentes en decisiones anticipativas. Haz clic en cada fase.</span></p>
 </div>
 <div class="rounded-xl overflow-hidden relative mb-6" style="border:1px solid rgba(212,136,58,.35);box-shadow:0 0 30px rgba(212,136,58,.12)">
     <video autoplay muted loop playsinline class="w-full block" style="height:200px;object-fit:cover;object-position:center 40%">
@@ -727,7 +730,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     </div>
     <div class="lg:col-span-3 space-y-4">
         <div class="glass-teal rounded-2xl p-6" id="phaseDetail">
-            <div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2">Cada fase muestra su propia visualización, sincronizada con la narración</p></div>
+            <div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60" data-i18n="phasePromptH">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2" data-i18n="phasePromptP">Cada fase muestra su propia visualización, sincronizada con la narración</p></div>
         </div>
         <!-- Así se ve anticipar: histórico + proyección -->
         <div class="glass-teal rounded-2xl p-4" id="anticiparPanel">
@@ -779,8 +782,8 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     </div>
 </div>
 <div class="flex justify-between items-center mt-8">
-    <button onclick="goScene(2)" class="glass rounded-xl px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> PMU</button>
-    <button onclick="goScene(4)" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2">Impacto Nacional <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
+    <button onclick="goScene(2)" class="glass rounded-xl px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg><span data-i18n="navPMU">PMU</span></button>
+    <button onclick="goScene(4)" class="btn-fa text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2"><span data-i18n="navImpact">Impacto Nacional</span> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
 </div>
 </div>
 </section>
@@ -789,59 +792,59 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <section id="scene4" class="scene min-h-screen pt-20">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
 <div class="text-center mb-8 anim-up">
-    <h2 class="text-3xl sm:text-4xl font-black text-white mb-3">Viviste el caso<br><span style="color:#006D6D">desde adentro.</span></h2>
-    <p class="text-lg text-slate-400 max-w-2xl mx-auto">Del celular del ciudadano al escritorio presidencial: así se articula la seguridad basada en datos.</p>
+    <h2 class="text-3xl sm:text-4xl font-black text-white mb-3" data-i18n="h2cierre">Viviste el caso<br><span style="color:#006D6D">desde adentro.</span></h2>
+    <p class="text-lg text-slate-400 max-w-2xl mx-auto"><span data-i18n="sub4">Del celular del ciudadano al escritorio presidencial: así se articula la seguridad basada en datos.</span></p>
 </div>
 <div class="glass rounded-2xl p-6 mb-8">
     <div class="flex items-center justify-between flex-wrap gap-4">
-        <div class="text-center flex-1 min-w-[110px] anim-fade"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-2" style="background:rgba(0,109,109,.1)">📱</div><div class="text-sm font-semibold text-white">Ciudadano</div><div class="text-[10px] text-slate-500">Telegram o llamada (CatheAsiste)</div></div>
+        <div class="text-center flex-1 min-w-[110px] anim-fade"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-2" style="background:rgba(0,109,109,.1)">📱</div><div class="text-sm font-semibold text-white">Ciudadano</div><div class="text-[10px] text-slate-500" data-i18n="chain1">Telegram o llamada (CatheAsiste)</div></div>
         <svg class="w-5 h-5 flex-shrink-0" style="color:#006D6D" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         <div class="text-center flex-1 min-w-[110px] anim-fade delay-1"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-2" style="background:rgba(0,109,109,.1)">
             <img src="assets/images/logos/alejoseguro-v2.svg" class="w-11 h-11 rounded-full bg-white p-1" alt="AlejoSeguro">
-        </div><div class="text-sm font-semibold text-white">AlejoSeguro</div><div class="text-[10px] text-slate-500">IA procesa evidencia</div></div>
+        </div><div class="text-sm font-semibold text-white">AlejoSeguro</div><div class="text-[10px] text-slate-500" data-i18n="chain2">IA procesa evidencia</div></div>
         <svg class="w-5 h-5 flex-shrink-0" style="color:#006D6D" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         <div class="text-center flex-1 min-w-[110px] anim-fade delay-2"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-2" style="background:rgba(124,108,220,.1)">
             <img src="assets/images/logos/guscoordina-v2.svg" class="w-11 h-11 rounded-full bg-white p-1" alt="GusCoordina">
-        </div><div class="text-sm font-semibold text-white">GusCoordina</div><div class="text-[10px] text-slate-500">Coordinación interinstitucional</div></div>
+        </div><div class="text-sm font-semibold text-white">GusCoordina</div><div class="text-[10px] text-slate-500" data-i18n="chain3">Coordinación interinstitucional</div></div>
         <svg class="w-5 h-5 flex-shrink-0" style="color:#7C6CDC" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-        <div class="text-center flex-1 min-w-[110px] anim-fade delay-3"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center mb-2" style="background:rgba(212,136,58,.1)"><img src="assets/images/logos/gabypredice-v2.svg" class="w-11 h-11 rounded-full bg-white p-1" alt="GabyPredice"></div><div class="text-sm font-semibold text-white">GabyPredice</div><div class="text-[10px] text-slate-500">Decisiones anticipativas</div></div>
+        <div class="text-center flex-1 min-w-[110px] anim-fade delay-3"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center mb-2" style="background:rgba(212,136,58,.1)"><img src="assets/images/logos/gabypredice-v2.svg" class="w-11 h-11 rounded-full bg-white p-1" alt="GabyPredice"></div><div class="text-sm font-semibold text-white">GabyPredice</div><div class="text-[10px] text-slate-500" data-i18n="chain4">Decisiones anticipativas</div></div>
         <svg class="w-5 h-5 flex-shrink-0" style="color:#D4883A" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-        <div class="text-center flex-1 min-w-[110px] anim-fade delay-4"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-2 bg-emerald-500/10">🏛️</div><div class="text-sm font-semibold text-white">Gobierno</div><div class="text-[10px] text-slate-500">Decisiones informadas</div></div>
+        <div class="text-center flex-1 min-w-[110px] anim-fade delay-4"><div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-2 bg-emerald-500/10">🏛️</div><div class="text-sm font-semibold text-white">Gobierno</div><div class="text-[10px] text-slate-500" data-i18n="chain5">Decisiones informadas</div></div>
     </div>
 </div>
-<div class="text-center mb-4"><span class="text-[10px] text-slate-500 uppercase tracking-wider">Lo que acaba de ver en esta demostración</span></div>
+<div class="text-center mb-4"><span class="text-[10px] text-slate-500 uppercase tracking-wider" data-i18n="sumTitle">Lo que acaba de ver en esta demostración</span></div>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mb-10">
-    <div class="glass-teal rounded-2xl p-6 text-center anim-fade"><div class="text-4xl sm:text-5xl font-black mb-2" style="color:#006D6D">47K+</div><div class="text-sm text-white font-semibold mb-1">Reportes ciudadanos procesados</div><div class="text-xs text-slate-500">Fotos, videos, audios y ubicaciones analizados en tiempo real</div></div>
-    <div class="glass-orange rounded-2xl p-6 text-center anim-fade delay-2"><div class="text-4xl sm:text-5xl font-black mb-2" style="color:#D4883A">9</div><div class="text-sm text-white font-semibold mb-1">Fases del Eneágono Decisional</div><div class="text-xs text-slate-500">De la postura estratégica a la orden ejecutiva con evaluación de impacto</div></div>
-    <div class="glass-violet rounded-2xl p-6 text-center anim-fade delay-3"><div class="text-4xl sm:text-5xl font-black mb-2" style="color:#9F91E8">6</div><div class="text-sm text-white font-semibold mb-1">Agentes del Puesto de Mando Unificado</div><div class="text-xs text-slate-500">Coordinación interinstitucional en tiempo real por incidente</div></div>
-    <div class="glass rounded-2xl p-6 text-center anim-fade delay-4" style="border-color:rgba(16,185,129,.2)"><div class="text-4xl sm:text-5xl font-black text-emerald-400 mb-2">3</div><div class="text-sm text-white font-semibold mb-1">Sistemas que trabajan como uno</div><div class="text-xs text-slate-500">AlejoSeguro en terreno · GusCoordina en el PMU · GabyPredice en la estrategia</div></div>
+    <div class="glass-teal rounded-2xl p-6 text-center anim-fade"><div class="text-4xl sm:text-5xl font-black mb-2" style="color:#006D6D">47K+</div><div class="text-sm text-white font-semibold mb-1" data-i18n="sum1h">Reportes ciudadanos procesados</div><div class="text-xs text-slate-500" data-i18n="sum1p">Fotos, videos, audios y ubicaciones analizados en tiempo real</div></div>
+    <div class="glass-orange rounded-2xl p-6 text-center anim-fade delay-2"><div class="text-4xl sm:text-5xl font-black mb-2" style="color:#D4883A">9</div><div class="text-sm text-white font-semibold mb-1" data-i18n="sum2h">Fases del Eneágono Decisional</div><div class="text-xs text-slate-500" data-i18n="sum2p">De la postura estratégica a la orden ejecutiva con evaluación de impacto</div></div>
+    <div class="glass-violet rounded-2xl p-6 text-center anim-fade delay-3"><div class="text-4xl sm:text-5xl font-black mb-2" style="color:#9F91E8">6</div><div class="text-sm text-white font-semibold mb-1" data-i18n="sum3h">Agentes del Puesto de Mando Unificado</div><div class="text-xs text-slate-500" data-i18n="sum3p">Coordinación interinstitucional en tiempo real por incidente</div></div>
+    <div class="glass rounded-2xl p-6 text-center anim-fade delay-4" style="border-color:rgba(16,185,129,.2)"><div class="text-4xl sm:text-5xl font-black text-emerald-400 mb-2">3</div><div class="text-sm text-white font-semibold mb-1" data-i18n="ecoH">Sistemas que trabajan como uno</div><div class="text-xs text-slate-500" data-i18n="ecoP">AlejoSeguro en terreno · GusCoordina en el PMU · GabyPredice en la estrategia</div></div>
 </div>
 <div class="grid md:grid-cols-3 gap-4 mb-8">
     <div class="glass rounded-xl p-5">
-        <h4 class="text-sm font-bold mb-3" style="color:#006D6D">AlejoSeguro — Recolección en terreno</h4>
+        <h4 class="text-sm font-bold mb-3" style="color:#006D6D" data-i18n="prod1h">AlejoSeguro — Recolección en terreno</h4>
         <div class="space-y-2 text-xs text-slate-400">
-            <div class="flex items-center gap-2"><span style="color:#006D6D">✓</span>Rostros, placas y escenas en tiempo real</div>
-            <div class="flex items-center gap-2"><span style="color:#006D6D">✓</span>Audio transcrito al instante</div>
-            <div class="flex items-center gap-2"><span style="color:#006D6D">✓</span>Termómetro de riesgo y rutas seguras</div>
-            <div class="flex items-center gap-2"><span style="color:#006D6D">✓</span>Cada reporte, geolocalizado</div>
+            <div class="flex items-center gap-2"><span style="color:#006D6D">✓</span data-i18n="p1b1">Rostros, placas y escenas en tiempo real</div>
+            <div class="flex items-center gap-2"><span style="color:#006D6D">✓</span data-i18n="p1b2">Audio transcrito al instante</div>
+            <div class="flex items-center gap-2"><span style="color:#006D6D">✓</span data-i18n="p1b3">Termómetro de riesgo y rutas seguras</div>
+            <div class="flex items-center gap-2"><span style="color:#006D6D">✓</span data-i18n="p1b4">Cada reporte, geolocalizado</div>
         </div>
     </div>
     <div class="glass rounded-xl p-5">
-        <h4 class="text-sm font-bold mb-3" style="color:#9F91E8">GusCoordina — Coordinación interinstitucional</h4>
+        <h4 class="text-sm font-bold mb-3" style="color:#9F91E8" data-i18n="prod2h">GusCoordina — Coordinación interinstitucional</h4>
         <div class="space-y-2 text-xs text-slate-400">
-            <div class="flex items-center gap-2"><span style="color:#9F91E8">✓</span>Seis agentes especializados por incidente</div>
-            <div class="flex items-center gap-2"><span style="color:#9F91E8">✓</span>Un solo cuadro de situación en tiempo real</div>
-            <div class="flex items-center gap-2"><span style="color:#9F91E8">✓</span>Varios operativos activos a la vez</div>
-            <div class="flex items-center gap-2"><span style="color:#9F91E8">✓</span>Boletines generados por IA</div>
+            <div class="flex items-center gap-2"><span style="color:#9F91E8">✓</span data-i18n="p2b1">Seis agentes especializados por incidente</div>
+            <div class="flex items-center gap-2"><span style="color:#9F91E8">✓</span data-i18n="p2b2">Un solo cuadro de situación en tiempo real</div>
+            <div class="flex items-center gap-2"><span style="color:#9F91E8">✓</span data-i18n="p2b3">Varios operativos activos a la vez</div>
+            <div class="flex items-center gap-2"><span style="color:#9F91E8">✓</span data-i18n="p2b4">Boletines generados por IA</div>
         </div>
     </div>
     <div class="glass rounded-xl p-5">
-        <h4 class="text-sm font-bold mb-3" style="color:#D4883A">GabyPredice — Decisiones anticipativas</h4>
+        <h4 class="text-sm font-bold mb-3" style="color:#D4883A" data-i18n="prod3h">GabyPredice — Decisiones anticipativas</h4>
         <div class="space-y-2 text-xs text-slate-400">
-            <div class="flex items-center gap-2"><span style="color:#D4883A">✓</span>Eneágono Decisional: 9 fases (F0–F8)</div>
-            <div class="flex items-center gap-2"><span style="color:#D4883A">✓</span>Hotspots y anomalías antes de que ocurran</div>
-            <div class="flex items-center gap-2"><span style="color:#D4883A">✓</span>Comité con dashboard y señales cualificadas</div>
-            <div class="flex items-center gap-2"><span style="color:#D4883A">✓</span>Órdenes con semáforo de impacto (IPDH)</div>
+            <div class="flex items-center gap-2"><span style="color:#D4883A">✓</span data-i18n="p3b1">Eneágono Decisional: 9 fases (F0–F8)</div>
+            <div class="flex items-center gap-2"><span style="color:#D4883A">✓</span data-i18n="p3b2">Hotspots y anomalías antes de que ocurran</div>
+            <div class="flex items-center gap-2"><span style="color:#D4883A">✓</span data-i18n="p3b3">Comité con dashboard y señales cualificadas</div>
+            <div class="flex items-center gap-2"><span style="color:#D4883A">✓</span data-i18n="p3b4">Órdenes con semáforo de impacto (IPDH)</div>
         </div>
     </div>
 </div>
@@ -849,10 +852,10 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="glass rounded-2xl p-5 sm:p-8 mb-8 anim-fade" style="border-color:rgba(16,185,129,.25)">
     <div class="text-center mb-6">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-3" style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);color:#10B981">
-            <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#10B981"></span>Impacto real · Esto no es una simulación
+            <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#10B981"></span><span data-i18n="badge4">Impacto real · Esto no es una simulación</span>
         </div>
-        <h3 class="text-2xl sm:text-3xl font-black text-white mb-2">Esto ya pasó.</h3>
-        <p class="text-sm text-slate-400 max-w-2xl mx-auto">Nuestro fundador diseñó, desplegó y propuso las estrategias basadas en sus modelos. Generales y alcaldes dieron las ruedas de prensa. Estos fueron los resultados.</p>
+        <h3 class="text-2xl sm:text-3xl font-black text-white mb-2" data-i18n="h3impact">Esto ya pasó.</h3>
+        <p class="text-sm text-slate-400 max-w-2xl mx-auto"><span data-i18n="pimpact">Nuestro fundador diseñó, desplegó y propuso las estrategias basadas en sus modelos. Generales y alcaldes dieron las ruedas de prensa. Estos fueron los resultados.</span></p>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
         <div class="glass rounded-xl p-4 text-center">
@@ -891,9 +894,9 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="glass rounded-2xl p-5 sm:p-8 mb-8 anim-fade">
     <div class="text-center mb-6">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-teal text-xs font-medium mb-3" style="color:#00BFA6">
-            <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#00BFA6"></span>No es solo prensa · evidencia publicada
+            <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#00BFA6"></span><span data-i18n="badge5">No es solo prensa · evidencia publicada</span>
         </div>
-        <h3 class="text-2xl sm:text-3xl font-black text-white mb-2">Los resultados operativos,<br class="sm:hidden"> en libros y revistas científicas</h3>
+        <h3 class="text-2xl sm:text-3xl font-black text-white mb-2" data-i18n="h3pubs">Los resultados operativos,<br class="sm:hidden"> en libros y revistas científicas</h3>
         <p class="text-sm text-slate-400 max-w-2xl mx-auto">Los modelos detrás de este ecosistema se aplicaron en operaciones reales de policía y gobierno, y quedaron documentados en publicaciones académicas revisadas.</p>
     </div>
     <div class="grid sm:grid-cols-2 gap-2 text-left">
@@ -993,7 +996,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     </p>
 </div>
 <div class="flex justify-between items-center mt-6 mb-6">
-    <button onclick="goScene(3)" class="glass rounded-xl px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> PMU</button>
+    <button onclick="goScene(3)" class="glass rounded-xl px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg><span data-i18n="navPMU">PMU</span></button>
     <button onclick="resetDemo()" class="glass rounded-xl px-6 py-3 text-sm text-slate-400 hover:text-white transition">&#8635; Reiniciar Demo</button>
 </div>
 </div>
@@ -1164,16 +1167,46 @@ function setVoiceUI(state){
     var dot=document.getElementById('voiceDot'),lab=document.getElementById('voiceLabel');
     if(!dot||!lab)return;
     var base='w-2 h-2 rounded-full flex-shrink-0 ',lbase='hidden md:inline whitespace-nowrap ';
-    if(state==='muted'){dot.className=base+'bg-slate-700';lab.className=lbase+'text-slate-600';lab.textContent='Audio silenciado'}
-    else if(state==='speaking'){dot.className=base+'bg-emerald-400 animate-pulse';lab.className=lbase+'text-emerald-400';lab.textContent='Hablando...'}
-    else{dot.className=base+'bg-slate-600';lab.className=lbase+'text-slate-500';lab.textContent='Audio listo'}
+    if(state==='muted'){dot.className=base+'bg-slate-700';lab.className=lbase+'text-slate-600';lab.textContent=TT('vMuted','Audio silenciado')}
+    else if(state==='speaking'){dot.className=base+'bg-emerald-400 animate-pulse';lab.className=lbase+'text-emerald-400';lab.textContent=TT('vSpeaking','Hablando...')}
+    else{dot.className=base+'bg-slate-600';lab.className=lbase+'text-slate-500';lab.textContent=TT('vReady','Audio listo')}
 }
 function toggleVoice(){
     playClick();voiceMuted=!voiceMuted;
     var btn=document.getElementById('voiceToggle');
     if(voiceMuted){synth.cancel();narrAudio.pause();setVoiceUI('muted')}else{setVoiceUI('ready')}
-    if(btn){var t=voiceMuted?'Activar narración':'Silenciar narración';btn.title=t;btn.setAttribute('aria-label',t)}
+    if(btn){var t=voiceMuted?TT('voiceOn','Activar narración'):TT('voiceOff','Silenciar narración');btn.title=t;btn.setAttribute('aria-label',t)}
 }
+// ============ i18n (ES/EN/FR) ============
+var LANG=localStorage.getItem('fa-lang')||'es';
+var I18N={"en": {"st": {"badge0": "Immersive demo · Extortion in the southwest of the city", "h1a": "An extortion leaflet.", "h1b": "A frightened citizen.", "h1c": "And a State that", "h1d": "responds in time.", "heroSub": "Live the case <strong class=\"text-white\">twice</strong>: as the shopkeeper who reports and as the commander who decides.", "ctaStart": "Live the full case &#8594;", "lineTitle": "Short on time? Pick the line that interests you", "line1": "01 · Listens", "line2": "02 · Investigates", "line3": "03 · Coordinates", "line4": "04 · Predicts", "badge1": "Act 1 · You are the shopkeeper — Extortion in the southwest of the city", "h2act1": "From citizen report to action on the ground", "h3s1": "1. The citizen reports — AlejoSeguro listens", "p1s1": "A shopkeeper reports an extortion from Telegram: photos, video and audio, all geolocated.", "cap1": "The shopkeeper finds the leaflet as he opens his store · AI-generated video", "btn1": "See how the AI processes the evidence", "h3s2": "2. The AI investigates the evidence — MileInvestiga", "p1s2": "<strong class=\"text-white\">More than 20 AI models</strong> process image, video, audio and text in under 2 seconds.", "cap2": "MileInvestiga reveals the network behind the reports · AI-generated video", "btn2": "See the response on the ground", "h3s3": "3. Coordinated response on the ground", "p1s3": "Authorities receive the alert with all the evidence already processed.", "btn3": "See how the institutional response is coordinated", "h3s4": "From the street to institutional coordination", "p1s4": "Every report activates <strong class=\"text-white\">GusCoordina</strong>: six agents that bring institutions together in real time.", "btn4": "Coordinate the response at the Command Post &#8594;", "badge2": "Act 2 · You are the commander — GusCoordina · Unified Command Post", "h2act2": "The alert reaches your command post", "sub2": "Six agents coordinate the institutions in real time. Click on each one.", "agentPromptH": "Select a Command Post agent", "agentPromptP": "Each agent coordinates a Command Post capability in real time", "badge3": "Act 2 · You are the commander — GabyPredice · Strategy", "h2act3": "You decide with anticipation: the Decisional Nonagon", "sub3": "9 phases that turn incidents into anticipatory decisions. Click on each phase.", "phasePromptH": "Select a phase of the Nonagon", "phasePromptP": "Each phase shows its own visualization, synced with the narration", "navBack1": "Citizen case", "navBackLbl": "Back", "navNext1": "National Strategy", "navNextLbl": "Next", "navPMU": "Command Post", "navImpact": "National Impact", "h2cierre": "You lived the case<br><span style=\"color:#006D6D\">from the inside.</span>", "sub4": "From the citizen's phone to the presidential desk: this is how data-driven security comes together.", "badge4": "Real impact · This is not a simulation", "h3impact": "This already happened.", "pimpact": "Our founder designed, deployed and proposed the strategies based on his models. Generals and mayors gave the press conferences. These were the results.", "badge5": "Not just press · published evidence", "h3pubs": "The operational results,<br class=\"sm:hidden\"> in books and scientific journals", "hdrProducts": "Products", "hdrReset": "&#8635; Restart", "hdrAgenda": "Schedule demo", "hdrAgendaM": "Demo", "hdrMusic": "🎵 Music", "vReady": "Audio ready", "vMuted": "Audio muted", "vSpeaking": "Speaking...", "voiceOn": "Enable narration", "voiceOff": "Mute narration", "eneSub": "Decisional Nonagon", "chain1": "Telegram or call (CatheAsiste)", "chain2": "AI processes evidence", "chain3": "Inter-institutional coordination", "chain4": "Anticipatory decisions", "chain5": "Informed decisions", "sumTitle": "What you just saw in this demonstration", "sum1h": "Citizen reports processed", "sum1p": "Photos, videos, audios and locations analyzed in real time", "sum2h": "Phases of the Decisional Nonagon", "sum2p": "From strategic posture to executive order with impact assessment", "sum3h": "Unified Command Post agents", "sum3p": "Inter-institutional coordination in real time per incident", "ecoH": "Systems that work as one", "ecoP": "AlejoSeguro in the field · GusCoordina at the Command Post · GabyPredice in strategy", "prod1h": "AlejoSeguro — Field collection", "p1b1": "Faces, plates and scenes in real time", "p1b2": "Audio transcribed instantly", "p1b3": "Risk thermometer and safe routes", "p1b4": "Every report, geolocated", "prod2h": "GusCoordina — Inter-institutional coordination", "p2b1": "Six specialized agents per incident", "p2b2": "A single real-time common operating picture", "p2b3": "Several active operations at once", "p2b4": "AI-generated bulletins", "prod3h": "GabyPredice — Anticipatory decisions", "p3b1": "Decisional Nonagon: 9 phases (F0–F8)", "p3b2": "Hotspots and anomalies before they happen", "p3b3": "Committee with dashboard and qualified signals", "p3b4": "Orders with human-development impact traffic light (IPDH)"}, "ph": {"F0": {"name": "Strategic Posture", "desc": "The director writes his concern in free text; the AI extracts zone, actors, issue and constraints.", "speech": "Phase zero. Everything starts with a concern, in the director's own words. The system turns it into zone, actors, issue and constraints. A clear strategy, from the very first sentence."}, "F1": {"name": "Environment-Periphery", "desc": "Crosses official figures with citizen perception and detects trends with statistical rigor.", "speech": "Phase one. We cross-referenced eight hundred and forty-seven citizen reports with official figures. The result: extortion grew three hundred and forty percent. The environment is no longer an intuition: it is a number."}, "F2": {"name": "Decisional Matter", "desc": "Classifies the decision and defines its scope: local, subnational or national.", "speech": "Phase two. What kind of decision is this? Public and citizen security, with subnational scope: the same network operates in two departments. And that changes who must sit at the table."}, "F3": {"name": "Focus Actors and Issues", "desc": "The actor-issue graph with centrality reveals who is the key node of the network.", "speech": "Phase three. The graph speaks: El Flaco has the highest centrality in the network. And a key discovery: La Mona runs a second cell in another city. The operation now has two fronts."}, "F4": {"name": "Articulate Information", "desc": "Checkpoint: the decision-maker approves, requests a review or issues a direct order.", "speech": "Phase four. Checkpoint. The director reviews the evidence and orders: run the predictive models. We want to know where the network will strike, before it strikes."}, "F5": {"name": "Predictive Signals", "desc": "The brain of the Nonagon: the models predict where and when the network will strike.", "speech": "Phase five. The models predict three hotspots for next week, with eighty-nine percent confidence. Collections repeat on Fridays, between five and seven in the evening. The recommendation is clear: take the case to the committee."}, "F6": {"name": "Institutional Memory", "desc": "Cross-cutting memory: what worked before and what didn't, always before deciding.", "speech": "Phase six. Institutional memory warns: a similar operation captured eight people, but the network came back in forty-five days. The lesson: this time we also go after the money."}, "F7": {"name": "Signal Puzzle + Committee", "desc": "The committee deliberates with qualified signals and decides: approve, request more info or refocus.", "speech": "Phase seven. The committee deliberates with every signal on screen. Five criteria, one decision: simultaneous operation approved for next Friday."}, "F8": {"name": "Dissemination and Action", "desc": "The formal order with an action plan and a human-development impact traffic light.", "speech": "Phase eight. The order is issued and classified. What, when, where, why and for what purpose. And with one guarantee: the impact on people is measured with twenty-two variables before acting."}}, "ag": {"IN": {"name": "Intake", "desc": "Receives the AlejoSeguro report and activates the Unified Command Post, summoning institutions in seconds.", "speech": "Intake Agent. Eight point four seconds: that's how long it takes for the citizen's report to become an active Command Post, with Police, Gaula, Prosecutor's Office and City Hall already summoned."}, "IT": {"name": "Intelligence", "desc": "A single common operating picture: cross-checks the evidence with what each institution contributes.", "speech": "Intelligence Agent. The motorcycle's plate has just been cross-checked with the city's cameras: it passed two checkpoints in the last twenty minutes. Everyone in the command post sees the same thing, at the same time."}, "SI": {"name": "Simulation", "desc": "Simulates routes and times to decide which unit responds and along which path.", "speech": "Simulation Agent. Three possible routes, one decision: the nearest patrol arrives in four point two minutes via Carrera forty-six. Before the motorcycle leaves the neighborhood."}, "AU": {"name": "Audio", "desc": "Listens to the radio, detects risk words and alerts the Command Center.", "speech": "Audio Agent. No one can listen to every radio channel at once; this agent can. It has just detected two words on the Police channel: visual contact. And the command center already knows."}, "CO": {"name": "Control", "desc": "Traffic light per institution: escalates if a checkpoint falls behind.", "speech": "Control Agent. Every institution has a traffic light and every minute counts. Police arrived in six minutes: green checkpoint. If something falls behind, the alert escalates on its own."}, "PA": {"name": "Screen", "desc": "Every institution sees the same live map, with no conflicting versions.", "speech": "Screen Agent. One same map, the same units, the same truth for every institution, updated forty milliseconds ago. This is how a State coordinates in real time."}}}, "fr": {"st": {"badge0": "Démo immersive · Extorsion dans le sud-ouest de la ville", "h1a": "Un tract d'extorsion.", "h1b": "Un citoyen qui a peur.", "h1c": "Et un État qui", "h1d": "répond à temps.", "heroSub": "Vivez l'affaire <strong class=\"text-white\">deux fois</strong> : comme le commerçant qui signale et comme le commandant qui décide.", "ctaStart": "Vivre l'affaire complète &#8594;", "lineTitle": "Peu de temps ? Choisissez la ligne qui vous intéresse", "line1": "01 · Écoute", "line2": "02 · Enquête", "line3": "03 · Coordonne", "line4": "04 · Prédit", "badge1": "Acte 1 · Vous êtes le commerçant — Extorsion dans le sud-ouest de la ville", "h2act1": "Du signalement citoyen à l'action sur le terrain", "h3s1": "1. Le citoyen signale — AlejoSeguro écoute", "p1s1": "Un commerçant signale une extorsion depuis Telegram : photos, vidéo et audio, le tout géolocalisé.", "cap1": "Le commerçant trouve le tract en ouvrant sa boutique · vidéo générée par IA", "btn1": "Voir comment l'IA traite les preuves", "h3s2": "2. L'IA enquête sur les preuves — MileInvestiga", "p1s2": "<strong class=\"text-white\">Plus de 20 modèles d'IA</strong> traitent image, vidéo, audio et texte en moins de 2 secondes.", "cap2": "MileInvestiga révèle le réseau derrière les signalements · vidéo générée par IA", "btn2": "Voir la réponse sur le terrain", "h3s3": "3. Réponse coordonnée sur le terrain", "p1s3": "Les autorités reçoivent l'alerte avec toutes les preuves déjà traitées.", "btn3": "Voir comment se coordonne la réponse institutionnelle", "h3s4": "De la rue à la coordination institutionnelle", "p1s4": "Chaque signalement active <strong class=\"text-white\">GusCoordina</strong> : six agents qui articulent les institutions en temps réel.", "btn4": "Coordonner la réponse au Poste de Commandement &#8594;", "badge2": "Acte 2 · Vous êtes le commandant — GusCoordina · Poste de Commandement Unifié", "h2act2": "L'alerte arrive à votre poste de commandement", "sub2": "Six agents coordonnent les institutions en temps réel. Cliquez sur chacun.", "agentPromptH": "Sélectionnez un agent du Poste de Commandement", "agentPromptP": "Chaque agent coordonne une capacité du PCU en temps réel", "badge3": "Acte 2 · Vous êtes le commandant — GabyPredice · Stratégie", "h2act3": "Vous décidez par anticipation : l'Ennéagone Décisionnel", "sub3": "9 phases qui transforment les incidents en décisions anticipées. Cliquez sur chaque phase.", "phasePromptH": "Sélectionnez une phase de l'Ennéagone", "phasePromptP": "Chaque phase affiche sa propre visualisation, synchronisée avec la narration", "navBack1": "Affaire citoyenne", "navBackLbl": "Retour", "navNext1": "Stratégie Nationale", "navNextLbl": "Suivant", "navPMU": "Poste de Commandement", "navImpact": "Impact National", "h2cierre": "Vous avez vécu l'affaire<br><span style=\"color:#006D6D\">de l'intérieur.</span>", "sub4": "Du téléphone du citoyen au bureau présidentiel : c'est ainsi que s'articule la sécurité fondée sur les données.", "badge4": "Impact réel · Ceci n'est pas une simulation", "h3impact": "Cela s'est déjà produit.", "pimpact": "Notre fondateur a conçu, déployé et proposé les stratégies fondées sur ses modèles. Généraux et maires ont donné les conférences de presse. Voici les résultats.", "badge5": "Pas seulement la presse · preuves publiées", "h3pubs": "Les résultats opérationnels,<br class=\"sm:hidden\"> dans des livres et revues scientifiques", "hdrProducts": "Produits", "hdrReset": "&#8635; Recommencer", "hdrAgenda": "Planifier une démo", "hdrAgendaM": "Démo", "hdrMusic": "🎵 Musique", "vReady": "Audio prêt", "vMuted": "Audio coupé", "vSpeaking": "En cours...", "voiceOn": "Activer la narration", "voiceOff": "Couper la narration", "eneSub": "Ennéagone Décisionnel", "chain1": "Telegram ou appel (CatheAsiste)", "chain2": "L'IA traite les preuves", "chain3": "Coordination interinstitutionnelle", "chain4": "Décisions anticipées", "chain5": "Décisions éclairées", "sumTitle": "Ce que vous venez de voir dans cette démonstration", "sum1h": "Signalements citoyens traités", "sum1p": "Photos, vidéos, audios et localisations analysés en temps réel", "sum2h": "Phases de l'Ennéagone Décisionnel", "sum2p": "De la posture stratégique à l'ordre exécutif avec évaluation d'impact", "sum3h": "Agents du Poste de Commandement Unifié", "sum3p": "Coordination interinstitutionnelle en temps réel par incident", "ecoH": "Des systèmes qui travaillent comme un seul", "ecoP": "AlejoSeguro sur le terrain · GusCoordina au PCU · GabyPredice dans la stratégie", "prod1h": "AlejoSeguro — Collecte sur le terrain", "p1b1": "Visages, plaques et scènes en temps réel", "p1b2": "Audio transcrit instantanément", "p1b3": "Thermomètre de risque et itinéraires sûrs", "p1b4": "Chaque signalement, géolocalisé", "prod2h": "GusCoordina — Coordination interinstitutionnelle", "p2b1": "Six agents spécialisés par incident", "p2b2": "Un seul tableau de situation en temps réel", "p2b3": "Plusieurs opérations actives à la fois", "p2b4": "Bulletins générés par IA", "prod3h": "GabyPredice — Décisions anticipées", "p3b1": "Ennéagone Décisionnel : 9 phases (F0–F8)", "p3b2": "Foyers et anomalies avant qu'ils ne se produisent", "p3b3": "Comité avec tableau de bord et signaux qualifiés", "p3b4": "Ordres avec feu d'impact sur le développement humain (IPDH)"}, "ph": {"F0": {"name": "Posture Stratégique", "desc": "Le directeur écrit sa préoccupation en texte libre ; l'IA extrait zone, acteurs, sujet et contraintes.", "speech": "Phase zéro. Tout commence par une préoccupation, dans les mots du directeur. Le système la transforme en zone, acteurs, sujet et contraintes. Une stratégie claire, dès la première phrase."}, "F1": {"name": "Environnement-Périphérie", "desc": "Croise les chiffres officiels avec la perception citoyenne et détecte les tendances avec rigueur statistique.", "speech": "Phase un. Nous avons croisé huit cent quarante-sept signalements citoyens avec les chiffres officiels. Le résultat : l'extorsion a augmenté de trois cent quarante pour cent. L'environnement n'est plus une intuition : c'est un chiffre."}, "F2": {"name": "Question Décisionnelle", "desc": "Classe la décision et définit sa portée : locale, infranationale ou nationale.", "speech": "Phase deux. Quel type de décision est-ce ? Sécurité publique et citoyenne, avec une portée infranationale : le même réseau opère dans deux départements. Et cela change qui doit s'asseoir à la table."}, "F3": {"name": "Focaliser Acteurs et Sujets", "desc": "Le graphe acteur-sujet avec centralité révèle qui est le nœud clé du réseau.", "speech": "Phase trois. Le graphe parle : El Flaco a la plus forte centralité du réseau. Et une découverte clé : La Mona opère une deuxième cellule dans une autre ville. L'opération a désormais deux fronts."}, "F4": {"name": "Articuler l'Information", "desc": "Point de contrôle : le décideur approuve, demande une révision ou émet un ordre direct.", "speech": "Phase quatre. Point de contrôle. Le directeur examine les preuves et ordonne : exécuter les modèles prédictifs. Nous voulons savoir où le réseau frappera, avant qu'il ne frappe."}, "F5": {"name": "Signaux Prédictifs", "desc": "Le cerveau de l'Ennéagone : les modèles prédisent où et quand le réseau frappera.", "speech": "Phase cinq. Les modèles prédisent trois foyers pour la semaine prochaine, avec quatre-vingt-neuf pour cent de confiance. Les collectes se répètent le vendredi, entre dix-sept et dix-neuf heures. La recommandation est claire : porter l'affaire devant le comité."}, "F6": {"name": "Mémoire Institutionnelle", "desc": "Mémoire transversale : ce qui a fonctionné avant et ce qui n'a pas marché, toujours avant de décider.", "speech": "Phase six. La mémoire institutionnelle avertit : une opération similaire a capturé huit personnes, mais le réseau est revenu en quarante-cinq jours. La leçon : cette fois, nous attaquons aussi l'argent."}, "F7": {"name": "Puzzle de Signaux + Comité", "desc": "Le comité délibère avec des signaux qualifiés et décide : approuver, demander plus d'info ou refocaliser.", "speech": "Phase sept. Le comité délibère avec tous les signaux à l'écran. Cinq critères, une décision : opération simultanée approuvée pour vendredi prochain."}, "F8": {"name": "Diffusion et Action", "desc": "L'ordre formel avec plan d'action et feu tricolore d'impact sur le développement humain.", "speech": "Phase huit. L'ordre est émis et classifié. Quoi, quand, où, pourquoi et dans quel but. Et avec une garantie : l'impact sur les personnes est mesuré avec vingt-deux variables avant d'agir."}}, "ag": {"IN": {"name": "Admission", "desc": "Reçoit le signalement d'AlejoSeguro et active le Poste de Commandement Unifié en convoquant les institutions en quelques secondes.", "speech": "Agent d'Admission. Huit virgule quatre secondes : c'est le temps qu'il faut pour que le signalement du citoyen devienne un Poste de Commandement actif, avec la Police, le Gaula, le Parquet et la Mairie déjà convoqués."}, "IT": {"name": "Renseignement", "desc": "Un seul tableau de situation : croise les preuves avec ce qu'apporte chaque institution.", "speech": "Agent de Renseignement. La plaque de la moto vient d'être croisée avec les caméras de la ville : elle est passée par deux points de contrôle au cours des vingt dernières minutes. Tout le monde au poste de commandement voit la même chose, au même moment."}, "SI": {"name": "Simulation", "desc": "Simule itinéraires et temps pour décider quelle unité répond et par où.", "speech": "Agent de Simulation. Trois itinéraires possibles, une décision : la patrouille la plus proche arrive en quatre virgule deux minutes par la Carrera quarante-six. Avant que la moto ne quitte le quartier."}, "AU": {"name": "Audio", "desc": "Écoute la radio, détecte les mots à risque et alerte le Centre de Commandement.", "speech": "Agent Audio. Personne ne peut écouter tous les canaux radio à la fois ; cet agent, si. Il vient de détecter deux mots sur le canal de la Police : contact visuel. Et le centre de commandement le sait déjà."}, "CO": {"name": "Contrôle", "desc": "Feu tricolore par institution : escalade si un point de contrôle prend du retard.", "speech": "Agent de Contrôle. Chaque institution a un feu tricolore et chaque minute compte. La Police est arrivée en six minutes : point de contrôle au vert. Si quelque chose prend du retard, l'alerte s'escalade toute seule."}, "PA": {"name": "Écran", "desc": "Toutes les institutions voient la même carte en direct, sans versions divergentes.", "speech": "Agent d'Écran. Une même carte, les mêmes unités, la même vérité pour toutes les institutions, mise à jour il y a quarante millisecondes. C'est ainsi qu'un État se coordonne en temps réel."}}}};
+function TT(k,es){var D=I18N[LANG];return(D&&D.st[k])||es}
+var _esSnap=null;
+function setLang(l){
+    LANG=l;try{localStorage.setItem('fa-lang',l)}catch(e){}
+    document.documentElement.lang=l;
+    if(!_esSnap){_esSnap={ph:phases.map(function(p){return{name:p.name,desc:p.desc,speech:p.speech}}),ag:agents.map(function(a){return{name:a.name,desc:a.desc,speech:a.speech}})}}
+    var D=I18N[l];
+    phases.forEach(function(p,i){var s=_esSnap.ph[i];p.name=s.name;p.desc=s.desc;p.speech=s.speech;var t=D&&D.ph[p.id];if(t){p.name=t.name;p.desc=t.desc;p.speech=t.speech}});
+    agents.forEach(function(a,i){var s=_esSnap.ag[i];a.name=s.name;a.desc=s.desc;a.speech=s.speech;var t=D&&D.ag[a.id];if(t){a.name=t.name;a.desc=t.desc;a.speech=t.speech}});
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+        var k=el.getAttribute('data-i18n');
+        if(el.dataset.es===undefined)el.dataset.es=el.innerHTML;
+        el.innerHTML=(l==='es'||!D||!D.st[k])?el.dataset.es:D.st[k];
+    });
+    document.querySelectorAll('#langSel .lang-btn').forEach(function(b){
+        var on=b.getAttribute('data-lang')===l;
+        b.style.background=on?'#006D6D':'transparent';b.style.color=on?'#fff':'#94a3b8';
+    });
+    var an=document.querySelectorAll('.agent-node.active-node'),en=document.querySelectorAll('.eneagono-node.active-node');
+    if(an.length){var nodes=document.querySelectorAll('.agent-node');for(var i=0;i<nodes.length;i++){if(nodes[i].classList.contains('active-node')){selectAgent(i,true);break}}}
+    if(en.length){var nodes2=document.querySelectorAll('.eneagono-node');for(var j=0;j<nodes2.length;j++){if(nodes2[j].classList.contains('active-node')){selectPhase(j,true);break}}}
+    if(typeof setVoiceUI==='function')setVoiceUI(voiceMuted?'muted':'ready');
+}
+document.addEventListener('DOMContentLoaded',function(){
+    if(LANG!=='es'){setTimeout(function(){setLang(LANG)},300)}
+    else{document.querySelectorAll('#langSel .lang-btn').forEach(function(b){var on=b.getAttribute('data-lang')==='es';b.style.background=on?'#006D6D':'transparent';b.style.color=on?'#fff':'#94a3b8'})}
+});
 var NARR_KEYS=['intro','scene1','scene2','scene3','scene4','f0','f1','f2','f3','f4','f5','f6','f7','f8','ag0','ag1','ag2','ag3','ag4','ag5'];
 var narrAudio=new Audio();narrAudio.preload='auto';
 function speak(key,fallback){
@@ -1183,7 +1216,7 @@ function speak(key,fallback){
         setVoiceUI('speaking');
         narrAudio.onended=function(){setVoiceUI(voiceMuted?'muted':'ready')};
         narrAudio.onerror=function(){ttsSpeak(fallback||'')};
-        narrAudio.src='assets/demo/narr/'+key+'.mp3';
+        narrAudio.src='assets/demo/narr/'+(LANG==='es'?'':LANG+'/')+key+'.mp3';
         var pr=narrAudio.play();
         if(pr&&pr.catch)pr.catch(function(){ttsSpeak(fallback||'')});
         return;
@@ -1193,7 +1226,7 @@ function speak(key,fallback){
 function ttsSpeak(text){
     synth.cancel();
     if(voiceMuted)return;
-    var u=new SpeechSynthesisUtterance(text);u.lang='es-ES';u.rate=1.05;u.pitch=1;u.volume=1;
+    var u=new SpeechSynthesisUtterance(text);u.lang=LANG==='en'?'en-US':(LANG==='fr'?'fr-FR':'es-ES');u.rate=1.05;u.pitch=1;u.volume=1;
     var v=synth.getVoices();var pick=v.find(function(x){return x.lang.startsWith('es')&&x.name.indexOf('Jorge')>=0})||v.find(function(x){return x.lang.startsWith('es')&&x.name.indexOf('Paulina')>=0})||v.find(function(x){return x.lang==='es-ES'})||v.find(function(x){return x.lang.startsWith('es')});
     if(pick)u.voice=pick;
     u.onstart=function(){setVoiceUI('speaking')};
@@ -1324,16 +1357,16 @@ function buildEneagono(){
     });
 }
 
-function selectPhase(idx){
-    playNotif();var p=phases[idx];
+function selectPhase(idx,quiet){
+    if(!quiet)playNotif();var p=phases[idx];
     var ap=document.getElementById('anticiparPanel');if(ap)ap.style.display='none';
     document.querySelectorAll('.eneagono-node').forEach(function(n,i){n.classList.remove('active-node');if(i<idx)n.classList.add('completed');if(i===idx)n.classList.add('active-node')});
     var panel=document.getElementById('phaseDetail');
     var extra=p.example||'';
     var vz=PHASE_VIZ[idx];
     var vblock=vz?'<div class="rounded-xl p-3 mt-3" style="background:rgba(255,255,255,.03);border:1px solid rgba(0,191,166,.15)"><div class="text-[10px] font-bold mb-2" style="color:'+p.color+'">'+vz.t+'</div>'+vz.h+'</div>':'';
-    panel.innerHTML='<div class="anim-fade"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:'+p.color+'30;border:1px solid '+p.color+'50">'+p.id+'</div><div><div class="text-base font-bold text-white">'+p.name+'</div><div class="text-xs" style="color:'+p.color+'">'+p.id+' · Eneágono Decisional</div></div></div><p class="text-sm text-slate-300 leading-relaxed mb-4">'+p.desc+'</p>'+vblock+extra+'</div>';
-    speak('f'+idx,p.speech);
+    panel.innerHTML='<div class="anim-fade"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:'+p.color+'30;border:1px solid '+p.color+'50">'+p.id+'</div><div><div class="text-base font-bold text-white">'+p.name+'</div><div class="text-xs" style="color:'+p.color+'">'+p.id+' · '+TT('eneSub','Eneágono Decisional')+'</div></div></div><p class="text-sm text-slate-300 leading-relaxed mb-4">'+p.desc+'</p>'+vblock+extra+'</div>';
+    if(!quiet)speak('f'+idx,p.speech);
 }
 
 function buildComando(){
@@ -1385,14 +1418,14 @@ function replayChart(){
     });
 }
 
-function selectAgent(idx){    playNotif();var p=agents[idx];
+function selectAgent(idx,quiet){    if(!quiet)playNotif();var p=agents[idx];
     document.querySelectorAll('.agent-node').forEach(function(n,i){n.classList.remove('active-node');if(i<idx)n.classList.add('completed');if(i===idx)n.classList.add('active-node')});
     var panel=document.getElementById('agentDetail');
     var extra=p.example||'';
     var vz=AGENT_VIZ[idx];
     var vblock=vz?'<div class="rounded-xl p-3 mt-3" style="background:rgba(255,255,255,.03);border:1px solid rgba(159,145,232,.18)"><div class="text-[10px] font-bold mb-2" style="color:'+p.color+'">'+vz.t+'</div>'+vz.h+'</div>':'';
     panel.innerHTML='<div class="anim-fade"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:'+p.color+'30;border:1px solid '+p.color+'50">'+p.id+'</div><div><div class="text-base font-bold text-white">'+p.name+'</div><div class="text-xs" style="color:'+p.color+'">Agente · Puesto de Mando Unificado</div></div></div><p class="text-sm text-slate-300 leading-relaxed mb-4">'+p.desc+'</p>'+vblock+extra+'</div>';
-    speak('ag'+idx,p.speech);
+    if(!quiet)speak('ag'+idx,p.speech);
 }
 
 document.addEventListener('DOMContentLoaded',function(){document.getElementById('scene0').style.display='block';document.getElementById('scene0').style.opacity='1'});

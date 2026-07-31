@@ -170,57 +170,10 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     </h1>
     <p class="text-lg text-slate-400 leading-relaxed mb-6 max-w-lg">Vive el caso <strong class="text-white">dos veces</strong>: como el comerciante que reporta y como el comandante que decide.</p>
 
-    <!-- Los dos roles que va a vivir el visitante -->
-    <div class="grid sm:grid-cols-2 gap-3 mb-6 max-w-lg">
-        <div class="glass-teal rounded-xl p-4 role-card">
-            <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:#00BFA6">Acto 1 · Eres el comerciante</div>
-            <div class="text-xs text-slate-400 leading-relaxed">Reportas la extorsión por Telegram y ves cómo la IA procesa tu evidencia en segundos.</div>
-        </div>
-        <div class="glass-violet rounded-xl p-4 role-card">
-            <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:#9F91E8">Acto 2 · Eres el comandante</div>
-            <div class="text-xs text-slate-400 leading-relaxed">La alerta llega a tu Puesto de Mando: coordinas instituciones y decides con datos predictivos.</div>
-        </div>
-    </div>
-
     <div class="flex flex-wrap items-center gap-4 mb-6">
         <button onclick="startDemo()" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base anim-pulse">Vivir el caso completo &#8594;</button>
     </div>
 
-    <!-- Selector por línea: el visitante elige qué le interesa -->
-    <div class="text-[10px] text-slate-500 uppercase tracking-wider mb-2">¿Poco tiempo? Elige qué línea te interesa</div>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6 max-w-xl">
-        <button onclick="goLine(1,0)" class="glass-teal rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
-            <img src="assets/demo/escucha-ciudadano.webp" alt="Escucha" class="w-full h-14 object-cover" loading="lazy">
-            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#00BFA6">01 · Escucha</div>
-            <div class="text-[10px] text-slate-400 mt-1">AlejoSeguro + CatheAsiste</div></div>
-        </button>
-        <button onclick="goLine(1,1)" class="glass rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer" style="border-color:rgba(59,155,217,.3)">
-            <img src="assets/demo/investiga-red.webp" alt="Investiga" class="w-full h-14 object-cover" loading="lazy">
-            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#3B9BD9">02 · Investiga</div>
-            <div class="text-[10px] text-slate-400 mt-1">MileInvestiga</div></div>
-        </button>
-        <button onclick="goLine(2,null)" class="glass-violet rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
-            <img src="assets/demo/coordina-pmu.webp" alt="Coordina" class="w-full h-14 object-cover" loading="lazy">
-            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#9F91E8">03 · Coordina</div>
-            <div class="text-[10px] text-slate-400 mt-1">GusCoordina</div></div>
-        </button>
-        <button onclick="goLine(3,null)" class="glass-orange rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
-            <img src="assets/demo/predice-ciudad.webp" alt="Predice" class="w-full h-14 object-cover" loading="lazy">
-            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#D4883A">04 · Predice</div>
-            <div class="text-[10px] text-slate-400 mt-1">GabyPredice</div></div>
-        </button>
-    </div>
-
-    <!-- El ecosistema explicado en 5 segundos -->
-    <div class="text-[10px] text-slate-500 uppercase tracking-wider mb-2">El ecosistema, en 5 segundos</div>
-    <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
-        <span class="font-semibold text-white">📱 Ciudadano reporta</span><span style="color:#006D6D">→</span>
-        <span class="font-semibold" style="color:#00BFA6">AlejoSeguro + CatheAsiste escuchan</span><span style="color:#006D6D">→</span>
-        <span class="font-semibold" style="color:#3B9BD9">MileInvestiga investiga</span><span style="color:#006D6D">→</span>
-        <span class="font-semibold" style="color:#9F91E8">GusCoordina coordina</span><span style="color:#006D6D">→</span>
-        <span class="font-semibold" style="color:#D4883A">GabyPredice anticipa</span><span style="color:#006D6D">→</span>
-        <span class="font-semibold text-emerald-400">🏛️ Gobierno decide</span>
-    </div>
 </div>
 <div class="anim-r flex flex-col items-center relative">
     <div class="radar"></div>
@@ -325,6 +278,35 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     </svg>
     <div class="live-feed" id="liveFeed"></div>
 </div>
+</div>
+<div class="mt-8">
+    <!-- Selector por línea: el visitante elige qué le interesa -->
+    <div class="text-[10px] text-slate-500 uppercase tracking-wider mb-2">¿Poco tiempo? Elige qué línea te interesa</div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-4xl mx-auto">
+        <button onclick="goLine(1,0)" class="glass-teal rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
+            <img src="assets/demo/escucha-ciudadano.webp" alt="Escucha" class="w-full h-14 object-cover" loading="lazy">
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#00BFA6">01 · Escucha</div>
+            <div class="text-[10px] text-slate-400 mt-1">AlejoSeguro + CatheAsiste</div></div>
+        </button>
+        <button onclick="goLine(1,1)" class="glass rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer" style="border-color:rgba(59,155,217,.3)">
+            <img src="assets/demo/investiga-red.webp" alt="Investiga" class="w-full h-14 object-cover" loading="lazy">
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#3B9BD9">02 · Investiga</div>
+            <div class="text-[10px] text-slate-400 mt-1">MileInvestiga</div></div>
+        </button>
+        <button onclick="goLine(2,null)" class="glass-violet rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
+            <img src="assets/demo/coordina-pmu.webp" alt="Coordina" class="w-full h-14 object-cover" loading="lazy">
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#9F91E8">03 · Coordina</div>
+            <div class="text-[10px] text-slate-400 mt-1">GusCoordina</div></div>
+        </button>
+        <button onclick="goLine(3,null)" class="glass-orange rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
+            <img src="assets/demo/predice-ciudad.webp" alt="Predice" class="w-full h-14 object-cover" loading="lazy">
+            <div class="p-3"><div class="text-[10px] font-bold uppercase tracking-wider" style="color:#D4883A">04 · Predice</div>
+            <div class="text-[10px] text-slate-400 mt-1">GabyPredice</div></div>
+        </button>
+    </div>
+
+</div>
+
 </div>
 </div>
 </section>
@@ -1138,38 +1120,38 @@ function _ln(pts,color,proj,w,h){w=w||300;h=h||120;var max=Math.max.apply(null,p
     return out+'</svg>'}
 
 var AGENT_VIZ=[
- {t:'⏱ Tiempo de activación del PMU',h:'<svg viewBox="0 0 300 96" width="100%" height="96"><line x1="20" y1="46" x2="285" y2="46" stroke="rgba(159,145,232,.25)" stroke-width="2" stroke-dasharray="4 3"/><g font-size="7" fill="rgba(255,255,255,.5)" text-anchor="middle">'
-   +[['Reporte','0s','#9F91E8',30],['Incidente creado','2.8s','#8B7CD6',110],['Instituciones convocadas','5.1s','#7A6FCB',195],['Canales abiertos','8.4s','#6C63C4',272]].map(function(e,i){
+ {t:'⏱ Activación del PMU',h:'<svg viewBox="0 0 300 96" width="100%" height="96"><line x1="20" y1="46" x2="285" y2="46" stroke="rgba(159,145,232,.25)" stroke-width="2" stroke-dasharray="4 3"/><g font-size="7" fill="rgba(255,255,255,.5)" text-anchor="middle">'
+   +[['Reporte','0s','#9F91E8',30],['Incidente','2.8s','#8B7CD6',110],['Convocatoria','5.1s','#7A6FCB',195],['Canales','8.4s','#6C63C4',272]].map(function(e,i){
    return '<circle cx="'+e[3]+'" cy="46" r="5" fill="'+e[2]+'"><animate attributeName="r" values="4;6;4" dur="'+(2+i*.3)+'s" repeatCount="indefinite"/></circle>'
    +'<text x="'+e[3]+'" y="30">'+e[0]+'</text>'
    +'<text x="'+e[3]+'" y="68" fill="'+e[2]+'" font-weight="700">'+e[1]+'</text>'}).join('')
-   +'</g><text x="20" y="90" fill="rgba(255,255,255,.3)" font-size="7">Activación total del PMU: <tspan fill="#9F91E8" font-weight="700">8.4 segundos</tspan> desde el reporte ciudadano</text></svg>'},
- {t:'🔗 Confianza del cruce de evidencia por fuente (%)',h:_vb([92,78,64,88],['Video','Cámaras','Audio','Historial'],'#7A6FCB')},
- {t:'🛣 Simulación de rutas — tiempo estimado de llegada (min)',h:_hb([['Cra 46 ✓ recomendada',4.2,' min','#10B981'],['Calle 44',6.8,' min','#6C63C4'],['Av. Circunvalar',8.1,' min','#6C63C4']])},
- {t:'🎙 Tráfico de radio transcrito en vivo — picos de riesgo',h:'<svg viewBox="0 0 300 100" width="100%" height="100">'+Array.from({length:36},function(_,i){var hh=[4,7,5,9,6,8,5,7,6,10,8,6,5,34,12,7,6,8,5,7,6,5,8,6,9,5,6,7,5,6,30,11,6,5,7,4][i];var hot=(hh>20);var x=10+i*8;return '<rect x="'+x+'" y="'+(50-hh)+'" width="4" height="'+(hh*2)+'" rx="2" fill="'+(hot?'#D4883A':'#5F58BB')+'" opacity="'+(hot?1:.6)+'"><animate attributeName="height" values="'+(hh*2)+';'+(hh*1.4)+';'+(hh*2)+'" dur="'+(0.8+i*.07)+'s" repeatCount="indefinite"/><animate attributeName="y" values="'+(50-hh)+';'+(50-hh*.7)+';'+(50-hh)+'" dur="'+(0.8+i*.07)+'s" repeatCount="indefinite"/></rect>'}).join('')+'<text x="96" y="14" fill="#D4883A" font-size="7" font-weight="700">⚠ "contacto visual" · Policía</text><text x="230" y="14" fill="#D4883A" font-size="7" font-weight="700">⚠ "sujeto armado"</text></svg>'},
- {t:'🚦 Semáforo operativo por institución',h:_hb([['Policía · llegada 6 min',92,'%','#10B981'],['Gaula · canal activo',88,'%','#10B981'],['Fiscalía · orden en trámite',61,'%','#f59e0b'],['Secretaría · en sitio',85,'%','#10B981']])},
- {t:'📺 Dashboard unificado — unidades en vivo',h:'<svg viewBox="0 0 300 130" width="100%" height="130"><rect width="300" height="130" rx="8" fill="#0F1724"/><g stroke="rgba(255,255,255,.05)"><line x1="0" y1="43" x2="300" y2="43"/><line x1="0" y1="86" x2="300" y2="86"/><line x1="100" y1="0" x2="100" y2="130"/><line x1="200" y1="0" x2="200" y2="130"/></g><circle cx="150" cy="70" r="6" fill="#ef4444"><animate attributeName="r" values="5;8;5" dur="1.5s" repeatCount="indefinite"/></circle><circle cx="150" cy="70" r="12" fill="none" stroke="#ef4444" opacity=".4"><animate attributeName="r" values="8;20" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".4;0" dur="1.8s" repeatCount="indefinite"/></circle><circle r="4" fill="#433F97" stroke="#9F91E8" stroke-width="1"><animateMotion dur="5s" repeatCount="indefinite" path="M60 100 L110 80 L140 72"/></circle><circle r="4" fill="#433F97" stroke="#9F91E8" stroke-width="1"><animateMotion dur="6.5s" repeatCount="indefinite" path="M250 110 L200 90 L162 76"/></circle><circle r="4" fill="#433F97" stroke="#9F91E8" stroke-width="1"><animateMotion dur="7s" repeatCount="indefinite" path="M90 20 L120 45 L142 62"/></circle><text x="10" y="16" fill="rgba(159,145,232,.8)" font-size="7" font-weight="700">3 UNIDADES CONVERGIENDO · WebSocket sync 40ms</text></svg>'},
+   +'</g><text x="20" y="90" fill="rgba(255,255,255,.3)" font-size="7">PMU activo en <tspan fill="#9F91E8" font-weight="700">8.4 s</tspan></text></svg>'},
+ {t:'🔗 Confianza del cruce (%)',h:_vb([92,78,64,88],['Video','Cámaras','Audio','Historial'],'#7A6FCB')},
+ {t:'🛣 Rutas simuladas (min)',h:_hb([['Cra 46 ✓',4.2,' min','#10B981'],['Calle 44',6.8,' min','#6C63C4'],['Av. Circunvalar',8.1,' min','#6C63C4']])},
+ {t:'🎙 Radio en vivo — picos de riesgo',h:'<svg viewBox="0 0 300 100" width="100%" height="100">'+Array.from({length:36},function(_,i){var hh=[4,7,5,9,6,8,5,7,6,10,8,6,5,34,12,7,6,8,5,7,6,5,8,6,9,5,6,7,5,6,30,11,6,5,7,4][i];var hot=(hh>20);var x=10+i*8;return '<rect x="'+x+'" y="'+(50-hh)+'" width="4" height="'+(hh*2)+'" rx="2" fill="'+(hot?'#D4883A':'#5F58BB')+'" opacity="'+(hot?1:.6)+'"><animate attributeName="height" values="'+(hh*2)+';'+(hh*1.4)+';'+(hh*2)+'" dur="'+(0.8+i*.07)+'s" repeatCount="indefinite"/><animate attributeName="y" values="'+(50-hh)+';'+(50-hh*.7)+';'+(50-hh)+'" dur="'+(0.8+i*.07)+'s" repeatCount="indefinite"/></rect>'}).join('')+'<text x="96" y="14" fill="#D4883A" font-size="7" font-weight="700">⚠ "contacto visual" · Policía</text><text x="230" y="14" fill="#D4883A" font-size="7" font-weight="700">⚠ "sujeto armado"</text></svg>'},
+ {t:'🚦 Semáforo por institución',h:_hb([['Policía 6 min',92,'%','#10B981'],['Gaula activo',88,'%','#10B981'],['Fiscalía trámite',61,'%','#f59e0b'],['Secretaría en sitio',85,'%','#10B981']])},
+ {t:'📺 Unidades en vivo',h:'<svg viewBox="0 0 300 130" width="100%" height="130"><rect width="300" height="130" rx="8" fill="#0F1724"/><g stroke="rgba(255,255,255,.05)"><line x1="0" y1="43" x2="300" y2="43"/><line x1="0" y1="86" x2="300" y2="86"/><line x1="100" y1="0" x2="100" y2="130"/><line x1="200" y1="0" x2="200" y2="130"/></g><circle cx="150" cy="70" r="6" fill="#ef4444"><animate attributeName="r" values="5;8;5" dur="1.5s" repeatCount="indefinite"/></circle><circle cx="150" cy="70" r="12" fill="none" stroke="#ef4444" opacity=".4"><animate attributeName="r" values="8;20" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".4;0" dur="1.8s" repeatCount="indefinite"/></circle><circle r="4" fill="#433F97" stroke="#9F91E8" stroke-width="1"><animateMotion dur="5s" repeatCount="indefinite" path="M60 100 L110 80 L140 72"/></circle><circle r="4" fill="#433F97" stroke="#9F91E8" stroke-width="1"><animateMotion dur="6.5s" repeatCount="indefinite" path="M250 110 L200 90 L162 76"/></circle><circle r="4" fill="#433F97" stroke="#9F91E8" stroke-width="1"><animateMotion dur="7s" repeatCount="indefinite" path="M90 20 L120 45 L142 62"/></circle><text x="10" y="16" fill="rgba(159,145,232,.8)" font-size="7" font-weight="700">3 UNIDADES CONVERGIENDO</text></svg>'},
 ];
 
 var PHASE_VIZ=[
  {t:'🎯 Extracción automática de la postura',h:'<div class="grid grid-cols-2 gap-2 mt-1">'
-   +[['📍 Zona','Suroccidente de la ciudad','#3E5E8E'],['👥 Actores','Redes de cobro de vacunas','#006D6D'],['🏷 Tema','Extorsión a comerciantes','#D4883A'],['⛔ Restricción','No afectar operativos CTI','#64748b']].map(function(e,i){
+   +[['📍 Zona','Suroccidente','#3E5E8E'],['👥 Actores','Cobro de vacunas','#006D6D'],['🏷 Tema','Extorsión','#D4883A'],['⛔ Restricción','No afectar CTI','#64748b']].map(function(e,i){
    return '<div class="rounded-lg px-3 py-2" style="background:rgba(255,255,255,.04);border:1px solid '+e[2]+'40"><div class="text-[10px] font-bold" style="color:'+e[2]+'">'+e[0]+'</div><div class="text-[10px] text-slate-300">'+e[1]+'</div></div>'}).join('')+'</div>'},
- {t:'📡 Cruce: percepción ciudadana + cifras oficiales',h:'<div class="flex items-center gap-4 flex-wrap">'
-   +'<div style="flex:1;min-width:170px">'+_hb([['Reportes AlejoSeguro (90 días)',847,'','#00BFA6'],['Denuncias oficiales',312,'','#4A6FA5']])+'</div>'
-   +'<div class="text-center rounded-xl px-4 py-3" style="background:rgba(212,136,58,.10);border:1px solid rgba(212,136,58,.4)"><div class="text-2xl font-black" style="color:#D4883A">+340%</div><div class="text-[9px] text-slate-400">incremento extorsión<br>IC 95%: 2.8x–3.9x</div></div>'
+ {t:'📡 Percepción + cifras oficiales',h:'<div class="flex items-center gap-4 flex-wrap">'
+   +'<div style="flex:1;min-width:170px">'+_hb([['AlejoSeguro (90d)',847,'','#00BFA6'],['Denuncias oficiales',312,'','#4A6FA5']])+'</div>'
+   +'<div class="text-center rounded-xl px-4 py-3" style="background:rgba(212,136,58,.10);border:1px solid rgba(212,136,58,.4)"><div class="text-2xl font-black" style="color:#D4883A">+340%</div><div class="text-[9px] text-slate-400">extorsión · IC 95%</div></div>'
    +'</div>'},
- {t:'🧭 Dimensiones de seguridad del asunto',h:'<svg viewBox="0 0 300 120" width="100%" height="120"><g transform="translate(70,60)"><circle r="34" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="14"/><circle r="34" fill="none" stroke="#5B7DB1" stroke-width="14" stroke-dasharray="156.8 156.8" transform="rotate(-90)"/><circle r="34" fill="none" stroke="#00BFA6" stroke-width="14" stroke-dasharray="109.8 203.8" transform="rotate(90)"/><circle r="34" fill="none" stroke="#D4883A" stroke-width="14" stroke-dasharray="47 266.6" transform="rotate(216)"/><text y="4" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">SUB</text></g><g font-size="8" fill="rgba(255,255,255,.55)"><circle cx="135" cy="40" r="4" fill="#5B7DB1"/><text x="145" y="43">Seguridad pública (50%)</text><circle cx="135" cy="62" r="4" fill="#00BFA6"/><text x="145" y="65">Seguridad ciudadana (35%)</text><circle cx="135" cy="84" r="4" fill="#D4883A"/><text x="145" y="87">Seg. nacional (15%)</text><text x="135" y="105" fill="rgba(255,255,255,.35)" font-size="7">Alcance: subnacional · 2 dptos</text></g></svg>'},
+ {t:'🧭 Dimensiones de seguridad del asunto',h:'<svg viewBox="0 0 300 120" width="100%" height="120"><g transform="translate(70,60)"><circle r="34" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="14"/><circle r="34" fill="none" stroke="#5B7DB1" stroke-width="14" stroke-dasharray="156.8 156.8" transform="rotate(-90)"/><circle r="34" fill="none" stroke="#00BFA6" stroke-width="14" stroke-dasharray="109.8 203.8" transform="rotate(90)"/><circle r="34" fill="none" stroke="#D4883A" stroke-width="14" stroke-dasharray="47 266.6" transform="rotate(216)"/><text y="4" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">SUB</text></g><g font-size="8" fill="rgba(255,255,255,.55)"><circle cx="135" cy="40" r="4" fill="#5B7DB1"/><text x="145" y="43">Pública 50%</text><circle cx="135" cy="62" r="4" fill="#00BFA6"/><text x="145" y="65">Ciudadana 35%</text><circle cx="135" cy="84" r="4" fill="#D4883A"/><text x="145" y="87">Nacional 15%</text><text x="135" y="105" fill="rgba(255,255,255,.35)" font-size="7">Alcance: subnacional · 2 dptos</text></g></svg>'},
 
- {t:'🕸 Centralidad de la red criminal',h:_hb([['"El Flaco" · nodo central',0.83,'','#D4883A'],['"La Mona" · logística',0.61,'','#ef4444'],['"Pipe" · cobrador',0.44,'','#ef4444'],['"Chucho" · cobrador',0.31,'','#f59e0b']])+'<div class="flex gap-2 mt-1"><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:rgba(239,68,68,.12);color:#ef4444">⚠ "La Mona" opera una 2ª célula en otra ciudad</span><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:rgba(45,212,191,.1);color:#2DD4BF">Operación: 2 frentes</span></div>'},
+ {t:'🕸 Centralidad de la red',h:_hb([['"El Flaco"',0.83,'','#D4883A'],['"La Mona"',0.61,'','#ef4444'],['"Pipe"',0.44,'','#ef4444'],['"Chucho"',0.31,'','#f59e0b']])+'<div class="flex gap-2 mt-1"><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:rgba(239,68,68,.12);color:#ef4444">⚠ "La Mona": 2ª célula</span><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:rgba(45,212,191,.1);color:#2DD4BF">Operación: 2 frentes</span></div>'},
 
  {t:'✅ Checkpoint del decisor',h:'<div class="space-y-2 mt-1">'
-   +[['✓ APROBAR → ejecutar modelos predictivos (F5)',true],['↻ Enviar a revisión — enlace 2ª ciudad al Gaula · Cnel. Rodríguez · 48h',false],['→ Orden directa a F8 (descartada: falta predicción)',false]].map(function(e){
+   +[['✓ APROBAR → modelos predictivos (F5)',true],['↻ Revisión Gaula · 48h',false],['→ Orden directa (descartada)',false]].map(function(e){
    return '<div class="rounded-lg px-3 py-2 text-[11px]" style="'+(e[1]?'background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.45);color:#A7F3D0;font-weight:600':'background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.45)')+'">'+e[0]+'</div>'}).join('')+'</div>'},
  {t:'🔮 Modelos predictivos en ejecución',h:_ln([26,29,27,32,36,34,39],'#2DD4BF',[42,46,51])+'<div class="flex gap-2 mt-1"><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:rgba(212,136,58,.12);color:#D4883A">3 hotspots · 89%</span><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:rgba(239,68,68,.1);color:#ef4444">Anomalía 3.2σ</span><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:rgba(45,212,191,.1);color:#2DD4BF">Viernes 5–7 PM</span></div>'},
- {t:'🧠 Línea de tiempo de la memoria institucional',h:'<svg viewBox="0 0 300 92" width="100%" height="92"><line x1="18" y1="44" x2="286" y2="44" stroke="rgba(91,168,160,.3)" stroke-width="2"/>'+[['2024 · Operativo norte','8 capturas',40],['2025 · Red reconstituida','45 días',152],['2026 · Lección aplicada','extinción dominio',262]].map(function(e,i){return '<circle cx="'+e[2]+'" cy="44" r="5" fill="#5BA8A0"><animate attributeName="r" values="4;6;4" dur="2s '+(i*.4)+'s" repeatCount="indefinite"/></circle><text x="'+e[2]+'" y="26" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="7">'+e[0]+'</text><text x="'+e[2]+'" y="66" text-anchor="middle" fill="#5BA8A0" font-size="7" font-weight="700">'+e[1]+'</text>'}).join('')+'</svg>'},
+ {t:'🧠 Memoria institucional',h:'<svg viewBox="0 0 300 92" width="100%" height="92"><line x1="18" y1="44" x2="286" y2="44" stroke="rgba(91,168,160,.3)" stroke-width="2"/>'+[['2024 · Operativo','8 capturas',40],['2025 · Red vuelve','45 días',152],['2026 · Lección','extinción dominio',262]].map(function(e,i){return '<circle cx="'+e[2]+'" cy="44" r="5" fill="#5BA8A0"><animate attributeName="r" values="4;6;4" dur="2s '+(i*.4)+'s" repeatCount="indefinite"/></circle><text x="'+e[2]+'" y="26" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="7">'+e[0]+'</text><text x="'+e[2]+'" y="66" text-anchor="middle" fill="#5BA8A0" font-size="7" font-weight="700">'+e[1]+'</text>'}).join('')+'</svg>'},
  {t:'⚖ Cualificación de señales del comité (/5)',h:_hb([['Fiabilidad',4,'','#C8A83E'],['Importancia',5,'','#D4883A'],['Probabilidad',4,'','#C8A83E'],['Severidad',5,'','#ef4444'],['Tiempo reacción',4,'','#C8A83E']])},
- {t:'🚦 Semáforo IPDH — impacto en desarrollo humano',h:_hb([['Personas',6.8,' /10','#10B981'],['Comunidades',5.2,' /10','#f59e0b'],['Gobernabilidad',7.1,' /10','#10B981']])},
+ {t:'🚦 Semáforo IPDH',h:_hb([['Personas',6.8,' /10','#10B981'],['Comunidades',5.2,' /10','#f59e0b'],['Gobernabilidad',7.1,' /10','#10B981']])},
 ];
 
 function playTone(f,d,t,v){t=t||'sine';v=v||.08;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=t;o.frequency.value=f;g.gain.value=v;o.connect(g);g.connect(audioCtx.destination);o.start();g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+d);o.stop(audioCtx.currentTime+d)}

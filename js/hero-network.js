@@ -3,7 +3,7 @@
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  const PRIMARY = { r: 0, g: 109, b: 109 };
+  const PRIMARY = { r: 45, g: 212, b: 191 };
   const ACCENT = { r: 212, g: 136, b: 58 };
   const CONNECTION_DIST = 150;
   const NODE_COUNT_DESKTOP = 80;

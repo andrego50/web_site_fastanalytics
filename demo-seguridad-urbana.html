@@ -90,9 +90,9 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
       Productos
     </a>
     <button onclick="resetDemo()" class="hidden lg:block text-xs text-slate-500 hover:text-teal-400 transition px-3 py-1.5 rounded-lg hover:bg-white/5 whitespace-nowrap">&#8635; Reiniciar</button>
-    <a href="mailto:hola@fastanalytics.co?subject=Demo Seguridad Ciudadana Inteligente" class="btn-fa text-white font-semibold text-xs px-3 sm:px-4 py-2 rounded-lg inline-flex items-center gap-1.5 whitespace-nowrap flex-shrink-0">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      <span class="hidden sm:inline">Solicitar demo</span><span class="sm:hidden">Demo</span>
+    <a href="index.html#agenda" class="btn-fa text-white font-semibold text-xs px-3 sm:px-4 py-2 rounded-lg inline-flex items-center gap-1.5 whitespace-nowrap flex-shrink-0">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span class="hidden sm:inline">Agendar demo</span><span class="sm:hidden">Demo</span>
     </a>
 </div>
 </div>
@@ -103,29 +103,42 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full">
 <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
 <div class="anim-up">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-teal text-xs font-medium mb-6" style="color:#006D6D">
-        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#006D6D"></span>
-        IA Espaciotemporal para Decisiones Predictivas
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-orange text-xs font-medium mb-6" style="color:#D4883A">
+        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#D4883A"></span>
+        Demo inmersiva · Caso real de extorsión — Barranquilla
     </div>
     <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
-        <span class="text-white">Colombia</span><br>
-        <span style="background:linear-gradient(135deg,#006D6D,#008080,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">decide con datos,</span><br>
-        <span class="text-white">actúa con</span>
-        <span style="color:#D4883A"> precisión.</span>
+        <span class="text-white">Un panfleto de extorsión.</span><br>
+        <span class="text-white">Un ciudadano con miedo.</span><br>
+        <span style="background:linear-gradient(135deg,#006D6D,#008080,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Y un Estado que</span><br>
+        <span style="background:linear-gradient(135deg,#006D6D,#008080,#00BFA6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">responde a tiempo.</span>
     </h1>
-    <p class="text-lg text-slate-400 leading-relaxed mb-4 max-w-lg">Del reporte ciudadano en la calle hasta la estrategia nacional en el despacho. Un ecosistema de inteligencia artificial que articula las capacidades del Estado para transformar señales del territorio en decisiones que salvan vidas.</p>
-    <p class="text-sm text-slate-500 mb-8 max-w-lg">Tres productos. Una misión. Cero incertidumbre.</p>
-    <div class="flex flex-wrap items-center gap-4 mb-10">
-        <button onclick="startDemo()" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base anim-pulse">Iniciar Demostración &#8594;</button>
+    <p class="text-lg text-slate-400 leading-relaxed mb-8 max-w-lg">Vas a vivir este caso <strong class="text-white">dos veces</strong>: primero como el comerciante que reporta desde su celular; después como el comandante que recibe la alerta y debe decidir. Todo con la tecnología real del ecosistema FastAnalytics.</p>
+
+    <!-- Los dos roles que va a vivir el visitante -->
+    <div class="grid sm:grid-cols-2 gap-3 mb-8 max-w-lg">
+        <div class="glass-teal rounded-xl p-4">
+            <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:#00BFA6">Acto 1 · Eres el comerciante</div>
+            <div class="text-xs text-slate-400 leading-relaxed">Reportas la extorsión por Telegram y ves cómo la IA procesa tu evidencia en segundos.</div>
+        </div>
+        <div class="glass-violet rounded-xl p-4">
+            <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:#9F91E8">Acto 2 · Eres el comandante</div>
+            <div class="text-xs text-slate-400 leading-relaxed">La alerta llega a tu Puesto de Mando: coordinas instituciones y decides con datos predictivos.</div>
+        </div>
     </div>
-    <div class="flex flex-wrap items-center gap-x-5 gap-y-3 sm:gap-x-8 text-center">
-        <div><div class="text-xl sm:text-2xl font-bold text-white">3</div><div class="text-[11px] sm:text-xs text-slate-500">Sistemas integrados</div></div>
-        <div class="w-px h-8 bg-white/10"></div>
-        <div><div class="text-xl sm:text-2xl font-bold text-white">6</div><div class="text-[11px] sm:text-xs text-slate-500">Agentes del PMU</div></div>
-        <div class="w-px h-8 bg-white/10"></div>
-        <div><div class="text-xl sm:text-2xl font-bold text-white">9</div><div class="text-[11px] sm:text-xs text-slate-500">Fases decisionales</div></div>
-        <div class="w-px h-8 bg-white/10"></div>
-        <div><div class="text-xl sm:text-2xl font-bold text-white">24/7</div><div class="text-[11px] sm:text-xs text-slate-500">Monitoreo activo</div></div>
+
+    <div class="flex flex-wrap items-center gap-4 mb-8">
+        <button onclick="startDemo()" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base anim-pulse">Acto 1 · Ser el comerciante &#8594;</button>
+    </div>
+
+    <!-- El ecosistema explicado en 5 segundos -->
+    <div class="text-[10px] text-slate-500 uppercase tracking-wider mb-2">El ecosistema, en 5 segundos</div>
+    <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
+        <span class="font-semibold text-white">📱 Ciudadano reporta</span><span style="color:#006D6D">→</span>
+        <span class="font-semibold" style="color:#3B9BD9">AlejoSeguro analiza</span><span style="color:#006D6D">→</span>
+        <span class="font-semibold" style="color:#9F91E8">GusCoordina coordina</span><span style="color:#006D6D">→</span>
+        <span class="font-semibold" style="color:#D4883A">GabyPredice anticipa</span><span style="color:#006D6D">→</span>
+        <span class="font-semibold text-emerald-400">🏛️ Gobierno decide</span>
     </div>
 </div>
 <div class="anim-r flex justify-center">
@@ -241,7 +254,7 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
 <div class="text-center mb-4 anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-teal text-xs font-medium mb-3" style="color:#006D6D">
-        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#006D6D"></span>Caso: Extorsión a comerciantes en Barranquilla
+        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#006D6D"></span>Acto 1 · Eres el comerciante — Extorsión en Barranquilla
     </div>
     <h2 class="text-3xl font-bold text-white">Del reporte ciudadano a la acción en terreno</h2>
 </div>
@@ -551,10 +564,10 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
 <div class="text-center mb-6 anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-violet text-xs font-medium mb-3" style="color:#9F91E8">
-        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#7C6CDC"></span>GusCoordina · Puesto de Mando Unificado
+        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#7C6CDC"></span>Acto 2 · Eres el comandante — GusCoordina · Puesto de Mando Unificado
     </div>
-    <h2 class="text-3xl font-bold text-white">Del reporte a la acción coordinada</h2>
-    <p class="text-slate-400 mt-2 max-w-2xl mx-auto">El reporte de AlejoSeguro activa un Puesto de Mando Unificado: seis agentes especializados coordinan a las instituciones en terreno, en tiempo real, mientras el incidente está en curso. Haga clic en cada agente.</p>
+    <h2 class="text-3xl font-bold text-white">La alerta llega a tu puesto de mando</h2>
+    <p class="text-slate-400 mt-2 max-w-2xl mx-auto">El reporte que enviaste como ciudadano activa un Puesto de Mando Unificado: seis agentes especializados coordinan a las instituciones en terreno, en tiempo real, mientras el incidente está en curso. Haz clic en cada agente para ver qué hace.</p>
 </div>
 <div class="grid lg:grid-cols-5 gap-6">
     <div class="lg:col-span-2 flex justify-center items-start">
@@ -594,10 +607,10 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
 <div class="text-center mb-6 anim-up">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-orange text-xs font-medium mb-3" style="color:#D4883A">
-        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#D4883A"></span>GabyPredice · Estrategia Nacional
+        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#D4883A"></span>Acto 2 · Eres el comandante — GabyPredice · Estrategia
     </div>
-    <h2 class="text-3xl font-bold text-white">Eneágono Decisional</h2>
-    <p class="text-slate-400 mt-2 max-w-2xl mx-auto">9 fases que transforman los incidentes coordinados por AlejoSeguro y GusCoordina en decisiones organizacionales anticipativas, a corto y mediano plazo. Haga clic en cada fase.</p>
+    <h2 class="text-3xl font-bold text-white">Decides con anticipación: el Eneágono Decisional</h2>
+    <p class="text-slate-400 mt-2 max-w-2xl mx-auto">9 fases que transforman los incidentes que acabas de coordinar en decisiones organizacionales anticipativas, a corto y mediano plazo. Haz clic en cada fase.</p>
 </div>
 <div class="grid lg:grid-cols-5 gap-6">
     <div class="lg:col-span-2 flex justify-center items-start">
@@ -631,8 +644,8 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
 <section id="scene4" class="scene min-h-screen pt-20">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
 <div class="text-center mb-8 anim-up">
-    <h2 class="text-3xl sm:text-4xl font-black text-white mb-3">Un Ecosistema.<br><span style="color:#006D6D">Una Misión.</span></h2>
-    <p class="text-lg text-slate-400 max-w-2xl mx-auto">Del celular del ciudadano al escritorio presidencial. Así se articula la seguridad basada en datos.</p>
+    <h2 class="text-3xl sm:text-4xl font-black text-white mb-3">Viviste el caso<br><span style="color:#006D6D">desde adentro.</span></h2>
+    <p class="text-lg text-slate-400 max-w-2xl mx-auto">Fuiste el comerciante que reportó y el comandante que decidió. Así se articula la seguridad basada en datos: del celular del ciudadano al escritorio presidencial.</p>
 </div>
 <div class="glass rounded-2xl p-6 mb-8">
     <div class="flex items-center justify-between flex-wrap gap-4">
@@ -741,6 +754,59 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
     </div>
 </div>
 
+<!-- PUBLICACIONES CIENTÍFICAS · los resultados operativos documentados -->
+<div class="glass rounded-2xl p-5 sm:p-8 mb-8 anim-fade">
+    <div class="text-center mb-6">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-teal text-xs font-medium mb-3" style="color:#00BFA6">
+            <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#00BFA6"></span>No es solo prensa · evidencia publicada
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-black text-white mb-2">Los resultados operativos,<br class="sm:hidden"> en libros y revistas científicas</h3>
+        <p class="text-sm text-slate-400 max-w-2xl mx-auto">Los modelos detrás de este ecosistema se aplicaron en operaciones reales de policía y gobierno, y quedaron documentados en publicaciones académicas revisadas.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-2 text-left">
+        <a href="https://revistalogos.policia.edu.co:8443/omp/index.php/editorial/catalog/book/102" target="_blank" rel="noopener" class="flex items-start gap-3 p-3 rounded-xl glass text-xs text-slate-400 hover:text-teal-300 transition leading-snug">
+            <span class="flex-shrink-0" style="color:#00BFA6">📕</span>
+            <span><strong class="text-white">Analítica de datos para la seguridad ciudadana</strong> — modelos matemáticos para la anticipación<br><span class="text-slate-500">Libro · Editorial Policía Nacional de Colombia</span></span>
+        </a>
+        <a href="https://www.academia.edu/121422085/Liderazgo_por_Bogota_Un_Fractal_de_Innovacion_Social_y_Liderazgo" target="_blank" rel="noopener" class="flex items-start gap-3 p-3 rounded-xl glass text-xs text-slate-400 hover:text-teal-300 transition leading-snug">
+            <span class="flex-shrink-0" style="color:#00BFA6">📄</span>
+            <span><strong class="text-white">Liderazgo por Bogotá</strong> — un fractal de innovación social y liderazgo<br><span class="text-slate-500">Academia.edu</span></span>
+        </a>
+        <a href="https://www.academia.edu/109755271/Comités_decisionales_anticipativos_para_la_seguridad_humana" target="_blank" rel="noopener" class="flex items-start gap-3 p-3 rounded-xl glass text-xs text-slate-400 hover:text-teal-300 transition leading-snug">
+            <span class="flex-shrink-0" style="color:#00BFA6">📄</span>
+            <span><strong class="text-white">Comités decisionales anticipativos</strong> para la seguridad humana<br><span class="text-slate-500">Academia.edu</span></span>
+        </a>
+        <a href="https://www.academia.edu/108587629/Evolución_de_los_indicadores_de_seguridad_ciudadana_en_consecuencia_de_las_medidas_sanitarias_en_libro_Aprovechamiento_de_datos_para_la_toma_de_decisiones_en_el_sector_público" target="_blank" rel="noopener" class="flex items-start gap-3 p-3 rounded-xl glass text-xs text-slate-400 hover:text-teal-300 transition leading-snug">
+            <span class="flex-shrink-0" style="color:#00BFA6">📄</span>
+            <span><strong class="text-white">Evolución de los indicadores de seguridad ciudadana</strong> tras las medidas sanitarias<br><span class="text-slate-500">Libro: Aprovechamiento de datos en el sector público</span></span>
+        </a>
+        <a href="https://www.academia.edu/89059858/Caracterización_del_hurto_a_motos_en_Medellín_Por_qué_roban_en_unas_zonas_más_que_en_otras" target="_blank" rel="noopener" class="flex items-start gap-3 p-3 rounded-xl glass text-xs text-slate-400 hover:text-teal-300 transition leading-snug">
+            <span class="flex-shrink-0" style="color:#00BFA6">📄</span>
+            <span><strong class="text-white">Caracterización del hurto a motos en Medellín</strong> — por qué roban en unas zonas más que en otras<br><span class="text-slate-500">Academia.edu</span></span>
+        </a>
+        <a href="https://www.academia.edu/28584707/Inteligencia_colectiva_anticipación_a_corto_plazo_de_las_problemáticas_de_convivencia_Collective_intelligence_short_term_anticipation_of_coexistence_issues_A_inteligência_coletiva_antecipação_de_curto_prazo_dos_problemas_de_convivência" target="_blank" rel="noopener" class="flex items-start gap-3 p-3 rounded-xl glass text-xs text-slate-400 hover:text-teal-300 transition leading-snug">
+            <span class="flex-shrink-0" style="color:#00BFA6">📄</span>
+            <span><strong class="text-white">Inteligencia colectiva</strong> — anticipación a corto plazo de las problemáticas de convivencia<br><span class="text-slate-500">Revista Criminalidad · Policía Nacional</span></span>
+        </a>
+        <a href="https://www.academia.edu/27054920/Anticipation_et_gestion_du_risque_numérique_Proposition_dun_guide_de_travail_pour_les_Equipes_de_Réponse_aux_Incidents_de_sécurité_Présenté_par_Andres_PEREZ" target="_blank" rel="noopener" class="flex items-start gap-3 p-3 rounded-xl glass text-xs text-slate-400 hover:text-teal-300 transition leading-snug">
+            <span class="flex-shrink-0" style="color:#00BFA6">📄</span>
+            <span><strong class="text-white">Anticipation et gestion du risque numérique</strong> — guía para equipos de respuesta a incidentes<br><span class="text-slate-500">Academia.edu</span></span>
+        </a>
+        <a href="https://www.academia.edu/27054919/Perspectivas_y_evolución_de_los_sistemas_de_información_caso_Policía_Nacional_de_Colombia" target="_blank" rel="noopener" class="flex items-start gap-3 p-3 rounded-xl glass text-xs text-slate-400 hover:text-teal-300 transition leading-snug">
+            <span class="flex-shrink-0" style="color:#00BFA6">📄</span>
+            <span><strong class="text-white">Perspectivas y evolución de los sistemas de información</strong> — caso Policía Nacional de Colombia<br><span class="text-slate-500">Academia.edu</span></span>
+        </a>
+        <a href="https://www.academia.edu/43732325/IMPROVEMENT_OF_THE_INVERSE_DISTANCE_WEIGHTED_IDW_DUE_TO_THE_MAHALANOBIS_DISTANCE_IN_CRIME_ANALYSIS" target="_blank" rel="noopener" class="flex items-start gap-3 p-3 rounded-xl glass text-xs text-slate-400 hover:text-teal-300 transition leading-snug">
+            <span class="flex-shrink-0" style="color:#00BFA6">📄</span>
+            <span><strong class="text-white">Improvement of the IDW due to the Mahalanobis distance</strong> in crime analysis<br><span class="text-slate-500">Academia.edu</span></span>
+        </a>
+        <a href="https://www.academia.edu/30390356/Feria_de_Innovación_Policial_2016" target="_blank" rel="noopener" class="flex items-start gap-3 p-3 rounded-xl glass text-xs text-slate-400 hover:text-teal-300 transition leading-snug">
+            <span class="flex-shrink-0" style="color:#00BFA6">📄</span>
+            <span><strong class="text-white">Feria de Innovación Policial 2016</strong><br><span class="text-slate-500">Academia.edu</span></span>
+        </a>
+    </div>
+</div>
+
 <!-- FUNDADOR -->
 <div class="glass rounded-2xl p-5 sm:p-6 mb-8 anim-fade">
     <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 text-center sm:text-left">
@@ -777,9 +843,9 @@ body{font-family:'Inter',sans-serif;background:#080C14;color:#E2E8F0;overflow-x:
         </div>
     </div>
 
-    <a href="mailto:hola@fastanalytics.co?subject=Demo Seguridad Ciudadana Inteligente&amp;body=Hola,%20vi%20la%20demostración%20de%20Seguridad%20Ciudadana%20Inteligente%20(AlejoSeguro,%20GusCoordina%20y%20GabyPredice)%20y%20quiero%20agendar%20una%20conversación.%0A%0AEntidad:%0ACargo:%0ATeléfono:%0A" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base inline-flex items-center gap-2 anim-pulse">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Solicitar demostración
+    <a href="index.html#agenda" class="btn-fa text-white font-bold px-8 py-4 rounded-xl text-base inline-flex items-center gap-2 anim-pulse">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Agendar demostración para mi ciudad
     </a>
     <p class="text-xs text-slate-500 mt-4">
         <a href="mailto:hola@fastanalytics.co" class="hover:text-teal-400 transition">hola@fastanalytics.co</a>

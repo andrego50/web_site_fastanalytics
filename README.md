@@ -111,6 +111,10 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Generación: `/mnt/modelos/comfygen/gen_demo3.py` (FLUX schnell fp8 vía ComfyUI, requiere pausar fa-vllm por GPU).
 - Eneágono: el panel estático de predicción se OCULTA al seleccionar un nodo (`anticiparPanel`); cada fase muestra UNA sola visualización sincronizada con su narración (F0 extracción, F1 +340%, F3 centralidad, F4 checkpoint, F5 proyección, etc.).
 
+### Demo v6 (ago 2026): video de contexto propio + texto a la idea clave
+- El iframe de YouTube del panel "Contexto" se reemplaza por `assets/demo/contexto-extorsion.mp4` (FLUX frame + LTX img2vid, `/mnt/modelos/comfygen/gen_contexto.py`): amanecer, comerciante encuentra el sobre en la persiana, moto alejándose — alineado con la narración de la Escena 1. Poster: `contexto-extorsion.webp`.
+- Reducción global de texto: se eliminó la caja `detail` de los paneles de fases y agentes (queda `desc` de una línea + visualización + caso), descripciones y ejemplos recortados a la idea clave, intros de pasos y escenas resumidas, y las columnas de la escena final pasan de 8 a 4 bullets por producto.
+
 ### Narración profesional + logos completos (ago 2026, v4)
 - **Narración con voz real**: 20 clips MP3 generados con **Kokoro-82M TTS** en el servidor (`/home/andrego50/gen_narr.py`, venv `/mnt/modelos/kokoro-venv`, CPU). 3 voces: narrador principal (em_alex), GabyPredice (ef_dora), agentes PMU (em_santa). Textos reescritos en tono cinematográfico. El demo usa `assets/demo/narr/*.mp3` con fallback automático a SpeechSynthesis. Kokoro OOM en GPU con vLLM activo → correr con `CUDA_VISIBLE_DEVICES=""`.
 - **Logos nuevos**: `tavodebate.svg` (globos de debate naranja/teal), `veteranos.svg` (boina + estrella), `chronnet.svg` (constelación de red) en `assets/images/logos/`.

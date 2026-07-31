@@ -1183,6 +1183,7 @@ var I18N={"en": {"st": {"badge0": "Immersive demo · Extortion in the southwest 
 function TT(k,es){var D=I18N[LANG];return(D&&D.st[k])||es}
 var _esSnap=null;
 function setLang(l){
+    speakSeq++;synth.cancel();narrAudio.pause();
     LANG=l;try{localStorage.setItem('fa-lang',l)}catch(e){}
     document.documentElement.lang=l;
     if(!_esSnap){_esSnap={ph:phases.map(function(p){return{name:p.name,desc:p.desc,speech:p.speech}}),ag:agents.map(function(a){return{name:a.name,desc:a.desc,speech:a.speech}})}}
@@ -1209,16 +1210,18 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 var NARR_KEYS=['intro','scene1','scene2','scene3','scene4','f0','f1','f2','f3','f4','f5','f6','f7','f8','ag0','ag1','ag2','ag3','ag4','ag5'];
 var narrAudio=new Audio();narrAudio.preload='auto';
+var speakSeq=0;
 function speak(key,fallback){
     synth.cancel();narrAudio.pause();
+    var mySeq=++speakSeq;
     if(voiceMuted)return;
     if(NARR_KEYS.indexOf(key)>=0){
         setVoiceUI('speaking');
-        narrAudio.onended=function(){setVoiceUI(voiceMuted?'muted':'ready')};
-        narrAudio.onerror=function(){ttsSpeak(fallback||'')};
+        narrAudio.onended=function(){if(mySeq===speakSeq)setVoiceUI(voiceMuted?'muted':'ready')};
+        narrAudio.onerror=function(){if(mySeq===speakSeq&&narrAudio.error)ttsSpeak(fallback||'')};
         narrAudio.src='assets/demo/narr/'+(LANG==='es'?'':LANG+'/')+key+'.mp3';
         var pr=narrAudio.play();
-        if(pr&&pr.catch)pr.catch(function(){ttsSpeak(fallback||'')});
+        if(pr&&pr.catch)pr.catch(function(e){if(mySeq===speakSeq&&(!e||e.name!=='AbortError'))ttsSpeak(fallback||'')});
         return;
     }
     ttsSpeak(key);

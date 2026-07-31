@@ -124,3 +124,13 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Narrador principal regenerado con edge-tts **es-CO-GonzaloNeural** (intro + escenas 1-4): voz neural colombiana natural, reemplaza Kokoro em_alex. Fases (f0-f8) y agentes (ag0-ag5) se mantienen en Kokoro.
 - Hero simplificado: tagline protagonista, selector de lineas en franja inferior, sin tarjetas de rol ni cadena explicativa.
 - Textos internos de graficas recortados a etiquetas cortas.
+
+### Demo v8 (2026-07-31) — Trilingüe ES/EN/FR
+- Selector de idioma (ES/EN/FR) en el header; persistencia en localStorage (`fa-lang`).
+- Narracion EN/FR: 40 clips edge-tts en `assets/demo/narr/en/` y `assets/demo/narr/fr/`.
+  Voces: EN narrador GuyNeural, Gaby AriaNeural, agentes JennyNeural · FR narrador HenriNeural,
+  Gaby DeniseNeural, agentes EloiseNeural. ES se mantiene en `narr/` raiz.
+- `setLang(l)` traduce ~90 textos estaticos (data-i18n), nombres/descripciones/speech de las
+  9 fases y 6 agentes, re-renderiza paneles activos en silencio y ajusta SpeechSynthesis
+  (es-ES/en-US/fr-FR). Micro-etiquetas dentro de graficas SVG quedan en ES.
+

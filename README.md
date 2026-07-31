@@ -9,7 +9,48 @@ Sitio público de **FastAnalytics S.A.S.** — IA espaciotemporal para anticipac
 | Archivo | Descripción |
 |---|---|
 | `index.html` | Landing principal: hero oscuro gov-tech, servicios, productos, resultados, prensa, investigación, cursos, contacto |
-| `demo-seguridad-urbana.html` | Demo inmersiva del ecosistema de seguridad ciudadana (AlejoSeguro → GusCoordina → GabyPredice), narrada en dos roles: comerciante (Acto 1) y comandante (Acto 2) |
+| `demo-seguridad-urbana.html` | Demo inmersiva cinematográfica del ecosistema de seguridad ciudadana, con selector por líneas (Escucha / Investiga / Coordina / Predice) y recorrido en dos roles: comerciante (Acto 1) y comandante (Acto 2) |
+
+## Demo cinematográfica (v2, jul 2026)
+
+El demo se reestructuró alrededor de cuatro líneas de acción, cada una con su personaje:
+
+| Línea | Productos | Color |
+|---|---|---|
+| **Escucha** | AlejoSeguro (Telegram) + CatheAsiste (llamada de voz) | teal `#006D6D` / `#00BFA6` |
+| **Investiga** | MileInvestiga (fraude financiero e investigación general) | azul `#3B9BD9` |
+| **Coordina** | GusCoordina (PMU, 6 agentes) | violeta `#7C6CDC` |
+| **Predice** | GabyPredice (Eneágono Decisional) | naranja `#D4883A` |
+
+- **Selector por líneas** en la escena 0 (`goLine(scene, step)`): quien tiene poco tiempo
+  salta directo a la línea que le interesa; el botón principal recorre el caso completo.
+- **Música por escena**: `setSceneMusic(n)` cambia la pista según la escena
+  (`escucha-ambient`, `cinematic-theme`, `tension-prediccion`).
+- **Tráiler del ecosistema**: `assets/demo/trailer-ecosistema.mp4` (~11 s, 5 clips + score),
+  embebido en el cierre del demo y listo para redes sociales.
+- **Logos de la familia** en `assets/images/logos/*.svg`: escudo + carita (ADN AlejoSeguro),
+  eneágono naranja como insignia de marca madre. Casco (Alejo), diadema (Cathe), fedora
+  (Mile), antena (Gus), gráfico ascendente (Gaby).
+
+### Pipeline de assets (GPU local del servidor)
+
+Todos los videos, imágenes y música del demo se generan localmente en la GPU (RTX 5060 Ti)
+con ComfyUI + FLUX + LTX-Video + MusicGen. Scripts en `/mnt/modelos/comfygen/`:
+
+| Script | Qué hace |
+|---|---|
+| `gen_v2.py` | Imágenes FLUX txt2img vía API ComfyUI (escenas en paleta teal/naranja) |
+| `gen_videos_v2.py` | Clips LTX img2video (49 frames) desde esas imágenes |
+| `gen_music_v2.py` | Pistas con MusicGen (`facebook/musicgen-small`) |
+| `webp2mp4.py` | Convierte los webp animados de ComfyUI a mp4 (ffmpeg del servidor no decodifica webp animado) |
+
+**Nota técnica importante (bug Blackwell)**: ComfyUI 0.29 + PyTorch 2.7.1 falla en la
+RTX 5060 Ti con `cuDNN Frontend error` porque `comfy/ops.py` prioriza
+`SDPBackend.CUDNN_ATTENTION`. Parche aplicado en `comfy/ops.py` (backup:
+`ops.py.bak_cudnn`) y lanzador `/mnt/modelos/ComfyUI/run_nocudnn.py` (fija
+`PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync` antes de importar torch — de lo
+contrario falla el allocator).
+
 | `andres-perez-coronado.html` | Perfil del fundador |
 | `mapa-cundinamarca.html` | Mapa interactivo de Cundinamarca |
 | `curso-redes-criminales.html` | Landing del curso de redes criminales |

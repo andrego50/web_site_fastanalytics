@@ -103,3 +103,8 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Gráfica predictiva principal v2: área bajo la curva, glow, línea HOY, hotspots H1–H3 pulsantes, badge de confianza.
 - Nota técnica: las visualizaciones dinámicas inyectadas por JS usan estado final directo + animaciones SMIL `repeatCount="indefinite"` (SMIL con `begin` en el pasado no corre al inyectar tarde en el DOM).
 - Referencias de ciudad neutralizadas: "el suroccidente de la ciudad" en todo el demo.
+
+### Narración profesional + logos completos (ago 2026, v4)
+- **Narración con voz real**: 20 clips MP3 generados con **Kokoro-82M TTS** en el servidor (`/home/andrego50/gen_narr.py`, venv `/mnt/modelos/kokoro-venv`, CPU). 3 voces: narrador principal (em_alex), GabyPredice (ef_dora), agentes PMU (em_santa). Textos reescritos en tono cinematográfico. El demo usa `assets/demo/narr/*.mp3` con fallback automático a SpeechSynthesis. Kokoro OOM en GPU con vLLM activo → correr con `CUDA_VISIBLE_DEVICES=""`.
+- **Logos nuevos**: `tavodebate.svg` (globos de debate naranja/teal), `veteranos.svg` (boina + estrella), `chronnet.svg` (constelación de red) en `assets/images/logos/`.
+- **Versiones v2 modernas** de los 5 logos del ecosistema (`*-v2.svg`): relleno degradado sutil, cresta de eneágono corporativa, trazos refinados. Los actuales siguen activos; los v2 quedan para A/B.

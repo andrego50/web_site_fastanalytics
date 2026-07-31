@@ -386,7 +386,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <!-- PASO 2: IA procesa -->
 <div class="step" id="step1">
 <div class="rounded-xl overflow-hidden relative mb-6" style="border:1px solid rgba(59,155,217,.35);box-shadow:0 0 30px rgba(59,155,217,.12)">
-    <video autoplay muted loop playsinline class="w-full block" style="height:200px;object-fit:cover;object-position:center 40%">
+    <video autoplay muted loop playsinline class="w-full block" style="aspect-ratio:16/9;object-fit:cover">
         <source src="assets/demo/v-investiga.mp4" type="video/mp4">
     </video>
     <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))"><span data-i18n="cap2">MileInvestiga revela la red detrás de los reportes · video generado con IA</span></div>
@@ -658,7 +658,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     <p class="text-slate-400 mt-2 max-w-2xl mx-auto"><span data-i18n="sub2">Seis agentes coordinan a las instituciones en tiempo real. Haz clic en cada uno.</span></p>
 </div>
 <div class="rounded-xl overflow-hidden relative mb-6" style="border:1px solid rgba(124,108,220,.35);box-shadow:0 0 30px rgba(124,108,220,.12)">
-    <video autoplay muted loop playsinline class="w-full block" style="height:200px;object-fit:cover;object-position:center 30%">
+    <video autoplay muted loop playsinline class="w-full block" style="aspect-ratio:16/9;object-fit:cover">
         <source src="assets/demo/v-coordina.mp4" type="video/mp4">
     </video>
     <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">Tu Puesto de Mando Unificado, en tiempo real · video generado con IA</div>
@@ -715,7 +715,7 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
     <p class="text-slate-400 mt-2 max-w-2xl mx-auto"><span data-i18n="sub3">9 fases que convierten incidentes en decisiones anticipativas. Haz clic en cada fase.</span></p>
 </div>
 <div class="rounded-xl overflow-hidden relative mb-6" style="border:1px solid rgba(212,136,58,.35);box-shadow:0 0 30px rgba(212,136,58,.12)">
-    <video autoplay muted loop playsinline class="w-full block" style="height:200px;object-fit:cover;object-position:center 40%">
+    <video autoplay muted loop playsinline class="w-full block" style="aspect-ratio:16/9;object-fit:cover">
         <source src="assets/demo/v-predice.mp4" type="video/mp4">
     </video>
     <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">GabyPredice: la zona de riesgo de los próximos días, antes de que ocurra · video generado con IA</div>
@@ -1234,10 +1234,10 @@ function speak(key,fallback){
     if(NARR_KEYS.indexOf(key)>=0){
         setVoiceUI('speaking');
         narrAudio.onended=function(){if(mySeq===speakSeq)setVoiceUI(voiceMuted?'muted':'ready')};
-        narrAudio.onerror=function(){if(mySeq===speakSeq&&narrAudio.error)ttsSpeak(fallback||'')};
+        narrAudio.onerror=function(){if(mySeq===speakSeq&&narrAudio.error&&(narrAudio.error.code===2||narrAudio.error.code===4))ttsSpeak(fallback||'')};
         narrAudio.src='assets/demo/narr/'+(LANG==='es'?'':LANG+'/')+key+'.mp3';
         var pr=narrAudio.play();
-        if(pr&&pr.catch)pr.catch(function(e){if(mySeq===speakSeq&&(!e||e.name!=='AbortError'))ttsSpeak(fallback||'')});
+        if(pr&&pr.catch)pr.catch(function(){/* sin respaldo TTS en rechazo de play: evita doble voz */});
         return;
     }
     ttsSpeak(key);
@@ -1282,7 +1282,7 @@ function goScene(n){
 function startDemo(){audioCtx.resume();playSuccess();startMusic();goScene(1)}
 
 // ── Música por escena (cada línea tiene su atmósfera) ──
-var SCENE_MUSIC={0:'assets/demo/cinematic-theme.mp3',1:'assets/demo/escucha-ambient.mp3',2:'assets/demo/cinematic-theme.mp3',3:'assets/demo/tension-prediccion.mp3',4:'assets/demo/cinematic-theme.mp3'};
+var SCENE_MUSIC={0:'assets/demo/m1-suspenso.mp3',1:'assets/demo/m1-suspenso.mp3',2:'assets/demo/m2-construccion.mp3',3:'assets/demo/m3-confianza.mp3',4:'assets/demo/m4-jubilo.mp3'};
 function setSceneMusic(n){
     var m=document.getElementById('bgMusic');if(!m)return;
     var src=SCENE_MUSIC[n]||SCENE_MUSIC[0];
@@ -1342,7 +1342,7 @@ function showStep(n){
         'Las autoridades en terreno reciben la alerta completa con el paquete de evidencia, el historial de avistamientos del sospechoso, y el mapa de situación con las causas que reporta la comunidad: extorsión, venta de drogas, hurtos y falta de acceso a la justicia.',
         'Reportes como este activan a GusCoordina, el Puesto de Mando Unificado que coordina la respuesta institucional en tiempo real. Todo lo que se coordina en terreno alimentará después las decisiones estratégicas de GabyPredice.'
     ];
-    if(speeches[n])speak(speeches[n]);playNotif();
+    playNotif();
 }
 function nextStep(){if(currentStep<3)showStep(currentStep+1)}
 function goLine(scene,step){playClick();goScene(scene);if(scene===1&&step!==null){setTimeout(function(){showStep(step)},80)}}

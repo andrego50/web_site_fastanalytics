@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Veteranos</title>
+  <desc>Escudo con gorra militar. Familia de logos de FastAnalytics: contorno
+        azul marino, banda dorada y relleno en el color del producto.</desc>
+  <defs>
+    <linearGradient id="verde" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#79A05B"/>
+      <stop offset="1" stop-color="#405C2E"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" fill="#ffffff"/>
+
+  <g stroke-linejoin="round" stroke-linecap="round">
+
+    <!-- Escudo: banda dorada por fuera, como toda la familia -->
+    <path d="M156 198 q0 -18 18 -18 h164 q18 0 18 18 v110
+             q0 74 -100 152 -100 -78 -100 -152 Z"
+          fill="#FD9D00" stroke="#001444" stroke-width="10"/>
+
+    <!-- Interior: aquí vive la cara -->
+    <path d="M180 210 h152 v98 q0 60 -76 122 -76 -62 -76 -122 Z"
+          fill="url(#verde)" stroke="#013063" stroke-width="7"/>
+
+    <!-- Gorra militar sobre el escudo -->
+    <path d="M182 180 q0 -56 74 -56 t74 56 Z" fill="#4A6636"
+          stroke="#001444" stroke-width="10"/>
+    <path d="M158 180 q98 -15 196 0 q4 15 -7 19 q-91 -13 -182 0 q-11 -4 -7 -19 Z"
+          fill="#2F4224" stroke="#001444" stroke-width="10"/>
+    <path d="M256 128 l10 21 23 3 -17 16 4 23 -20 -11 -20 11 4 -23 -17 -16 23 -3 Z"
+          fill="#FD9D00" stroke="#001444" stroke-width="8"/>
+
+    <!-- Cara -->
+    <g stroke="#012054" fill="none">
+      <path d="M212 254 q15 -13 30 -2" stroke-width="9"/>
+      <path d="M270 252 q15 -11 30 2" stroke-width="9"/>
+      <ellipse cx="228" cy="290" rx="16" ry="19" fill="#ffffff" stroke-width="8"/>
+      <ellipse cx="284" cy="290" rx="16" ry="19" fill="#ffffff" stroke-width="8"/>
+      <path d="M232 332 q24 22 48 0" stroke-width="10"/>
+    </g>
+    <circle cx="231" cy="293" r="8.5" fill="#012054"/>
+    <circle cx="287" cy="293" r="8.5" fill="#012054"/>
+    <circle cx="227" cy="288" r="3.4" fill="#ffffff"/>
+    <circle cx="283" cy="288" r="3.4" fill="#ffffff"/>
+    <ellipse cx="203" cy="318" rx="15" ry="10" fill="#E8845C" opacity="0.85"/>
+    <ellipse cx="309" cy="318" rx="15" ry="10" fill="#E8845C" opacity="0.85"/>
+  </g>
+</svg>

@@ -2523,3 +2523,39 @@ ul {
     gap: 0;
   }
 }
+
+/* ===== Reestructura 2026-08: grupos de producto + franja credibilidad ===== */
+.case-group-header {
+  grid-column: 1 / -1;
+  margin-top: 24px;
+  padding-top: 8px;
+  border-top: 2px solid rgba(212, 136, 58, .25);
+}
+.case-group-header:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.case-group-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--primary, #006D6D);
+  letter-spacing: .02em;
+}
+.case-group-emoji {
+  font-size: 1.5rem;
+}
+.cred-divider {
+  border: none;
+  border-top: 2px dashed rgba(212, 136, 58, .35);
+  margin: 56px 0 48px;
+}
+.press-anchor .section-header {
+  margin-bottom: 32px;
+}
+@media (max-width: 640px) {
+  .case-group-title { font-size: 1.1rem; }
+}

@@ -43,7 +43,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=6">
+  <link rel="stylesheet" href="css/styles.css?v=7">
 
   <!-- Structured Data: Organization -->
   <script type="application/ld+json">
@@ -195,10 +195,10 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#servicios" data-es="Servicios" data-en="Services" data-fr="Services">Servicios</a></li>
-        <li><a href="#casos" data-es="Productos" data-en="Products" data-fr="Produits">Productos</a></li>
+        <li><a href="#casos" data-es="Ecosistema" data-en="Ecosystem" data-fr="Écosystème">Ecosistema</a></li>
+        <li><a href="#resultados" data-es="Resultados" data-en="Results" data-fr="Résultats">Resultados</a></li>
         <li><a href="#investigacion" data-es="Investigación" data-en="Research" data-fr="Recherche">Investigación</a></li>
-        <li><a href="#cursos" data-es="Cursos" data-en="Courses" data-fr="Cours">Cursos</a></li>
-        <li><a href="#contacto" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a></li>
+                <li><a href="#contacto" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a></li>
       </ul>
       <div class="nav-actions">
         <button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma">
@@ -208,7 +208,7 @@
           <span class="lang-separator">|</span>
           <span class="lang-option" data-lang="fr">FR</span>
         </button>
-        <a href="#agenda" class="btn btn-primary btn-nav" data-es="Agenda una demo" data-en="Book a demo" data-fr="Réservez une démo">Agenda una demo</a>
+        <a href="#contacto" class="btn btn-primary btn-nav" data-es="Agenda una demo" data-en="Book a demo" data-fr="Réservez une démo">Agenda una demo</a>
         <button class="hamburger" id="hamburger" aria-label="Menú">
           <span></span>
           <span></span>
@@ -233,7 +233,7 @@
         </h1>
         <p class="hero-subtitle animate-on-scroll" data-es="No es otro tablero de control: es un ecosistema de IA que cierra el ciclo completo. El ciudadano reporta desde su celular, la IA analiza la evidencia, el mando coordina la respuesta y usted decide antes de que el riesgo se convierta en crisis. Piloto funcional en semanas, con KPIs claros desde el primer día." data-en="Not another dashboard: an AI ecosystem that closes the full loop. Citizens report from their phones, AI analyzes the evidence, command coordinates the response, and you decide before risk turns into crisis. A working pilot in weeks, with clear KPIs from day one." data-fr="Pas un tableau de bord de plus : un écosystème d'IA qui boucle tout le cycle. Le citoyen signale depuis son téléphone, l'IA analyse les preuves, le commandement coordonne la réponse et vous décidez avant que le risque ne devienne une crise. Un pilote fonctionnel en quelques semaines, avec des KPI clairs dès le premier jour.">No es otro tablero de control: es un ecosistema de IA que cierra el ciclo completo. El ciudadano reporta desde su celular, la IA analiza la evidencia, el mando coordina la respuesta y usted decide antes de que el riesgo se convierta en crisis. Piloto funcional en semanas, con KPIs claros desde el primer día.</p>
         <div class="hero-cta animate-on-scroll">
-          <a href="#agenda" class="btn btn-primary btn-lg" data-es="Agenda una demo" data-en="Book a demo" data-fr="Réservez une démo">Agenda una demo</a>
+          <a href="#contacto" class="btn btn-primary btn-lg" data-es="Agenda una demo" data-en="Book a demo" data-fr="Réservez une démo">Agenda una demo</a>
           <a href="demo-seguridad-urbana.html" class="btn btn-outline btn-lg" data-es="Vive el caso real" data-en="Live the real case" data-fr="Vivez le cas réel">Vive el caso real</a>
           <a href="andres-perez-coronado.html" class="hero-founder-link" data-es="Conoce al fundador →" data-en="Meet the founder →" data-fr="Rencontrez le fondateur →">Conoce al fundador →</a>
         </div>
@@ -445,6 +445,9 @@
         <p class="section-subtitle" data-es="Productos que ya usan entidades públicas y privadas, más demos interactivas para que los pruebes tú mismo." data-en="Products already used by public and private entities, plus interactive demos for you to try." data-fr="Produits déjà utilisés par des entités publiques et privées, plus des démos interactives pour les essayer.">Productos que ya usan entidades públicas y privadas, más demos interactivas para que los pruebes tú mismo.</p>
       </div>
       <div class="cases-grid">
+        <div class="case-group-header animate-on-scroll">
+          <h3 class="case-group-title"><span class="case-group-emoji">🛡️</span> <span data-es="Seguridad ciudadana" data-en="Citizen security" data-fr="Sécurité citoyenne">Seguridad ciudadana</span></h3>
+        </div>
 
         <div class="case-card case-card-featured case-card-alejo animate-on-scroll">
           <div class="case-tag" data-es="Percepción ciudadana" data-en="Citizen perception" data-fr="Perception citoyenne">Percepción ciudadana</div>
@@ -472,28 +475,44 @@
           </a>
         </div>
 
-        <div class="case-card case-card-featured case-card-ceci animate-on-scroll">
-          <div class="case-tag" data-es="Educación con IA" data-en="AI-powered education" data-fr="Éducation par l'IA">Educación con IA</div>
+        <div class="case-card case-card-featured case-card-seguridad animate-on-scroll">
+          <div class="case-tag-row"><div class="case-tag" data-es="Análisis de seguridad urbana" data-en="Urban safety analysis" data-fr="Analyse de sécurité urbaine">Análisis de seguridad urbana</div><span class="case-demo-badge">Demo</span></div>
           <div class="case-icon">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="20" fill="#8B5CF6" opacity="0.1"/>
-              <path d="M16 18h16v2H16zM18 22h12v2H18z" fill="#8B5CF6" opacity="0.6"/>
-              <circle cx="20" cy="30" r="2" fill="#8B5CF6"/>
-              <circle cx="28" cy="30" r="2" fill="#8B5CF6"/>
-              <rect x="12" y="14" width="24" height="20" rx="4" stroke="#8B5CF6" stroke-width="2" fill="none"/>
-              <path d="M20 34l-2 4M28 34l2 4" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="20" fill="var(--primary)" opacity="0.1"/>
+              <path d="M24 10v28M10 24h28" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="6" fill="var(--accent)" opacity="0.3"/>
+              <circle cx="24" cy="24" r="3" fill="var(--accent)"/>
             </svg>
           </div>
-          <h3>CeciEnseña</h3>
-          <p data-es="Un profesor disponible a cualquier hora. Usa IA para crear experiencias de aprendizaje personalizadas, directo en Telegram. Pregunta lo que quieras." data-en="A teacher available at any hour. Uses AI to create personalized learning experiences, right in Telegram. Ask anything." data-fr="Un professeur disponible à toute heure. Utilise l'IA pour créer des expériences d'apprentissage personnalisées, directement sur Telegram. Posez toutes vos questions.">Un profesor disponible a cualquier hora. Usa IA para crear experiencias de aprendizaje personalizadas, directo en Telegram. Pregunta lo que quieras.</p>
+          <h3 data-es="Demo seguridad urbana" data-en="Urban safety demo" data-fr="Démo sécurité urbaine">Demo seguridad urbana</h3>
+          <p data-es="Recorra un caso real de extorsión en Barranquilla y vea cómo los tres sistemas se encadenan: &lt;strong&gt;AlejoSeguro&lt;/strong&gt; recoge el reporte en la calle, &lt;strong&gt;GusCoordina&lt;/strong&gt; articula la respuesta institucional y &lt;strong&gt;GabyPredice&lt;/strong&gt; la convierte en decisiones anticipativas." data-en="Walk through a real extortion case in Barranquilla and see the three systems chain together: &lt;strong&gt;AlejoSeguro&lt;/strong&gt; captures the street-level report, &lt;strong&gt;GusCoordina&lt;/strong&gt; coordinates the institutional response and &lt;strong&gt;GabyPredice&lt;/strong&gt; turns it into anticipatory decisions." data-fr="Parcourez un cas réel d'extorsion à Barranquilla et voyez les trois systèmes s'enchaîner : &lt;strong&gt;AlejoSeguro&lt;/strong&gt; recueille le signalement, &lt;strong&gt;GusCoordina&lt;/strong&gt; articule la réponse institutionnelle et &lt;strong&gt;GabyPredice&lt;/strong&gt; la transforme en décisions anticipatives.">Recorra un caso real de extorsión en Barranquilla y vea cómo los tres sistemas se encadenan: <strong>AlejoSeguro</strong> recoge el reporte en la calle, <strong>GusCoordina</strong> articula la respuesta institucional y <strong>GabyPredice</strong> la convierte en decisiones anticipativas.</p>
           <ul class="case-features">
-            <li data-es="Responde preguntas al instante" data-en="Answers questions instantly" data-fr="Répond aux questions instantanément">Responde preguntas al instante</li>
-            <li data-es="Se adapta a tu nivel y ritmo" data-en="Adapts to your level and pace" data-fr="S'adapte à votre niveau et rythme">Se adapta a tu nivel y ritmo</li>
-            <li data-es="Disponible 24/7 en Telegram" data-en="Available 24/7 on Telegram" data-fr="Disponible 24h/24 sur Telegram">Disponible 24/7 en Telegram</li>
+            <li data-es="Los 3 sistemas del ecosistema en un solo recorrido" data-en="All 3 ecosystem systems in a single walkthrough" data-fr="Les 3 systèmes de l'écosystème en un seul parcours">Los 3 sistemas del ecosistema en un solo recorrido</li>
+            <li data-es="Narrativa guiada paso a paso, con audio" data-en="Step-by-step guided narrative, with audio" data-fr="Narration guidée étape par étape, avec audio">Narrativa guiada paso a paso, con audio</li>
+            <li data-es="Resultados reales verificables en prensa" data-en="Real results verifiable in the press" data-fr="Résultats réels vérifiables dans la presse">Resultados reales verificables en prensa</li>
           </ul>
-          <a href="https://t.me/Ceci_Teaches_bot" target="_blank" rel="noopener" class="btn btn-telegram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-            <span data-es="Abrir en Telegram" data-en="Open in Telegram" data-fr="Ouvrir dans Telegram">Abrir en Telegram</span>
+          <a href="demo-seguridad-urbana.html" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span data-es="Abrir demo" data-en="Open demo" data-fr="Ouvrir la démo">Abrir demo</span>
+          </a>
+        </div>
+
+        <div class="case-card case-card-featured case-card-guscoordina animate-on-scroll">
+          <div class="case-tag-row"><div class="case-tag" data-es="Gestión de crisis · PMU" data-en="Crisis management · UCC" data-fr="Gestion de crise · CCO">Gestión de crisis · PMU</div><span class="case-demo-badge">Demo</span></div>
+          <div class="case-icon case-icon-img">
+            <img src="assets/images/logos/guscoordina-v8.png" alt="GusCoordina - Logo" class="case-logo" loading="lazy">
+          </div>
+          <h3>GusCoordina</h3>
+          <p data-es="Sala digital para <strong>Puestos de Mando Unificado (PMU)</strong>. Coordina delegados de múltiples entidades, consolida métricas en tiempo real, genera boletines con IA y aplica <strong>modelos analíticos predictivos</strong> (R + Quarto) sobre seguridad, salud, movilización y más." data-en="Digital room for <strong>Unified Command Posts (UCC)</strong>. Coordinates delegates from multiple agencies, consolidates real-time metrics, generates AI briefings and applies <strong>predictive analytical models</strong> (R + Quarto) on security, health, mobilization and more." data-fr="Salle digitale pour <strong>Postes de Commandement Unifiés (PCU)</strong>. Coordonne les délégués de multiples entités, consolide les métriques en temps réel, génère des briefings IA et applique des <strong>modèles analytiques prédictifs</strong> (R + Quarto) sur la sécurité, la santé, la mobilisation et plus.">Sala digital para <strong>Puestos de Mando Unificado (PMU)</strong>. Coordina delegados de múltiples entidades, consolida métricas en tiempo real, genera boletines con IA y aplica <strong>modelos analíticos predictivos</strong> (R + Quarto) sobre seguridad, salud, movilización y más.</p>
+          <ul class="case-features">
+            <li data-es="Chat en lenguaje natural con Gus, el asistente del PMU" data-en="Natural language chat with Gus, the UCC assistant" data-fr="Chat en langage naturel avec Gus, l'assistant du PCU">Chat en lenguaje natural con Gus, el asistente del PMU</li>
+            <li data-es="Perfiles de administrador y delegados con aprobación" data-en="Admin and delegate profiles with approval workflow" data-fr="Profils administrateur et délégués avec approbation">Perfiles de administrador y delegados con aprobación</li>
+            <li data-es="Analítica en R: tendencias, hotspots, riesgo, redes y reportes Quarto" data-en="R analytics: trends, hotspots, risk, networks and Quarto reports" data-fr="Analytique R : tendances, hotspots, risque, réseaux et rapports Quarto">Analítica en R: tendencias, hotspots, riesgo, redes y reportes Quarto</li>
+          </ul>
+          <a href="https://guscoordina.fastanalytics.co/" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span data-es="Abrir GusCoordina" data-en="Open GusCoordina" data-fr="Ouvrir GusCoordina">Abrir GusCoordina</span>
           </a>
         </div>
 
@@ -518,6 +537,82 @@
           <a href="mailto:hola@fastanalytics.co?subject=Demo GabyPredice" class="btn btn-primary">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             <span data-es="Solicitar demo" data-en="Request demo" data-fr="Demander une démo">Solicitar demo</span>
+          </a>
+        </div>
+
+        <div class="case-group-header animate-on-scroll">
+          <h3 class="case-group-title"><span class="case-group-emoji">📊</span> <span data-es="Analítica e investigación" data-en="Analytics & research" data-fr="Analytique et recherche">Analítica e investigación</span></h3>
+        </div>
+
+        <div class="case-card case-card-featured case-card-chronnet animate-on-scroll">
+          <div class="case-tag-row"><div class="case-tag" data-es="Redes espacio-temporales · Taller interactivo" data-en="Spatio-temporal networks · Interactive workshop" data-fr="Réseaux spatio-temporels · Atelier interactif">Redes espacio-temporales · Taller interactivo</div><span class="case-demo-badge">Demo</span></div>
+          <div class="case-icon case-icon-img">
+            <img src="assets/images/logos/chronnet.svg" alt="Chronnet - Logo" class="case-logo" loading="lazy">
+          </div>
+          <h3>Chronnet</h3>
+          <p data-es="Construye una red espacio-temporal paso a paso. Selecciona celdas en múltiples franjas de tiempo y genera los enlaces que revelan patrones ocultos." data-en="Build a spatio-temporal network step by step. Select cells across multiple time slots and generate the links that reveal hidden patterns." data-fr="Construisez un réseau spatio-temporel étape par étape. Sélectionnez des cellules sur plusieurs créneaux horaires et générez les liens qui révèlent les motifs cachés.">Construye una red espacio-temporal paso a paso. Selecciona celdas en múltiples franjas de tiempo y genera los enlaces que revelan patrones ocultos.</p>
+          <ul class="case-features">
+            <li data-es="Taller interactivo en navegador" data-en="Interactive browser workshop" data-fr="Atelier interactif dans le navigateur">Taller interactivo en navegador</li>
+            <li data-es="Visualización de redes criminales" data-en="Criminal network visualization" data-fr="Visualisation de réseaux criminels">Visualización de redes criminales</li>
+            <li data-es="Usado en conferencias IACP" data-en="Used at IACP conferences" data-fr="Utilisé lors de conférences IACP">Usado en conferencias IACP</li>
+          </ul>
+          <a href="chronnet/" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span data-es="Abrir demo" data-en="Open demo" data-fr="Ouvrir la démo">Abrir demo</span>
+          </a>
+        </div>
+
+        <div class="case-card case-card-featured case-card-mileia animate-on-scroll">
+          <div class="case-tag-row"><div class="case-tag" data-es="Fraude bancario · Asistente IA" data-en="Banking fraud · AI assistant" data-fr="Fraude bancaire · Assistant IA">Fraude bancario · Asistente IA</div><span class="case-demo-badge">Demo</span></div>
+          <div class="case-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" fill="var(--primary)" opacity="0.1"/>
+              <rect x="14" y="18" width="20" height="14" rx="2" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M14 23h20" stroke="var(--accent)" stroke-width="2"/>
+              <circle cx="20" cy="28" r="1.5" fill="var(--accent)"/>
+              <circle cx="24" cy="28" r="1.5" fill="var(--accent)"/>
+              <circle cx="28" cy="28" r="1.5" fill="var(--accent)"/>
+            </svg>
+          </div>
+          <h3>Mile-IA</h3>
+          <p data-es="Asistente de IA para investigación de fraude bancario. Analiza transacciones, genera reportes y explica el riesgo en lenguaje natural." data-en="AI assistant for banking fraud investigation. Analyzes transactions, generates reports and explains risk in natural language." data-fr="Assistant IA pour l'investigation de fraude bancaire. Analyse les transactions, génère des rapports et explique le risque en langage naturel.">Asistente de IA para investigación de fraude bancario. Analiza transacciones, genera reportes y explica el riesgo en lenguaje natural.</p>
+          <ul class="case-features">
+            <li data-es="Chat con memoria y evidencia" data-en="Chat with memory and evidence" data-fr="Chat avec mémoire et preuves">Chat con memoria y evidencia</li>
+            <li data-es="Análisis de redes de actores" data-en="Actor network analysis" data-fr="Analyse de réseaux d'acteurs">Análisis de redes de actores</li>
+            <li data-es="Reportes PDF y audio" data-en="PDF and audio reports" data-fr="Rapports PDF et audio">Reportes PDF y audio</li>
+          </ul>
+          <a href="https://mile-ia.fastanalytics.co/chat" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            <span data-es="Abrir chat" data-en="Open chat" data-fr="Ouvrir le chat">Abrir chat</span>
+          </a>
+        </div>
+
+        <div class="case-group-header animate-on-scroll">
+          <h3 class="case-group-title"><span class="case-group-emoji">🎓</span> <span data-es="Formación y comunidad" data-en="Training & community" data-fr="Formation et communauté">Formación y comunidad</span></h3>
+        </div>
+
+        <div class="case-card case-card-featured case-card-ceci animate-on-scroll">
+          <div class="case-tag" data-es="Educación con IA" data-en="AI-powered education" data-fr="Éducation par l'IA">Educación con IA</div>
+          <div class="case-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" fill="#8B5CF6" opacity="0.1"/>
+              <path d="M16 18h16v2H16zM18 22h12v2H18z" fill="#8B5CF6" opacity="0.6"/>
+              <circle cx="20" cy="30" r="2" fill="#8B5CF6"/>
+              <circle cx="28" cy="30" r="2" fill="#8B5CF6"/>
+              <rect x="12" y="14" width="24" height="20" rx="4" stroke="#8B5CF6" stroke-width="2" fill="none"/>
+              <path d="M20 34l-2 4M28 34l2 4" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>CeciEnseña</h3>
+          <p data-es="Un profesor disponible a cualquier hora. Usa IA para crear experiencias de aprendizaje personalizadas, directo en Telegram. Pregunta lo que quieras." data-en="A teacher available at any hour. Uses AI to create personalized learning experiences, right in Telegram. Ask anything." data-fr="Un professeur disponible à toute heure. Utilise l'IA pour créer des expériences d'apprentissage personnalisées, directement sur Telegram. Posez toutes vos questions.">Un profesor disponible a cualquier hora. Usa IA para crear experiencias de aprendizaje personalizadas, directo en Telegram. Pregunta lo que quieras.</p>
+          <ul class="case-features">
+            <li data-es="Responde preguntas al instante" data-en="Answers questions instantly" data-fr="Répond aux questions instantanément">Responde preguntas al instante</li>
+            <li data-es="Se adapta a tu nivel y ritmo" data-en="Adapts to your level and pace" data-fr="S'adapte à votre niveau et rythme">Se adapta a tu nivel y ritmo</li>
+            <li data-es="Disponible 24/7 en Telegram" data-en="Available 24/7 on Telegram" data-fr="Disponible 24h/24 sur Telegram">Disponible 24/7 en Telegram</li>
+          </ul>
+          <a href="https://t.me/Ceci_Teaches_bot" target="_blank" rel="noopener" class="btn btn-telegram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            <span data-es="Abrir en Telegram" data-en="Open in Telegram" data-fr="Ouvrir dans Telegram">Abrir en Telegram</span>
           </a>
         </div>
 
@@ -551,90 +646,6 @@
           </div>
         </div>
 
-        <div class="case-card case-card-featured case-card-chronnet animate-on-scroll">
-          <div class="case-tag-row"><div class="case-tag" data-es="Redes espacio-temporales · Taller interactivo" data-en="Spatio-temporal networks · Interactive workshop" data-fr="Réseaux spatio-temporels · Atelier interactif">Redes espacio-temporales · Taller interactivo</div><span class="case-demo-badge">Demo</span></div>
-          <div class="case-icon case-icon-img">
-            <img src="assets/images/logos/chronnet.svg" alt="Chronnet - Logo" class="case-logo" loading="lazy">
-          </div>
-          <h3>Chronnet</h3>
-          <p data-es="Construye una red espacio-temporal paso a paso. Selecciona celdas en múltiples franjas de tiempo y genera los enlaces que revelan patrones ocultos." data-en="Build a spatio-temporal network step by step. Select cells across multiple time slots and generate the links that reveal hidden patterns." data-fr="Construisez un réseau spatio-temporel étape par étape. Sélectionnez des cellules sur plusieurs créneaux horaires et générez les liens qui révèlent les motifs cachés.">Construye una red espacio-temporal paso a paso. Selecciona celdas en múltiples franjas de tiempo y genera los enlaces que revelan patrones ocultos.</p>
-          <ul class="case-features">
-            <li data-es="Taller interactivo en navegador" data-en="Interactive browser workshop" data-fr="Atelier interactif dans le navigateur">Taller interactivo en navegador</li>
-            <li data-es="Visualización de redes criminales" data-en="Criminal network visualization" data-fr="Visualisation de réseaux criminels">Visualización de redes criminales</li>
-            <li data-es="Usado en conferencias IACP" data-en="Used at IACP conferences" data-fr="Utilisé lors de conférences IACP">Usado en conferencias IACP</li>
-          </ul>
-          <a href="chronnet/" target="_blank" rel="noopener" class="btn btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            <span data-es="Abrir demo" data-en="Open demo" data-fr="Ouvrir la démo">Abrir demo</span>
-          </a>
-        </div>
-
-        <div class="case-card case-card-featured case-card-seguridad animate-on-scroll">
-          <div class="case-tag-row"><div class="case-tag" data-es="Análisis de seguridad urbana" data-en="Urban safety analysis" data-fr="Analyse de sécurité urbaine">Análisis de seguridad urbana</div><span class="case-demo-badge">Demo</span></div>
-          <div class="case-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="20" fill="var(--primary)" opacity="0.1"/>
-              <path d="M24 10v28M10 24h28" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
-              <circle cx="24" cy="24" r="6" fill="var(--accent)" opacity="0.3"/>
-              <circle cx="24" cy="24" r="3" fill="var(--accent)"/>
-            </svg>
-          </div>
-          <h3 data-es="Demo seguridad urbana" data-en="Urban safety demo" data-fr="Démo sécurité urbaine">Demo seguridad urbana</h3>
-          <p data-es="Recorra un caso real de extorsión en Barranquilla y vea cómo los tres sistemas se encadenan: &lt;strong&gt;AlejoSeguro&lt;/strong&gt; recoge el reporte en la calle, &lt;strong&gt;GusCoordina&lt;/strong&gt; articula la respuesta institucional y &lt;strong&gt;GabyPredice&lt;/strong&gt; la convierte en decisiones anticipativas." data-en="Walk through a real extortion case in Barranquilla and see the three systems chain together: &lt;strong&gt;AlejoSeguro&lt;/strong&gt; captures the street-level report, &lt;strong&gt;GusCoordina&lt;/strong&gt; coordinates the institutional response and &lt;strong&gt;GabyPredice&lt;/strong&gt; turns it into anticipatory decisions." data-fr="Parcourez un cas réel d'extorsion à Barranquilla et voyez les trois systèmes s'enchaîner : &lt;strong&gt;AlejoSeguro&lt;/strong&gt; recueille le signalement, &lt;strong&gt;GusCoordina&lt;/strong&gt; articule la réponse institutionnelle et &lt;strong&gt;GabyPredice&lt;/strong&gt; la transforme en décisions anticipatives.">Recorra un caso real de extorsión en Barranquilla y vea cómo los tres sistemas se encadenan: <strong>AlejoSeguro</strong> recoge el reporte en la calle, <strong>GusCoordina</strong> articula la respuesta institucional y <strong>GabyPredice</strong> la convierte en decisiones anticipativas.</p>
-          <ul class="case-features">
-            <li data-es="Los 3 sistemas del ecosistema en un solo recorrido" data-en="All 3 ecosystem systems in a single walkthrough" data-fr="Les 3 systèmes de l'écosystème en un seul parcours">Los 3 sistemas del ecosistema en un solo recorrido</li>
-            <li data-es="Narrativa guiada paso a paso, con audio" data-en="Step-by-step guided narrative, with audio" data-fr="Narration guidée étape par étape, avec audio">Narrativa guiada paso a paso, con audio</li>
-            <li data-es="Resultados reales verificables en prensa" data-en="Real results verifiable in the press" data-fr="Résultats réels vérifiables dans la presse">Resultados reales verificables en prensa</li>
-          </ul>
-          <a href="demo-seguridad-urbana.html" target="_blank" rel="noopener" class="btn btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            <span data-es="Abrir demo" data-en="Open demo" data-fr="Ouvrir la démo">Abrir demo</span>
-          </a>
-        </div>
-
-        <div class="case-card case-card-featured case-card-mileia animate-on-scroll">
-          <div class="case-tag-row"><div class="case-tag" data-es="Fraude bancario · Asistente IA" data-en="Banking fraud · AI assistant" data-fr="Fraude bancaire · Assistant IA">Fraude bancario · Asistente IA</div><span class="case-demo-badge">Demo</span></div>
-          <div class="case-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="20" fill="var(--primary)" opacity="0.1"/>
-              <rect x="14" y="18" width="20" height="14" rx="2" stroke="var(--accent)" stroke-width="2"/>
-              <path d="M14 23h20" stroke="var(--accent)" stroke-width="2"/>
-              <circle cx="20" cy="28" r="1.5" fill="var(--accent)"/>
-              <circle cx="24" cy="28" r="1.5" fill="var(--accent)"/>
-              <circle cx="28" cy="28" r="1.5" fill="var(--accent)"/>
-            </svg>
-          </div>
-          <h3>Mile-IA</h3>
-          <p data-es="Asistente de IA para investigación de fraude bancario. Analiza transacciones, genera reportes y explica el riesgo en lenguaje natural." data-en="AI assistant for banking fraud investigation. Analyzes transactions, generates reports and explains risk in natural language." data-fr="Assistant IA pour l'investigation de fraude bancaire. Analyse les transactions, génère des rapports et explique le risque en langage naturel.">Asistente de IA para investigación de fraude bancario. Analiza transacciones, genera reportes y explica el riesgo en lenguaje natural.</p>
-          <ul class="case-features">
-            <li data-es="Chat con memoria y evidencia" data-en="Chat with memory and evidence" data-fr="Chat avec mémoire et preuves">Chat con memoria y evidencia</li>
-            <li data-es="Análisis de redes de actores" data-en="Actor network analysis" data-fr="Analyse de réseaux d'acteurs">Análisis de redes de actores</li>
-            <li data-es="Reportes PDF y audio" data-en="PDF and audio reports" data-fr="Rapports PDF et audio">Reportes PDF y audio</li>
-          </ul>
-          <a href="https://mile-ia.fastanalytics.co/chat" target="_blank" rel="noopener" class="btn btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-            <span data-es="Abrir chat" data-en="Open chat" data-fr="Ouvrir le chat">Abrir chat</span>
-          </a>
-        </div>
-
-        <div class="case-card case-card-featured case-card-guscoordina animate-on-scroll">
-          <div class="case-tag-row"><div class="case-tag" data-es="Gestión de crisis · PMU" data-en="Crisis management · UCC" data-fr="Gestion de crise · CCO">Gestión de crisis · PMU</div><span class="case-demo-badge">Demo</span></div>
-          <div class="case-icon case-icon-img">
-            <img src="assets/images/logos/guscoordina-v8.png" alt="GusCoordina - Logo" class="case-logo" loading="lazy">
-          </div>
-          <h3>GusCoordina</h3>
-          <p data-es="Sala digital para <strong>Puestos de Mando Unificado (PMU)</strong>. Coordina delegados de múltiples entidades, consolida métricas en tiempo real, genera boletines con IA y aplica <strong>modelos analíticos predictivos</strong> (R + Quarto) sobre seguridad, salud, movilización y más." data-en="Digital room for <strong>Unified Command Posts (UCC)</strong>. Coordinates delegates from multiple agencies, consolidates real-time metrics, generates AI briefings and applies <strong>predictive analytical models</strong> (R + Quarto) on security, health, mobilization and more." data-fr="Salle digitale pour <strong>Postes de Commandement Unifiés (PCU)</strong>. Coordonne les délégués de multiples entités, consolide les métriques en temps réel, génère des briefings IA et applique des <strong>modèles analytiques prédictifs</strong> (R + Quarto) sur la sécurité, la santé, la mobilisation et plus.">Sala digital para <strong>Puestos de Mando Unificado (PMU)</strong>. Coordina delegados de múltiples entidades, consolida métricas en tiempo real, genera boletines con IA y aplica <strong>modelos analíticos predictivos</strong> (R + Quarto) sobre seguridad, salud, movilización y más.</p>
-          <ul class="case-features">
-            <li data-es="Chat en lenguaje natural con Gus, el asistente del PMU" data-en="Natural language chat with Gus, the UCC assistant" data-fr="Chat en langage naturel avec Gus, l'assistant du PCU">Chat en lenguaje natural con Gus, el asistente del PMU</li>
-            <li data-es="Perfiles de administrador y delegados con aprobación" data-en="Admin and delegate profiles with approval workflow" data-fr="Profils administrateur et délégués avec approbation">Perfiles de administrador y delegados con aprobación</li>
-            <li data-es="Analítica en R: tendencias, hotspots, riesgo, redes y reportes Quarto" data-en="R analytics: trends, hotspots, risk, networks and Quarto reports" data-fr="Analytique R : tendances, hotspots, risque, réseaux et rapports Quarto">Analítica en R: tendencias, hotspots, riesgo, redes y reportes Quarto</li>
-          </ul>
-          <a href="https://guscoordina.fastanalytics.co/" target="_blank" rel="noopener" class="btn btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            <span data-es="Abrir GusCoordina" data-en="Open GusCoordina" data-fr="Ouvrir GusCoordina">Abrir GusCoordina</span>
-          </a>
-        </div>
-
         <div class="case-card case-card-featured case-card-veteranos animate-on-scroll">
           <div class="case-tag-row"><div class="case-tag" data-es="Veteranos de la Fuerza Pública · Acceso privado" data-en="Public Force veterans · Private access" data-fr="Vétérans de la Force publique · Accès privé">Veteranos de la Fuerza Pública · Acceso privado</div></div>
           <div class="case-icon case-icon-img">
@@ -657,7 +668,6 @@
             <span data-es="Solicitar acceso" data-en="Request access" data-fr="Demander l&#39;accès">Solicitar acceso</span>
           </a>
         </div>
-
       </div>
     </div>
   </section>
@@ -704,11 +714,8 @@
         <a href="https://www.cali.gov.co/seguridad/publicaciones/170504/cali-registro-reduccion-historica-en-el-numero-de-homicidios/" target="_blank" rel="noopener">Cali.gov.co</a>
       </div>
     </div>
-  </section>
-
-  <!-- ========== PRENSA ========== -->
-  <section class="section press" id="prensa">
-    <div class="container">
+      <hr class="cred-divider">
+      <div id="prensa" class="press-anchor">
       <div class="section-header animate-on-scroll">
         <span class="section-tag" data-es="Credibilidad" data-en="Credibility" data-fr="Crédibilité">Credibilidad</span>
         <h2 class="section-title" data-es="Resultados que cubrieron los medios" data-en="Results covered by the media" data-fr="Résultats couverts par les médias">Resultados que cubrieron los medios</h2>
@@ -847,7 +854,8 @@
             <h4 data-es="Navegación" data-en="Navigation" data-fr="Navigation">Navegación</h4>
             <ul>
               <li><a href="#servicios" data-es="Servicios" data-en="Services" data-fr="Services">Servicios</a></li>
-              <li><a href="#casos" data-es="Productos" data-en="Products" data-fr="Produits">Productos</a></li>
+              <li><a href="#casos" data-es="Ecosistema" data-en="Ecosystem" data-fr="Écosystème">Ecosistema</a></li>
+        <li><a href="#resultados" data-es="Resultados" data-en="Results" data-fr="Résultats">Resultados</a></li>
               <li><a href="#investigacion" data-es="Investigación" data-en="Research" data-fr="Recherche">Investigación</a></li>
               <li><a href="#contacto" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a></li>
             </ul>

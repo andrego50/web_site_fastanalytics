@@ -156,3 +156,8 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Arco musical por escena (MusicGen, musicgen-venv): m1-suspenso (escenas 0-1),
   m2-construccion (PMU), m3-confianza (Eneagono), m4-jubilo (cierre).
 
+
+## Logos v5 (1 ago 2026)
+- Estilo premium, insignia circular blanca consistente, multicolor (dominante + acentos).
+- Gaby redisenada: visor analitico + grafico de barras. Nuevo logo Veteranos (boina + baston de mando) en index.
+- Commit cfdbe3c. Archivo local: finales-v5/ y candidatos-flux-v5/ en el respaldo de logos.

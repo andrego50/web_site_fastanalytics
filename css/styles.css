@@ -2559,3 +2559,51 @@ ul {
 @media (max-width: 640px) {
   .case-group-title { font-size: 1.1rem; }
 }
+
+/* ===== Index compacto 2026-08-02 (v8) ===== */
+.cases-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.pc-group {
+  grid-column: 1 / -1;
+  margin-top: 14px;
+  font-weight: 800;
+  font-size: .95rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  display: flex; align-items: center; gap: 8px;
+  border-top: 2px solid rgba(212,136,58,.25);
+  padding-top: 14px;
+}
+.pc-group:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+.pc-group-emoji { font-size: 1.1rem; }
+.pc-card {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  background: #fff; border: 1px solid var(--border); border-radius: 16px;
+  padding: 22px 16px 18px; text-decoration: none; color: inherit;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.pc-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 10px 28px rgba(0,109,109,.12); }
+.pc-logo { width: 92px; height: 92px; object-fit: cover; border-radius: 50%; margin-bottom: 12px; }
+.pc-name { font-weight: 800; font-size: 1.02rem; color: var(--text); margin-bottom: 6px; }
+.pc-desc { font-size: .82rem; line-height: 1.45; color: var(--text-secondary); }
+.section.strip { padding: 26px 0; }
+.strip-row {
+  display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+  background: var(--bg-alt); border: 1px solid var(--border); border-radius: 14px;
+  padding: 14px 22px;
+}
+.strip-label { font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: .05em; font-size: .85rem; }
+.strip-text { color: var(--text-secondary); font-size: .9rem; }
+.strip-link { font-weight: 700; color: var(--accent); text-decoration: none; font-size: .9rem; white-space: nowrap; }
+.strip-link:hover { text-decoration: underline; }
+.footer-social { margin: 10px 0 16px; font-size: .85rem; color: rgba(255,255,255,.7); }
+.footer-social a { color: rgba(255,255,255,.85); text-decoration: none; }
+.footer-social a:hover { color: var(--accent); }
+@media (max-width: 900px) { .cases-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 560px) {
+  .cases-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .pc-card { padding: 14px 10px 12px; }
+  .pc-logo { width: 68px; height: 68px; }
+  .pc-name { font-size: .88rem; }
+  .pc-desc { font-size: .72rem; }
+}

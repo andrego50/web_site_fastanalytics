@@ -169,3 +169,14 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Nota "Cifras ilustrativas de contexto para el piloto" en stats.
 - Audio/musica: desbloqueo con primer gesto (autoplay), narracion pendiente reintentada, setSceneMusic reintenta play. Verificado Playwright web+movil x ES/EN/FR: scene1-4, f3, ag1, m1-m4 todos 200/206 y reproduciendo.
 - Commits: 797626f, 55ede9d.
+
+## 2026-08-02 — Reestructura index + ajustes demo
+- index.html: fix ancla rota #agenda -> #contacto (boton "Agenda una demo").
+- Productos agrupados en 3 lineas con encabezados i18n: Seguridad ciudadana / Analitica e investigacion / Formacion y comunidad (.case-group-header en styles.css v7).
+- Secciones Resultados + Prensa fusionadas en franja de credibilidad unica (.cred-divider).
+- Nav simplificado: Servicios, Ecosistema, Resultados, Investigacion, Contacto.
+- Copy: eliminadas todas las menciones a Barranquilla -> "suroccidente de la ciudad" (ES/EN/FR).
+- Hero aligerado: sin badge redundante, subtitulo corto, alerta sin repetir ubicacion.
+- Veteranos: nuevo logo veterana-v2.png (version femenina, cabello recogido).
+- demo-seguridad-urbana.html: eliminada tarjeta final "Predecimos/3 pasos"; CTA final -> index.html#contacto.
+- Verificado web + movil (Playwright): 0 errores JS, scrollY=0 al cargar, narracion escena 1-4 y musica OK.

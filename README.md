@@ -180,3 +180,11 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Veteranos: nuevo logo veterana-v2.png (version femenina, cabello recogido).
 - demo-seguridad-urbana.html: eliminada tarjeta final "Predecimos/3 pasos"; CTA final -> index.html#contacto.
 - Verificado web + movil (Playwright): 0 errores JS, scrollY=0 al cargar, narracion escena 1-4 y musica OK.
+
+## 2026-08-02 (tarde) — Index compacto y visual
+- Reescritura del index: 98KB -> 40KB. Seccion servicios eliminada; social movida al footer.
+- Productos: tarjetas compactas (logo circular + nombre + 1 linea + link) en 3 grupos, grid 3/2 cols.
+- Investigacion y Cursos convertidas en franjas compactas (.strip). Prensa reducida a chips de fuentes.
+- Logos nuevos v9 (estilo v8): chronnet-v9.png, ceci-v9.png, tavo-v9.png. AlejoSeguro -> alejoseguro-v8.png. Mile-IA -> mileinvestiga-v8.png. Demo -> favicon.svg (eneagono). Veteranos -> veterana-v2.png (aprobada, no anime).
+- styles.css v8: .pc-card, .pc-group, .strip-row.
+- Verificado web + movil + EN: 0 errores, scrollY=0, 9 tarjetas OK.

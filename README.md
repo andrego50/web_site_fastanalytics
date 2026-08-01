@@ -161,3 +161,11 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Estilo premium, insignia circular blanca consistente, multicolor (dominante + acentos).
 - Gaby redisenada: visor analitico + grafico de barras. Nuevo logo Veteranos (boina + baston de mando) en index.
 - Commit cfdbe3c. Archivo local: finales-v5/ y candidatos-flux-v5/ en el respaldo de logos.
+
+## Demo: fixes audiovisuales + layout (1 ago 2026)
+- Quick-lines XL; celular de llamada CatheAsiste junto al de Alejo (paso 1 sin video); evidencia cinematografica enfatizada.
+- Eliminado video "Contexto"; red criminal y mapa de situacion con marco cinematografico; video v-moto-extorsion.mp4 (FLUX+LTXV) en panel Redes Criminales.
+- Bloque de productos reemplazado por los 4 pasos (Escucha/Investiga/Coordina/Predice). Cadena de flujo incluye CatheAsiste y MileInvestiga.
+- Nota "Cifras ilustrativas de contexto para el piloto" en stats.
+- Audio/musica: desbloqueo con primer gesto (autoplay), narracion pendiente reintentada, setSceneMusic reintenta play. Verificado Playwright web+movil x ES/EN/FR: scene1-4, f3, ag1, m1-m4 todos 200/206 y reproduciendo.
+- Commits: 797626f, 55ede9d.

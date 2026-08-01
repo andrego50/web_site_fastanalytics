@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>FastAnalytics — Seguridad Ciudadana Inteligente</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
@@ -1336,12 +1339,7 @@ function showStep(n){
     if(target){requestAnimationFrame(function(){requestAnimationFrame(function(){target.classList.add('visible');target.style.opacity='';})})}
     window.scrollTo({top:document.getElementById('stepIndicator').offsetTop-80,behavior:'smooth'});
     if(n===1)buildWaveform();
-    var speeches=[
-        'Un comerciante en el suroccidente de la ciudad reporta extorsión a través de Telegram. Envía fotos del panfleto, un video del sospechoso y un audio con su testimonio. Todo queda geolocalizado automáticamente.',
-        'La inteligencia artificial analiza toda la evidencia en menos de dos segundos. Identifica un rostro conocido como alias El Flaco, lee la placa de la moto, transcribe el audio y mapea la red criminal asociada con seguimiento espaciotemporal.',
-        'Las autoridades en terreno reciben la alerta completa con el paquete de evidencia, el historial de avistamientos del sospechoso, y el mapa de situación con las causas que reporta la comunidad: extorsión, venta de drogas, hurtos y falta de acceso a la justicia.',
-        'Reportes como este activan a GusCoordina, el Puesto de Mando Unificado que coordina la respuesta institucional en tiempo real. Todo lo que se coordina en terreno alimentará después las decisiones estratégicas de GabyPredice.'
-    ];
+    
     playNotif();
 }
 function nextStep(){if(currentStep<3)showStep(currentStep+1)}

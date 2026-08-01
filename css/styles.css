@@ -2607,3 +2607,4 @@ ul {
   .pc-name { font-size: .88rem; }
   .pc-desc { font-size: .72rem; }
 }
+.pc-logo-svg { object-fit: contain; padding: 8px; background: #fff; border: 1px solid var(--border); }

@@ -1247,15 +1247,15 @@ var NARR_KEYS=['intro','scene1','scene2','scene3','scene4','f0','f1','f2','f3','
 var narrAudio=new Audio();narrAudio.preload='auto';
 var speakSeq=0;
 function speak(key,fallback){
-    synth.cancel();narrAudio.pause();
+    synth.cancel();narrAudio.pause();duckMusic(false);
     var mySeq=++speakSeq;
     if(voiceMuted)return;
     if(NARR_KEYS.indexOf(key)>=0){
         setVoiceUI('speaking');
-        narrAudio.onended=function(){if(mySeq===speakSeq)setVoiceUI(voiceMuted?'muted':'ready')};
+        narrAudio.onended=function(){duckMusic(false);if(mySeq===speakSeq)setVoiceUI(voiceMuted?'muted':'ready')};
         narrAudio.onerror=function(){if(mySeq===speakSeq&&narrAudio.error&&(narrAudio.error.code===2||narrAudio.error.code===4))ttsSpeak(fallback||'')};
         narrAudio.src='assets/demo/narr/'+(LANG==='es'?'':LANG+'/')+key+'.mp3';
-        var pr=narrAudio.play();
+        duckMusic(true);var pr=narrAudio.play();
         if(pr&&pr.catch)pr.catch(function(err){
             if(mySeq!==speakSeq)return;
             if(err&&err.name==='NotAllowedError'){pendingNarr={key:key,fallback:fallback};setVoiceUI('ready')}
@@ -1272,8 +1272,8 @@ function ttsSpeak(text){
     var v=synth.getVoices();var pref=LANG==='en'?'en':(LANG==='fr'?'fr':'es');
     var pick=v.find(function(x){return x.lang===u.lang})||v.find(function(x){return x.lang.startsWith(pref)})||v.find(function(x){return x.lang.startsWith('es')});
     if(pick)u.voice=pick;
-    u.onstart=function(){setVoiceUI('speaking')};
-    u.onend=function(){setVoiceUI(voiceMuted?'muted':'ready')};
+    u.onstart=function(){duckMusic(true);setVoiceUI('speaking')};
+    u.onend=function(){duckMusic(false);setVoiceUI(voiceMuted?'muted':'ready')};
     synth.speak(u);
 }
 if(synth.onvoiceschanged!==undefined)synth.onvoiceschanged=function(){};synth.getVoices();
@@ -1313,7 +1313,7 @@ function setSceneMusic(n){
     var wasOn=musicOn;
     m.pause();musicOn=false;
     m.setAttribute('src',src);m.load();
-    startMusic();
+    if(wasOn)startMusic();
 }
 // ── Desbloqueo de audio/música con el primer gesto (política autoplay móvil/desktop) ──
 var pendingNarr=null,audioUnlocked=false;
@@ -1323,16 +1323,17 @@ document.addEventListener('pointerdown',function(){
     if(pendingNarr){var p=pendingNarr;pendingNarr=null;speak(p.key,p.fallback)}
 });
 // ── Música épica de fondo (generada con IA) ──
-var musicOn=false;
+var musicOn=false,musicMuted=false,MUSIC_VOL=0.13,MUSIC_DUCK=0.045;
+function duckMusic(on){var b=document.getElementById('bgMusic');if(b&&musicOn)b.volume=on?MUSIC_DUCK:MUSIC_VOL}
 function startMusic(){
-    var m=document.getElementById('bgMusic');if(!m||musicOn)return;
-    m.volume=0.22;
+    var m=document.getElementById('bgMusic');if(!m||musicOn||musicMuted)return;
+    m.volume=MUSIC_VOL;
     m.play().then(function(){musicOn=true;document.getElementById('musicDot').style.background='#00BFA6'}).catch(function(){});
 }
 function toggleMusic(){
     var m=document.getElementById('bgMusic');if(!m)return;
-    if(musicOn){m.pause();musicOn=false;document.getElementById('musicDot').style.background=''}
-    else{startMusic()}
+    if(musicOn){m.pause();musicOn=false;musicMuted=true;document.getElementById('musicDot').style.background=''}
+    else{musicMuted=false;startMusic()}
 }
 
 // ── Feed de reportes en vivo (escena 0) ──

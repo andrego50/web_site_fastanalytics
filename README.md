@@ -188,3 +188,4 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Logos nuevos v9 (estilo v8): chronnet-v9.png, ceci-v9.png, tavo-v9.png. AlejoSeguro -> alejoseguro-v8.png. Mile-IA -> mileinvestiga-v8.png. Demo -> favicon.svg (eneagono). Veteranos -> veterana-v2.png (aprobada, no anime).
 - styles.css v8: .pc-card, .pc-group, .strip-row.
 - Verificado web + movil + EN: 0 errores, scrollY=0, 9 tarjetas OK.
+- Audio demo: flag musicMuted respeta el mute del usuario (clic en eneagono/cambio de escena ya no reactiva la musica). Ducking: musica baja a 0.045 mientras habla la narradora y vuelve a 0.13 (antes base 0.22).

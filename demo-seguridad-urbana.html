@@ -1324,7 +1324,7 @@ document.addEventListener('pointerdown',function(){
 });
 // ── Música épica de fondo (generada con IA) ──
 var musicOn=false,musicMuted=false,MUSIC_VOL=0.13,MUSIC_DUCK=0.045;
-function duckMusic(on){var b=document.getElementById('bgMusic');if(b&&musicOn)b.volume=on?MUSIC_DUCK:MUSIC_VOL}
+function duckMusic(on){var b=document.getElementById('bgMusic');if(b&&!b.paused)b.volume=on?MUSIC_DUCK:MUSIC_VOL}
 function startMusic(){
     var m=document.getElementById('bgMusic');if(!m||musicOn||musicMuted)return;
     m.volume=MUSIC_VOL;

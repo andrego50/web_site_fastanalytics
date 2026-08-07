@@ -254,3 +254,6 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - v6: subtitulos REGENERADOS con tiempos reales de cada clip de narracion (el srt viejo usaba duraciones estimadas y se desalineaba progresivamente ~5.6s al final). Verificado frame a frame (3s/10s/25s/48s/62s).
 - Musica bajada a 0.05 (puro fondo) con ducking release 1200ms.
 - CatheAsiste: se quito el chip del hero y se agrego como PRIMERA tarjeta del grupo Seguridad ciudadana en #casos ("Todo empieza con Cathe: escucha a la ciudadania por chat y voz, 24/7"), trilingue, logo catheastiste-v8.png, link mailto demo.
+
+### 2026-08-08 (9) — Contraste footer oscuro
+- Los chips admin y el boton "Agenda una demo" heredaban --text (#1A1A2E, oscuro) sobre el footer --bg-dark: texto invisible. Reglas .footer-scoped: texto #E2E8F0, borde rgba blanco, hover naranja/teal.

@@ -226,3 +226,8 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Instrucciones de navegación explícitas (eneágono/botones, narración por escena, caso en dos actos).
 - Música ÉPICA orquestal (tambores de guerra + metales, 22s en loop, generada con plugin audio_generation) en assets? -> /tmp/mini/epic-theme.mp3 (origen), mezclada vol 0.20.
 - Salida: assets/demo/mini-demo-v2.mp4 (66,4 s, 6,0 MB). demo-seguridad-urbana.html apunta a v2.
+
+## 2026-08-08 (3) — Demo: las 4 líneas primero
+- Botón "Vivir el caso completo" eliminado del hero (la experiencia lineal ya no es lo primero).
+- Nuevo: fila de chips (.line-chip, colores por línea) con 01 Escucha / 02 Investiga / 03 Coordina / 04 Predice justo bajo el subtítulo del hero — visibles en el primer pantallazo en móvil y desktop. Cada chip llama goLine() como las tarjetas grandes.
+- El grid visual de 4 tarjetas queda como refuerzo (sin título propio) y debajo el enlace secundario "O vive la experiencia completa, escena por escena →" (data-i18n ctaFull, trilingüe).

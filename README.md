@@ -246,3 +246,6 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 ### 2026-08-08 (6) — Mini demo v4: balance voz/musica definitivo
 - v3 seguia con musica fuerte al subir volumen. v4: musica a volume=0.09 (≈3.5x mas baja que v3), voz a 1.5 + dynaudnorm (nivelacion automatica), ducking mas agresivo (threshold 0.01, ratio 12).
 - demo referencia mini-demo-v4.mp4.
+
+### 2026-08-08 (7) — Mini demo v5: ducking corregido
+- En v4 la musica volvia a subir a mitad de frase (release 350ms muy corto). v5: release 1200ms, threshold 0.008, ratio 20, sin dynaudnorm; voz 1.6. Verificado: RMS de la mezcla = RMS de la voz sola durante el habla (musica imperceptible bajo la narracion).

@@ -242,3 +242,7 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Hook overlay: el mini video (v3) ahora se ve de una con poster (hook-poster.jpg) y boton play grande encima: UN clic reproduce (controles nativos tras iniciar). Eliminado el boton intermedio "Ver la introduccion".
 - Hero: los chips de texto se reemplazaron por las 4 tarjetas con IMAGEN de cada linea (Escucha/Investiga/Coordina/Predice) como visual principal del ingreso; el SVG del mapa salio del hero.
 - La antigua grilla duplicada de tarjetas bajo el hero se elimino; el enlace "experiencia completa" quedo centrado bajo el hero.
+
+### 2026-08-08 (6) — Mini demo v4: balance voz/musica definitivo
+- v3 seguia con musica fuerte al subir volumen. v4: musica a volume=0.09 (≈3.5x mas baja que v3), voz a 1.5 + dynaudnorm (nivelacion automatica), ducking mas agresivo (threshold 0.01, ratio 12).
+- demo referencia mini-demo-v4.mp4.

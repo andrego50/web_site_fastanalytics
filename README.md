@@ -196,3 +196,7 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - **meet.fastanalytics.co** → Jitsi Meet stable-10431 (~/colab/jitsi, web 127.0.0.1:8202, JVB UDP 10101 porque Asterisk de CatheAsiste ocupa 10000-10100). Auth interna + invitados; moderador: andres. P2P (1 a 1) funciona ya; llamadas grupales requieren port-forward UDP 10101 en el router.
 - **agenda.fastanalytics.co** → Cal.com (~/colab/calcom, 127.0.0.1:8203, postgres dedicado, migraciones aplicadas, registro público cerrado). Usuario: andres.
 - index.html: botón "Agenda una demo" en footer con embed popup de Cal.com (data-cal-link andres/30min) + CSS .footer-cta-row. Trilingüe.
+
+## 2026-08-07 (2) — Colab: HDD + LibreOffice (Collabora)
+- Datos de la suite movidos del SSD al HDD **/mnt/datos2/colab/** (bind mounts; compose files intactos en ~/colab): nextcloud/{db,html,data}, calcom/pgdata, jitsi-cfg (CONFIG en .env). SSD queda solo para sistema.
+- OnlyOffice reemplazado por **Collabora Online (LibreOffice, 100% open source)** en el mismo hostname docs.fastanalytics.co (puerto 127.0.0.1:8201). Nextcloud: app onlyoffice eliminada, richdocuments 8.8.2 instalada (wopi_url público + callback interno http://collabora:9980). Admin consola Collabora: admin / (clave en bóveda de credenciales).

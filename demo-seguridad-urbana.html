@@ -114,6 +114,9 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 
 /* ── Boletín IA máquina de escribir ── */
 .type-pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;min-height:110px}
+
+.line-chip{padding:.55rem 1rem;border-radius:999px;border:1px solid var(--lc);color:var(--lc);background:transparent;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .2s;letter-spacing:.04em}
+.line-chip:hover{background:var(--lc);color:#0b0f14;transform:translateY(-2px)}
 </style>
 </head>
 <body>
@@ -212,7 +215,12 @@ function hookEnterFn(){
     </h1>
     <p class="text-lg text-slate-400 leading-relaxed mb-6 max-w-lg" data-i18n="heroSub">Vive el caso <strong class="text-white">dos veces</strong>: como el comerciante que reporta y como el comandante que decide.</p>
 
-
+    <div class="flex flex-wrap gap-2 mb-2">
+        <button onclick="goLine(1,0)" class="line-chip" style="--lc:#00BFA6"><span data-i18n="line1">01 · Escucha</span></button>
+        <button onclick="goLine(1,1)" class="line-chip" style="--lc:#3B9BD9"><span data-i18n="line2">02 · Investiga</span></button>
+        <button onclick="goLine(2,null)" class="line-chip" style="--lc:#9F91E8"><span data-i18n="line3">03 · Coordina</span></button>
+        <button onclick="goLine(3,null)" class="line-chip" style="--lc:#D4883A"><span data-i18n="line4">04 · Predice</span></button>
+    </div>
 
 </div>
 <div class="anim-r flex flex-col items-center relative">
@@ -322,10 +330,7 @@ function hookEnterFn(){
 </div>
 <div class="mt-10">
     <!-- Selector por línea: camino principal de la demo -->
-    <div class="text-center mb-5">
-        <div class="text-base sm:text-2xl font-black text-white uppercase tracking-widest" data-i18n="lineTitle">Elige qué quieres ver</div>
-        <div class="h-px w-40 mx-auto mt-3" style="background:linear-gradient(90deg,transparent,#00BFA6,transparent)"></div>
-    </div>
+
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5 max-w-6xl mx-auto">
         <button onclick="goLine(1,0)" class="glass-teal rounded-xl overflow-hidden text-left hover:scale-[1.03] transition-transform cursor-pointer">
             <img src="assets/demo/escucha-ciudadano.webp" alt="Escucha" class="w-full h-32 sm:h-48 object-cover" loading="lazy">

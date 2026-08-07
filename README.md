@@ -211,3 +211,10 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Jitsi: prejoin OK (dispositivos detectados), BOSH OK, prosody/jicofo/jvb autenticados. Media P2P pendiente de prueba real 2 dispositivos.
 - Nextcloud: WebDAV público OK (upload 201), Collabora discovery interno y público 200, richdocuments 8.8.2 activa.
 - index.html: embed Cal.com corregido a data-cal-link="andres/demo".
+
+## 2026-08-08 — Mini demo hook + Cathe en hero + accesos admin
+- **Mini demo (hook)**: video de 55 s generado con IA (8 clips LTXV 121f@24fps estirados a narración + voz Kokoro em_alex + música cinematic-theme duck 0.16 + subtítulos quemados) en assets/demo/mini-demo.mp4 (4,6 MB). Pantalla inicial #hookOverlay en demo-seguridad-urbana.html: "Ver la introducción" / "Entrar directamente al demo" (trilingüe, claves introH/introP/introPlay/introSkip/introEnter en I18N en/fr). Al terminar el video el botón se convierte en "Entrar al caso real".
+- **Hero index.html**: chip hero-cathe con logo catheastiste-v8.png ("Todo empieza con Cathe...") bajo los CTAs.
+- **Contacto**: fila footer-admin-row con accesos rápidos admin — 📅 Agendar (agenda.fastanalytics.co/andres/demo), 📄 Crear documentos (nube.fastanalytics.co), 🎥 Videollamada (meet.fastanalytics.co).
+- NOTA infra: LTXV en este ComfyUI usa LTXVImgToVideo(positive,negative,vae,image,strength)+SamplerCustom(add_noise,noise_seed) y clip t5xxl_fp8_e4m3fn — el script gen_video_ltxv.py de la skill quedó desactualizado; usar /tmp/run_ltxv2.py como referencia. ComfyUI SaveAnimatedWEBP no lo decodifica ffmpeg del sistema: extraer frames con PIL.
+- fa-vllm pausado para generación y restaurado (Up, 14264 MiB, startup complete, API 200).

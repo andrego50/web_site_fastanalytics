@@ -218,3 +218,11 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - **Contacto**: fila footer-admin-row con accesos rápidos admin — 📅 Agendar (agenda.fastanalytics.co/andres/demo), 📄 Crear documentos (nube.fastanalytics.co), 🎥 Videollamada (meet.fastanalytics.co).
 - NOTA infra: LTXV en este ComfyUI usa LTXVImgToVideo(positive,negative,vae,image,strength)+SamplerCustom(add_noise,noise_seed) y clip t5xxl_fp8_e4m3fn — el script gen_video_ltxv.py de la skill quedó desactualizado; usar /tmp/run_ltxv2.py como referencia. ComfyUI SaveAnimatedWEBP no lo decodifica ffmpeg del sistema: extraer frames con PIL.
 - fa-vllm pausado para generación y restaurado (Up, 14264 MiB, startup complete, API 200).
+
+## 2026-08-08 (2) — Mini demo v2
+- Narradora FEMENINA (Kokoro ef_dora; em_alex era masculina).
+- Guion reescrito: describe FUNCIONES sin nombrar productos (reporte ciudadano con foto/video/audio/geo = Alejo; asistente 24/7 chat/voz = Cathe; 20+ modelos rostros/placas/red = Mile; 6 agentes centro de mando = Gus; eneágono 9 fases = Gaby). Nombres solo al final.
+- Cierre: tarjeta PIL card-suite.png con los 5 logos v8 + "Escucha · Investiga · Coordina · Predice" + CTA, con zoompan 9,1s.
+- Instrucciones de navegación explícitas (eneágono/botones, narración por escena, caso en dos actos).
+- Música ÉPICA orquestal (tambores de guerra + metales, 22s en loop, generada con plugin audio_generation) en assets? -> /tmp/mini/epic-theme.mp3 (origen), mezclada vol 0.20.
+- Salida: assets/demo/mini-demo-v2.mp4 (66,4 s, 6,0 MB). demo-seguridad-urbana.html apunta a v2.

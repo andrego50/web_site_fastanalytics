@@ -434,7 +434,10 @@
         <div class="footer-brand">
           <img src="assets/images/logo-light.svg" alt="FastAnalytics" class="footer-logo">
           <p class="footer-tagline" data-es="Datos + IA para que actúes antes, no después" data-en="Data + AI so you act before, not after" data-fr="Données + IA pour agir avant, pas après">Datos + IA para que actúes antes, no después</p>
-          <a href="mailto:hola@fastanalytics.co" class="btn btn-primary btn-lg footer-cta" data-es="Hablemos" data-en="Let's talk" data-fr="Parlons">Hablemos</a>
+          <div class="footer-cta-row">
+            <a href="mailto:hola@fastanalytics.co" class="btn btn-primary btn-lg footer-cta" data-es="Hablemos" data-en="Let's talk" data-fr="Parlons">Hablemos</a>
+            <a href="#" data-cal-link="andres/30min" data-cal-namespace="demo" data-cal-config='{"layout":"month_view"}' class="btn btn-outline btn-lg footer-cta" data-es="Agenda una demo" data-en="Book a demo" data-fr="Réservez une démo">Agenda una demo</a>
+          </div>
         </div>
         <div class="footer-links">
           <div class="footer-col">
@@ -582,6 +585,13 @@
         timer = setInterval(function() { goTo(current + 1); }, 5000);
       }, {passive: true});
     })();
+  </script>
+
+  <!-- Cal.com embed (agenda.fastanalytics.co) -->
+  <script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://agenda.fastanalytics.co/embed-link/embed.js", "init");
+  Cal("init", "demo", {origin:"https://agenda.fastanalytics.co"});
+  Cal.ns.demo("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
   </script>
 </body>
 </html>

@@ -2608,3 +2608,6 @@ ul {
   .pc-desc { font-size: .72rem; }
 }
 .pc-logo-svg { object-fit: contain; padding: 8px; background: #fff; border: 1px solid var(--border); }
+
+/* Fila de CTAs en footer (Hablemos + Agenda una demo) */
+.footer-cta-row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }

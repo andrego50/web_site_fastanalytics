@@ -2623,3 +2623,10 @@ ul {
 .admin-chip { display:inline-flex; align-items:center; padding:6px 14px; font-size:.85rem; border-radius:999px;
   border:1px solid var(--border); color:var(--text,#e2e8f0); text-decoration:none; transition:border-color .25s, background .25s; }
 .admin-chip:hover { border-color:#D4883A; background:rgba(212,138,58,.12); }
+
+/* Contraste footer oscuro (2026-08-08): chips admin y botones outline legibles */
+.footer .footer-admin-label { color:#94A3B8; }
+.footer .admin-chip { color:#E2E8F0; border-color:rgba(255,255,255,.28); background:rgba(255,255,255,.07); font-weight:600; }
+.footer .admin-chip:hover { border-color:#D4883A; background:rgba(212,138,58,.18); color:#FFFFFF; }
+.footer .btn-outline { color:#FFFFFF; border-color:rgba(255,255,255,.45); }
+.footer .btn-outline:hover { background:rgba(255,255,255,.1); border-color:#00BFA6; }

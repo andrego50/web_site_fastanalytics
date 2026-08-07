@@ -231,3 +231,9 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Botón "Vivir el caso completo" eliminado del hero (la experiencia lineal ya no es lo primero).
 - Nuevo: fila de chips (.line-chip, colores por línea) con 01 Escucha / 02 Investiga / 03 Coordina / 04 Predice justo bajo el subtítulo del hero — visibles en el primer pantallazo en móvil y desktop. Cada chip llama goLine() como las tarjetas grandes.
 - El grid visual de 4 tarjetas queda como refuerzo (sin título propio) y debajo el enlace secundario "O vive la experiencia completa, escena por escena →" (data-i18n ctaFull, trilingüe).
+
+### 2026-08-08 (4) — Mini demo v3: mezcla de audio corregida
+- Queja: la musica tapaba la narracion. Reensamblado como mini-demo-v3.mp4.
+- Voz +1.25x y musica epica con sidechaincompress (ducking: la musica baja sola cuando habla la narradora, threshold 0.02 ratio 8) + alimiter 0.95.
+- Solo se remezclo el audio (video copiado sin reencode, subtitulos intactos).
+- demo-seguridad-urbana.html ahora referencia mini-demo-v3.mp4.

@@ -249,3 +249,8 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 
 ### 2026-08-08 (7) — Mini demo v5: ducking corregido
 - En v4 la musica volvia a subir a mitad de frase (release 350ms muy corto). v5: release 1200ms, threshold 0.008, ratio 20, sin dynaudnorm; voz 1.6. Verificado: RMS de la mezcla = RMS de la voz sola durante el habla (musica imperceptible bajo la narracion).
+
+### 2026-08-08 (8) — Mini demo v6 + CatheAsiste en productos
+- v6: subtitulos REGENERADOS con tiempos reales de cada clip de narracion (el srt viejo usaba duraciones estimadas y se desalineaba progresivamente ~5.6s al final). Verificado frame a frame (3s/10s/25s/48s/62s).
+- Musica bajada a 0.05 (puro fondo) con ducking release 1200ms.
+- CatheAsiste: se quito el chip del hero y se agrego como PRIMERA tarjeta del grupo Seguridad ciudadana en #casos ("Todo empieza con Cathe: escucha a la ciudadania por chat y voz, 24/7"), trilingue, logo catheastiste-v8.png, link mailto demo.

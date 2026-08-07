@@ -203,3 +203,11 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 
 ## 2026-08-07 (3) — Cal.com envía correos como hola@fastanalytics.co
 - SMTP de iCloud+ (misma config del docker veteranos): smtp.mail.me.com:587 STARTTLS, usuario andres.perezc@icloud.com (clave de app), From: hola@fastanalytics.co / "FastAnalytics". Auth verificada OK.
+
+## 2026-08-07 (4) — Pruebas end-to-end suite colab
+- Cal.com: onboarding completado (email verificado, zona America/Bogota, nombre Andrés Pérez), horario L-V 9-18, eventos "Demo FastAnalytics" (andres/demo, 30 min) y "Reunión 15 min" (andres/15min), con Host+_user_eventtype (requerido por schema nuevo).
+- Credencial jitsi_video creada y código del contenedor parchado: enlaces de reunión ahora salen como https://meet.fastanalytics.co/cal/<uuid> (antes meet.jit.si). OJO: si se actualiza la imagen calcom/cal.com hay que reaplicar el parche.
+- Reservas de prueba vía web y API OK (status accepted). Correos de confirmación enviados a andres.perezc@icloud.com vía SMTP iCloud.
+- Jitsi: prejoin OK (dispositivos detectados), BOSH OK, prosody/jicofo/jvb autenticados. Media P2P pendiente de prueba real 2 dispositivos.
+- Nextcloud: WebDAV público OK (upload 201), Collabora discovery interno y público 200, richdocuments 8.8.2 activa.
+- index.html: embed Cal.com corregido a data-cal-link="andres/demo".

@@ -51,7 +51,7 @@ RTX 5060 Ti con `cuDNN Frontend error` porque `comfy/ops.py` prioriza
 `PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync` antes de importar torch — de lo
 contrario falla el allocator).
 
-| `andres-perez-coronado.html` | Perfil del fundador |
+| `andres-perez-coronado.html` | Redirección al sitio personal (https://andrego50.github.io) |
 | `mapa-cundinamarca.html` | Mapa interactivo de Cundinamarca |
 | `curso-redes-criminales.html` | Landing del curso de redes criminales |
 | `chronnet/` | Demo interactiva de redes espacio-temporales (Chronnet) |

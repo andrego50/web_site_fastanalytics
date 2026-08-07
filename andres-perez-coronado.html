@@ -3,151 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andrés Pérez Coronado | Fundador & AI/ML Architect — FastAnalytics</title>
-  <meta name="description" content="Andrés Pérez Coronado, PhD. Fundador de FastAnalytics. 20+ años transformando seguridad con datos. Policía Nacional, Fulbright, Humphrey Fellow, speaker IACP.">
-  <meta name="author" content="FastAnalytics S.A.S.">
+  <title>Andrés Pérez Coronado — el perfil se movió</title>
 
-  <meta property="og:title" content="Andrés Pérez Coronado | Fundador de FastAnalytics">
-  <meta property="og:description" content="20+ años transformando seguridad con datos. PhD, Fulbright, Humphrey Fellow, speaker IACP.">
-  <meta property="og:type" content="profile">
-  <meta property="og:url" content="https://fastanalytics.co/andres-perez-coronado.html">
-  <meta property="og:image" content="https://fastanalytics.co/assets/images/andres-perez.jpg">
+  <!-- El perfil del fundador ahora vive en su propio sitio, fuera de este repo.
+       GitHub Pages no permite devolver un 301, así que la redirección se hace
+       con meta refresh + canonical: los enlaces antiguos siguen llegando y los
+       buscadores consolidan todo en el sitio personal en vez de indexar dos
+       páginas del mismo perfil. -->
+  <link rel="canonical" href="https://andrego50.github.io">
+  <meta http-equiv="refresh" content="0; url=https://andrego50.github.io">
+  <meta name="robots" content="noindex, follow">
 
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=2">
-  <link rel="canonical" href="https://fastanalytics.co/andres-perez-coronado.html">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=6">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Arial, sans-serif;
+      color: #1A1A2E;
+      background: #F8F9FC;
+      text-align: center;
+      padding: 24px;
+    }
+    p { color: #4A4A6A; margin: 0 0 20px; }
+    a {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #006D6D;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- ========== NAVIGATION ========== -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-container">
-      <a href="index.html#hero" class="nav-logo">
-        <img src="assets/images/logo-nav.svg" alt="FastAnalytics" class="logo-img">
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html#servicios" data-es="Servicios" data-en="Services" data-fr="Services">Servicios</a></li>
-        <li><a href="index.html#casos" data-es="Productos" data-en="Products" data-fr="Produits">Productos</a></li>
-        <li><a href="index.html#investigacion" data-es="Investigación" data-en="Research" data-fr="Recherche">Investigación</a></li>
-        <li><a href="index.html#cursos" data-es="Cursos" data-en="Courses" data-fr="Cours">Cursos</a></li>
-        <li><a href="index.html#contacto" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="mailto:hola@fastanalytics.co" class="btn btn-primary btn-nav" data-es="Hablemos" data-en="Let's talk" data-fr="Parlons">Hablemos</a>
-        <button class="hamburger" id="hamburger" aria-label="Menú">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ========== FOUNDER HERO ========== -->
-  <section class="hero" id="hero" style="min-height: auto; padding: 140px 0 80px;">
-    <div class="container hero-content">
-      <div class="hero-badge animate-on-scroll" data-es="Fundador & AI/ML Architect" data-en="Founder & AI/ML Architect" data-fr="Fondateur & Architecte IA/ML">Fundador & AI/ML Architect</div>
-      <h1 class="hero-title animate-on-scroll">Andrés Pérez Coronado</h1>
-      <p class="hero-subtitle animate-on-scroll" data-es="20+ años haciendo que la policía colombiana use datos de verdad. Ahora lleva esa experiencia a empresas y gobiernos de toda la región." data-en="20+ years getting Colombian police to actually use data. Now brings that experience to companies and governments across the region." data-fr="20+ ans à faire en sorte que la police colombienne utilise vraiment les données. Apporte désormais cette expérience aux entreprises et gouvernements de toute la région.">20+ años haciendo que la policía colombiana use datos de verdad. Ahora lleva esa experiencia a empresas y gobiernos de toda la región.</p>
-    </div>
-  </section>
-
-  <!-- ========== FOUNDER CONTENT ========== -->
-  <section class="section about" id="fundador">
-    <div class="container">
-      <div class="about-content">
-        <div class="about-photo animate-on-scroll">
-          <img src="assets/images/andres-perez.jpg" alt="Andrés Pérez Coronado - Fundador & AI/ML Architect de FastAnalytics" class="founder-photo">
-        </div>
-        <div class="about-text animate-on-scroll">
-          <h3 data-es="De la estrategia nacional al despacho del cliente" data-en="From national strategy to the client's office" data-fr="De la stratégie nationale au bureau du client">De la estrategia nacional al despacho del cliente</h3>
-          <p class="about-bio" data-es="Lideró equipos de 80+ analistas en la Policía Nacional de Colombia. Diseñó y desplegó modelos que fueron adoptados como estrategia nacional, con resultados cubiertos por medios como Semana, El Tiempo y portales oficiales de Bogotá y Cali. Es investigador, Fulbright y Humphrey Fellow, y speaker en la IACP Technology Conference 2026." data-en="He led teams of 80+ analysts at the Colombian National Police. He designed and deployed models that were adopted as national strategy, with results covered by media such as Semana, El Tiempo and official portals of Bogotá and Cali. He is a researcher, Fulbright and Humphrey Fellow, and speaker at the IACP Technology Conference 2026." data-fr="Il a dirigé des équipes de 80+ analystes au sein de la Police nationale colombienne. Il a conçu et déployé des modèles adoptés comme stratégie nationale, avec des résultats couverts par des médias tels que Semana, El Tiempo et les portails officiels de Bogotá et Cali. Chercheur, Fulbright et Humphrey Fellow, et conférencier à l'IACP Technology Conference 2026.">Lideró equipos de 80+ analistas en la Policía Nacional de Colombia. Diseñó y desplegó modelos que fueron adoptados como estrategia nacional, con resultados cubiertos por medios como Semana, El Tiempo y portales oficiales de Bogotá y Cali. Es investigador, Fulbright y Humphrey Fellow, y speaker en la IACP Technology Conference 2026.</p>
-
-          <div class="credentials">
-            <div class="credential">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3L10 14.5 5.1 17l.9-5.3-4-3.9 5.5-.8L10 2z" fill="var(--primary)"/></svg>
-              <span data-es="PhD en Ingeniería Matemática — Universidad EAFIT (2025)" data-en="PhD in Mathematical Engineering — EAFIT University (2025)" data-fr="Doctorat en Ingénierie Mathématique — Universidad EAFIT (2025)">PhD en Ingeniería Matemática — Universidad EAFIT (2025)</span>
-            </div>
-            <div class="credential">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3L10 14.5 5.1 17l.9-5.3-4-3.9 5.5-.8L10 2z" fill="var(--primary)"/></svg>
-              <span data-es="MSc en Management — IAE, Université Grenoble Alpes" data-en="MSc in Management — IAE, Université Grenoble Alpes" data-fr="Master en Management — IAE, Université Grenoble Alpes">MSc en Management — IAE, Université Grenoble Alpes</span>
-            </div>
-            <div class="credential">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3L10 14.5 5.1 17l.9-5.3-4-3.9 5.5-.8L10 2z" fill="var(--primary)"/></svg>
-              <span>Humphrey Fellow — University of Minnesota</span>
-            </div>
-            <div class="credential">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3L10 14.5 5.1 17l.9-5.3-4-3.9 5.5-.8L10 2z" fill="var(--primary)"/></svg>
-              <span>Fulbright Scholar</span>
-            </div>
-            <div class="credential">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3L10 14.5 5.1 17l.9-5.3-4-3.9 5.5-.8L10 2z" fill="var(--primary)"/></svg>
-              <span data-es="Speaker IACP 2026 Technology Conference" data-en="Speaker at IACP 2026 Technology Conference" data-fr="Intervenant à la Conférence Technologique IACP 2026">Speaker IACP 2026 Technology Conference</span>
-            </div>
-            <div class="credential">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3L10 14.5 5.1 17l.9-5.3-4-3.9 5.5-.8L10 2z" fill="var(--primary)"/></svg>
-              <span data-es="Español · Inglés · Francés" data-en="Spanish · English · French" data-fr="Espagnol · Anglais · Français">Español · Inglés · Francés</span>
-            </div>
-          </div>
-
-          <div class="iacp-talk">
-            <p class="talk-label" data-es="Próxima charla:" data-en="Upcoming talk:" data-fr="Prochaine conférence :">Próxima charla:</p>
-            <p class="talk-title">"Finding the Missing Links: Using AI to Map and Disrupt Transnational Crime Networks"</p>
-            <p class="talk-event">IACP 2026 Technology Conference</p>
-          </div>
-
-          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:24px;">
-            <a href="https://www.linkedin.com/in/andres-perez-coronado-63792618/" target="_blank" rel="noopener" class="btn btn-linkedin">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              <span data-es="LinkedIn" data-en="LinkedIn" data-fr="LinkedIn">LinkedIn</span>
-            </a>
-            <a href="https://independent.academia.edu/Andr%C3%A9sP%C3%A9rezCoronado" target="_blank" rel="noopener" class="btn btn-secondary">
-              <span data-es="Publicaciones académicas" data-en="Academic publications" data-fr="Publications académiques">Publicaciones académicas</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== FOOTER ========== -->
-  <footer class="footer" id="contacto">
-    <div class="container">
-      <div class="footer-main">
-        <div class="footer-brand">
-          <img src="assets/images/logo-light.svg" alt="FastAnalytics" class="footer-logo">
-          <p class="footer-tagline" data-es="Datos + IA para que actúes antes, no después" data-en="Data + AI so you act before, not after" data-fr="Données + IA pour agir avant, pas après">Datos + IA para que actúes antes, no después</p>
-          <a href="mailto:hola@fastanalytics.co" class="btn btn-primary btn-lg footer-cta" data-es="Hablemos" data-en="Let's talk" data-fr="Parlons">Hablemos</a>
-        </div>
-        <div class="footer-links">
-          <div class="footer-col">
-            <h4 data-es="Navegación" data-en="Navigation" data-fr="Navigation">Navegación</h4>
-            <ul>
-              <li><a href="index.html#servicios" data-es="Servicios" data-en="Services" data-fr="Services">Servicios</a></li>
-              <li><a href="index.html#casos" data-es="Productos" data-en="Products" data-fr="Produits">Productos</a></li>
-              <li><a href="index.html#investigacion" data-es="Investigación" data-en="Research" data-fr="Recherche">Investigación</a></li>
-              <li><a href="index.html#contacto" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4 data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</h4>
-            <ul>
-              <li><a href="mailto:hola@fastanalytics.co">hola@fastanalytics.co</a></li>
-              <li data-es="Colombia" data-en="Colombia" data-fr="Colombie">Colombia</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 FastAnalytics S.A.S. <span data-es="Todos los derechos reservados." data-en="All rights reserved." data-fr="Tous droits réservés.">Todos los derechos reservados.</span></p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js?v=2"></script>
+  <div>
+    <p>El perfil de Andrés Pérez Coronado se movió a su sitio personal.</p>
+    <a href="https://andrego50.github.io">Ir al sitio &rarr;</a>
+  </div>
+  <script>window.location.replace("https://andrego50.github.io");</script>
 </body>
 </html>

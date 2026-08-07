@@ -189,3 +189,10 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - styles.css v8: .pc-card, .pc-group, .strip-row.
 - Verificado web + movil + EN: 0 errores, scrollY=0, 9 tarjetas OK.
 - Audio demo: flag musicMuted respeta el mute del usuario (clic en eneagono/cambio de escena ya no reactiva la musica). Ducking: musica baja a 0.045 mientras habla la narradora y vuelve a 0.13 (antes base 0.22).
+
+## 2026-08-07 — Suite de colaboración auto-hospedada (túnel "colab")
+- Nuevo túnel Cloudflare `colab` (f6530162-45fd-4fb8-a174-4f38e3412129), contenedor `colab-tunnel` (--network host, user 1000:1000, config ~/.cloudflared/config-colab.yml).
+- **nube.fastanalytics.co** → Nextcloud 31 (~/colab/nextcloud, puerto 127.0.0.1:8200) + OnlyOffice Document Server (8201, hostname público docs.fastanalytics.co, JWT activo). App ONLYOFFICE conectada (DocumentServerInternalUrl=http://onlyoffice, StorageUrl=http://app).
+- **meet.fastanalytics.co** → Jitsi Meet stable-10431 (~/colab/jitsi, web 127.0.0.1:8202, JVB UDP 10101 porque Asterisk de CatheAsiste ocupa 10000-10100). Auth interna + invitados; moderador: andres. P2P (1 a 1) funciona ya; llamadas grupales requieren port-forward UDP 10101 en el router.
+- **agenda.fastanalytics.co** → Cal.com (~/colab/calcom, 127.0.0.1:8203, postgres dedicado, migraciones aplicadas, registro público cerrado). Usuario: andres.
+- index.html: botón "Agenda una demo" en footer con embed popup de Cal.com (data-cal-link andres/30min) + CSS .footer-cta-row. Trilingüe.

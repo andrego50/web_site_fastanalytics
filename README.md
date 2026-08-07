@@ -237,3 +237,8 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Voz +1.25x y musica epica con sidechaincompress (ducking: la musica baja sola cuando habla la narradora, threshold 0.02 ratio 8) + alimiter 0.95.
 - Solo se remezclo el audio (video copiado sin reencode, subtitulos intactos).
 - demo-seguridad-urbana.html ahora referencia mini-demo-v3.mp4.
+
+### 2026-08-08 (5) — Rediseno del ingreso al demo
+- Hook overlay: el mini video (v3) ahora se ve de una con poster (hook-poster.jpg) y boton play grande encima: UN clic reproduce (controles nativos tras iniciar). Eliminado el boton intermedio "Ver la introduccion".
+- Hero: los chips de texto se reemplazaron por las 4 tarjetas con IMAGEN de cada linea (Escucha/Investiga/Coordina/Predice) como visual principal del ingreso; el SVG del mapa salio del hero.
+- La antigua grilla duplicada de tarjetas bajo el hero se elimino; el enlace "experiencia completa" quedo centrado bajo el hero.

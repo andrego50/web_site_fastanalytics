@@ -257,3 +257,9 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 
 ### 2026-08-08 (9) — Contraste footer oscuro
 - Los chips admin y el boton "Agenda una demo" heredaban --text (#1A1A2E, oscuro) sobre el footer --bg-dark: texto invisible. Reglas .footer-scoped: texto #E2E8F0, borde rgba blanco, hover naranja/teal.
+
+### 2026-08-08 (10) — Cuentas colab unificadas con correo corporativo
+- Nextcloud: email de 'andres' = andres.perezc@fastanalytics.co; clave temporal FastTemp2026! (cambiar en Configuracion > Seguridad). Login WebDAV verificado (207).
+- Cal.com: users.email = andres.perezc@fastanalytics.co; nuevo hash bcrypt en UserPassword (FastTemp2026!). Login verificado (302 callback).
+- Jitsi: prosodyctl register andres meet.jitsi con FastTemp2026! (Jitsi no maneja correo).
+- Nextcloud SMTP configurado (smtp.mail.me.com:587 STARTTLS, hola@fastanalytics.co, misma app-password iCloud de Veteranos) -> invitaciones de documentos compartidos llegan por correo. user:welcome enviado sin errores.

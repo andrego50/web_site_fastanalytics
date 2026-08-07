@@ -200,3 +200,6 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 ## 2026-08-07 (2) — Colab: HDD + LibreOffice (Collabora)
 - Datos de la suite movidos del SSD al HDD **/mnt/datos2/colab/** (bind mounts; compose files intactos en ~/colab): nextcloud/{db,html,data}, calcom/pgdata, jitsi-cfg (CONFIG en .env). SSD queda solo para sistema.
 - OnlyOffice reemplazado por **Collabora Online (LibreOffice, 100% open source)** en el mismo hostname docs.fastanalytics.co (puerto 127.0.0.1:8201). Nextcloud: app onlyoffice eliminada, richdocuments 8.8.2 instalada (wopi_url público + callback interno http://collabora:9980). Admin consola Collabora: admin / (clave en bóveda de credenciales).
+
+## 2026-08-07 (3) — Cal.com envía correos como hola@fastanalytics.co
+- SMTP de iCloud+ (misma config del docker veteranos): smtp.mail.me.com:587 STARTTLS, usuario andres.perezc@icloud.com (clave de app), From: hola@fastanalytics.co / "FastAnalytics". Auth verificada OK.

@@ -263,3 +263,8 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Cal.com: users.email = andres.perezc@fastanalytics.co; nuevo hash bcrypt en UserPassword (FastTemp2026!). Login verificado (302 callback).
 - Jitsi: prosodyctl register andres meet.jitsi con FastTemp2026! (Jitsi no maneja correo).
 - Nextcloud SMTP configurado (smtp.mail.me.com:587 STARTTLS, hola@fastanalytics.co, misma app-password iCloud de Veteranos) -> invitaciones de documentos compartidos llegan por correo. user:welcome enviado sin errores.
+
+### 2026-08-08 (11) — Nextcloud: usuario = correo corporativo
+- Creado usuario "andres.perezc@fastanalytics.co" (grupo admin, clave temporal FastTemp2026!).
+- occ files:transfer-ownership andres -> nuevo usuario; archivos en carpeta "Transferred from andres on 2026-08-08...".
+- Cuenta vieja "andres" DESHABILITADA. Login WebDAV con correo verificado (207).

@@ -268,3 +268,9 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Creado usuario "andres.perezc@fastanalytics.co" (grupo admin, clave temporal FastTemp2026!).
 - occ files:transfer-ownership andres -> nuevo usuario; archivos en carpeta "Transferred from andres on 2026-08-08...".
 - Cuenta vieja "andres" DESHABILITADA. Login WebDAV con correo verificado (207).
+
+### 2026-08-08 (12) — GPU: mini demo v7 cinematografico + imagenes de calle regeneradas
+- v7: los 1593 frames del mini demo pasaron por 4x-UltraSharp (spandrel, GPU, 2 workers), salida 1472x832 + grado cinematografico (contraste 1.06, saturacion 1.14, vineteado). Audio intacto del v6. 25.8MB.
+- Imagenes escucha-ciudadano/comerciante/contexto-extorsion/cctv-escena regeneradas con Flux schnell fp8: contexto real del suroccidente colombiano (locales de ladrillo 1-2 pisos, cerrajeria metalica, calles anchas, motos) en vez de callejones asiaticos.
+- Notas tecnicas: fa-vllm revivio solo (restart unless-stopped) causando OOM al upscale -> detenerlo explicitamente; symlink de checkpoints a diffusion_models para UNETLoader; VAE flux = f5aiteam/VAE (BFL repo requiere auth); pkill -f upscale.py se auto-mata (el wrapper contiene el patron).
+- fa-vllm RESTAURADO y verificado: Up, 14264 MiB, startup complete, /v1/models 200 (puerto 9090).

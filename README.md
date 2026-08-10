@@ -274,3 +274,7 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Imagenes escucha-ciudadano/comerciante/contexto-extorsion/cctv-escena regeneradas con Flux schnell fp8: contexto real del suroccidente colombiano (locales de ladrillo 1-2 pisos, cerrajeria metalica, calles anchas, motos) en vez de callejones asiaticos.
 - Notas tecnicas: fa-vllm revivio solo (restart unless-stopped) causando OOM al upscale -> detenerlo explicitamente; symlink de checkpoints a diffusion_models para UNETLoader; VAE flux = f5aiteam/VAE (BFL repo requiere auth); pkill -f upscale.py se auto-mata (el wrapper contiene el patron).
 - fa-vllm RESTAURADO y verificado: Up, 14264 MiB, startup complete, /v1/models 200 (puerto 9090).
+
+### 2026-08-08 (13) — Mini demo v8: musica -20% + textos "1 minuto"
+- Musica de 0.05 a 0.04 (-20%). Mismo ducking. Video v7 sin reencode (solo pista de audio).
+- introH "55 segundos" -> "1 minuto" en ES/EN/FR.

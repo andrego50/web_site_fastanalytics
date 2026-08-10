@@ -278,3 +278,9 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 ### 2026-08-08 (13) — Mini demo v8: musica -20% + textos "1 minuto"
 - Musica de 0.05 a 0.04 (-20%). Mismo ducking. Video v7 sin reencode (solo pista de audio).
 - introH "55 segundos" -> "1 minuto" en ES/EN/FR.
+
+### 2026-08-08 (14) — Diagnostico y afinacion Nextcloud/Collabora
+- Linea base: servidor holgado (load 0.95/8 cores, RAM 125G) -> lentitud era de app, no de hardware.
+- Hallazgos: backgroundjobs_mode=AJAX (defecto) -> cambiado a CRON real (crontab host cada 5 min: docker exec ... cron.php). opcache YA estaba activo (128MB, jit 1255). Memcache APCu+Redis OK.
+- Collabora (distroless, sin shell): extra_params += num_prewarm=6 (procesos kit pre-abiertos -> el primer documento abre rapido), idle_timeout 1800s, always_save_on_exit, batch_priority. Recreado.
+- Resultado medido (tunel): status 0.39->0.27s, login 0.42->0.31s, discovery 0.36->0.27s (~30% mas rapido). Apertura de documentos mejora por prewarm (sin esperar arranque de LibreOffice).

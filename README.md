@@ -298,3 +298,9 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
   banda negra opaca inferior (cubría fantasmas de subtítulos antiguos horneados en los frames upscalados),
   mezcla voz 1.6 + música 0.04 + ducking release 1200 + limiter 0.95.
 - Verificado frame a frame (17s/40s/62s): texto sincronizado con la voz, sin residuos.
+
+### 2026-08-12 (17) — Video AlejoSeguro · emergencia terremoto occidente
+- Video de 54s "Cuando la tierra tiembla, nadie debe quedar solo": reporte ciudadano + info de ayudas vía @AlejoSeguro_bot, con Veteranos de Colombia.
+- 9 escenas Flux (alba, escombros, voluntarios veteranos, celular, mapa de puntos de ayuda, albergue, reconstrucción, amanecer), zoompan+xfade, banda de subtítulos.
+- Voz Kokoro ef_dora 0.95 (tono cálido); música MusicGen medium "hopeful piano & strings" (aliento y comprensión) con ducking; subtítulos sincronizados a duraciones reales y a los xfade.
+- fa-vllm detenido durante generación GPU y restaurado (Up, ~14.2GB, /v1/models 200).

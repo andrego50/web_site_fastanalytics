@@ -304,3 +304,23 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - 9 escenas Flux (alba, escombros, voluntarios veteranos, celular, mapa de puntos de ayuda, albergue, reconstrucción, amanecer), zoompan+xfade, banda de subtítulos.
 - Voz Kokoro ef_dora 0.95 (tono cálido); música MusicGen medium "hopeful piano & strings" (aliento y comprensión) con ducking; subtítulos sincronizados a duraciones reales y a los xfade.
 - fa-vllm detenido durante generación GPU y restaurado (Up, ~14.2GB, /v1/models 200).
+
+### 2026-08-13 (18) — Tutorial AlejoSeguro vertical (pantallazos reales)
+- Video 9:16 de 83s con los 6 pantallazos reales del bot, 5 pasos numerados, círculos naranjas #D4883A en las zonas de clic
+  (Compartir ubicación / Aviso-Pregunta-Reporta / mapa 3 puntos / clip-mic-input / Ver en Mapa), tarjetas de marca intro y cierre.
+- Iniciativa: Defensores de la Patria · Veteranos y Reservistas de Colombia · FastAnalytics.
+- Voz Kokoro ef_dora 0.95; música aliento30 (misma campaña) con ducking; subtítulos en banda negra inferior (FontSize=7, MarginV=14 en 1080x1920).
+
+### 2026-08-13 (19) — Video completo AlejoSeguro (logo + intro + tutorial con flechas)
+- Un solo video vertical 1080×1920 de 139.4s que une: tarjeta de apertura con logo FastAnalytics (eneágono, tagline completo) → intro cinemática del terremoto (54s) → tutorial de 5 pasos con los 6 pantallazos.
+- TODAS las anotaciones re-hechas con FLECHAS naranja #D4883A con borde blanco (antes círculos/elipses que el usuario reportó imprecisos). Coordenadas verificadas pixel a pixel sobre los PNG originales 1320×2868:
+  - Paso 1: flecha ↓ sobre «Compartir mi ubicación» (697,2313)
+  - Paso 2: 3 flechas ↓ sobre Aviso (250,2690) / Pregunta (660,2690) / Reporta (1075,2690)
+  - Paso 2b: flecha ← sobre «¡Listo el mapa! ✅» (fin en 690,2260)
+  - Paso 3: flecha diagonal al pin del mapa (745,1360) + flecha ↓ corta al texto «Continuar con mi ubicación» (500,2772)
+  - Paso 4: 3 punteros ↓ a clip (84,1749) / campo Mensaje (630,1749) / micrófono (1233,1749)
+  - Paso 5: flecha ← sobre «Ver en Mapa» (fin en 600,2230)
+- Revisión frame por frame: 16 frames en los empalmes xfade y cada paso + 2 verificaciones finales (tagline logo y puntero paso 3) antes de publicar.
+- Técnica: xfade 0.7s entre 3 segmentos (3.5+54.125+83.125−1.4=139.375s), audio unido con acrossfade (música aliento30.wav solo en apertura), intro letterboxed en navy #0E1A24 con divisores naranja/teal, pixel format yuv420p para compatibilidad WhatsApp/Telegram.
+- Logo SVG con viewBox corregido (300→362) para mostrar el tagline completo en la tarjeta de apertura.
+- Asset publicado: assets/demo/alejoseguro-completo-v1.mp4

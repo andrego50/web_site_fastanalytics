@@ -324,3 +324,10 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Técnica: xfade 0.7s entre 3 segmentos (3.5+54.125+83.125−1.4=139.375s), audio unido con acrossfade (música aliento30.wav solo en apertura), intro letterboxed en navy #0E1A24 con divisores naranja/teal, pixel format yuv420p para compatibilidad WhatsApp/Telegram.
 - Logo SVG con viewBox corregido (300→362) para mostrar el tagline completo en la tarjeta de apertura.
 - Asset publicado: assets/demo/alejoseguro-completo-v1.mp4
+
+### 2026-08-13 (20) — Botón de video en el hero + modal AlejoSeguro
+- Nuevo botón en el hero de index.html: "▶ AlejoSeguro en acción" (trilingüe ES/EN/FR, ícono SVG de play fuera del span traducible para que el toggle de idioma no lo borre).
+- Modal de video propio (patrón agenda-modal): backdrop blur navy 88%, player vertical 9:16 centrado (max 88vh, borde naranja, radius 18px), autoplay al abrir, pausa al cerrar, cierre con X naranja / backdrop / Escape, bloquea scroll del body.
+- Carga assets/demo/alejoseguro-completo-v1.mp4 con preload="none".
+- Verificado en navegador: botón visible en hero, modal abre y reproduce desde la tarjeta del logo FastAnalytics.
+- Archivos: index.html, css/styles.css, js/main.js (backups .bak-video).

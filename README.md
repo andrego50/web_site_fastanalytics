@@ -284,3 +284,9 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Hallazgos: backgroundjobs_mode=AJAX (defecto) -> cambiado a CRON real (crontab host cada 5 min: docker exec ... cron.php). opcache YA estaba activo (128MB, jit 1255). Memcache APCu+Redis OK.
 - Collabora (distroless, sin shell): extra_params += num_prewarm=6 (procesos kit pre-abiertos -> el primer documento abre rapido), idle_timeout 1800s, always_save_on_exit, batch_priority. Recreado.
 - Resultado medido (tunel): status 0.39->0.27s, login 0.42->0.31s, discovery 0.36->0.27s (~30% mas rapido). Apertura de documentos mejora por prewarm (sin esperar arranque de LibreOffice).
+
+### 2026-08-08 (15) — Collabora: jail bind-mount activado
+- Alerta roja del Server audit ("Slow Kit jail setup with copying, cannot bind-mount") corregida:
+  se añadió cap SYS_ADMIN + security_opt seccomp/apparmor unconfined al contenedor collabora.
+- Verificado en logs: "Bind-mounted", adms_bindmounted=ok, jail init en 164ms.
+- Discovery 200 (1.8ms), nube status 200 (33ms), contenedor healthy.

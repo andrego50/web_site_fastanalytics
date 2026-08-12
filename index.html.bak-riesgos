@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FastAnalytics | Base científica y tecnológica para seguridad predictiva</title>
+  <meta name="description" content="FastAnalytics S.A.S. es una empresa de base científica y tecnológica que aplica modelos matemáticos, IA y datos espaciotemporales. Foco actual: seguridad ciudadana.">
+  <meta name="keywords" content="inteligencia artificial, machine learning, seguridad ciudadana, datos espaciotemporales, analítica predictiva, Colombia, chatbots, dashboards, modelamiento matemático, IA para gobierno, convivencia, Bogotá, Latinoamérica, base científica y tecnológica">
+  <meta name="author" content="FastAnalytics S.A.S.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FastAnalytics | Base científica y tecnológica para seguridad predictiva">
+  <meta property="og:description" content="Empresa de base científica y tecnológica. Modelos matemáticos, IA y datos espaciotemporales aplicados a la seguridad ciudadana.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fastanalytics.co">
+  <meta property="og:image" content="https://fastanalytics.co/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FastAnalytics | Base científica y tecnológica para seguridad predictiva">
+  <meta name="twitter:description" content="Empresa de base científica y tecnológica. Modelos matemáticos, IA y datos espaciotemporales aplicados a la seguridad ciudadana.">
+  <meta name="twitter:image" content="https://fastanalytics.co/assets/images/og-image.png">
+
+  <!-- Favicon (multiple formats for cross-browser support) -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://fastanalytics.co">
+  <link rel="alternate" hreflang="es" href="https://fastanalytics.co">
+  <link rel="alternate" hreflang="en" href="https://fastanalytics.co">
+  <link rel="alternate" hreflang="x-default" href="https://fastanalytics.co">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css?v=8">
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FastAnalytics S.A.S.",
+    "url": "https://fastanalytics.co",
+    "logo": "https://fastanalytics.co/assets/images/logo.svg",
+    "description": "Empresa de base científica y tecnológica. Modelos matemáticos e inteligencia artificial espaciotemporal para decisiones predictivas, con foco en seguridad ciudadana.",
+    "email": "hola@fastanalytics.co",
+    "foundingDate": "2024",
+    "areaServed": ["Colombia", "Latin America"],
+    "knowsAbout": [
+      "Spatiotemporal AI",
+      "Predictive Analytics",
+      "Machine Learning",
+      "Public Safety Analytics",
+      "Data Science",
+      "Chatbot Development",
+      "Mathematical Modeling",
+      "Citizen Security",
+      "Geospatial Analysis"
+    ],
+    "sameAs": [
+      "https://www.instagram.com/fast_analytics",
+      "https://www.linkedin.com/company/fastanalytics-sas",
+      "https://www.facebook.com/FastAnalyticsSAS"
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Andrés Pérez Coronado",
+      "jobTitle": "Founder & AI/ML Architect",
+      "url": "https://andrego50.github.io",
+      "sameAs": [
+        "https://andrego50.github.io",
+        "https://independent.academia.edu/AndrésPérezCoronado",
+        "https://www.linkedin.com/in/andres-perez-coronado-63792618/"
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Universidad EAFIT"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "IAE, Université Grenoble Alpes"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Minnesota"
+        }
+      ],
+      "knowsAbout": ["Mathematical Engineering", "Spatiotemporal Modeling", "Citizen Security", "AI for Public Safety"]
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios FastAnalytics",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Spatiotemporal Modeling (ML/AI)"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Agents for Decision-Making"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Data Collection (bots, surveys)"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Security & Coexistence Consulting"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dashboards / Data Visualization"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Data Training & Education"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Research & Publications"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Chatbot Development"}}
+      ]
+    }
+  }
+  </script>
+
+  <!-- Structured Data: SoftwareApplication (Products) -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GusCoordina",
+      "description": "Sala digital para Puestos de Mando Unificado (PMU) con chat IA, consolidación de métricas, boletines automáticos y analítica predictiva en R",
+      "url": "https://guscoordina.fastanalytics.co/",
+      "applicationCategory": "GovernmentApplication",
+      "operatingSystem": "Web"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AlejoSeguro",
+      "description": "Chatbot de Telegram para recolección de percepciones de seguridad ciudadana en Bogotá",
+      "url": "https://t.me/AlejoSeguro_bot",
+      "applicationCategory": "GovernmentApplication",
+      "operatingSystem": "Telegram"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "CeciEnseña",
+      "description": "Chatbot educativo con IA para experiencias de aprendizaje personalizadas en Telegram",
+      "url": "https://t.me/Ceci_Teaches_bot",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Telegram"
+    }
+  ]
+  </script>
+
+  <!-- Structured Data: Publications -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "Policía para el Desarrollo Humano",
+      "author": {"@type": "Person", "name": "Andrés Pérez Coronado"},
+      "publisher": {"@type": "Organization", "name": "Grupo Editorial Ibáñez"},
+      "datePublished": "2021",
+      "about": "Convivencia y seguridad ciudadana en Latinoamérica",
+      "url": "https://grupoeditorialibanez.com/policia-para-el-desarrollo-humano-pdh/"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "Analítica de datos para la seguridad ciudadana: Modelos matemáticos para la anticipación de respuestas orientadas a la convivencia",
+      "author": {"@type": "Person", "name": "Andrés Pérez Coronado"},
+      "datePublished": "2024",
+      "publisher": {"@type": "Organization", "name": "Editorial Logos"},
+      "url": "https://revistalogos.policia.edu.co:8443/omp/index.php/editorial/catalog/book/102"
+    }
+  ]
+  </script>
+
+  <!-- Google Analytics 4 (reemplazar G-XXXXXXXXXX con tu Measurement ID) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-logo">
+        <img src="assets/images/logo-nav.svg" alt="FastAnalytics" class="logo-img">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#casos" data-es="Ecosistema" data-en="Ecosystem" data-fr="Écosystème">Ecosistema</a></li>
+        <li><a href="#resultados" data-es="Resultados" data-en="Results" data-fr="Résultats">Resultados</a></li>
+        <li><a href="#investigacion" data-es="Investigación" data-en="Research" data-fr="Recherche">Investigación</a></li>
+                <li><a href="#contacto" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma">
+          <span class="lang-option active" data-lang="es">ES</span>
+          <span class="lang-separator">|</span>
+          <span class="lang-option" data-lang="en">EN</span>
+          <span class="lang-separator">|</span>
+          <span class="lang-option" data-lang="fr">FR</span>
+        </button>
+        <a href="#contacto" class="btn btn-primary btn-nav" data-es="Agenda una demo" data-en="Book a demo" data-fr="Réservez une démo">Agenda una demo</a>
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <canvas id="heroCanvas"></canvas>
+      <div class="hero-glow"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title animate-on-scroll">
+          <span data-es="Anticipamos los " data-en="We anticipate " data-fr="Nous anticipons les ">Anticipamos los </span><span class="hero-rotate" id="heroRotate">riesgos</span><br>
+          <span data-es="para que su ciudad " data-en="so your city " data-fr="pour que votre ville ">para que su ciudad </span><span class="text-gradient" data-es="actúe primero" data-en="acts first" data-fr="agisse en premier">actúe primero</span>
+        </h1>
+        <p class="hero-subtitle animate-on-scroll" data-es="Un ecosistema de IA que cierra el ciclo completo: el ciudadano reporta, la IA analiza, el mando coordina y usted decide antes de que el riesgo se convierta en crisis." data-en="An AI ecosystem that closes the full loop: citizens report, AI analyzes, command coordinates, and you decide before risk becomes crisis." data-fr="Un écosystème d&#8217;IA qui boucle tout le cycle : le citoyen signale, l&#8217;IA analyse, le commandement coordonne et vous décidez avant que le risque ne devienne une crise.">Un ecosistema de IA que cierra el ciclo completo: el ciudadano reporta, la IA analiza, el mando coordina y usted decide antes de que el riesgo se convierta en crisis.</p>
+        <div class="hero-cta animate-on-scroll">
+          <a href="#contacto" class="btn btn-primary btn-lg" data-es="Agenda una demo" data-en="Book a demo" data-fr="Réservez une démo">Agenda una demo</a>
+          <a href="demo-seguridad-urbana.html" class="btn btn-outline btn-lg" data-es="Vive el caso real" data-en="Live the real case" data-fr="Vivez le cas réel">Vive el caso real</a>
+          <a href="https://andrego50.github.io" target="_blank" rel="noopener" class="hero-founder-link" data-es="Conoce al fundador →" data-en="Meet the founder →" data-fr="Rencontrez le fondateur →">Conoce al fundador →</a>
+        </div>
+        <div class="hero-stats animate-on-scroll">
+          <div class="stat">
+            <span class="stat-number">20+</span>
+            <span class="stat-label" data-es="Años de experiencia del fundador" data-en="Years of founder experience" data-fr="Années d'expérience du fondateur">Años de experiencia del fundador</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">80+</span>
+            <span class="stat-label" data-es="Analistas liderados" data-en="Analysts led" data-fr="Analystes dirigés">Analistas liderados</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">✓</span>
+            <span class="stat-label" data-es="Resultados en prensa y revistas científicas" data-en="Results in press and scientific journals" data-fr="Résultats dans la presse et les revues scientifiques">Resultados en prensa y revistas científicas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual: mapa de Colombia en vivo + alerta predictiva del ecosistema -->
+      <div class="hero-visual animate-on-scroll">
+        <svg class="hero-map" viewBox="0 0 500 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="hgCol" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#2DD4BF" stop-opacity=".22"/>
+              <stop offset="100%" stop-color="#0D9488" stop-opacity=".06"/>
+            </linearGradient>
+            <filter id="hgGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <path d="M346.3 59.2L325.7 65.6L316.3 80.9L302.0 92.6L291.8 126.6L280.2 146.0L290.1 143.9L298.6 148.8L302.8 164.4L311.7 175.5L309.1 200.3L317.6 205.4L324.1 216.3L352.5 217.8L365.2 214.5L384.8 218.9L407.5 245.9L458.2 240.5L470.4 244.1L470.7 252.2L459.3 273.7L458.3 298.5L464.6 319.4L475.9 334.0L458.2 354.3L466.0 354.3L479.2 367.4L489.7 401.0L490.0 405.4L483.3 406.6L482.1 389.7L473.0 376.3L455.7 388.3L447.4 380.5L448.0 389.2L393.9 389.6L393.8 410.7L411.3 411.0L416.4 423.7L406.1 421.4L387.3 426.3L386.7 449.7L400.8 461.7L408.4 484.0L390.1 583.0L378.0 569.3L365.2 568.2L385.9 531.7L357.7 517.0L343.8 521.1L332.4 515.2L317.3 523.3L293.9 523.1L287.0 519.3L285.7 504.7L276.0 500.3L270.5 485.8L251.7 476.8L246.2 464.1L233.8 451.7L202.3 442.3L186.3 430.9L179.0 437.5L149.9 432.4L140.0 417.9L120.3 411.1L97.2 392.3L104.7 385.0L111.7 387.5L111.3 368.5L128.2 363.5L136.4 356.8L160.2 317.8L154.2 318.5L153.7 313.1L151.1 316.8L149.5 307.0L145.9 308.1L153.5 291.5L150.6 271.9L145.4 265.0L154.7 257.1L147.5 244.2L150.8 231.2L133.6 209.9L138.1 194.7L145.3 199.0L156.4 185.8L147.2 168.6L150.0 163.9L169.6 187.1L170.1 174.8L165.3 166.2L186.1 152.7L194.2 140.4L206.7 137.7L210.0 113.1L204.5 115.1L212.9 99.9L232.4 83.7L249.0 87.4L243.0 91.7L246.7 94.9L255.1 76.8L281.9 77.6L315.5 58.3L320.0 48.6L333.6 41.0L348.2 43.8L352.2 53.2L346.3 59.2Z" fill="url(#hgCol)" stroke="rgba(45,212,191,.35)" stroke-width="1.5"/>
+          <g stroke="#2DD4BF" stroke-width="1" opacity=".22" stroke-dasharray="4 4">
+            <line x1="229" y1="91" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.8s" repeatCount="indefinite"/></line>
+            <line x1="203" y1="244" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite"/></line>
+            <line x1="171" y1="335" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.2s" repeatCount="indefinite"/></line>
+            <line x1="387" y1="584" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.5s" repeatCount="indefinite"/></line>
+          </g>
+          <g filter="url(#hgGlow)">
+            <circle cx="252" cy="294" r="7" fill="#2DD4BF" opacity=".9"><animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite"/></circle>
+            <text x="228" y="290" text-anchor="end" fill="#5EEAD4" font-size="12" font-weight="700">Bogotá</text>
+            <circle cx="229" cy="91" r="6" fill="#D4883A"><animate attributeName="r" values="5;8;5" dur="1.6s" repeatCount="indefinite"/></circle>
+            <circle cx="229" cy="91" r="12" fill="none" stroke="#D4883A" stroke-width="1" opacity=".5"><animate attributeName="r" values="8;18;8" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0;.5" dur="1.6s" repeatCount="indefinite"/></circle>
+            <text x="229" y="77" text-anchor="middle" fill="#D4883A" font-size="11" font-weight="700">Suroccidente</text>
+            <circle cx="203" cy="244" r="4.5" fill="#2DD4BF" opacity=".6"/><text x="180" y="241" text-anchor="end" fill="#94A3B8" font-size="9">Medellín</text>
+            <circle cx="171" cy="335" r="4" fill="#2DD4BF" opacity=".6"/><text x="151" y="332" text-anchor="end" fill="#94A3B8" font-size="9">Cali</text>
+            <circle cx="205" cy="110" r="4" fill="#2DD4BF" opacity=".5"/><text x="185" y="107" text-anchor="end" fill="#94A3B8" font-size="8">Cartagena</text>
+            <circle cx="387" cy="584" r="3.5" fill="#2DD4BF" opacity=".5"><animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/></circle>
+            <text x="387" y="574" text-anchor="middle" fill="#94A3B8" font-size="8">Leticia</text>
+          </g>
+        </svg>
+        <div class="hero-alert-card">
+          <div class="hero-alert-top">
+            <span class="hero-alert-dot"></span>
+            <span data-es="Alerta predictiva · En vivo" data-en="Predictive alert · Live" data-fr="Alerte prédictive · En direct">Alerta predictiva · En vivo</span>
+          </div>
+          <div class="hero-alert-main">
+            <span data-es="Extorsión · Suroccidente" data-en="Extortion · Southwest" data-fr="Extorsion · Sud-ouest">Extorsión · Suroccidente</span>
+            <span class="hero-alert-risk" data-es="Riesgo 8/10" data-en="Risk 8/10" data-fr="Risque 8/10">Riesgo 8/10</span>
+          </div>
+          <div class="hero-alert-bar"><span></span></div>
+          <div class="hero-alert-flow">AlejoSeguro → GusCoordina → GabyPredice</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICIOS ========== -->
+
+  <!-- ========== CASOS DE ÉXITO ========== -->
+  <section class="section cases" id="casos">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag" data-es="Pruébalos ahora" data-en="Try them now" data-fr="Essayez-les maintenant">Pruébalos ahora</span>
+        <h2 class="section-title" data-es="Nuestros productos" data-en="Our products" data-fr="Nos produits">Nuestros productos</h2>
+        <p class="section-subtitle" data-es="En producción, listos para probar." data-en="In production, ready to try." data-fr="En production, prêts à essayer.">En producción, listos para probar.</p>
+      </div>
+      <div class="cases-grid">
+        <div class="pc-group animate-on-scroll"><span class="pc-group-emoji">🛡️</span> <span data-es="Seguridad ciudadana" data-en="Citizen security" data-fr="Sécurité citoyenne">Seguridad ciudadana</span></div>
+        <a class="pc-card animate-on-scroll" href="mailto:hola@fastanalytics.co?subject=Demo CatheAsiste">
+          <img class="pc-logo" src="assets/images/logos/catheastiste-v8.png" alt="CatheAsiste - Logo" loading="lazy">
+          <div class="pc-name">CatheAsiste</div>
+          <div class="pc-desc" data-es="Todo empieza con Cathe: escucha a la ciudadanía por chat y voz, 24/7." data-en="It all starts with Cathe: she listens to citizens via chat and voice, 24/7." data-fr="Tout commence avec Cathe : elle écoute les citoyens par chat et voix, 24/7.">Todo empieza con Cathe: escucha a la ciudadanía por chat y voz, 24/7.</div>
+        </a>
+        <a class="pc-card animate-on-scroll" href="https://t.me/AlejoSeguro_bot" target="_blank" rel="noopener">
+          <img class="pc-logo" src="assets/images/logos/alejoseguro-v8.png" alt="AlejoSeguro - Logo" loading="lazy">
+          <div class="pc-name">AlejoSeguro</div>
+          <div class="pc-desc" data-es="Percepción de seguridad desde Telegram. Anónimo, 2 minutos." data-en="Safety perception via Telegram. Anonymous, 2 minutes." data-fr="Perception de la sécurité via Telegram. Anonyme, 2 minutes.">Percepción de seguridad desde Telegram. Anónimo, 2 minutos.</div>
+        </a>
+        <a class="pc-card animate-on-scroll" href="demo-seguridad-urbana.html">
+          <img class="pc-logo pc-logo-svg" src="assets/images/favicon.svg" alt="Demo seguridad urbana - Logo" loading="lazy">
+          <div class="pc-name">Demo seguridad urbana</div>
+          <div class="pc-desc" data-es="Recorrido inmersivo: del reporte ciudadano a la acción en terreno." data-en="Immersive walkthrough: from citizen report to field action." data-fr="Parcours immersif : du signalement citoyen à l'action sur le terrain.">Recorrido inmersivo: del reporte ciudadano a la acción en terreno.</div>
+        </a>
+        <a class="pc-card animate-on-scroll" href="https://guscoordina.fastanalytics.co/" target="_blank" rel="noopener">
+          <img class="pc-logo" src="assets/images/logos/guscoordina-v8.png" alt="GusCoordina - Logo" loading="lazy">
+          <div class="pc-name">GusCoordina</div>
+          <div class="pc-desc" data-es="Sala digital para Puestos de Mando Unificado." data-en="Digital room for Unified Command Posts." data-fr="Salle digitale pour Postes de Commandement Unifiés.">Sala digital para Puestos de Mando Unificado.</div>
+        </a>
+        <a class="pc-card animate-on-scroll" href="mailto:hola@fastanalytics.co?subject=Demo GabyPredice">
+          <img class="pc-logo" src="assets/images/logos/gabypredice-v8.png" alt="GabyPredice - Logo" loading="lazy">
+          <div class="pc-name">GabyPredice</div>
+          <div class="pc-desc" data-es="Decisiones predictivas: dónde y cuándo actuar." data-en="Predictive decisions: where and when to act." data-fr="Décisions prédictives : où et quand agir.">Decisiones predictivas: dónde y cuándo actuar.</div>
+        </a>
+        <div class="pc-group animate-on-scroll"><span class="pc-group-emoji">📊</span> <span data-es="Analítica e investigación" data-en="Analytics & research" data-fr="Analytique et recherche">Analítica e investigación</span></div>
+        <a class="pc-card animate-on-scroll" href="https://mile-ia.fastanalytics.co/chat" target="_blank" rel="noopener">
+          <img class="pc-logo" src="assets/images/logos/mileinvestiga-v8.png" alt="Mile-IA - Logo" loading="lazy">
+          <div class="pc-name">Mile-IA</div>
+          <div class="pc-desc" data-es="Investigación de fraude bancario con IA." data-en="AI-powered banking fraud investigation." data-fr="Investigation de fraude bancaire par IA.">Investigación de fraude bancario con IA.</div>
+        </a>
+        <div class="pc-group animate-on-scroll"><span class="pc-group-emoji">🎓</span> <span data-es="Formación y comunidad" data-en="Training & community" data-fr="Formation et communauté">Formación y comunidad</span></div>
+        <a class="pc-card animate-on-scroll" href="https://t.me/Ceci_Teaches_bot" target="_blank" rel="noopener">
+          <img class="pc-logo" src="assets/images/logos/ceci-v9.png" alt="CeciEnseña - Logo" loading="lazy">
+          <div class="pc-name">CeciEnseña</div>
+          <div class="pc-desc" data-es="Profesor IA personalizado en Telegram." data-en="Personalized AI teacher on Telegram." data-fr="Professeur IA personnalisé sur Telegram.">Profesor IA personalizado en Telegram.</div>
+        </a>
+        <a class="pc-card animate-on-scroll" href="mailto:hola@fastanalytics.co?subject=TavoDebate">
+          <img class="pc-logo" src="assets/images/logos/tavo-v9.png" alt="TavoDebate - Logo" loading="lazy">
+          <div class="pc-name">TavoDebate</div>
+          <div class="pc-desc" data-es="Sesiones legislativas con 10 IAs en paralelo." data-en="Legislative sessions with 10 parallel AIs." data-fr="Sessions législatives avec 10 IA en parallèle.">Sesiones legislativas con 10 IAs en paralelo.</div>
+        </a>
+        <a class="pc-card animate-on-scroll" href="https://veteranos.fastanalytics.co" target="_blank" rel="noopener">
+          <img class="pc-logo" src="assets/images/logos/veterana-v2.png" alt="Veteranos - Logo" loading="lazy">
+          <div class="pc-name">Veteranos</div>
+          <div class="pc-desc" data-es="Oficios y plazos legales de veteranos, bajo control." data-en="Veterans' petitions and legal deadlines, under control." data-fr="Courriers et délais légaux des vétérans, sous contrôle.">Oficios y plazos legales de veteranos, bajo control.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESULTADOS ========== -->
+  <section class="section results" id="resultados">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag" data-es="Impacto real" data-en="Real impact" data-fr="Impact réel">Impacto real</span>
+        <h2 class="section-title" data-es="Resultados que hablan solos" data-en="Results that speak for themselves" data-fr="Des résultats qui parlent d'eux-mêmes">Resultados que hablan solos</h2>
+        <p class="section-subtitle" data-es="Estrategias basadas en nuestros modelos, presentadas por generales y alcaldes." data-en="Strategies based on our models, presented by generals and mayors." data-fr="Stratégies basées sur nos modèles, présentées par des généraux et des maires.">Estrategias basadas en nuestros modelos, presentadas por generales y alcaldes.</p>
+      </div>
+      <div class="results-carousel animate-on-scroll">
+        <div class="results-track">
+          <div class="result-slide">
+            <img src="assets/images/resultado-2021.png" alt="Resultados Diciembre 2021 - Colombia vivió el diciembre más seguro en 19 años" loading="lazy">
+          </div>
+          <div class="result-slide">
+            <img src="assets/images/resultado-2024.png" alt="Resultados 2024 - Se rompió la tendencia del delito en Colombia" loading="lazy">
+          </div>
+          <div class="result-slide">
+            <img src="assets/images/resultado-modelo.png" alt="Modelo Cuadrantes Outliers - Metodología" loading="lazy">
+          </div>
+        </div>
+        <div class="results-controls">
+          <button class="results-btn results-prev" aria-label="Anterior">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div class="results-dots">
+            <button class="results-dot active" aria-label="Slide 1"></button>
+            <button class="results-dot" aria-label="Slide 2"></button>
+            <button class="results-dot" aria-label="Slide 3"></button>
+          </div>
+          <button class="results-btn results-next" aria-label="Siguiente">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="results-sources animate-on-scroll">
+        <p data-es="Fuentes:" data-en="Sources:" data-fr="Sources :">Fuentes:</p>
+        <a href="https://www.semana.com/nacion/articulo/colombia-vivio-el-diciembre-mas-seguro-de-los-ultimos-19-anos-policia/202226/" target="_blank" rel="noopener">Semana</a>
+        <a href="https://www.eltiempo.com/bogota/balance-de-seguridad-de-2021-en-bogota-homicidio-y-hurto-bajaron-642871" target="_blank" rel="noopener">El Tiempo</a>
+        <a href="https://bogota.gov.co/mi-ciudad/seguridad/bogota-rompio-la-tendencia-del-delito-y-redujo-el-hurto-en-bogota" target="_blank" rel="noopener">Bogotá.gov.co</a>
+        <a href="https://www.cali.gov.co/seguridad/publicaciones/170504/cali-registro-reduccion-historica-en-el-numero-de-homicidios/" target="_blank" rel="noopener">Cali.gov.co</a>
+      </div>
+    </div>
+      </section>
+
+  <!-- ========== INVESTIGACIÓN ========== -->
+  <!-- ========== INVESTIGACION (franja compacta) ========== -->
+  <section class="section strip" id="investigacion">
+    <div class="container strip-row animate-on-scroll">
+      <span class="strip-label" data-es="Investigación" data-en="Research" data-fr="Recherche">Investigación</span>
+      <span class="strip-text" data-es="7+ papers aplicados a seguridad y salud pública" data-en="7+ papers applied to security and public health" data-fr="7+ articles appliqués à la sécurité et à la santé publique">7+ papers aplicados a seguridad y salud pública</span>
+      <a class="strip-link" href="https://independent.academia.edu/Andr%C3%A9sP%C3%A9rezCoronado" target="_blank" rel="noopener" data-es="Ver perfil →" data-en="View profile →" data-fr="Voir le profil →">Ver perfil →</a>
+    </div>
+  </section>
+
+
+  <!-- ========== REDES SOCIALES ========== -->
+
+  <!-- ========== CURSOS ========== -->
+  <!-- ========== CURSOS (franja compacta) ========== -->
+  <section class="section strip" id="cursos">
+    <div class="container strip-row animate-on-scroll">
+      <span class="strip-label" data-es="Formación" data-en="Training" data-fr="Formation">Formación</span>
+      <span class="strip-text" data-es="IA para Analítica de Redes Criminales · 10h virtual" data-en="AI for Criminal Network Analytics · 10h virtual" data-fr="IA pour l'analytique des réseaux criminels · 10h en ligne">IA para Analítica de Redes Criminales · 10h virtual</span>
+      <a class="strip-link" href="curso-redes-criminales.html" data-es="Ver curso →" data-en="View course →" data-fr="Voir le cours →">Ver curso →</a>
+      <span class="strip-sep" style="color:var(--border)">|</span>
+      <a class="strip-link" href="chronnet/" data-es="Taller Chronnet →" data-en="Chronnet workshop →" data-fr="Atelier Chronnet →">Taller Chronnet →</a>
+    </div>
+  </section>
+
+
+  <!-- ========== FOOTER / CONTACTO ========== -->
+  <footer class="footer" id="contacto">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <img src="assets/images/logo-light.svg" alt="FastAnalytics" class="footer-logo">
+          <p class="footer-tagline" data-es="Datos + IA para que actúes antes, no después" data-en="Data + AI so you act before, not after" data-fr="Données + IA pour agir avant, pas après">Datos + IA para que actúes antes, no después</p>
+          <div class="footer-admin-row">
+            <span class="footer-admin-label" data-es="Acceso rápido (admin):" data-en="Quick access (admin):" data-fr="Accès rapide (admin) :">Acceso rápido (admin):</span>
+            <a href="https://agenda.fastanalytics.co/andres/demo" target="_blank" rel="noopener" class="admin-chip" data-es="📅 Agendar" data-en="📅 Schedule" data-fr="📅 Planifier">📅 Agendar</a>
+            <a href="https://nube.fastanalytics.co" target="_blank" rel="noopener" class="admin-chip" data-es="📄 Crear documentos" data-en="📄 Create documents" data-fr="📄 Créer des documents">📄 Crear documentos</a>
+            <a href="https://meet.fastanalytics.co" target="_blank" rel="noopener" class="admin-chip" data-es="🎥 Videollamada" data-en="🎥 Video call" data-fr="🎥 Visioconférence">🎥 Videollamada</a>
+          </div>
+          <div class="footer-cta-row">
+            <a href="mailto:hola@fastanalytics.co" class="btn btn-primary btn-lg footer-cta" data-es="Hablemos" data-en="Let's talk" data-fr="Parlons">Hablemos</a>
+            <a href="#" data-cal-link="andres/demo" data-cal-namespace="demo" data-cal-config='{"layout":"month_view"}' class="btn btn-outline btn-lg footer-cta" data-es="Agenda una demo" data-en="Book a demo" data-fr="Réservez une démo">Agenda una demo</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4 data-es="Navegación" data-en="Navigation" data-fr="Navigation">Navegación</h4>
+            <ul>
+                    <li><a href="#casos" data-es="Ecosistema" data-en="Ecosystem" data-fr="Écosystème">Ecosistema</a></li>
+        <li><a href="#resultados" data-es="Resultados" data-en="Results" data-fr="Résultats">Resultados</a></li>
+              <li><a href="#investigacion" data-es="Investigación" data-en="Research" data-fr="Recherche">Investigación</a></li>
+              <li><a href="#contacto" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</h4>
+            <ul>
+              <li><a href="mailto:hola@fastanalytics.co">hola@fastanalytics.co</a></li>
+              <li data-es="Colombia" data-en="Colombia" data-fr="Colombie">Colombia</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-es="Legal" data-en="Legal" data-fr="Légal">Legal</h4>
+            <ul>
+              <li><a href="eliminar-datos.html" data-es="Eliminación de datos" data-en="Data deletion" data-fr="Suppression des données">Eliminación de datos</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-social">
+          <a href="https://www.instagram.com/fast_analytics" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/FastAnalyticsSAS" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/fastanalytics-sas" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+        <p class="footer-copy">&copy; 2026 FastAnalytics S.A.S. <span data-es="Todos los derechos reservados." data-en="All rights reserved." data-fr="Tous droits réservés.">Todos los derechos reservados.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Anterior">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Siguiente">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <img class="lightbox-image" id="lightboxImage" src="" alt="">
+    <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
+  </div>
+
+  <!-- ========== MODAL: AGENDA TU DEMO ========== -->
+  <div class="agenda-modal" id="agendaModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="agenda-backdrop" id="agendaBackdrop"></div>
+    <div class="agenda-card">
+      <button class="agenda-close" id="agendaClose" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="agenda-head">
+        <h3 data-es="Agenda tu demo" data-en="Book your demo" data-fr="Réservez votre démo">Agenda tu demo</h3>
+        <p data-es="Cuéntanos quién eres y qué riesgo quieres anticipar. Te escribimos para agendar la sesión." data-en="Tell us who you are and which risk you want to anticipate. We'll write back to schedule the session." data-fr="Dites-nous qui vous êtes et quel risque vous voulez anticiper. Nous vous écrirons pour planifier la session.">Cuéntanos quién eres y qué riesgo quieres anticipar. Te escribimos para agendar la sesión.</p>
+      </div>
+      <form id="agendaForm" novalidate>
+        <div class="agenda-row">
+          <div class="agenda-field">
+            <label for="agNombre" data-es="Nombre *" data-en="Name *" data-fr="Nom *">Nombre *</label>
+            <input type="text" id="agNombre" name="nombre" required autocomplete="name">
+          </div>
+          <div class="agenda-field">
+            <label for="agEmail" data-es="Correo *" data-en="Email *" data-fr="E-mail *">Correo *</label>
+            <input type="email" id="agEmail" name="email" required autocomplete="email">
+          </div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-field">
+            <label for="agEntidad" data-es="Entidad / empresa" data-en="Organization" data-fr="Organisation">Entidad / empresa</label>
+            <input type="text" id="agEntidad" name="entidad" autocomplete="organization">
+          </div>
+          <div class="agenda-field">
+            <label for="agCargo" data-es="Cargo" data-en="Role" data-fr="Fonction">Cargo</label>
+            <input type="text" id="agCargo" name="cargo" autocomplete="organization-title">
+          </div>
+        </div>
+        <div class="agenda-field">
+          <label for="agCiudad" data-es="Ciudad / territorio" data-en="City / territory" data-fr="Ville / territoire">Ciudad / territorio</label>
+          <input type="text" id="agCiudad" name="ciudad" autocomplete="address-level2">
+        </div>
+        <div class="agenda-field">
+          <label for="agMensaje" data-es="¿Qué riesgo quieres anticipar?" data-en="Which risk do you want to anticipate?" data-fr="Quel risque voulez-vous anticiper ?">¿Qué riesgo quieres anticipar?</label>
+          <textarea id="agMensaje" name="mensaje" rows="3"></textarea>
+        </div>
+        <!-- Honeypot anti-bots (oculto para humanos) -->
+        <input type="text" name="website" id="agWebsite" tabindex="-1" autocomplete="off" class="agenda-hp" aria-hidden="true">
+        <button type="submit" class="btn btn-primary btn-lg agenda-submit" id="agendaSubmit">
+          <span data-es="Enviar solicitud" data-en="Send request" data-fr="Envoyer la demande">Enviar solicitud</span>
+        </button>
+        <div class="agenda-status" id="agendaStatus" role="status"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js?v=2"></script>
+  <script src="js/hero-network.js"></script>
+  <script>
+    // Results carousel
+    (function() {
+      const track = document.querySelector('.results-track');
+      if (!track) return;
+      const slides = track.querySelectorAll('.result-slide');
+      const dots = document.querySelectorAll('.results-dot');
+      const prevBtn = document.querySelector('.results-prev');
+      const nextBtn = document.querySelector('.results-next');
+      let current = 0;
+      const total = slides.length;
+
+      function goTo(i) {
+        current = (i + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function(d, idx) { d.classList.toggle('active', idx === current); });
+      }
+
+      prevBtn.addEventListener('click', function() { goTo(current - 1); });
+      nextBtn.addEventListener('click', function() { goTo(current + 1); });
+      dots.forEach(function(dot, idx) {
+        dot.addEventListener('click', function() { goTo(idx); });
+      });
+
+      // Auto-advance every 5s
+      let timer = setInterval(function() { goTo(current + 1); }, 5000);
+      track.closest('.results-carousel').addEventListener('mouseenter', function() { clearInterval(timer); });
+      track.closest('.results-carousel').addEventListener('mouseleave', function() { timer = setInterval(function() { goTo(current + 1); }, 5000); });
+
+      // Swipe support
+      let startX = 0;
+      track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; clearInterval(timer); }, {passive: true});
+      track.addEventListener('touchend', function(e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+        timer = setInterval(function() { goTo(current + 1); }, 5000);
+      }, {passive: true});
+    })();
+  </script>
+
+  <!-- Cal.com embed (agenda.fastanalytics.co) -->
+  <script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://agenda.fastanalytics.co/embed-link/embed.js", "init");
+  Cal("init", "demo", {origin:"https://agenda.fastanalytics.co"});
+  Cal.ns.demo("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
+</body>
+</html>

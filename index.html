@@ -233,6 +233,7 @@
         <div class="hero-cta animate-on-scroll">
           <a href="#contacto" class="btn btn-primary btn-lg" data-es="Agenda una demo" data-en="Book a demo" data-fr="Réservez une démo">Agenda una demo</a>
           <a href="demo-seguridad-urbana.html" class="btn btn-outline btn-lg" data-es="Vive el caso real" data-en="Live the real case" data-fr="Vivez le cas réel">Vive el caso real</a>
+          <a href="#video-alejoseguro" class="btn btn-outline btn-lg" id="heroVideoBtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="margin-right:7px;vertical-align:-1.5px;"><polygon points="6,4 20,12 6,20"/></svg><span data-es="AlejoSeguro en acción" data-en="AlejoSeguro in action" data-fr="AlejoSeguro en action">AlejoSeguro en acción</span></a>
           <a href="https://andrego50.github.io" target="_blank" rel="noopener" class="hero-founder-link" data-es="Conoce al fundador →" data-en="Meet the founder →" data-fr="Rencontrez le fondateur →">Conoce al fundador →</a>
         </div>
         <div class="hero-stats animate-on-scroll">
@@ -504,6 +505,15 @@
     </button>
     <img class="lightbox-image" id="lightboxImage" src="" alt="">
     <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
+  </div>
+
+  <!-- ========== MODAL: VIDEO ALEJOSEGURO ========== -->
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="video-backdrop" id="videoBackdrop"></div>
+    <button class="video-close" id="videoClose" aria-label="Cerrar">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <video class="video-player" id="videoPlayer" controls playsinline preload="none" src="assets/demo/alejoseguro-completo-v1.mp4"></video>
   </div>
 
   <!-- ========== MODAL: AGENDA TU DEMO ========== -->

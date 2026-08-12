@@ -343,4 +343,40 @@
     });
   }
 
+
+  // ========== VIDEO MODAL (AlejoSeguro) ==========
+  var videoModal = document.getElementById('videoModal');
+  if (videoModal) {
+    var videoPlayer = document.getElementById('videoPlayer');
+
+    function openVideo() {
+      videoModal.classList.add('active');
+      videoModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      videoPlayer.currentTime = 0;
+      var pr = videoPlayer.play();
+      if (pr && pr.catch) pr.catch(function () {});
+    }
+
+    function closeVideo() {
+      videoPlayer.pause();
+      videoModal.classList.remove('active');
+      videoModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('a[href="#video-alejoseguro"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        openVideo();
+      });
+    });
+
+    document.getElementById('videoClose').addEventListener('click', closeVideo);
+    document.getElementById('videoBackdrop').addEventListener('click', closeVideo);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && videoModal.classList.contains('active')) closeVideo();
+    });
+  }
+
 })();

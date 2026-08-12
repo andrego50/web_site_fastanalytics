@@ -2630,3 +2630,60 @@ ul {
 .footer .admin-chip:hover { border-color:#D4883A; background:rgba(212,138,58,.18); color:#FFFFFF; }
 .footer .btn-outline { color:#FFFFFF; border-color:rgba(255,255,255,.45); }
 .footer .btn-outline:hover { background:rgba(255,255,255,.1); border-color:#00BFA6; }
+
+/* ========== VIDEO MODAL (AlejoSeguro) ========== */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.video-modal.active {
+  display: flex;
+}
+
+.video-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 26, 36, 0.88);
+  backdrop-filter: blur(6px);
+}
+
+.video-player {
+  position: relative;
+  max-height: 88vh;
+  max-width: min(92vw, 49.5vh);
+  width: auto;
+  height: auto;
+  background: #0E1A24;
+  border-radius: 18px;
+  border: 2px solid var(--primary);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  animation: agendaIn 0.25s ease;
+}
+
+.video-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: var(--primary);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.video-close:hover {
+  transform: scale(1.08);
+}

@@ -290,3 +290,11 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
   se añadió cap SYS_ADMIN + security_opt seccomp/apparmor unconfined al contenedor collabora.
 - Verificado en logs: "Bind-mounted", adms_bindmounted=ok, jail init en 164ms.
 - Discovery 200 (1.8ms), nube status 200 (33ms), contenedor healthy.
+
+### 2026-08-12 (16) — Rebranding: Seguridad y Gestión de Riesgos + mini-demo v9
+- Sección de productos renombrada: ES "Seguridad y gestión de riesgos" / EN "Security & risk management" / FR "Sécurité et gestion des risques" (index.html, metas y título del demo).
+- Nueva narrativa del mini-demo incluyendo gestión de riesgos (sismo, inundación, PMU multi-institución, predicción de riesgo).
+- mini-demo-v9.mp4 (66.4s): narración Kokoro ef_dora regenerada (9 segmentos), subtítulos reconstruidos desde duraciones reales,
+  banda negra opaca inferior (cubría fantasmas de subtítulos antiguos horneados en los frames upscalados),
+  mezcla voz 1.6 + música 0.04 + ducking release 1200 + limiter 0.95.
+- Verificado frame a frame (17s/40s/62s): texto sincronizado con la voz, sin residuos.

@@ -331,3 +331,11 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Carga assets/demo/alejoseguro-completo-v1.mp4 con preload="none".
 - Verificado en navegador: botón visible en hero, modal abre y reproduce desde la tarjeta del logo FastAnalytics.
 - Archivos: index.html, css/styles.css, js/main.js (backups .bak-video).
+
+### 2026-08-27 (21) — Video tutorial in-app AlejoSeguro (~30s, nuevo flujo)
+- Nuevo video vertical 1080×1920 de 29.1s para DENTRO del bot de Telegram (tutorial del producto, uso diario de barrio; sin narrativa de terremoto).
+- Nuevo flujo del bot (5 pantallazos IMG_0070-0074 + 1 reciclado IMG_0009): P1 "Lo que se mueve por aquí" (saludo con chismes) → P2 Aviso/Pregunta/Reporta → P3 compartir ubicación (ahora DESPUÉS de elegir) → P4 botón de abajo abre el mapa → P5 marca 3 puntos o continúa con ubicación → P6 envía foto/video/audio/texto → P7 recibe respuesta (reciclado, re-etiquetado PASO 7).
+- Frase multipropósito incluida: "AlejoSeguro: seguridad y riesgos, todo en un solo bot" (tarjeta puente + voz).
+- Flechas naranjas verificadas pixel a pixel; revisión frame por frame de las 10 escenas aprobada.
+- Voz Kokoro ef_dora (líneas largas a 1.06x), música aliento30.wav con ducking, subtítulos quemados, yuv420p.
+- fa-vllm pausado para TTS y restaurado: Up + 14340 MiB + api:200.

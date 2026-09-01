@@ -349,3 +349,10 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
   - Nueva sección técnica institucional en el cierre (trilingüe): soberanía de datos (datos en el datacenter de la entidad, IA en GPU FastAnalytics), dos clases de IA (razonamiento profundo + compacto alta concurrencia), piloto 3–6 meses (~300→1.000 usuarios), transferencia y soporte con SLA 15 min.
   - CTA: "Agendar piloto" (ES) / "Book the pilot" (EN) / "Planifier le pilote" (FR).
 - Backup: demo-seguridad-urbana.html.bak-defensa. I18N validado (JSON parse OK, ES/EN/FR).
+
+### 2026-09-01 (23) — Acto 1 del demo: rol claro de CatheAsiste y MileInvestiga + header con Defensa
+- Header visible del demo: "Seguridad, Defensa y Gestión de Riesgos" (antes solo en <title>).
+- Acto 1, panel derecho: nueva línea teal — "¿Y si no tiene app ni datos? CatheAsiste atiende la llamada, transcribe la voz en vivo y la enruta como dato estructurado: voz, texto, video e imagen, por cualquier canal." (rol de CatheAsiste según documento: enrutamiento multicanal).
+- Paso 2: "MileInvestiga — soporte a la investigación: más de 20 modelos de IA procesan imagen, video, audio y texto en menos de 2 segundos."
+- Narración de voz del Acto 1 actualizada (ES/EN/FR): AlejoSeguro recoge el reporte geolocalizado; CatheAsiste atiende llamadas sin app ni datos y estructura la voz; MileInvestiga da soporte a la investigación procesando la evidencia.
+- Backup: demo-seguridad-urbana.html.bak-cathe.

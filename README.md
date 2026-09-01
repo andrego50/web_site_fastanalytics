@@ -339,3 +339,13 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Flechas naranjas verificadas pixel a pixel; revisión frame por frame de las 10 escenas aprobada.
 - Voz Kokoro ef_dora (líneas largas a 1.06x), música aliento30.wav con ducking, subtítulos quemados, yuv420p.
 - fa-vllm pausado para TTS y restaurado: Up + 14340 MiB + api:200.
+
+### 2026-08-27 (22) — Demo alineado con la propuesta comercial del ecosistema: incluye DEFENSA
+- Tras revisión del documento "Ecosistema de Seguridad y Defensa" (ago-2026), el demo (demo-seguridad-urbana.html) queda alineado:
+  - Título/encuadre: "Seguridad, Defensa y Gestión de Riesgos"; línea hero trilingüe: "Un solo ecosistema para la seguridad ciudadana, la defensa territorial y la gestión de riesgos: del barrio urbano a la vereda rural".
+  - PMU: agente de Ingreso ahora suma la Fuerza Pública si la amenaza escala a lo territorial (ejemplo + narración).
+  - Eneágono F2 (Asunto Decisional): "seguridad pública, ciudadana o defensa", alcance subnacional o nacional, coordinación con Fiscalía, Gaula y Fuerza Pública (ES/EN/FR).
+  - Roles de producto: "AlejoSeguro escucha · CatheAsiste enruta" en la línea 01.
+  - Nueva sección técnica institucional en el cierre (trilingüe): soberanía de datos (datos en el datacenter de la entidad, IA en GPU FastAnalytics), dos clases de IA (razonamiento profundo + compacto alta concurrencia), piloto 3–6 meses (~300→1.000 usuarios), transferencia y soporte con SLA 15 min.
+  - CTA: "Agendar piloto" (ES) / "Book the pilot" (EN) / "Planifier le pilote" (FR).
+- Backup: demo-seguridad-urbana.html.bak-defensa. I18N validado (JSON parse OK, ES/EN/FR).

@@ -356,3 +356,9 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Paso 2: "MileInvestiga — soporte a la investigación: más de 20 modelos de IA procesan imagen, video, audio y texto en menos de 2 segundos."
 - Narración de voz del Acto 1 actualizada (ES/EN/FR): AlejoSeguro recoge el reporte geolocalizado; CatheAsiste atiende llamadas sin app ni datos y estructura la voz; MileInvestiga da soporte a la investigación procesando la evidencia.
 - Backup: demo-seguridad-urbana.html.bak-cathe.
+
+### 2026-09-01 (24) — Ajustes finos Acto 1: header "Seguridad, Defensa y Riesgos" + chips CatheAsiste
+- Header junto al logo: "Seguridad, Defensa y Riesgos" (se quitó "Gestión de" — ya no se parte en dos líneas).
+- Tarjeta 01 · Escucha: subtítulo revertido a "AlejoSeguro + CatheAsiste" (como estaba).
+- Apoyo gráfico bajo el celular de CatheAsiste: barra teal "CatheAsiste enruta cualquier canal" con chips 🎤 Voz · 💬 Texto · 🎥 Video · 📷 Imagen (trilingüe vía catChips).
+- Narrativa del Acto 1 reforzada (ES/EN/FR): "CatheAsiste enruta los reportes de voz, texto, video e imagen: atiende su llamada, transcribe su voz en vivo y la convierte en dato estructurado" — la escena de los celulares ahora explica a Alejo Y a Cathe.

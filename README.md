@@ -372,3 +372,11 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Narración de voz en TODOS los pasos del Acto 1 (ES/EN/FR): paso 2 MileInvestiga (ya estaba) + paso 3 "Respuesta coordinada en terreno" (fb_s2: evidencia procesada, patrulla ETA 4 min, Gaula y Fiscalía notificados) + paso 4 "De la calle a la coordinación institucional" (fb_s3: GusCoordina y sus 6 agentes).
 - Navegación hacia atrás entre pasos: dots del indicador ahora son clicables + botón "← Atrás" junto a los botones de avance (prevStep()).
 - Backup: demo-seguridad-urbana.html.bak-nav.
+
+### 2026-09-01 (27) — Audio en cada slide + redes con defensa/crimen organizado
+- Cada cambio de paso del Acto 1 tiene su propio audio, incluido VOLVER al paso 1 (recap fb_s0: AlejoSeguro escucha por Telegram, CatheAsiste enruta y estructura). Flag skipS0 evita doble narración en la entrada inicial de la escena.
+- Temas de defensa, crimen organizado y estructuras criminales integrados donde habla de redes (ES/EN/FR):
+  - Narración de MileInvestiga: "El mismo motor de redes desarma estructuras de crimen organizado y amenazas a la defensa territorial."
+  - Panel "Análisis de Redes Criminales": nuevo subtítulo netSub2 "Extorsión, crimen organizado o estructuras armadas: el mismo motor las desarma."
+  - Eneágono F3 (grafo actor-tema): detail y speech — el mismo grafo desarma estructuras de crimen organizado y amenazas a la defensa territorial.
+- Backup: demo-seguridad-urbana.html.bak-redes.

@@ -380,3 +380,7 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
   - Panel "Análisis de Redes Criminales": nuevo subtítulo netSub2 "Extorsión, crimen organizado o estructuras armadas: el mismo motor las desarma."
   - Eneágono F3 (grafo actor-tema): detail y speech — el mismo grafo desarma estructuras de crimen organizado y amenazas a la defensa territorial.
 - Backup: demo-seguridad-urbana.html.bak-redes.
+
+### 2026-09-01 (28) — Fix: espacio vacío en el celular de CatheAsiste
+- Las burbujas de la llamada de CatheAsiste heredaban .chat-bubble (opacity:0) pero animateChat() solo revelaba #chatArea (celular Alejo) → quedaban invisibles y el celular se veía vacío (contenido arriba y abajo, hueco al centro).
+- Fix: id="callArea" en el contenedor de la llamada; animateChat() ahora revela también las burbujas de CatheAsiste cuando termina el chat de Alejo (efecto secuencial: chat Alejo → llamada Cathe).

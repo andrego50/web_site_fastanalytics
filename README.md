@@ -366,3 +366,9 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 ### 2026-09-01 (25) — Narración de voz en el paso MileInvestiga (Acto 1)
 - Los pasos internos del Acto 1 no tenían narración propia (solo la escena completa). Se agrega audio al entrar al paso 2 "La IA investiga la evidencia": speak('s1mile') dentro de showStep(1).
 - Texto ES: "MileInvestiga da soporte a la investigación: más de veinte modelos de IA procesan imagen, video, audio y texto en menos de dos segundos. Identifica el rostro del sospechoso (alias El Flaco) y la placa de la moto; y con análisis de redes criminales revela la estructura completa: cinco actores vinculados y su nodo central." — con equivalentes EN/FR (clave fb_mile).
+
+### 2026-09-01 (26) — Acto 1: sin título redundante + audio en todos los pasos + navegación atrás
+- Eliminado el título "DEL REPORTE CIUDADANO A LA ACCIÓN EN TERRENO" (h2act1) de la Escena 1 — no aportaba.
+- Narración de voz en TODOS los pasos del Acto 1 (ES/EN/FR): paso 2 MileInvestiga (ya estaba) + paso 3 "Respuesta coordinada en terreno" (fb_s2: evidencia procesada, patrulla ETA 4 min, Gaula y Fiscalía notificados) + paso 4 "De la calle a la coordinación institucional" (fb_s3: GusCoordina y sus 6 agentes).
+- Navegación hacia atrás entre pasos: dots del indicador ahora son clicables + botón "← Atrás" junto a los botones de avance (prevStep()).
+- Backup: demo-seguridad-urbana.html.bak-nav.

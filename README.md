@@ -392,3 +392,8 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Escena 3 quedó intacta (estirarla dañaba el ritmo); el concepto de estructuras ilegales en vías rurales quedó cubierto por la escena de defensa.
 - Incidente resuelto: fa-vllm entró en crash-loop porque ComfyUI quedó corriendo con 12GB de VRAM; se detuvo ComfyUI y fa-vllm recuperó solo (restart policy) → Up + 14340 MiB + api:200.
 - Referencia del demo actualizada a assets/demo/mini-demo-v10.mp4.
+
+### 2026-09-02 (30) — Mini-demo v10b: crimen organizado en escena 3
+- La lista de la escena 3 ahora incluye crimen organizado: "Un asistente escucha por chat o voz, 24/7: extorsión, crimen organizado, un sismo, una inundación. Cada reporte se vuelve datos."
+- Segmento 3 regenerado desde clean9 con nuevo sub y leve slow-mo (×1.25, imperceptible en esa toma). Duración final 78.3s.
+- fa-vllm restaurado: Up + 14340 MiB + api:200.

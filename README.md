@@ -384,3 +384,11 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 ### 2026-09-01 (28) — Fix: espacio vacío en el celular de CatheAsiste
 - Las burbujas de la llamada de CatheAsiste heredaban .chat-bubble (opacity:0) pero animateChat() solo revelaba #chatArea (celular Alejo) → quedaban invisibles y el celular se veía vacío (contenido arriba y abajo, hueco al centro).
 - Fix: id="callArea" en el contenedor de la llamada; animateChat() ahora revela también las burbujas de CatheAsiste cuando termina el chat de Alejo (efecto secuencial: chat Alejo → llamada Cathe).
+
+### 2026-09-02 (29) — Mini-demo v10: incluye perfil de DEFENSA
+- Video de contexto del demo regenerado (76.4s): NUEVA escena entre la 4 y la 5 — vía rural al atardecer con Fuerza Pública (imagen Flux propia, paleta de marca) + narración "Y si la amenaza es territorial — crimen organizado, estructuras ilegales en vías y veredas — el mismo ecosistema articula a la Fuerza Pública. También es defensa."
+- Retoques: escena 5 (PMU) ahora coordina también "la Fuerza Pública"; cierre: "Seguridad, defensa y gestión de riesgos. Entre al demo."
+- Técnica: segmentos intactos re-cortados de mini-demo-v9/clean9 (calidad original), nueva escena con zoompan, subs por segmento, voz Kokoro ef_dora, música epic-theme con ducking. Revisión frame por frame (11 frames + 5 uniones) aprobada.
+- Escena 3 quedó intacta (estirarla dañaba el ritmo); el concepto de estructuras ilegales en vías rurales quedó cubierto por la escena de defensa.
+- Incidente resuelto: fa-vllm entró en crash-loop porque ComfyUI quedó corriendo con 12GB de VRAM; se detuvo ComfyUI y fa-vllm recuperó solo (restart policy) → Up + 14340 MiB + api:200.
+- Referencia del demo actualizada a assets/demo/mini-demo-v10.mp4.

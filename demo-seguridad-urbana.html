@@ -310,7 +310,7 @@ function hookEnterFn(){
                     <span class="w-1 rounded animate-pulse" style="height:40%;background:#2DD4BF"></span><span class="w-1 rounded animate-pulse" style="height:90%;background:#2DD4BF;animation-delay:.1s"></span><span class="w-1 rounded animate-pulse" style="height:60%;background:#00BFA6;animation-delay:.2s"></span><span class="w-1 rounded animate-pulse" style="height:100%;background:#2DD4BF;animation-delay:.3s"></span><span class="w-1 rounded animate-pulse" style="height:50%;background:#00BFA6;animation-delay:.4s"></span><span class="w-1 rounded animate-pulse" style="height:80%;background:#2DD4BF;animation-delay:.5s"></span><span class="w-1 rounded animate-pulse" style="height:35%;background:#00BFA6;animation-delay:.6s"></span>
                 </div>
                 <div class="text-[9px] uppercase tracking-[.2em] text-slate-500 mb-2" data-i18n="callTr">Transcripción en vivo → dato estructurado</div>
-                <div class="space-y-2 text-[11px] flex-1 overflow-hidden">
+                <div class="space-y-2 text-[11px] flex-1 overflow-hidden" id="callArea">
                     <div class="chat-bubble chat-user">Me dejaron un panfleto... piden 2 millones o me queman la tienda. Tengo mucho miedo.</div>
                     <div class="chat-bubble chat-bot">Entendido, Don Aurelio. Ya estoy convirtiendo su llamada en un reporte estructurado. Usted no está solo.</div>
                     <div class="rounded-lg p-2.5 font-mono text-[10px]" style="background:rgba(0,191,166,.07);border:1px solid rgba(0,191,166,.3)">
@@ -1325,6 +1325,8 @@ function animateChat(){
     if(chatAnimated)return;chatAnimated=true;
     var msgs=document.querySelectorAll('#chatArea .chat-bubble');
     msgs.forEach(function(m,i){setTimeout(function(){m.classList.add('show');if(i<3)playTone(800+i*100,.06,'sine',.03);if(i===4)playNotif()},i*600)});
+    var cmsgs=document.querySelectorAll('#callArea .chat-bubble');
+    cmsgs.forEach(function(m,i){setTimeout(function(){m.classList.add('show')},(msgs.length+i)*600)});
 }
 
 function buildEneagono(){

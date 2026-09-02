@@ -397,3 +397,9 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - La lista de la escena 3 ahora incluye crimen organizado: "Un asistente escucha por chat o voz, 24/7: extorsión, crimen organizado, un sismo, una inundación. Cada reporte se vuelve datos."
 - Segmento 3 regenerado desde clean9 con nuevo sub y leve slow-mo (×1.25, imperceptible en esa toma). Duración final 78.3s.
 - fa-vllm restaurado: Up + 14340 MiB + api:200.
+
+### 2026-09-02 (31) — Título oficial: "Ecosistema de Seguridad, Defensa y Riesgos"
+- index.html: título del grupo del ecosistema → "Seguridad, Defensa y Riesgos" (EN: Security, Defense & Risks / FR: Sécurité, Défense et Risques); meta descriptions (description, og, twitter, JSON-LD) → "seguridad, defensa y riesgos".
+- demo-seguridad-urbana.html: <title> → "FastAnalytics — Ecosistema de Seguridad, Defensa y Riesgos"; heroDef → "Un solo ecosistema de seguridad, defensa y riesgos: del barrio urbano a la vereda rural." (ES/EN/FR).
+- Mini-demo v10c: cierre del video alineado — voz y subtítulo: "AlejoSeguro, CatheAsiste, MileInvestiga, GusCoordina, GabyPredice. Ecosistema de seguridad, defensa y riesgos. Entre al demo."
+- fa-vllm restaurado tras TTS: Up + 14340 MiB + api:200.

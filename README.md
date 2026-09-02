@@ -362,3 +362,7 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - Tarjeta 01 · Escucha: subtítulo revertido a "AlejoSeguro + CatheAsiste" (como estaba).
 - Apoyo gráfico bajo el celular de CatheAsiste: barra teal "CatheAsiste enruta cualquier canal" con chips 🎤 Voz · 💬 Texto · 🎥 Video · 📷 Imagen (trilingüe vía catChips).
 - Narrativa del Acto 1 reforzada (ES/EN/FR): "CatheAsiste enruta los reportes de voz, texto, video e imagen: atiende su llamada, transcribe su voz en vivo y la convierte en dato estructurado" — la escena de los celulares ahora explica a Alejo Y a Cathe.
+
+### 2026-09-01 (25) — Narración de voz en el paso MileInvestiga (Acto 1)
+- Los pasos internos del Acto 1 no tenían narración propia (solo la escena completa). Se agrega audio al entrar al paso 2 "La IA investiga la evidencia": speak('s1mile') dentro de showStep(1).
+- Texto ES: "MileInvestiga da soporte a la investigación: más de veinte modelos de IA procesan imagen, video, audio y texto en menos de dos segundos. Identifica el rostro del sospechoso (alias El Flaco) y la placa de la moto; y con análisis de redes criminales revela la estructura completa: cinco actores vinculados y su nodo central." — con equivalentes EN/FR (clave fb_mile).

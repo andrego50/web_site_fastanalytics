@@ -399,6 +399,19 @@
           setLanguage(langCycle[(idx + 1) % langCycle.length]);
         }
       });
+
+      // Scroll reveal (mismo efecto que js/main.js: .animate-on-scroll -> .visible)
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+        revealObserver.observe(el);
+      });
     })();
   </script>
 </body>

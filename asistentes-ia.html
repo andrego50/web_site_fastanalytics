@@ -147,6 +147,71 @@
       color: var(--bg-dark);
     }
     .ai-step p { color: #5A6B7B; font-size: 0.95rem; margin: 0; }
+    /* ========== SUSCRIPCIÓN ========== */
+    .ai-subs {
+      background: #0E1A24;
+      color: #fff;
+      padding: 72px 0;
+    }
+    .ai-subs .section-tag {
+      background: rgba(212, 136, 58, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(212, 136, 58, 0.4);
+    }
+    .ai-subs .section-title { color: #fff; }
+    .ai-subs .section-subtitle { color: #C8D2DC; }
+    .ai-subs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .ai-sub-card {
+      background: #17212B;
+      border-radius: 16px;
+      padding: 26px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .ai-sub-chip {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+    .chip-teal {
+      background: rgba(0, 109, 109, 0.35);
+      color: #00BFA6;
+      border: 1px solid rgba(0, 191, 166, 0.45);
+    }
+    .chip-orange {
+      background: rgba(212, 136, 58, 0.18);
+      color: #E9A85C;
+      border: 1px solid rgba(212, 136, 58, 0.55);
+    }
+    .ai-sub-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 14px 0 8px;
+    }
+    .ai-sub-card p {
+      color: #C8D2DC;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .ai-subs-cta { text-align: center; margin-top: 40px; }
+    .ai-subs-cta p { color: #C8D2DC; margin: 0 0 18px; }
+    .ai-subs .btn-outline {
+      border-color: rgba(255, 255, 255, 0.35);
+      color: #fff;
+    }
+    .ai-subs .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #fff;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -231,6 +296,60 @@
              data-en="With built-in analytics and video, your personalized assistant starts working for you."
              data-fr="Avec analytique et vidéo intégrées, votre assistant personnalisé commence à travailler pour vous.">
             Con analítica y video integrados, tu asistente personalizado empieza a trabajar para ti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SUSCRIPCIÓN ========== -->
+  <section class="ai-subs" id="suscripcion">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag" data-es="Suscripción" data-en="Subscription" data-fr="Abonnement">Suscripción</span>
+        <h2 class="section-title" data-es="¿Qué incluye tu suscripción?" data-en="What's included in your subscription?" data-fr="Que comprend votre abonnement ?">¿Qué incluye tu suscripción?</h2>
+        <p class="section-subtitle" data-es="Un servicio de persona a persona, mes a mes." data-en="A person-to-person service, month after month." data-fr="Un service de personne à personne, mois après mois.">Un servicio de persona a persona, mes a mes.</p>
+      </div>
+      <div class="ai-subs-grid">
+        <div class="ai-sub-card animate-on-scroll">
+          <span class="ai-sub-chip chip-teal" data-es="CADA MES" data-en="EVERY MONTH" data-fr="CHAQUE MOIS">CADA MES</span>
+          <h3 data-es="Tu asesor, de persona a persona" data-en="Your advisor, person to person" data-fr="Votre conseiller, de personne à personne">Tu asesor, de persona a persona</h3>
+          <p data-es="Un asesor te visita cada mes: revisa cómo va tu asistente, entiende tus necesidades y ajusta lo que haga falta."
+             data-en="An advisor visits you every month: reviews how your assistant is doing, understands your needs and adjusts whatever is needed."
+             data-fr="Un conseiller vous rend visite chaque mois : il évalue votre assistant, comprend vos besoins et ajuste ce qu'il faut.">
+            Un asesor te visita cada mes: revisa cómo va tu asistente, entiende tus necesidades y ajusta lo que haga falta.</p>
+        </div>
+        <div class="ai-sub-card animate-on-scroll">
+          <span class="ai-sub-chip chip-orange" data-es="DÍA UNO" data-en="DAY ONE" data-fr="JOUR UN">DÍA UNO</span>
+          <h3 data-es="La entrevista inicial" data-en="The initial interview" data-fr="L'entretien initial">La entrevista inicial</h3>
+          <p data-es="Lo defines todo desde el primer día: tono, temas, límites, horarios y canales. Tu asesor convierte tus respuestas en las skills de tu asistente."
+             data-en="You define everything from day one: tone, topics, limits, schedules and channels. Your advisor turns your answers into your assistant's skills."
+             data-fr="Vous définissez tout dès le premier jour : ton, sujets, limites, horaires et canaux. Votre conseiller transforme vos réponses en compétences pour votre assistant.">
+            Lo defines todo desde el primer día: tono, temas, límites, horarios y canales. Tu asesor convierte tus respuestas en las skills de tu asistente.</p>
+        </div>
+        <div class="ai-sub-card animate-on-scroll">
+          <span class="ai-sub-chip chip-teal" data-es="TODOS LOS DÍAS" data-en="EVERY DAY" data-fr="TOUS LES JOURS">TODOS LOS DÍAS</span>
+          <h3 data-es="Tu asistente, trabajando para ti" data-en="Your assistant, working for you" data-fr="Votre assistant, à votre service">Tu asistente, trabajando para ti</h3>
+          <p data-es="Con analítica de datos avanzada, estadística, machine learning y generación de video integrados."
+             data-en="With advanced data analytics, statistics, machine learning and built-in video generation."
+             data-fr="Avec analytique de données avancée, statistiques, machine learning et génération de vidéo intégrées.">
+            Con analítica de datos avanzada, estadística, machine learning y generación de video integrados.</p>
+        </div>
+        <div class="ai-sub-card animate-on-scroll">
+          <span class="ai-sub-chip chip-orange" data-es="ENTRE VISITAS" data-en="BETWEEN VISITS" data-fr="ENTRE LES VISITES">ENTRE VISITAS</span>
+          <h3 data-es="Contacto permanente" data-en="Permanent contact" data-fr="Contact permanent">Contacto permanente</h3>
+          <p data-es="Acompañamiento continuo entre visitas, por correo y WhatsApp. Nunca estás solo con tu asistente."
+             data-en="Continuous support between visits, by email and WhatsApp. You are never on your own with your assistant."
+             data-fr="Accompagnement continu entre les visites, par e-mail et WhatsApp. Vous n'êtes jamais seul avec votre assistant.">
+            Acompañamiento continuo entre visitas, por correo y WhatsApp. Nunca estás solo con tu asistente.</p>
+        </div>
+      </div>
+      <div class="ai-subs-cta animate-on-scroll">
+        <p data-es="Cuéntanos tu caso y te cotizamos tu suscripción." data-en="Tell us about your case and we'll quote your subscription." data-fr="Parlez-nous de votre cas et nous chiffrerons votre abonnement.">Cuéntanos tu caso y te cotizamos tu suscripción.</p>
+        <div class="ai-cta-row" style="margin-top: 0;">
+          <a class="btn btn-whatsapp btn-lg" href="https://wa.me/573017875697" target="_blank" rel="noopener"
+             data-es="Suscríbete por WhatsApp" data-en="Subscribe via WhatsApp" data-fr="Abonnez-vous via WhatsApp">Suscríbete por WhatsApp</a>
+          <a class="btn btn-outline btn-lg" href="mailto:hola@fastanalytics.co?subject=Suscripción Asistentes de IA"
+             data-es="hola@fastanalytics.co" data-en="hola@fastanalytics.co" data-fr="hola@fastanalytics.co">hola@fastanalytics.co</a>
         </div>
       </div>
     </div>

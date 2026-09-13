@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FastAnalytics | Asistentes de IA personalizados</title>
+  <meta name="description" content="Asistentes de IA diseñados por personas, para personas. Tu asesor te visita cada mes, aprende tu operación y deja a tu asistente trabajando: analítica y video integrados.">
+  <meta name="author" content="FastAnalytics S.A.S.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FastAnalytics | Asistentes de IA personalizados">
+  <meta property="og:description" content="Diseñados por personas, para personas: tu asesor cada mes, analítica y video integrados.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fastanalytics.co/asistentes-ia.html">
+  <meta property="og:image" content="https://fastanalytics.co/assets/demo/asistentes-ia-poster.jpg">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://fastanalytics.co/asistentes-ia.html">
+  <link rel="alternate" hreflang="es" href="https://fastanalytics.co/asistentes-ia.html">
+  <link rel="alternate" hreflang="en" href="https://fastanalytics.co/asistentes-ia.html">
+  <link rel="alternate" hreflang="x-default" href="https://fastanalytics.co/asistentes-ia.html">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css?v=8">
+
+  <style>
+    .ai-hero {
+      background: var(--bg-dark);
+      color: #fff;
+      padding: calc(var(--nav-height) + 48px) 0 64px;
+      text-align: center;
+    }
+    .ai-hero .section-tag {
+      background: rgba(0, 191, 166, 0.12);
+      color: #00BFA6;
+      border: 1px solid rgba(0, 191, 166, 0.35);
+    }
+    .ai-hero h1 {
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 18px auto 12px;
+      max-width: 820px;
+    }
+    .ai-hero h1 .accent { color: var(--accent); }
+    .ai-hero .lead {
+      color: #C8D2DC;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      max-width: 640px;
+      margin: 0 auto 36px;
+    }
+    .ai-player-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      background: #0E1A24;
+    }
+    .ai-player-wrap video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #0E1A24;
+    }
+    .ai-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 36px;
+    }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      border: 2px solid var(--accent);
+      color: #fff;
+    }
+    .btn-whatsapp:hover {
+      background: #B9732F;
+      border-color: #B9732F;
+      color: #fff;
+    }
+    .ai-hero .btn-outline {
+      border-color: rgba(255, 255, 255, 0.35);
+      color: #fff;
+    }
+    .ai-hero .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #fff;
+      color: #fff;
+    }
+    .ai-back {
+      display: inline-block;
+      margin-top: 28px;
+      color: #9FB0BE;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+    .ai-back:hover { color: #fff; }
+    .ai-steps {
+      background: var(--bg-alt);
+      padding: 72px 0;
+    }
+    .ai-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .ai-step {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 20px rgba(15, 22, 41, 0.06);
+      border-top: 4px solid var(--primary);
+    }
+    .ai-step:nth-child(2) { border-top-color: var(--accent); }
+    .ai-step:nth-child(3) { border-top-color: #00BFA6; }
+    .ai-step .num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .ai-step:nth-child(2) .num { color: var(--accent); }
+    .ai-step:nth-child(3) .num { color: #00BFA6; }
+    .ai-step h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 12px 0 8px;
+      color: var(--bg-dark);
+    }
+    .ai-step p { color: #5A6B7B; font-size: 0.95rem; margin: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/logo-nav.svg" alt="FastAnalytics" class="logo-img">
+      </a>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma">
+          <span class="lang-option active" data-lang="es">ES</span>
+          <span class="lang-separator">|</span>
+          <span class="lang-option" data-lang="en">EN</span>
+          <span class="lang-separator">|</span>
+          <span class="lang-option" data-lang="fr">FR</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO + PLAYER ========== -->
+  <section class="ai-hero">
+    <div class="container">
+      <span class="section-tag" data-es="Nuevo producto" data-en="New product" data-fr="Nouveau produit">Nuevo producto</span>
+      <h1>
+        <span data-es="Asistentes de IA " data-en="Personalized AI assistants " data-fr="Assistants IA ">Asistentes de IA </span><span class="accent" data-es="personalizados" data-en="by FastAnalytics" data-fr="personnalisés">personalizados</span>
+      </h1>
+      <p class="lead" data-es="Diseñados por personas, para personas. Tu asesor te visita cada mes, aprende tu operación y deja a tu asistente trabajando."
+         data-en="Designed by people, for people. Your advisor visits you every month, learns your operation, and leaves your assistant working."
+         data-fr="Conçus par des personnes, pour des personnes. Votre conseiller vous rend visite chaque mois, apprend votre fonctionnement et laisse votre assistant travailler.">
+        Diseñados por personas, para personas. Tu asesor te visita cada mes, aprende tu operación y deja a tu asistente trabajando.
+      </p>
+
+      <div class="ai-player-wrap">
+        <video controls preload="metadata" playsinline poster="assets/demo/asistentes-ia-poster.jpg">
+          <source src="assets/demo/asistentes-ia-fastanalytics-v2.mp4" type="video/mp4">
+          Tu navegador no soporta video HTML5.
+        </video>
+      </div>
+
+      <div class="ai-cta-row">
+        <a class="btn btn-whatsapp btn-lg" href="https://wa.me/573017875697" target="_blank" rel="noopener"
+           data-es="Suscríbete por WhatsApp" data-en="Subscribe via WhatsApp" data-fr="Abonnez-vous via WhatsApp">Suscríbete por WhatsApp</a>
+        <a class="btn btn-outline btn-lg" href="mailto:hola@fastanalytics.co?subject=Asistentes de IA"
+           data-es="hola@fastanalytics.co" data-en="hola@fastanalytics.co" data-fr="hola@fastanalytics.co">hola@fastanalytics.co</a>
+      </div>
+
+      <a class="ai-back" href="index.html#casos" data-es="← Volver a todos los productos" data-en="← Back to all products" data-fr="← Retour à tous les produits">← Volver a todos los productos</a>
+    </div>
+  </section>
+
+  <!-- ========== CÓMO FUNCIONA ========== -->
+  <section class="ai-steps">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag" data-es="De persona a persona" data-en="Person to person" data-fr="De personne à personne">De persona a persona</span>
+        <h2 class="section-title" data-es="Así de simple" data-en="This simple" data-fr="Aussi simple">Así de simple</h2>
+      </div>
+      <div class="ai-steps-grid">
+        <div class="ai-step animate-on-scroll">
+          <div class="num">1</div>
+          <h3 data-es="La visita del asesor" data-en="The advisor's visit" data-fr="La visite du conseiller">La visita del asesor</h3>
+          <p data-es="Un asesor te visita cada mes y entiende para qué y cómo quieres tu asistente."
+             data-en="An advisor visits you every month and understands what you want your assistant for and how."
+             data-fr="Un conseiller vous rend visite chaque mois et comprend pour quoi et comment vous voulez votre assistant.">
+            Un asesor te visita cada mes y entiende para qué y cómo quieres tu asistente.</p>
+        </div>
+        <div class="ai-step animate-on-scroll">
+          <div class="num">2</div>
+          <h3 data-es="La entrevista" data-en="The interview" data-fr="L'entretien">La entrevista</h3>
+          <p data-es="Lo defines todo: tono, temas, límites, horarios y canales. Tu asistente, a tu medida."
+             data-en="You define everything: tone, topics, limits, schedules and channels. Your assistant, made to measure."
+             data-fr="Vous définissez tout : ton, sujets, limites, horaires et canaux. Votre assistant, sur mesure.">
+            Lo defines todo: tono, temas, límites, horarios y canales. Tu asistente, a tu medida.</p>
+        </div>
+        <div class="ai-step animate-on-scroll">
+          <div class="num">3</div>
+          <h3 data-es="Tu asistente trabaja" data-en="Your assistant works" data-fr="Votre assistant travaille">Tu asistente trabaja</h3>
+          <p data-es="Con analítica y video integrados, tu asistente personalizado empieza a trabajar para ti."
+             data-en="With built-in analytics and video, your personalized assistant starts working for you."
+             data-fr="Avec analytique et vidéo intégrées, votre assistant personnalisé commence à travailler pour vous.">
+            Con analítica y video integrados, tu asistente personalizado empieza a trabajar para ti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 32px;">
+        <p data-es="© 2026 FastAnalytics S.A.S. Todos los derechos reservados."
+           data-en="© 2026 FastAnalytics S.A.S. All rights reserved."
+           data-fr="© 2026 FastAnalytics S.A.S. Tous droits réservés.">© 2026 FastAnalytics S.A.S. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var currentLang = 'es';
+      var langToggle = document.getElementById('langToggle');
+      var langOptions = langToggle.querySelectorAll('.lang-option');
+      var titles = {
+        es: 'FastAnalytics | Asistentes de IA personalizados',
+        en: 'FastAnalytics | Personalized AI assistants',
+        fr: 'FastAnalytics | Assistants IA personnalisés'
+      };
+
+      function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        langOptions.forEach(function (opt) {
+          opt.classList.toggle('active', opt.dataset.lang === lang);
+        });
+        document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+          el.textContent = el.getAttribute('data-' + lang);
+        });
+        document.title = titles[lang] || titles.es;
+      }
+
+      var langCycle = ['es', 'en', 'fr'];
+      langToggle.addEventListener('click', function (e) {
+        var option = e.target.closest('.lang-option');
+        if (option) {
+          setLanguage(option.dataset.lang);
+        } else {
+          var idx = langCycle.indexOf(currentLang);
+          setLanguage(langCycle[(idx + 1) % langCycle.length]);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

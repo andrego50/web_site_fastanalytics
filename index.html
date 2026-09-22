@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FastAnalytics | Base científica y tecnológica para seguridad predictiva</title>
-  <meta name="description" content="FastAnalytics S.A.S. es una empresa de base científica y tecnológica que aplica modelos matemáticos, IA y datos espaciotemporales. Foco actual: seguridad, defensa y riesgos.">
-  <meta name="keywords" content="inteligencia artificial, machine learning, seguridad ciudadana, datos espaciotemporales, analítica predictiva, Colombia, chatbots, dashboards, modelamiento matemático, IA para gobierno, convivencia, Bogotá, Latinoamérica, base científica y tecnológica">
+  <meta name="description" content="El futuro habla en datos. Lo anticipamos con decisiones. FastAnalytics S.A.S.: modelos matemáticos, IA y datos espaciotemporales para seguridad, defensa y riesgos.">
   <meta name="author" content="FastAnalytics S.A.S.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="FastAnalytics | Base científica y tecnológica para seguridad predictiva">
-  <meta property="og:description" content="Empresa de base científica y tecnológica. Modelos matemáticos, IA y datos espaciotemporales aplicados a la seguridad, la defensa y los riesgos.">
+  <meta property="og:description" content="El futuro habla en datos. Lo anticipamos con decisiones. Modelos matemáticos, IA y datos espaciotemporales para seguridad, defensa y riesgos.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fastanalytics.co">
   <meta property="og:image" content="https://fastanalytics.co/assets/images/og-image.png">
@@ -22,7 +21,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FastAnalytics | Base científica y tecnológica para seguridad predictiva">
-  <meta name="twitter:description" content="Empresa de base científica y tecnológica. Modelos matemáticos, IA y datos espaciotemporales aplicados a la seguridad, la defensa y los riesgos.">
+  <meta name="twitter:description" content="El futuro habla en datos. Lo anticipamos con decisiones. Modelos matemáticos, IA y datos espaciotemporales para seguridad, defensa y riesgos.">
   <meta name="twitter:image" content="https://fastanalytics.co/assets/images/og-image.png">
 
   <!-- Favicon (multiple formats for cross-browser support) -->
@@ -33,8 +32,6 @@
 
   <!-- Canonical & hreflang -->
   <link rel="canonical" href="https://fastanalytics.co">
-  <link rel="alternate" hreflang="es" href="https://fastanalytics.co">
-  <link rel="alternate" hreflang="en" href="https://fastanalytics.co">
   <link rel="alternate" hreflang="x-default" href="https://fastanalytics.co">
 
   <!-- Fonts -->
@@ -43,7 +40,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=9">
+  <link rel="stylesheet" href="css/styles.css?v=10">
 
   <!-- Structured Data: Organization -->
   <script type="application/ld+json">
@@ -174,18 +171,35 @@
   ]
   </script>
 
-  <!-- Google Analytics 4 (reemplazar G-XXXXXXXXXX con tu Measurement ID) -->
-  <!--
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-  -->
+  <style>
+    /* Skip-link accesible (visible solo al enfocar con teclado) */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 1000;
+      padding: 10px 18px;
+      background: var(--primary, #2DD4BF);
+      color: #0B1220;
+      font-weight: 700;
+      border-radius: 0 0 8px 0;
+    }
+    .skip-link:focus {
+      left: 0;
+    }
+    /* Títulos de columna del footer (antes h4 huérfanos) */
+    .footer-col-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+    }
+  </style>
 </head>
 <body>
+  <a class="skip-link" href="#contenido" data-es="Saltar al contenido" data-en="Skip to content" data-fr="Aller au contenu">Saltar al contenido</a>
 
   <!-- ========== NAVIGATION ========== -->
   <nav class="navbar" id="navbar">
@@ -197,7 +211,7 @@
         <li><a href="#casos" data-es="Ecosistema" data-en="Ecosystem" data-fr="Écosystème">Ecosistema</a></li>
         <li><a href="#resultados" data-es="Resultados" data-en="Results" data-fr="Résultats">Resultados</a></li>
         <li><a href="#investigacion" data-es="Investigación" data-en="Research" data-fr="Recherche">Investigación</a></li>
-                <li><a href="#contacto" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a></li>
+        <li><a href="#contacto" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a></li>
       </ul>
       <div class="nav-actions">
         <button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma">
@@ -217,14 +231,16 @@
     </div>
   </nav>
 
+  <main id="contenido">
   <!-- ========== HERO ========== -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <canvas id="heroCanvas"></canvas>
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
       <div class="hero-glow"></div>
     </div>
     <div class="container hero-content">
       <div class="hero-text">
+        <p class="hero-tagline animate-on-scroll" data-es="El futuro habla en datos. Lo anticipamos con decisiones." data-en="The future speaks in data. We anticipate it with decisions." data-fr="L&#8217;avenir parle en données. Nous l&#8217;anticipons par des décisions.">El futuro habla en datos. Lo anticipamos con decisiones.</p>
         <a href="asistentes-ia.html" class="hero-new animate-on-scroll">
           <span class="new-tag" data-es="NUEVO" data-en="NEW" data-fr="NOUVEAU">NUEVO</span>
           <span data-es="Asistentes de IA personalizados, a tu medida" data-en="Personalized AI assistants, made to measure" data-fr="Assistants IA personnalisés, sur mesure">Asistentes de IA personalizados, a tu medida</span>
@@ -318,54 +334,64 @@
       <div class="cases-grid">
         <div class="pc-group animate-on-scroll"><span class="pc-group-emoji">🤖</span> <span data-es="Asistentes de IA personalizados" data-en="Personalized AI assistants" data-fr="Assistants IA personnalisés">Asistentes de IA personalizados</span></div>
         <a class="pc-card animate-on-scroll" href="asistentes-ia.html">
+          <span class="pc-badge pc-badge-new" data-es="Nuevo" data-en="New" data-fr="Nouveau">Nuevo</span>
           <img class="pc-logo pc-logo-svg" src="assets/images/favicon.svg" alt="Asistentes de IA FastAnalytics - Logo" loading="lazy">
           <div class="pc-name">Asistentes de IA</div>
           <div class="pc-desc" data-es="Diseñados por personas, para personas: tu asesor cada mes y tu asistente a tu medida." data-en="Designed by people, for people: your advisor every month and your assistant made to measure." data-fr="Conçus par des personnes, pour des personnes : votre conseiller chaque mois et votre assistant sur mesure.">Diseñados por personas, para personas: tu asesor cada mes y tu asistente a tu medida.</div>
         </a>
         <div class="pc-group animate-on-scroll"><span class="pc-group-emoji">🛡️</span> <span data-es="Seguridad, Defensa y Riesgos" data-en="Security, Defense &amp; Risks" data-fr="Sécurité, Défense et Risques">Seguridad, Defensa y Riesgos</span></div>
-        <a class="pc-card animate-on-scroll" href="mailto:hola@fastanalytics.co?subject=Demo CatheAsiste">
+        <a class="pc-card animate-on-scroll" href="#agenda">
+          <span class="pc-badge pc-badge-req" data-es="Demo a solicitud" data-en="Demo on request" data-fr="Démo sur demande">Demo a solicitud</span>
           <img class="pc-logo" src="assets/images/logos/catheastiste-v8.png" alt="CatheAsiste - Logo" loading="lazy">
           <div class="pc-name">CatheAsiste</div>
           <div class="pc-desc" data-es="Todo empieza con Cathe: escucha a la ciudadanía por chat y voz, 24/7." data-en="It all starts with Cathe: she listens to citizens via chat and voice, 24/7." data-fr="Tout commence avec Cathe : elle écoute les citoyens par chat et voix, 24/7.">Todo empieza con Cathe: escucha a la ciudadanía por chat y voz, 24/7.</div>
         </a>
         <a class="pc-card animate-on-scroll" href="https://t.me/AlejoSeguro_bot" target="_blank" rel="noopener">
+          <span class="pc-badge pc-badge-live" data-es="En producción" data-en="Live" data-fr="En production">En producción</span>
           <img class="pc-logo" src="assets/images/logos/alejoseguro-v8.png" alt="AlejoSeguro - Logo" loading="lazy">
           <div class="pc-name">AlejoSeguro</div>
           <div class="pc-desc" data-es="Percepción de seguridad desde Telegram. Anónimo, 2 minutos." data-en="Safety perception via Telegram. Anonymous, 2 minutes." data-fr="Perception de la sécurité via Telegram. Anonyme, 2 minutes.">Percepción de seguridad desde Telegram. Anónimo, 2 minutos.</div>
         </a>
         <a class="pc-card animate-on-scroll" href="demo-seguridad-urbana.html">
+          <span class="pc-badge pc-badge-demo" data-es="Demo interactiva" data-en="Interactive demo" data-fr="Démo interactive">Demo interactiva</span>
           <img class="pc-logo pc-logo-svg" src="assets/images/favicon.svg" alt="Demo seguridad urbana - Logo" loading="lazy">
           <div class="pc-name">Demo seguridad urbana</div>
           <div class="pc-desc" data-es="Recorrido inmersivo: del reporte ciudadano a la acción en terreno." data-en="Immersive walkthrough: from citizen report to field action." data-fr="Parcours immersif : du signalement citoyen à l'action sur le terrain.">Recorrido inmersivo: del reporte ciudadano a la acción en terreno.</div>
         </a>
         <a class="pc-card animate-on-scroll" href="https://guscoordina.fastanalytics.co/" target="_blank" rel="noopener">
+          <span class="pc-badge pc-badge-live" data-es="En producción" data-en="Live" data-fr="En production">En producción</span>
           <img class="pc-logo" src="assets/images/logos/guscoordina-v8.png" alt="GusCoordina - Logo" loading="lazy">
           <div class="pc-name">GusCoordina</div>
           <div class="pc-desc" data-es="Sala digital para Puestos de Mando Unificado." data-en="Digital room for Unified Command Posts." data-fr="Salle digitale pour Postes de Commandement Unifiés.">Sala digital para Puestos de Mando Unificado.</div>
         </a>
-        <a class="pc-card animate-on-scroll" href="mailto:hola@fastanalytics.co?subject=Demo GabyPredice">
+        <a class="pc-card animate-on-scroll" href="#agenda">
+          <span class="pc-badge pc-badge-req" data-es="Demo a solicitud" data-en="Demo on request" data-fr="Démo sur demande">Demo a solicitud</span>
           <img class="pc-logo" src="assets/images/logos/gabypredice-v8.png" alt="GabyPredice - Logo" loading="lazy">
           <div class="pc-name">GabyPredice</div>
           <div class="pc-desc" data-es="Decisiones predictivas: dónde y cuándo actuar." data-en="Predictive decisions: where and when to act." data-fr="Décisions prédictives : où et quand agir.">Decisiones predictivas: dónde y cuándo actuar.</div>
         </a>
         <div class="pc-group animate-on-scroll"><span class="pc-group-emoji">📊</span> <span data-es="Analítica e investigación" data-en="Analytics & research" data-fr="Analytique et recherche">Analítica e investigación</span></div>
         <a class="pc-card animate-on-scroll" href="https://mile-ia.fastanalytics.co/chat" target="_blank" rel="noopener">
+          <span class="pc-badge pc-badge-live" data-es="En producción" data-en="Live" data-fr="En production">En producción</span>
           <img class="pc-logo" src="assets/images/logos/mileinvestiga-v8.png" alt="Mile-IA - Logo" loading="lazy">
           <div class="pc-name">Mile-IA</div>
           <div class="pc-desc" data-es="Investigación de fraude bancario con IA." data-en="AI-powered banking fraud investigation." data-fr="Investigation de fraude bancaire par IA.">Investigación de fraude bancario con IA.</div>
         </a>
         <div class="pc-group animate-on-scroll"><span class="pc-group-emoji">🎓</span> <span data-es="Formación y comunidad" data-en="Training & community" data-fr="Formation et communauté">Formación y comunidad</span></div>
         <a class="pc-card animate-on-scroll" href="https://t.me/Ceci_Teaches_bot" target="_blank" rel="noopener">
+          <span class="pc-badge pc-badge-live" data-es="En producción" data-en="Live" data-fr="En production">En producción</span>
           <img class="pc-logo" src="assets/images/logos/ceci-v9.png" alt="CeciEnseña - Logo" loading="lazy">
           <div class="pc-name">CeciEnseña</div>
           <div class="pc-desc" data-es="Profesor IA personalizado en Telegram." data-en="Personalized AI teacher on Telegram." data-fr="Professeur IA personnalisé sur Telegram.">Profesor IA personalizado en Telegram.</div>
         </a>
-        <a class="pc-card animate-on-scroll" href="mailto:hola@fastanalytics.co?subject=TavoDebate">
+        <a class="pc-card animate-on-scroll" href="#agenda">
+          <span class="pc-badge pc-badge-req" data-es="Demo a solicitud" data-en="Demo on request" data-fr="Démo sur demande">Demo a solicitud</span>
           <img class="pc-logo" src="assets/images/logos/tavo-v9.png" alt="TavoDebate - Logo" loading="lazy">
           <div class="pc-name">TavoDebate</div>
           <div class="pc-desc" data-es="Sesiones legislativas con 10 IAs en paralelo." data-en="Legislative sessions with 10 parallel AIs." data-fr="Sessions législatives avec 10 IA en parallèle.">Sesiones legislativas con 10 IAs en paralelo.</div>
         </a>
         <a class="pc-card animate-on-scroll" href="https://veteranos.fastanalytics.co" target="_blank" rel="noopener">
+          <span class="pc-badge pc-badge-live" data-es="En producción" data-en="Live" data-fr="En production">En producción</span>
           <img class="pc-logo" src="assets/images/logos/veterana-v2.png" alt="Veteranos - Logo" loading="lazy">
           <div class="pc-name">Veteranos</div>
           <div class="pc-desc" data-es="Oficios y plazos legales de veteranos, bajo control." data-en="Veterans' petitions and legal deadlines, under control." data-fr="Courriers et délais légaux des vétérans, sous contrôle.">Oficios y plazos legales de veteranos, bajo control.</div>
@@ -375,23 +401,78 @@
   </section>
 
   <!-- ========== RESULTADOS ========== -->
-  <section class="section results" id="resultados">
+  <section class="section results results-dark" id="resultados">
     <div class="container">
       <div class="section-header animate-on-scroll">
         <span class="section-tag" data-es="Impacto real" data-en="Real impact" data-fr="Impact réel">Impacto real</span>
         <h2 class="section-title" data-es="Resultados que hablan solos" data-en="Results that speak for themselves" data-fr="Des résultats qui parlent d'eux-mêmes">Resultados que hablan solos</h2>
         <p class="section-subtitle" data-es="Estrategias basadas en nuestros modelos, presentadas por generales y alcaldes." data-en="Strategies based on our models, presented by generals and mayors." data-fr="Stratégies basées sur nos modèles, présentées par des généraux et des maires.">Estrategias basadas en nuestros modelos, presentadas por generales y alcaldes.</p>
       </div>
-      <div class="results-carousel animate-on-scroll">
+      <div class="results-carousel animate-on-scroll" role="region" aria-roledescription="carousel" aria-label="Resultados destacados">
         <div class="results-track">
           <div class="result-slide">
-            <img src="assets/images/resultado-2021.png" alt="Resultados Diciembre 2021 - Colombia vivió el diciembre más seguro en 19 años" loading="lazy">
+            <article class="result-card">
+              <div class="result-head">
+                <span class="result-kicker" data-es="Diciembre 2021" data-en="December 2021" data-fr="Décembre 2021">Diciembre 2021</span>
+                <span class="result-source" data-es="Fuente: Revista Semana · El Tiempo · Policía Nacional" data-en="Source: Semana magazine · El Tiempo · National Police" data-fr="Source : Revue Semana · El Tiempo · Police Nationale">Fuente: Revista Semana · El Tiempo · Policía Nacional</span>
+              </div>
+              <h3 class="result-title"><span data-es="Colombia vivió el diciembre más seguro en " data-en="Colombia lived its safest December in " data-fr="La Colombie a vécu son décembre le plus sûr en ">Colombia vivió el diciembre más seguro en </span><span class="rt-hl" data-es="19 años" data-en="19 years" data-fr="19 ans">19 años</span></h3>
+              <div class="result-metrics">
+                <div class="result-metric"><span class="rm-value">-17%</span><span class="rm-label" data-es="Homicidios a nivel nacional" data-en="Homicides nationwide" data-fr="Homicides au niveau national">Homicidios a nivel nacional</span></div>
+                <div class="result-metric"><span class="rm-value">772</span><span class="rm-label" data-es="Municipios con cero homicidios en diciembre" data-en="Municipalities with zero homicides in December" data-fr="Municipalités sans aucun homicide en décembre">Municipios con cero homicidios en diciembre</span></div>
+                <div class="result-metric"><span class="rm-value">-33%</span><span class="rm-label" data-es="Homicidios en Bogotá" data-en="Homicides in Bogotá" data-fr="Homicides à Bogotá">Homicidios en Bogotá</span></div>
+              </div>
+              <p class="result-note"><strong data-es="Cali registró días con cero homicidios" data-en="Cali recorded days with zero homicides" data-fr="Cali a enregistré des jours sans homicide">Cali registró días con cero homicidios</strong> <span data-es="— Récord histórico en 30 años · Inicio de 2022 con -55% en homicidios" data-en="— Historic 30-year record · Early 2022 with -55% homicides" data-fr="— Record historique sur 30 ans · Début 2022 avec -55% d&#8217;homicides">— Récord histórico en 30 años · Inicio de 2022 con -55% en homicidios</span></p>
+              <div class="result-foot">
+                <span class="result-model">Modelo Cuadrantes Outliers</span>
+                <span class="result-author" data-es="Diseñado y desplegado por Andrés Pérez Coronado" data-en="Designed and deployed by Andrés Pérez Coronado" data-fr="Conçu et déployé par Andrés Pérez Coronado">Diseñado y desplegado por Andrés Pérez Coronado</span>
+              </div>
+            </article>
           </div>
           <div class="result-slide">
-            <img src="assets/images/resultado-2024.png" alt="Resultados 2024 - Se rompió la tendencia del delito en Colombia" loading="lazy">
+            <article class="result-card">
+              <div class="result-head">
+                <span class="result-kicker" data-es="Año 2024" data-en="Year 2024" data-fr="Année 2024">Año 2024</span>
+                <span class="result-source" data-es="Fuente: Bogotá.gov.co · RTV Noticias · Policía Nacional" data-en="Source: Bogotá.gov.co · RTV Noticias · National Police" data-fr="Source : Bogotá.gov.co · RTV Noticias · Police Nationale">Fuente: Bogotá.gov.co · RTV Noticias · Policía Nacional</span>
+              </div>
+              <h3 class="result-title"><span data-es="Se rompió la tendencia del delito en " data-en="The crime trend was broken in " data-fr="La tendance de la délinquance a été brisée en ">Se rompió la tendencia del delito en </span><span class="rt-hl">Colombia</span></h3>
+              <div class="result-metrics">
+                <div class="result-metric"><span class="rm-value">-17.8%</span><span class="rm-label" data-es="Hurto a personas" data-en="Theft from persons" data-fr="Vols de personnes">Hurto a personas</span></div>
+                <div class="result-metric"><span class="rm-value">-25.9%</span><span class="rm-label" data-es="Hurto a residencias" data-en="Residential burglary" data-fr="Cambriolages de résidences">Hurto a residencias</span></div>
+                <div class="result-metric"><span class="rm-value">-13%</span><span class="rm-label" data-es="Masacres" data-en="Massacres" data-fr="Massacres">Masacres</span></div>
+              </div>
+              <p class="result-note"><strong data-es="7 de 11 delitos reducidos en Bogotá" data-en="7 of 11 crimes reduced in Bogotá" data-fr="7 délits sur 11 réduits à Bogotá">7 de 11 delitos reducidos en Bogotá</strong> <span data-es="— 28.243 denuncias menos de hurto a personas" data-en="— 28,243 fewer theft-from-persons reports" data-fr="— 28 243 plaintes de vol de personnes en moins">— 28.243 denuncias menos de hurto a personas</span></p>
+              <div class="result-foot">
+                <span class="result-model">Modelo Cuadrantes Outliers</span>
+                <span class="result-author" data-es="Diseñado y desplegado por Andrés Pérez Coronado" data-en="Designed and deployed by Andrés Pérez Coronado" data-fr="Conçu et déployé par Andrés Pérez Coronado">Diseñado y desplegado por Andrés Pérez Coronado</span>
+              </div>
+            </article>
           </div>
           <div class="result-slide">
-            <img src="assets/images/resultado-modelo.png" alt="Modelo Cuadrantes Outliers - Metodología" loading="lazy">
+            <article class="result-card">
+              <div class="result-head">
+                <span class="result-kicker" data-es="Nuestros modelos" data-en="Our models" data-fr="Nos modèles">Nuestros modelos</span>
+              </div>
+              <h3 class="result-title"><span data-es="Modelos diseñados por nuestro fundador con " data-en="Models designed by our founder with " data-fr="Des modèles conçus par notre fondateur avec un ">Modelos diseñados por nuestro fundador con </span><span class="rt-hl" data-es="impacto real" data-en="real impact" data-fr="impact réel">impacto real</span></h3>
+              <p class="result-subhead" data-es="Capacidades" data-en="Capabilities" data-fr="Capacités">Capacidades</p>
+              <ol class="result-caps">
+                <li data-es="Detección de datos atípicos y focalización de intervenciones" data-en="Outlier detection and intervention targeting" data-fr="Détection de données atypiques et ciblage des interventions">Detección de datos atípicos y focalización de intervenciones</li>
+                <li data-es="Correlación de variables delictivas, sociales y demográficas" data-en="Correlation of criminal, social and demographic variables" data-fr="Corrélation de variables criminelles, sociales et démographiques">Correlación de variables delictivas, sociales y demográficas</li>
+                <li data-es="Estrategia de intervención territorial y despliegue operacional" data-en="Territorial intervention strategy and operational deployment" data-fr="Stratégie d&#8217;intervention territoriale et déploiement opérationnel">Estrategia de intervención territorial y despliegue operacional</li>
+              </ol>
+              <p class="result-subhead" data-es="Implementados en" data-en="Implemented in" data-fr="Mis en œuvre dans">Implementados en</p>
+              <div class="result-chips">
+                <span class="result-chip" data-es="Policía Nacional" data-en="National Police" data-fr="Police Nationale">Policía Nacional</span>
+                <span class="result-chip">Bogotá</span>
+                <span class="result-chip">Cali</span>
+                <span class="result-chip">Ibagué</span>
+                <span class="result-chip" data-es="+27 ciudades" data-en="+27 cities" data-fr="+27 villes">+27 ciudades</span>
+              </div>
+              <div class="result-foot">
+                <span class="result-model">Modelo Cuadrantes Outliers</span>
+                <span class="result-author" data-es="Diseñado y desplegado por Andrés Pérez Coronado" data-en="Designed and deployed by Andrés Pérez Coronado" data-fr="Conçu et déployé par Andrés Pérez Coronado">Diseñado y desplegado por Andrés Pérez Coronado</span>
+              </div>
+            </article>
           </div>
         </div>
         <div class="results-controls">
@@ -399,9 +480,9 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
           <div class="results-dots">
-            <button class="results-dot active" aria-label="Slide 1"></button>
-            <button class="results-dot" aria-label="Slide 2"></button>
-            <button class="results-dot" aria-label="Slide 3"></button>
+            <button class="results-dot active" aria-label="Slide 1" aria-current="true"></button>
+            <button class="results-dot" aria-label="Slide 2" aria-current="false"></button>
+            <button class="results-dot" aria-label="Slide 3" aria-current="false"></button>
           </div>
           <button class="results-btn results-next" aria-label="Siguiente">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
@@ -442,6 +523,7 @@
       <a class="strip-link" href="chronnet/" data-es="Taller Chronnet →" data-en="Chronnet workshop →" data-fr="Atelier Chronnet →">Taller Chronnet →</a>
     </div>
   </section>
+  </main>
 
 
   <!-- ========== FOOTER / CONTACTO ========== -->
@@ -450,13 +532,7 @@
       <div class="footer-main">
         <div class="footer-brand">
           <img src="assets/images/logo-light.svg" alt="FastAnalytics" class="footer-logo">
-          <p class="footer-tagline" data-es="Datos + IA para que actúes antes, no después" data-en="Data + AI so you act before, not after" data-fr="Données + IA pour agir avant, pas après">Datos + IA para que actúes antes, no después</p>
-          <div class="footer-admin-row">
-            <span class="footer-admin-label" data-es="Acceso rápido (admin):" data-en="Quick access (admin):" data-fr="Accès rapide (admin) :">Acceso rápido (admin):</span>
-            <a href="https://agenda.fastanalytics.co/andres/demo" target="_blank" rel="noopener" class="admin-chip" data-es="📅 Agendar" data-en="📅 Schedule" data-fr="📅 Planifier">📅 Agendar</a>
-            <a href="https://nube.fastanalytics.co" target="_blank" rel="noopener" class="admin-chip" data-es="📄 Crear documentos" data-en="📄 Create documents" data-fr="📄 Créer des documents">📄 Crear documentos</a>
-            <a href="https://meet.fastanalytics.co" target="_blank" rel="noopener" class="admin-chip" data-es="🎥 Videollamada" data-en="🎥 Video call" data-fr="🎥 Visioconférence">🎥 Videollamada</a>
-          </div>
+          <p class="footer-tagline" data-es="El futuro habla en datos. Lo anticipamos con decisiones." data-en="The future speaks in data. We anticipate it with decisions." data-fr="L&#8217;avenir parle en données. Nous l&#8217;anticipons par des décisions.">El futuro habla en datos. Lo anticipamos con decisiones.</p>
           <div class="footer-cta-row">
             <a href="mailto:hola@fastanalytics.co" class="btn btn-primary btn-lg footer-cta" data-es="Hablemos" data-en="Let's talk" data-fr="Parlons">Hablemos</a>
             <a href="#" data-cal-link="andres/demo" data-cal-namespace="demo" data-cal-config='{"layout":"month_view"}' class="btn btn-outline btn-lg footer-cta" data-es="Agenda una demo" data-en="Book a demo" data-fr="Réservez une démo">Agenda una demo</a>
@@ -464,7 +540,7 @@
         </div>
         <div class="footer-links">
           <div class="footer-col">
-            <h4 data-es="Navegación" data-en="Navigation" data-fr="Navigation">Navegación</h4>
+            <p class="footer-col-title" data-es="Navegación" data-en="Navigation" data-fr="Navigation">Navegación</p>
             <ul>
                     <li><a href="#casos" data-es="Ecosistema" data-en="Ecosystem" data-fr="Écosystème">Ecosistema</a></li>
         <li><a href="#resultados" data-es="Resultados" data-en="Results" data-fr="Résultats">Resultados</a></li>
@@ -473,14 +549,14 @@
             </ul>
           </div>
           <div class="footer-col">
-            <h4 data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</h4>
+            <p class="footer-col-title" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</p>
             <ul>
               <li><a href="mailto:hola@fastanalytics.co">hola@fastanalytics.co</a></li>
               <li data-es="Colombia" data-en="Colombia" data-fr="Colombie">Colombia</li>
             </ul>
           </div>
           <div class="footer-col">
-            <h4 data-es="Legal" data-en="Legal" data-fr="Légal">Legal</h4>
+            <p class="footer-col-title" data-es="Legal" data-en="Legal" data-fr="Légal">Legal</p>
             <ul>
               <li><a href="eliminar-datos.html" data-es="Eliminación de datos" data-en="Data deletion" data-fr="Suppression des données">Eliminación de datos</a></li>
             </ul>
@@ -504,7 +580,7 @@
     </div>
   </footer>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Galería de imágenes">
     <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
@@ -519,7 +595,7 @@
   </div>
 
   <!-- ========== MODAL: VIDEO ALEJOSEGURO ========== -->
-  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Video de AlejoSeguro">
     <div class="video-backdrop" id="videoBackdrop"></div>
     <button class="video-close" id="videoClose" aria-label="Cerrar">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -594,7 +670,10 @@
       function goTo(i) {
         current = (i + total) % total;
         track.style.transform = 'translateX(-' + (current * 100) + '%)';
-        dots.forEach(function(d, idx) { d.classList.toggle('active', idx === current); });
+        dots.forEach(function(d, idx) {
+          d.classList.toggle('active', idx === current);
+          d.setAttribute('aria-current', idx === current ? 'true' : 'false');
+        });
       }
 
       prevBtn.addEventListener('click', function() { goTo(current - 1); });
@@ -603,18 +682,31 @@
         dot.addEventListener('click', function() { goTo(idx); });
       });
 
-      // Auto-advance every 5s
-      let timer = setInterval(function() { goTo(current + 1); }, 5000);
-      track.closest('.results-carousel').addEventListener('mouseenter', function() { clearInterval(timer); });
-      track.closest('.results-carousel').addEventListener('mouseleave', function() { timer = setInterval(function() { goTo(current + 1); }, 5000); });
+      // Auto-advance every 5s (respeta prefers-reduced-motion)
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var carousel = track.closest('.results-carousel');
+      var timer = null;
+      function startTimer() {
+        if (reduceMotion || timer) return;
+        timer = setInterval(function() { goTo(current + 1); }, 5000);
+      }
+      function stopTimer() {
+        clearInterval(timer);
+        timer = null;
+      }
+      startTimer();
+      carousel.addEventListener('mouseenter', stopTimer);
+      carousel.addEventListener('mouseleave', startTimer);
+      carousel.addEventListener('focusin', stopTimer);
+      carousel.addEventListener('focusout', startTimer);
 
       // Swipe support
       let startX = 0;
-      track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; clearInterval(timer); }, {passive: true});
+      track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; stopTimer(); }, {passive: true});
       track.addEventListener('touchend', function(e) {
         var diff = startX - e.changedTouches[0].clientX;
         if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
-        timer = setInterval(function() { goTo(current + 1); }, 5000);
+        startTimer();
       }, {passive: true});
     })();
   </script>

@@ -4,8 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alejo Seguro — Municipios de Cundinamarca</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<meta name="description" content="Mapa interactivo de densidad de reportes de seguridad ciudadana en los municipios de Cundinamarca, con base en los datos de @AlejoSeguro_bot.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://fastanalytics.co/mapa-cundinamarca">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Alejo Seguro — Municipios de Cundinamarca">
+<meta property="og:description" content="Mapa interactivo de densidad de reportes de seguridad ciudadana en Cundinamarca.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fastanalytics.co/mapa-cundinamarca">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family: Arial, sans-serif; }
@@ -85,7 +96,7 @@
 </head>
 <body>
 
-<a href="https://fastanalytics.co" target="_blank" rel="noopener" class="home-btn">
+<a href="https://fastanalytics.co" class="home-btn">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
   FastAnalytics
 </a>
@@ -93,7 +104,7 @@
 <div class="title-bar">Alejo Seguro — Seguridad Ciudadana | Municipios de Cundinamarca</div>
 
 <div class="search-box">
-  <input type="text" id="searchInput" placeholder="Buscar municipio..." oninput="buscar(this.value)">
+  <input type="text" id="searchInput" placeholder="Buscar municipio..." aria-label="Buscar municipio" oninput="buscar(this.value)">
   <div id="searchResults"></div>
 </div>
 
@@ -132,7 +143,7 @@ var light = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}
 });
 
 var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution:'OSM', maxZoom:19
+  attribution:'© OpenStreetMap contributors', maxZoom:19
 });
 
 var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {

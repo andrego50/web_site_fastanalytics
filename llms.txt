@@ -61,9 +61,12 @@
 
 ## Pages
 - Home: https://fastanalytics.co
-- Veteranos (private, invitation only): https://veteranos.fastanalytics.co
+- Asistentes IA: https://fastanalytics.co/asistentes-ia
 - Course — IA para Analítica de Redes Criminales: https://fastanalytics.co/curso-redes-criminales
-- Demo — Seguridad Ciudadana Inteligente (AlejoSeguro · GusCoordina · GabyPredice): https://fastanalytics.co/demo-seguridad-urbana.html
+- Demo — Seguridad Ciudadana Inteligente (AlejoSeguro · GusCoordina · GabyPredice): https://fastanalytics.co/demo-seguridad-urbana
+- Mapa interactivo de Cundinamarca: https://fastanalytics.co/mapa-cundinamarca
+- Eliminar datos personales: https://fastanalytics.co/eliminar-datos
+- Veteranos (private, invitation only): https://veteranos.fastanalytics.co
 
 ## Social Media
 - Instagram: https://www.instagram.com/fast_analytics

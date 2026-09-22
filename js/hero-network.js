@@ -157,14 +157,34 @@
     mouse.y = -9999;
   });
 
-  // Pause when not visible
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden) {
+  // Pause when tab hidden or canvas outside viewport
+  let running = true;
+  let inViewport = true;
+
+  function pause() {
+    if (running) {
+      running = false;
       cancelAnimationFrame(animId);
-    } else {
+    }
+  }
+
+  function resume() {
+    if (!running && !document.hidden && inViewport) {
+      running = true;
       animate();
     }
+  }
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) pause();
+    else resume();
   });
+
+  new IntersectionObserver(function (entries) {
+    inViewport = entries[0].isIntersecting;
+    if (inViewport) resume();
+    else pause();
+  }).observe(canvas);
 
   init();
 })();

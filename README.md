@@ -4,12 +4,18 @@ Sitio público de **FastAnalytics S.A.S.** — IA espaciotemporal para anticipac
 (seguridad ciudadana, salud, movilidad, fraude). Publicado en **GitHub Pages**:
 [fastanalytics.co](https://fastanalytics.co)
 
+**Lema del sitio (hero y metas):** «El futuro habla en datos. Lo anticipamos con decisiones.»
+Tema visual actual: **claro** (desde sep 2026; antes hero oscuro gov-tech).
+
 ## Estructura
 
 | Archivo | Descripción |
 |---|---|
-| `index.html` | Landing principal: hero oscuro gov-tech, servicios, productos, resultados, prensa, investigación, cursos, contacto |
+| `index.html` | Portada en tema claro: hero con lema, «Nuestra visión», «Resultados, no promesas» (franja de credibilidad), 4 tarjetas de líneas con imagen (Escucha / Investiga / Coordina / Predice), ecosistema de productos, investigación, cursos, contacto y **footer organizado por taxonomía** |
+| `asistentes-ia.html` | Landing de **Asistentes de IA personalizados**: planes de suscripción, cómo funciona y sección `#agendar` con formulario de agendamiento (9 preguntas de preparación) que envía a `api.fastanalytics.co/agenda-asistente` |
 | `demo-seguridad-urbana.html` | Demo inmersiva cinematográfica del ecosistema de seguridad ciudadana, con selector por líneas (Escucha / Investiga / Coordina / Predice) y recorrido en dos roles: comerciante (Acto 1) y comandante (Acto 2) |
+| `eliminar-datos.html` | Página de solicitud de eliminación de datos personales (habeas data) |
+| `sitemap.xml` / `robots.txt` / `llms.txt` | SEO: sitemap y canonicals usan **URLs limpias sin `.html`** (GitHub Pages las sirve igual; mantener esa convención al agregar páginas) |
 
 ## Demo cinematográfica (v2, jul 2026)
 
@@ -61,15 +67,24 @@ contrario falla el allocator).
 
 ## Características clave
 
-- **Hero híbrido gov-tech**: fondo oscuro, mapa animado de Colombia, tarjeta de alerta
-  predictiva flotante, palabra rotativa en el titular (riesgos/delitos/fraudes/atentados)
-  y CTA único a la agenda.
+- **Hero en tema claro**: lema «El futuro habla en datos. Lo anticipamos con decisiones.»,
+  mapa animado de Colombia, tarjeta de alerta predictiva flotante, palabra rotativa en el
+  titular (riesgos/delitos/fraudes/atentados) y CTA único a la agenda.
+- **Secciones narrativas nuevas (sep 2026)**: «Nuestra visión» y «Resultados, no promesas»
+  (franja de credibilidad), 4 tarjetas de líneas con imagen y footer por taxonomía.
 - **Trilingüe (ES/EN/FR)**: cualquier elemento con atributos `data-es` / `data-en` / `data-fr`
   se traduce con el selector de idioma (`js/main.js`). Todo texto nuevo debe incluir los tres.
 - **Formulario "Agenda tu demo"**: modal (`#agendaModal` en `index.html`) que envía la
   solicitud por POST a `https://api.fastanalytics.co/demo-request`. El endpoint es un
   servicio aparte (repo `fastanalytics-api` en el servidor) que reenvía el correo a
   `hola@fastanalytics.co` vía iCloud SMTP. La API key **nunca** va en este repo (es público).
+- **Agendamiento de Asistentes de IA** (flujo completo): formulario en
+  `asistentes-ia.html#agendar` (nombre, correo, fecha/hora preferida y 9 preguntas de
+  preparación) → POST a `https://api.fastanalytics.co/agenda-asistente` → el API genera
+  una sala Jitsi única (`meet.fastanalytics.co/asistente-<hash>`) y envía dos correos
+  vía iCloud SMTP: confirmación al cliente con el enlace y notificación interna a
+  `hola@fastanalytics.co` con las respuestas. La sala queda lista en el Jitsi propio
+  (`~/colab/jitsi`, con grabación jibri y transcripción vosk en español).
 - **Demo inmersiva**: escenas guiadas con narración por voz, feed de reportes en vivo,
   radar animado, simulación de Telegram, PMU interactivo, Eneágono Decisional, resultados
   reales con enlaces de prensa y publicaciones científicas.
@@ -93,7 +108,21 @@ python3 -m http.server 52415
 ```
 
 En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-request`
-(servicio `fastanalytics-api` local) en lugar de la API de producción.
+(servicio `fastanalytics-api` local) en lugar de la API de producción. Lo mismo aplica para
+`/agenda-asistente` desde `asistentes-ia.html`.
+
+## Notas de mantenimiento
+
+- **Versionado de CSS**: `css/styles.css` se referencia como `styles.css?v=N`. Al tocar
+  estilos, **sube N en todas las páginas** que lo usan para romper la caché de Pages/CDN
+  (búscalos con `grep -rn "styles.css?v=" *.html`).
+- **Assets pesados**: no volver a subir videos/imágenes generados masivamente al repo —
+  en sep 2026 se limpiaron ~190 MB. Los videos grandes del demo viven en `assets/demo/`
+  y los originales/respaldos fuera del repo (p. ej. `~/assets_backup_web_site/`).
+- **Backups `.bak-*`**: los respaldos de trabajo (`*.bak-video`, `*.bak-defensa`, etc.)
+  **no** se commitean; si se crean, que queden fuera del repo o eliminados antes del push.
+- **URLs limpias**: canonicals, sitemap y enlaces internos sin `.html`
+  (`/asistentes-ia`, no `/asistentes-ia.html`).
 
 ### Demo v3 (ago 2026): paneles cinematográficos + gráficas dinámicas
 - **GusCoordina (PMU)**: cada agente muestra SU visualización al hacer clic — línea de tiempo de activación (Ingreso), confianza de cruce por fuente (Inteligencia), comparador de rutas (Simulación), onda de radio con picos de riesgo (Audio), semáforo por institución (Control), mapa de unidades en vivo (Pantalla).
@@ -403,3 +432,9 @@ En previews locales, el formulario de agenda apunta a `http://<host>:8787/demo-r
 - demo-seguridad-urbana.html: <title> → "FastAnalytics — Ecosistema de Seguridad, Defensa y Riesgos"; heroDef → "Un solo ecosistema de seguridad, defensa y riesgos: del barrio urbano a la vereda rural." (ES/EN/FR).
 - Mini-demo v10c: cierre del video alineado — voz y subtítulo: "AlejoSeguro, CatheAsiste, MileInvestiga, GusCoordina, GabyPredice. Ecosistema de seguridad, defensa y riesgos. Entre al demo."
 - fa-vllm restaurado tras TTS: Up + 14340 MiB + api:200.
+
+### 2026-09-26 (32) — Tema claro, secciones narrativas y agendamiento de Asistentes IA
+- **Commit 58a2dc4** — Limpieza: ~190 MB de assets generados fuera del repo; mejoras de SEO y accesibilidad; nuevo lema del hero «El futuro habla en datos. Lo anticipamos con decisiones.»; canonicals y sitemap con URLs limpias sin `.html`.
+- **Commit 15e0a9a** — Tema claro en la portada; nuevas secciones «Nuestra visión» y «Resultados, no promesas»; 4 tarjetas de líneas con imagen; footer reorganizado por taxonomía.
+- **Agendamiento de Asistentes de IA**: `asistentes-ia.html#agendar` (9 preguntas de preparación) → `POST api.fastanalytics.co/agenda-asistente` → sala Jitsi `meet.fastanalytics.co/asistente-<hash>` + correos al cliente y a `hola@fastanalytics.co`.
+- README actualizado: estructura de páginas, flujo de agendamiento y notas de mantenimiento (versionado `styles.css?v=N`, assets pesados, no commitear `.bak`).

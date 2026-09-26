@@ -40,7 +40,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=10">
+  <link rel="stylesheet" href="css/styles.css?v=12">
 
   <!-- Structured Data: Organization -->
   <script type="application/ld+json">
@@ -179,8 +179,8 @@
       top: 0;
       z-index: 1000;
       padding: 10px 18px;
-      background: var(--primary, #2DD4BF);
-      color: #0B1220;
+      background: var(--primary, #006D6D);
+      color: #FFFFFF;
       font-weight: 700;
       border-radius: 0 0 8px 0;
     }
@@ -193,7 +193,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.5);
+      color: var(--text-muted);
       margin-bottom: 16px;
     }
   </style>
@@ -280,29 +280,29 @@
         <svg class="hero-map" viewBox="0 0 500 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <linearGradient id="hgCol" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#2DD4BF" stop-opacity=".22"/>
-              <stop offset="100%" stop-color="#0D9488" stop-opacity=".06"/>
+              <stop offset="0%" stop-color="#0D9488" stop-opacity=".16"/>
+              <stop offset="100%" stop-color="#0F766E" stop-opacity=".05"/>
             </linearGradient>
             <filter id="hgGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           </defs>
-          <path d="M346.3 59.2L325.7 65.6L316.3 80.9L302.0 92.6L291.8 126.6L280.2 146.0L290.1 143.9L298.6 148.8L302.8 164.4L311.7 175.5L309.1 200.3L317.6 205.4L324.1 216.3L352.5 217.8L365.2 214.5L384.8 218.9L407.5 245.9L458.2 240.5L470.4 244.1L470.7 252.2L459.3 273.7L458.3 298.5L464.6 319.4L475.9 334.0L458.2 354.3L466.0 354.3L479.2 367.4L489.7 401.0L490.0 405.4L483.3 406.6L482.1 389.7L473.0 376.3L455.7 388.3L447.4 380.5L448.0 389.2L393.9 389.6L393.8 410.7L411.3 411.0L416.4 423.7L406.1 421.4L387.3 426.3L386.7 449.7L400.8 461.7L408.4 484.0L390.1 583.0L378.0 569.3L365.2 568.2L385.9 531.7L357.7 517.0L343.8 521.1L332.4 515.2L317.3 523.3L293.9 523.1L287.0 519.3L285.7 504.7L276.0 500.3L270.5 485.8L251.7 476.8L246.2 464.1L233.8 451.7L202.3 442.3L186.3 430.9L179.0 437.5L149.9 432.4L140.0 417.9L120.3 411.1L97.2 392.3L104.7 385.0L111.7 387.5L111.3 368.5L128.2 363.5L136.4 356.8L160.2 317.8L154.2 318.5L153.7 313.1L151.1 316.8L149.5 307.0L145.9 308.1L153.5 291.5L150.6 271.9L145.4 265.0L154.7 257.1L147.5 244.2L150.8 231.2L133.6 209.9L138.1 194.7L145.3 199.0L156.4 185.8L147.2 168.6L150.0 163.9L169.6 187.1L170.1 174.8L165.3 166.2L186.1 152.7L194.2 140.4L206.7 137.7L210.0 113.1L204.5 115.1L212.9 99.9L232.4 83.7L249.0 87.4L243.0 91.7L246.7 94.9L255.1 76.8L281.9 77.6L315.5 58.3L320.0 48.6L333.6 41.0L348.2 43.8L352.2 53.2L346.3 59.2Z" fill="url(#hgCol)" stroke="rgba(45,212,191,.35)" stroke-width="1.5"/>
-          <g stroke="#2DD4BF" stroke-width="1" opacity=".22" stroke-dasharray="4 4">
+          <path d="M346.3 59.2L325.7 65.6L316.3 80.9L302.0 92.6L291.8 126.6L280.2 146.0L290.1 143.9L298.6 148.8L302.8 164.4L311.7 175.5L309.1 200.3L317.6 205.4L324.1 216.3L352.5 217.8L365.2 214.5L384.8 218.9L407.5 245.9L458.2 240.5L470.4 244.1L470.7 252.2L459.3 273.7L458.3 298.5L464.6 319.4L475.9 334.0L458.2 354.3L466.0 354.3L479.2 367.4L489.7 401.0L490.0 405.4L483.3 406.6L482.1 389.7L473.0 376.3L455.7 388.3L447.4 380.5L448.0 389.2L393.9 389.6L393.8 410.7L411.3 411.0L416.4 423.7L406.1 421.4L387.3 426.3L386.7 449.7L400.8 461.7L408.4 484.0L390.1 583.0L378.0 569.3L365.2 568.2L385.9 531.7L357.7 517.0L343.8 521.1L332.4 515.2L317.3 523.3L293.9 523.1L287.0 519.3L285.7 504.7L276.0 500.3L270.5 485.8L251.7 476.8L246.2 464.1L233.8 451.7L202.3 442.3L186.3 430.9L179.0 437.5L149.9 432.4L140.0 417.9L120.3 411.1L97.2 392.3L104.7 385.0L111.7 387.5L111.3 368.5L128.2 363.5L136.4 356.8L160.2 317.8L154.2 318.5L153.7 313.1L151.1 316.8L149.5 307.0L145.9 308.1L153.5 291.5L150.6 271.9L145.4 265.0L154.7 257.1L147.5 244.2L150.8 231.2L133.6 209.9L138.1 194.7L145.3 199.0L156.4 185.8L147.2 168.6L150.0 163.9L169.6 187.1L170.1 174.8L165.3 166.2L186.1 152.7L194.2 140.4L206.7 137.7L210.0 113.1L204.5 115.1L212.9 99.9L232.4 83.7L249.0 87.4L243.0 91.7L246.7 94.9L255.1 76.8L281.9 77.6L315.5 58.3L320.0 48.6L333.6 41.0L348.2 43.8L352.2 53.2L346.3 59.2Z" fill="url(#hgCol)" stroke="rgba(13,148,136,.45)" stroke-width="1.5"/>
+          <g stroke="#0D9488" stroke-width="1" opacity=".3" stroke-dasharray="4 4">
             <line x1="229" y1="91" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.8s" repeatCount="indefinite"/></line>
             <line x1="203" y1="244" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite"/></line>
             <line x1="171" y1="335" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.2s" repeatCount="indefinite"/></line>
             <line x1="387" y1="584" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.5s" repeatCount="indefinite"/></line>
           </g>
           <g filter="url(#hgGlow)">
-            <circle cx="252" cy="294" r="7" fill="#2DD4BF" opacity=".9"><animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite"/></circle>
-            <text x="228" y="290" text-anchor="end" fill="#5EEAD4" font-size="12" font-weight="700">Bogotá</text>
+            <circle cx="252" cy="294" r="7" fill="#0D9488" opacity=".9"><animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite"/></circle>
+            <text x="228" y="290" text-anchor="end" fill="#0F766E" font-size="12" font-weight="700">Bogotá</text>
             <circle cx="229" cy="91" r="6" fill="#D4883A"><animate attributeName="r" values="5;8;5" dur="1.6s" repeatCount="indefinite"/></circle>
             <circle cx="229" cy="91" r="12" fill="none" stroke="#D4883A" stroke-width="1" opacity=".5"><animate attributeName="r" values="8;18;8" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0;.5" dur="1.6s" repeatCount="indefinite"/></circle>
-            <text x="229" y="77" text-anchor="middle" fill="#D4883A" font-size="11" font-weight="700">Suroccidente</text>
-            <circle cx="203" cy="244" r="4.5" fill="#2DD4BF" opacity=".6"/><text x="180" y="241" text-anchor="end" fill="#94A3B8" font-size="9">Medellín</text>
-            <circle cx="171" cy="335" r="4" fill="#2DD4BF" opacity=".6"/><text x="151" y="332" text-anchor="end" fill="#94A3B8" font-size="9">Cali</text>
-            <circle cx="205" cy="110" r="4" fill="#2DD4BF" opacity=".5"/><text x="185" y="107" text-anchor="end" fill="#94A3B8" font-size="8">Cartagena</text>
-            <circle cx="387" cy="584" r="3.5" fill="#2DD4BF" opacity=".5"><animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/></circle>
-            <text x="387" y="574" text-anchor="middle" fill="#94A3B8" font-size="8">Leticia</text>
+            <text x="229" y="77" text-anchor="middle" fill="#B45309" font-size="11" font-weight="700">Suroccidente</text>
+            <circle cx="203" cy="244" r="4.5" fill="#0D9488" opacity=".6"/><text x="180" y="241" text-anchor="end" fill="#64748B" font-size="9">Medellín</text>
+            <circle cx="171" cy="335" r="4" fill="#0D9488" opacity=".6"/><text x="151" y="332" text-anchor="end" fill="#64748B" font-size="9">Cali</text>
+            <circle cx="205" cy="110" r="4" fill="#0D9488" opacity=".5"/><text x="185" y="107" text-anchor="end" fill="#64748B" font-size="8">Cartagena</text>
+            <circle cx="387" cy="584" r="3.5" fill="#0D9488" opacity=".5"><animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/></circle>
+            <text x="387" y="574" text-anchor="middle" fill="#64748B" font-size="8">Leticia</text>
           </g>
         </svg>
         <div class="hero-alert-card">
@@ -317,6 +317,102 @@
           <div class="hero-alert-bar"><span></span></div>
           <div class="hero-alert-flow">AlejoSeguro → GusCoordina → GabyPredice</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NUESTRA VISIÓN ========== -->
+  <section class="section vision" id="vision" aria-labelledby="vision-title">
+    <div class="container vision-inner animate-on-scroll">
+      <span class="section-tag" data-es="Nuestra visión" data-en="Our vision" data-fr="Notre vision">Nuestra visión</span>
+      <h2 class="vision-title" id="vision-title" data-es="El dato llega antes que la crisis" data-en="Data arrives before the crisis" data-fr="La donnée arrive avant la crise">El dato llega antes que la crisis</h2>
+      <p class="vision-text" data-es="Concebimos ciudades y territorios donde el dato llega antes que la crisis. Un ecosistema donde el ciudadano reporta, la IA investiga, el mando coordina y el decisor actúa con anticipación." data-en="We conceive cities and territories where data arrives before the crisis. An ecosystem where the citizen reports, AI investigates, command coordinates, and the decision-maker acts ahead of time." data-fr="Nous concevons des villes et des territoires où la donnée arrive avant la crise. Un écosystème où le citoyen signale, l&#8217;IA enquête, le commandement coordonne et le décideur agit par anticipation.">Concebimos ciudades y territorios donde el dato llega antes que la crisis. Un ecosistema donde el ciudadano reporta, la IA investiga, el mando coordina y el decisor actúa con anticipación.</p>
+    </div>
+  </section>
+
+  <!-- ========== CREDENCIALES: RESULTADOS, NO PROMESAS ========== -->
+  <section class="section credenciales" id="credenciales" aria-labelledby="cred-title">
+    <div class="container cred-grid">
+      <div class="cred-text animate-on-scroll">
+        <span class="section-tag" data-es="Credenciales" data-en="Credentials" data-fr="Références">Credenciales</span>
+        <h2 class="cred-title" id="cred-title" data-es="Resultados, no promesas." data-en="Results, not promises." data-fr="Des résultats, pas des promesses.">Resultados, no promesas.</h2>
+        <blockquote class="cred-quote">
+          <span data-es="«El dato llega antes que la crisis.»" data-en="“Data arrives before the crisis.”" data-fr="« La donnée arrive avant la crise. »">«El dato llega antes que la crisis.»</span>
+        </blockquote>
+        <p class="cred-lead" data-es="Detrás de FastAnalytics hay una trayectoria real: ciencia publicada, operación en producción y decisiones públicas que cambiaron cifras de seguridad en Colombia." data-en="Behind FastAnalytics there is a real track record: published science, systems in production, and public decisions that changed safety figures in Colombia." data-fr="Derrière FastAnalytics, il y a un parcours réel : science publiée, systèmes en production et décisions publiques qui ont changé les chiffres de la sécurité en Colombie.">Detrás de FastAnalytics hay una trayectoria real: ciencia publicada, operación en producción y decisiones públicas que cambiaron cifras de seguridad en Colombia.</p>
+        <ul class="cred-stats">
+          <li><span class="cred-num">20+</span><span data-es="años de trayectoria del fundador en modelos matemáticos y seguridad ciudadana" data-en="years of the founder's track record in mathematical modeling and citizen security" data-fr="années de parcours du fondateur en modélisation mathématique et sécurité citoyenne">años de trayectoria del fundador en modelos matemáticos y seguridad ciudadana</span></li>
+          <li><span class="cred-num">80+</span><span data-es="analistas liderados en equipos de analítica para la seguridad" data-en="analysts led in security analytics teams" data-fr="analystes dirigés dans des équipes d&#8217;analytique de sécurité">analistas liderados en equipos de analítica para la seguridad</span></li>
+          <li><span class="cred-num">+27</span><span data-es="ciudades con modelos implementados en operación real" data-en="cities with models implemented in real operation" data-fr="villes avec des modèles mis en œuvre en opération réelle">ciudades con modelos implementados en operación real</span></li>
+          <li><span class="cred-num">7+</span><span data-es="papers científicos y 2 libros publicados; resultados en prensa nacional" data-en="scientific papers and 2 published books; results in national press" data-fr="articles scientifiques et 2 livres publiés ; résultats dans la presse nationale">papers científicos y 2 libros publicados; resultados en prensa nacional</span></li>
+        </ul>
+      </div>
+      <div class="cred-visual animate-on-scroll" aria-hidden="true">
+        <svg class="cred-map" viewBox="0 0 500 620" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="cgCol" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0D9488" stop-opacity=".16"/>
+              <stop offset="100%" stop-color="#0F766E" stop-opacity=".05"/>
+            </linearGradient>
+            <filter id="cgGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <path d="M346.3 59.2L325.7 65.6L316.3 80.9L302.0 92.6L291.8 126.6L280.2 146.0L290.1 143.9L298.6 148.8L302.8 164.4L311.7 175.5L309.1 200.3L317.6 205.4L324.1 216.3L352.5 217.8L365.2 214.5L384.8 218.9L407.5 245.9L458.2 240.5L470.4 244.1L470.7 252.2L459.3 273.7L458.3 298.5L464.6 319.4L475.9 334.0L458.2 354.3L466.0 354.3L479.2 367.4L489.7 401.0L490.0 405.4L483.3 406.6L482.1 389.7L473.0 376.3L455.7 388.3L447.4 380.5L448.0 389.2L393.9 389.6L393.8 410.7L411.3 411.0L416.4 423.7L406.1 421.4L387.3 426.3L386.7 449.7L400.8 461.7L408.4 484.0L390.1 583.0L378.0 569.3L365.2 568.2L385.9 531.7L357.7 517.0L343.8 521.1L332.4 515.2L317.3 523.3L293.9 523.1L287.0 519.3L285.7 504.7L276.0 500.3L270.5 485.8L251.7 476.8L246.2 464.1L233.8 451.7L202.3 442.3L186.3 430.9L179.0 437.5L149.9 432.4L140.0 417.9L120.3 411.1L97.2 392.3L104.7 385.0L111.7 387.5L111.3 368.5L128.2 363.5L136.4 356.8L160.2 317.8L154.2 318.5L153.7 313.1L151.1 316.8L149.5 307.0L145.9 308.1L153.5 291.5L150.6 271.9L145.4 265.0L154.7 257.1L147.5 244.2L150.8 231.2L133.6 209.9L138.1 194.7L145.3 199.0L156.4 185.8L147.2 168.6L150.0 163.9L169.6 187.1L170.1 174.8L165.3 166.2L186.1 152.7L194.2 140.4L206.7 137.7L210.0 113.1L204.5 115.1L212.9 99.9L232.4 83.7L249.0 87.4L243.0 91.7L246.7 94.9L255.1 76.8L281.9 77.6L315.5 58.3L320.0 48.6L333.6 41.0L348.2 43.8L352.2 53.2L346.3 59.2Z" fill="url(#cgCol)" stroke="rgba(13,148,136,.45)" stroke-width="1.5"/>
+          <g stroke="#0D9488" stroke-width="1" opacity=".3" stroke-dasharray="4 4">
+            <line x1="229" y1="91" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.8s" repeatCount="indefinite"/></line>
+            <line x1="203" y1="244" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite"/></line>
+            <line x1="171" y1="335" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.2s" repeatCount="indefinite"/></line>
+            <line x1="387" y1="584" x2="252" y2="294"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2.5s" repeatCount="indefinite"/></line>
+          </g>
+          <g filter="url(#cgGlow)">
+            <circle cx="252" cy="294" r="7" fill="#0D9488" opacity=".9"><animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite"/></circle>
+            <text x="228" y="290" text-anchor="end" fill="#0F766E" font-size="12" font-weight="700">Bogotá</text>
+            <circle cx="229" cy="91" r="6" fill="#D4883A"><animate attributeName="r" values="5;8;5" dur="1.6s" repeatCount="indefinite"/></circle>
+            <circle cx="229" cy="91" r="12" fill="none" stroke="#D4883A" stroke-width="1" opacity=".5"><animate attributeName="r" values="8;18;8" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0;.5" dur="1.6s" repeatCount="indefinite"/></circle>
+            <text x="229" y="77" text-anchor="middle" fill="#B45309" font-size="11" font-weight="700">Suroccidente</text>
+            <circle cx="203" cy="244" r="4.5" fill="#0D9488" opacity=".6"/><text x="180" y="241" text-anchor="end" fill="#64748B" font-size="9">Medellín</text>
+            <circle cx="171" cy="335" r="4" fill="#0D9488" opacity=".6"/><text x="151" y="332" text-anchor="end" fill="#64748B" font-size="9">Cali</text>
+            <circle cx="205" cy="110" r="4" fill="#0D9488" opacity=".5"/><text x="185" y="107" text-anchor="end" fill="#64748B" font-size="8">Cartagena</text>
+            <circle cx="387" cy="584" r="3.5" fill="#0D9488" opacity=".5"><animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/></circle>
+            <text x="387" y="574" text-anchor="middle" fill="#64748B" font-size="8">Leticia</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LÍNEAS DEL ECOSISTEMA ========== -->
+  <section class="section lineas" id="lineas" aria-labelledby="lineas-title">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag" data-es="El ecosistema" data-en="The ecosystem" data-fr="L&#8217;écosystème">El ecosistema</span>
+        <h2 class="section-title" id="lineas-title" data-es="Cuatro líneas, un solo ciclo" data-en="Four lines, one single cycle" data-fr="Quatre lignes, un seul cycle">Cuatro líneas, un solo ciclo</h2>
+        <p class="section-subtitle" data-es="Del reporte ciudadano a la decisión anticipada." data-en="From citizen report to anticipated decision." data-fr="Du signalement citoyen à la décision anticipée.">Del reporte ciudadano a la decisión anticipada.</p>
+      </div>
+      <div class="lineas-grid">
+        <article class="linea-card linea-escucha animate-on-scroll">
+          <div class="linea-content">
+            <h3 class="linea-name" data-es="Escucha" data-en="Listen" data-fr="Écoute">Escucha</h3>
+            <p class="linea-desc" data-es="La ciudadanía reporta por chat y voz, 24/7, sin fricción." data-en="Citizens report via chat and voice, 24/7, frictionless." data-fr="Les citoyens signalent par chat et voix, 24/7, sans friction.">La ciudadanía reporta por chat y voz, 24/7, sin fricción.</p>
+          </div>
+        </article>
+        <article class="linea-card linea-investiga animate-on-scroll">
+          <div class="linea-content">
+            <h3 class="linea-name" data-es="Investiga" data-en="Investigate" data-fr="Enquête">Investiga</h3>
+            <p class="linea-desc" data-es="La IA analiza patrones y evidencia que el ojo humano no ve." data-en="AI analyzes patterns and evidence the human eye cannot see." data-fr="L&#8217;IA analyse des schémas et des preuves invisibles à l&#8217;œil humain.">La IA analiza patrones y evidencia que el ojo humano no ve.</p>
+          </div>
+        </article>
+        <article class="linea-card linea-coordina animate-on-scroll">
+          <div class="linea-content">
+            <h3 class="linea-name" data-es="Coordina" data-en="Coordinate" data-fr="Coordination">Coordina</h3>
+            <p class="linea-desc" data-es="El mando une actores y recursos en una sola sala digital." data-en="Command unites actors and resources in a single digital room." data-fr="Le commandement unit acteurs et ressources dans une seule salle digitale.">El mando une actores y recursos en una sola sala digital.</p>
+          </div>
+        </article>
+        <article class="linea-card linea-predice animate-on-scroll">
+          <div class="linea-content">
+            <h3 class="linea-name" data-es="Predice" data-en="Predict" data-fr="Prédiction">Predice</h3>
+            <p class="linea-desc" data-es="El decisor actúa antes: dónde, cuándo y con qué fuerza." data-en="The decision-maker acts ahead: where, when and with what force." data-fr="Le décideur agit en avance : où, quand et avec quelle force.">El decisor actúa antes: dónde, cuándo y con qué fuerza.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -401,7 +497,7 @@
   </section>
 
   <!-- ========== RESULTADOS ========== -->
-  <section class="section results results-dark" id="resultados">
+  <section class="section results results-light" id="resultados">
     <div class="container">
       <div class="section-header animate-on-scroll">
         <span class="section-tag" data-es="Impacto real" data-en="Real impact" data-fr="Impact réel">Impacto real</span>
@@ -531,7 +627,7 @@
     <div class="container">
       <div class="footer-main">
         <div class="footer-brand">
-          <img src="assets/images/logo-light.svg" alt="FastAnalytics" class="footer-logo">
+          <img src="assets/images/logo.svg" alt="FastAnalytics" class="footer-logo">
           <p class="footer-tagline" data-es="El futuro habla en datos. Lo anticipamos con decisiones." data-en="The future speaks in data. We anticipate it with decisions." data-fr="L&#8217;avenir parle en données. Nous l&#8217;anticipons par des décisions.">El futuro habla en datos. Lo anticipamos con decisiones.</p>
           <div class="footer-cta-row">
             <a href="mailto:hola@fastanalytics.co" class="btn btn-primary btn-lg footer-cta" data-es="Hablemos" data-en="Let's talk" data-fr="Parlons">Hablemos</a>
@@ -540,12 +636,36 @@
         </div>
         <div class="footer-links">
           <div class="footer-col">
-            <p class="footer-col-title" data-es="Navegación" data-en="Navigation" data-fr="Navigation">Navegación</p>
+            <p class="footer-col-title" data-es="Escucha" data-en="Listen" data-fr="Écoute">Escucha</p>
             <ul>
-                    <li><a href="#casos" data-es="Ecosistema" data-en="Ecosystem" data-fr="Écosystème">Ecosistema</a></li>
-        <li><a href="#resultados" data-es="Resultados" data-en="Results" data-fr="Résultats">Resultados</a></li>
-              <li><a href="#investigacion" data-es="Investigación" data-en="Research" data-fr="Recherche">Investigación</a></li>
-              <li><a href="#contacto" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a></li>
+              <li><a href="https://t.me/AlejoSeguro_bot" target="_blank" rel="noopener">AlejoSeguro</a></li>
+              <li><a href="#agenda">CatheAsiste</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <p class="footer-col-title" data-es="Investiga" data-en="Investigate" data-fr="Enquête">Investiga</p>
+            <ul>
+              <li><a href="https://mile-ia.fastanalytics.co/chat" target="_blank" rel="noopener">MileInvestiga</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <p class="footer-col-title" data-es="Coordina" data-en="Coordinate" data-fr="Coordination">Coordina</p>
+            <ul>
+              <li><a href="https://guscoordina.fastanalytics.co/" target="_blank" rel="noopener">GusCoordina / PMU</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <p class="footer-col-title" data-es="Predice" data-en="Predict" data-fr="Prédiction">Predice</p>
+            <ul>
+              <li><a href="#agenda">GabyPredice / Eneágono</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <p class="footer-col-title" data-es="Otros" data-en="More" data-fr="Autres">Otros</p>
+            <ul>
+              <li><a href="https://veteranos.fastanalytics.co" target="_blank" rel="noopener">Veteranos</a></li>
+              <li><a href="https://t.me/Ceci_Teaches_bot" target="_blank" rel="noopener">CeciEnseña</a></li>
+              <li><a href="#agenda">TavoDebate</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -655,6 +775,12 @@
 
   <script src="js/main.js?v=2"></script>
   <script src="js/hero-network.js"></script>
+  <script>
+    // Respeta prefers-reduced-motion en el mapa animado de credenciales (SMIL no responde a CSS)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.cred-map animate').forEach(function (a) { a.remove(); });
+    }
+  </script>
   <script>
     // Results carousel
     (function() {

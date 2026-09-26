@@ -3,7 +3,7 @@
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  const PRIMARY = { r: 45, g: 212, b: 191 };
+  const PRIMARY = { r: 13, g: 148, b: 136 };
   const ACCENT = { r: 212, g: 136, b: 58 };
   const CONNECTION_DIST = 150;
   const NODE_COUNT_DESKTOP = 80;
@@ -50,7 +50,7 @@
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < CONNECTION_DIST) {
-          const opacity = (1 - dist / CONNECTION_DIST) * 0.15;
+          const opacity = (1 - dist / CONNECTION_DIST) * 0.22;
           const c = nodes[i].color;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -69,7 +69,7 @@
       const dist = Math.sqrt(dx * dx + dy * dy);
 
       if (dist < MOUSE_RADIUS) {
-        const opacity = (1 - dist / MOUSE_RADIUS) * 0.3;
+        const opacity = (1 - dist / MOUSE_RADIUS) * 0.35;
         ctx.beginPath();
         ctx.moveTo(mouse.x, mouse.y);
         ctx.lineTo(nodes[i].x, nodes[i].y);

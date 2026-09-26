@@ -33,19 +33,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=10">
+  <link rel="stylesheet" href="css/styles.css?v=11">
 
   <style>
     .ai-hero {
-      background: var(--bg-dark);
-      color: #fff;
+      background: linear-gradient(160deg, #FFFFFF 0%, #F2F8F7 55%, #E6F1EF 100%);
+      color: var(--text);
       padding: calc(var(--nav-height) + 48px) 0 64px;
       text-align: center;
     }
     .ai-hero .section-tag {
-      background: rgba(0, 191, 166, 0.12);
-      color: #00BFA6;
-      border: 1px solid rgba(0, 191, 166, 0.35);
+      background: rgba(13, 148, 136, 0.08);
+      color: #0F766E;
+      border: 1px solid rgba(13, 148, 136, 0.3);
     }
     .ai-hero h1 {
       font-size: clamp(1.8rem, 4.5vw, 3rem);
@@ -54,9 +54,9 @@
       margin: 18px auto 12px;
       max-width: 820px;
     }
-    .ai-hero h1 .accent { color: var(--accent); }
+    .ai-hero h1 .accent { color: #B45309; }
     .ai-hero .lead {
-      color: #C8D2DC;
+      color: var(--text-secondary);
       font-size: clamp(1rem, 2.2vw, 1.2rem);
       max-width: 640px;
       margin: 0 auto 36px;
@@ -66,7 +66,7 @@
       margin: 0 auto;
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      box-shadow: 0 24px 64px rgba(15, 23, 42, 0.18), 0 0 0 1px var(--border);
       background: #0E1A24;
     }
     .ai-player-wrap video {
@@ -96,35 +96,36 @@
       color: #fff;
     }
     .ai-hero .btn-outline {
-      border-color: rgba(255, 255, 255, 0.35);
-      color: #fff;
+      border-color: rgba(26, 26, 46, 0.25);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.55);
     }
     .ai-hero .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: #fff;
-      color: #fff;
+      background: rgba(13, 148, 136, 0.08);
+      border-color: var(--primary);
+      color: var(--primary);
     }
     .ai-back {
       display: inline-block;
       margin-top: 28px;
-      color: #9FB0BE;
+      color: var(--text-muted);
       font-size: 0.95rem;
       text-decoration: none;
     }
-    .ai-back:hover { color: #fff; }
+    .ai-back:hover { color: var(--primary); }
     /* ========== SUSCRIPCIÓN ========== */
     .ai-subs {
-      background: #0E1A24;
-      color: #fff;
+      background: var(--bg-alt);
+      color: var(--text);
       padding: 72px 0;
     }
     .ai-subs .section-tag {
-      background: rgba(212, 136, 58, 0.12);
-      color: var(--accent);
-      border: 1px solid rgba(212, 136, 58, 0.4);
+      background: var(--accent-light);
+      color: #B45309;
+      border: 1px solid rgba(212, 136, 58, 0.45);
     }
-    .ai-subs .section-title { color: #fff; }
-    .ai-subs .section-subtitle { color: #C8D2DC; }
+    .ai-subs .section-title { color: var(--text); }
+    .ai-subs .section-subtitle { color: var(--text-secondary); }
     .ai-subs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -132,10 +133,17 @@
       margin-top: 40px;
     }
     .ai-sub-card {
-      background: #17212B;
+      background: var(--card-bg);
       border-radius: 16px;
       padding: 26px 22px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+    }
+    .ai-sub-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
     }
     .ai-sub-chip {
       display: inline-block;
@@ -146,14 +154,14 @@
       border-radius: 999px;
     }
     .chip-teal {
-      background: rgba(0, 109, 109, 0.35);
-      color: #00BFA6;
-      border: 1px solid rgba(0, 191, 166, 0.45);
+      background: rgba(0, 109, 109, 0.1);
+      color: var(--primary);
+      border: 1px solid rgba(0, 109, 109, 0.35);
     }
     .chip-orange {
-      background: rgba(212, 136, 58, 0.18);
-      color: #E9A85C;
-      border: 1px solid rgba(212, 136, 58, 0.55);
+      background: var(--accent-light);
+      color: #B45309;
+      border: 1px solid rgba(212, 136, 58, 0.5);
     }
     .ai-sub-card h3 {
       font-size: 1.05rem;
@@ -161,21 +169,85 @@
       margin: 14px 0 8px;
     }
     .ai-sub-card p {
-      color: #C8D2DC;
+      color: var(--text-secondary);
       font-size: 0.92rem;
       line-height: 1.55;
       margin: 0;
     }
     .ai-subs-cta { text-align: center; margin-top: 40px; }
-    .ai-subs-cta p { color: #C8D2DC; margin: 0 0 18px; }
+    .ai-subs-cta p { color: var(--text-secondary); margin: 0 0 18px; }
     .ai-subs .btn-outline {
-      border-color: rgba(255, 255, 255, 0.35);
-      color: #fff;
+      border-color: var(--border);
+      color: var(--text);
     }
     .ai-subs .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: #fff;
-      color: #fff;
+      background: rgba(13, 148, 136, 0.08);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    /* ========== FORMULARIO DE AGENDA ========== */
+    .ai-agenda {
+      padding: 72px 0;
+      background: #FFFFFF;
+    }
+    .ai-agenda-card {
+      max-width: 720px;
+      margin: 36px auto 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 34px 30px;
+      box-shadow: var(--shadow-sm);
+      text-align: left;
+    }
+    .ai-agenda-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 640px) {
+      .ai-agenda-grid { grid-template-columns: 1fr; }
+      .ai-agenda-card { padding: 26px 18px; }
+    }
+    .ai-field { margin-bottom: 16px; }
+    .ai-field label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .ai-field input,
+    .ai-field textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 13px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: #FFFFFF;
+      transition: border-color var(--transition);
+    }
+    .ai-field input:focus,
+    .ai-field textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.12);
+    }
+    .ai-field textarea { resize: vertical; min-height: 56px; }
+    .ai-agenda-status {
+      margin-top: 14px;
+      font-size: 0.95rem;
+      min-height: 1.4em;
+    }
+    .ai-agenda-status.ok { color: #0F766E; font-weight: 600; }
+    .ai-agenda-status.err { color: #B91C1C; font-weight: 600; }
+    .ai-agenda-note {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      margin-top: 10px;
     }
   </style>
 
@@ -240,7 +312,7 @@
       </div>
 
       <div class="ai-cta-row">
-        <a class="btn btn-primary btn-lg" href="https://agenda.fastanalytics.co/andres/demo" target="_blank" rel="noopener"
+        <a class="btn btn-primary btn-lg" href="#agendar"
            data-es="Agenda tu reunión" data-en="Book your meeting" data-fr="Réservez votre réunion">Agenda tu reunión</a>
         <a class="btn btn-whatsapp btn-lg" href="https://wa.me/573017875697" target="_blank" rel="noopener"
            data-es="Suscríbete por WhatsApp" data-en="Subscribe via WhatsApp" data-fr="Abonnez-vous via WhatsApp">Suscríbete por WhatsApp</a>
@@ -298,7 +370,7 @@
         <p data-es="Servicios adicionales, cotizados por separado según tu caso: analítica de datos avanzada, estadística, machine learning y generación de video." data-en="Additional services, quoted separately for your case: advanced data analytics, statistics, machine learning and video generation." data-fr="Services additionnels, devisés séparément selon votre cas : analytique de données avancée, statistiques, machine learning et génération de vidéo.">Servicios adicionales, cotizados por separado según tu caso: analítica de datos avanzada, estadística, machine learning y generación de video.</p>
         <p data-es="Cuéntanos tu caso y te cotizamos tu suscripción." data-en="Tell us about your case and we'll quote your subscription." data-fr="Parlez-nous de votre cas et nous chiffrerons votre abonnement.">Cuéntanos tu caso y te cotizamos tu suscripción.</p>
         <div class="ai-cta-row" style="margin-top: 0;">
-          <a class="btn btn-primary btn-lg" href="https://agenda.fastanalytics.co/andres/demo" target="_blank" rel="noopener"
+          <a class="btn btn-primary btn-lg" href="#agendar"
              data-es="Agenda tu reunión" data-en="Book your meeting" data-fr="Réservez votre réunion">Agenda tu reunión</a>
           <a class="btn btn-whatsapp btn-lg" href="https://wa.me/573017875697" target="_blank" rel="noopener"
              data-es="Suscríbete por WhatsApp" data-en="Subscribe via WhatsApp" data-fr="Abonnez-vous via WhatsApp">Suscríbete por WhatsApp</a>
@@ -306,6 +378,87 @@
              data-es="Escríbenos" data-en="Write to us" data-fr="Écrivez-nous">Escríbenos</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ========== AGENDA TU REUNIÓN ========== -->
+  <section class="ai-agenda" id="agendar">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag" data-es="Agenda" data-en="Book" data-fr="Réserver">Agenda</span>
+        <h2 class="section-title" data-es="Agenda tu reunión de diseño" data-en="Book your design meeting" data-fr="Réservez votre réunion de conception">Agenda tu reunión de diseño</h2>
+        <p class="section-subtitle" data-es="Recibirás al instante un correo con el enlace de la videollamada. Estas preguntas nos ayudan a llegar con tu asistente ya pensado."
+           data-en="You will instantly receive an email with the video call link. These questions help us arrive with your assistant already designed."
+           data-fr="Vous recevrez immédiatement un e-mail avec le lien de la visioconférence. Ces questions nous aident à arriver avec votre assistant déjà conçu.">
+          Recibirás al instante un correo con el enlace de la videollamada. Estas preguntas nos ayudan a llegar con tu asistente ya pensado.</p>
+      </div>
+      <form class="ai-agenda-card animate-on-scroll" id="agendaAsistenteForm" novalidate>
+        <div class="ai-agenda-grid">
+          <div class="ai-field">
+            <label for="agNombre" data-es="Tu nombre *" data-en="Your name *" data-fr="Votre nom *">Tu nombre *</label>
+            <input type="text" id="agNombre" name="nombre" required maxlength="120" autocomplete="name">
+          </div>
+          <div class="ai-field">
+            <label for="agEmail" data-es="Tu correo *" data-en="Your email *" data-fr="Votre e-mail *">Tu correo *</label>
+            <input type="email" id="agEmail" name="email" required maxlength="120" autocomplete="email">
+          </div>
+          <div class="ai-field">
+            <label for="agFecha" data-es="Fecha preferida *" data-en="Preferred date *" data-fr="Date souhaitée *">Fecha preferida *</label>
+            <input type="date" id="agFecha" name="fecha" required>
+          </div>
+          <div class="ai-field">
+            <label for="agHora" data-es="Hora preferida (Colombia) *" data-en="Preferred time (Colombia) *" data-fr="Heure souhaitée (Colombie) *">Hora preferida (Colombia) *</label>
+            <input type="time" id="agHora" name="hora" required>
+          </div>
+        </div>
+        <!-- Honeypot anti-bots (oculto para humanos) -->
+        <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+          <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <div class="ai-field">
+          <label for="agP1" data-es="1. ¿Qué es lo que te quita más tiempo?" data-en="1. What takes up most of your time?" data-fr="1. Qu'est-ce qui vous prend le plus de temps ?">1. ¿Qué es lo que te quita más tiempo?</label>
+          <textarea id="agP1" name="p1" rows="2" maxlength="1000"></textarea>
+        </div>
+        <div class="ai-field">
+          <label for="agP2" data-es="2. ¿Qué necesitas que haga tu asistente?" data-en="2. What do you need your assistant to do?" data-fr="2. Que doit faire votre assistant ?">2. ¿Qué necesitas que haga tu asistente?</label>
+          <textarea id="agP2" name="p2" rows="2" maxlength="1000"></textarea>
+        </div>
+        <div class="ai-field">
+          <label for="agP3" data-es="3. ¿Cómo quieres que hable?" data-en="3. How do you want it to speak?" data-fr="3. Comment voulez-vous qu'il parle ?">3. ¿Cómo quieres que hable?</label>
+          <textarea id="agP3" name="p3" rows="2" maxlength="1000"></textarea>
+        </div>
+        <div class="ai-field">
+          <label for="agP4" data-es="4. ¿Cómo deseas que se llame tu asistente?" data-en="4. What would you like your assistant to be called?" data-fr="4. Comment souhaitez-vous que votre assistant s'appelle ?">4. ¿Cómo deseas que se llame tu asistente?</label>
+          <textarea id="agP4" name="p4" rows="2" maxlength="1000"></textarea>
+        </div>
+        <div class="ai-field">
+          <label for="agP5" data-es="5. ¿Qué información necesitas tener a la mano?" data-en="5. What information do you need at hand?" data-fr="5. Quelles informations devez-vous avoir à portée de main ?">5. ¿Qué información necesitas tener a la mano?</label>
+          <textarea id="agP5" name="p5" rows="2" maxlength="1000"></textarea>
+        </div>
+        <div class="ai-field">
+          <label for="agP6" data-es="6. ¿Qué no puede decir nunca tu asistente?" data-en="6. What must your assistant never say?" data-fr="6. Que votre assistant ne doit-il jamais dire ?">6. ¿Qué no puede decir nunca tu asistente?</label>
+          <textarea id="agP6" name="p6" rows="2" maxlength="1000"></textarea>
+        </div>
+        <div class="ai-field">
+          <label for="agP7" data-es="7. ¿Cuáles app quieres que maneje?" data-en="7. Which apps do you want it to handle?" data-fr="7. Quelles applications voulez-vous qu'il gère ?">7. ¿Cuáles app quieres que maneje?</label>
+          <textarea id="agP7" name="p7" rows="2" maxlength="1000"></textarea>
+        </div>
+        <div class="ai-field">
+          <label for="agP8" data-es="8. ¿Tienes formatos, logos o estilos para presentaciones?" data-en="8. Do you have formats, logos or styles for presentations?" data-fr="8. Avez-vous des formats, logos ou styles pour les présentations ?">8. ¿Tienes formatos, logos o estilos para presentaciones?</label>
+          <textarea id="agP8" name="p8" rows="2" maxlength="1000"></textarea>
+        </div>
+        <div class="ai-field">
+          <label for="agP9" data-es="9. ¿Deseas servicios adicionales de analítica de datos o generación de video?" data-en="9. Do you want additional data analytics or video generation services?" data-fr="9. Souhaitez-vous des services additionnels d'analytique de données ou de génération de vidéo ?">9. ¿Deseas servicios adicionales de analítica de datos o generación de video?</label>
+          <textarea id="agP9" name="p9" rows="2" maxlength="1000"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" id="agendaAsistenteSubmit"
+          data-es="Agendar y recibir mi enlace" data-en="Book and get my link" data-fr="Réserver et recevoir mon lien">Agendar y recibir mi enlace</button>
+        <p class="ai-agenda-status" id="agendaAsistenteStatus" role="status" aria-live="polite"></p>
+        <p class="ai-agenda-note" data-es="Al agendar recibirás un correo desde hola@fastanalytics.co con el enlace único de tu videollamada (Jitsi, sin instalar nada)."
+           data-en="When you book, you will receive an email from hola@fastanalytics.co with your unique video call link (Jitsi, nothing to install)."
+           data-fr="En réservant, vous recevrez un e-mail de hola@fastanalytics.co avec le lien unique de votre visioconférence (Jitsi, rien à installer).">
+          Al agendar recibirás un correo desde hola@fastanalytics.co con el enlace único de tu videollamada (Jitsi, sin instalar nada).</p>
+      </form>
     </div>
   </section>
 
@@ -365,6 +518,59 @@
       }, { threshold: 0.1 });
       document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
         revealObserver.observe(el);
+      });
+
+      // ========== FORMULARIO DE AGENDA (Asistentes de IA) ==========
+      var AGENDA_API = /(^|\.)fastanalytics\.co$/.test(location.hostname)
+        ? 'https://api.fastanalytics.co/agenda-asistente'
+        : 'http://' + location.hostname + ':8787/agenda-asistente';
+      var agendaForm = document.getElementById('agendaAsistenteForm');
+      var agendaStatus = document.getElementById('agendaAsistenteStatus');
+      var agendaSubmit = document.getElementById('agendaAsistenteSubmit');
+      var agendaI18n = {
+        es: { sending: 'Agendando tu reunión…', ok: '¡Listo! Revisa tu correo: ya te enviamos el enlace de la videollamada.', err: 'No pudimos agendar. Escríbenos a hola@fastanalytics.co', invalid: 'Completa nombre, correo válido, fecha y hora.' },
+        en: { sending: 'Booking your meeting…', ok: 'Done! Check your email: we already sent you the video call link.', err: 'We could not book it. Write to us at hola@fastanalytics.co', invalid: 'Please fill in name, valid email, date and time.' },
+        fr: { sending: 'Réservation en cours…', ok: 'C\'est fait ! Vérifiez votre e-mail : nous avons envoyé le lien de la visioconférence.', err: 'Impossible de réserver. Écrivez-nous à hola@fastanalytics.co', invalid: 'Veuillez remplir nom, e-mail valide, date et heure.' }
+      };
+      function agendaT() { return agendaI18n[currentLang] || agendaI18n.es; }
+
+      document.getElementById('agFecha').min = new Date().toISOString().split('T')[0];
+
+      agendaForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var t = agendaT();
+        var data = {};
+        new FormData(agendaForm).forEach(function (v, k) { data[k] = v; });
+        agendaStatus.className = 'ai-agenda-status';
+        if (!data.nombre || !/^\S+@\S+\.\S+$/.test(data.email || '') || !data.fecha || !data.hora) {
+          agendaStatus.textContent = t.invalid;
+          agendaStatus.classList.add('err');
+          return;
+        }
+        agendaSubmit.disabled = true;
+        agendaStatus.textContent = t.sending;
+        fetch(AGENDA_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+          .then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); })
+          .then(function (res) {
+            agendaSubmit.disabled = false;
+            if (res.body && res.body.ok) {
+              agendaStatus.textContent = t.ok;
+              agendaStatus.classList.add('ok');
+              agendaForm.reset();
+            } else {
+              agendaStatus.textContent = (res.body && res.body.error) || t.err;
+              agendaStatus.classList.add('err');
+            }
+          })
+          .catch(function () {
+            agendaSubmit.disabled = false;
+            agendaStatus.textContent = t.err;
+            agendaStatus.classList.add('err');
+          });
       });
     })();
   </script>

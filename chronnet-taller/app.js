@@ -9,7 +9,7 @@ const DATA = /*__DATA__*/{"nodes":[{"id":0,"name":"Rosbank","iso":"RUS","country
 
 const I18N = {
   menu:        {es:"☰ Menú", en:"☰ Menu"},
-  kicker:      {es:"CHRONNET SHOW · TALLER REDES CRIMINALES", en:"CHRONNET SHOW · CRIMINAL NETWORKS WORKSHOP"},
+  kicker:      {es:"CHRONNET SHOW · ANALÍTICA DE REDES E INTELIGENCIA FINANCIERA", en:"CHRONNET SHOW · NETWORK ANALYTICS AND FINANCIAL INTELLIGENCE"},
   conceptoTag: {es:"Concepto · sin fórmulas", en:"Concept · no formulas"},
   trailerTag:   {es:"Trailer · apertura", en:"Trailer · opening"},
   datosTag:    {es:"Datos reales · FinCEN/ICIJ", en:"Real data · FinCEN/ICIJ"},

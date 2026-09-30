@@ -361,67 +361,105 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
    ESCENA C2 — Triángulos y tribus (clustering + comunidades)
    ===================================================================== */
 (function(){
-  // grafo de juguete: 8 nodos, dos tribus unidas por 2 hilos
-  const N=toyGraph(8,170,0,0);
-  const E=toyEdges(N,[[0,1],[1,2],[2,0],[2,3],[3,4],[4,5],[5,6],[6,3],[4,6],[6,7],[7,0]]);
-  const TRI=[[0,1,2],[3,4,6],[4,5,6]];
-  const comm=i=>(i<=2?0:1);
+  // dos células FÍSICAMENTE separadas + puentes: lectura inmediata
+  const CA={x:0.24,y:0.50,r:120}, CB={x:0.46,y:0.50,r:120};
+  const N=[ // 0-4 célula A, 5-9 célula B, 10-11 puentes
+    {c:CA,a:-2.2},{c:CA,a:-1.1},{c:CA,a:0},{c:CA,a:1.1},{c:CA,a:2.2},
+    {c:CB,a:-2.2},{c:CB,a:-1.1},{c:CB,a:0},{c:CB,a:1.1},{c:CB,a:2.2},
+    {c:{x:0.35,y:0.26},a:0},{c:{x:0.35,y:0.74},a:0}];
+  N.forEach(nd=>{ nd.comm=nd.c===CA?0:nd.c===CB?1:-1; });
+  const E=[[0,1],[1,2],[2,0],[2,3],[3,4],[4,0],[3,0],
+           [5,6],[6,7],[7,5],[7,8],[8,9],[9,5],[8,5],
+           [1,10],[10,6],[4,11],[11,9],[2,11],[7,10]];
   const CCOL=[TEAL,AMBER];
+  function sidePanel(title,lines,q=1){ if(q<=0)return; const px=W*0.60,py=H*0.16,pw=W*0.34;
+    ctx.save(); ctx.globalAlpha=Math.min(1,q);
+    panel(px,py,pw,44+lines.length*30,0.9);
+    label(px+18,py+30,title,AMBER,16,"left",true);
+    lines.forEach((ln,i)=>{ label(px+18,py+64+i*30,ln,TXT,13,"left"); });
+    ctx.restore(); return px; }
+  function layout(){ const A={x:W*CA.x,y:H*CA.y,r:CA.r}, B={x:W*CB.x,y:H*CB.y,r:CB.r};
+    N.forEach(nd=>{ const c=nd.c===CA?A:nd.c===CB?B:{x:W*nd.c.x,y:H*nd.c.y};
+      const r=c.r||0; nd.x=c.x+Math.cos(nd.a)*r; nd.y=c.y+Math.sin(nd.a)*r; }); }
+  function drawCells(t,spotlight){ starfield(80);
+    E.forEach(([a,b])=>{ const na=N[a],nb=N[b]; const intra=na.comm===nb.comm;
+      const isBr=spotlight&&!intra;
+      drawEdge(na.x,na.y,nb.x,nb.y,intra?1.6:3,isBr?AMBER:(intra?CCOL[na.comm]:"#2A5560"),
+        isBr?0.8+0.2*Math.sin(t*3):(intra?0.75:0.28));
+      if(isBr){ ctx.save(); ctx.globalAlpha=0.9; ctx.strokeStyle=AMBER; ctx.lineWidth=2; ctx.setLineDash([7,7]);
+        ctx.beginPath(); ctx.moveTo(na.x,na.y); ctx.lineTo(nb.x,nb.y); ctx.stroke(); ctx.restore(); } });
+    N.forEach(nd=>{ const col=nd.comm<0?"#7C9EB2":CCOL[nd.comm];
+      glowCircle(nd.x,nd.y,10,col,14,1);
+      if(nd.comm<0&&spotlight){ ctx.save(); ctx.strokeStyle=AMBER; ctx.globalAlpha=0.5+0.5*Math.sin(t*4);
+        ctx.lineWidth=2; ctx.beginPath(); ctx.arc(nd.x,nd.y,16,0,7); ctx.stroke(); ctx.restore(); } }); }
   SCENES.push({
     id:"c2", tag:"concepto",
     title:{es:"Concepto 2 · Triángulos y tribus", en:"Concept 2 · Triangles and tribes"},
-    desc:{es:"Qué mide la clusterización y qué son las comunidades: la red criminal se organiza en células densas por dentro y débiles por fuera.",
-          en:"What clustering measures and what communities are: criminal networks organize into cells dense inside and weak outside."},
-    fit(){ camTo(0,0,1); relayout(N,W*0.42,H*0.52); },
+    desc:{es:"Clusterización y comunidades explicados con dos células separadas: denso por dentro, hilos por fuera.",
+          en:"Clustering and communities explained with two separated cells: dense inside, threads outside."},
+    fit(){ camTo(0,0,1); layout(); },
     steps:[
-      { d:6, cap:{es:"Una red no es una lista: es gente que se conecta. Algunas conexiones forman triángulos: el amigo de mi amigo también se conecta conmigo.",
-                  en:"A network is not a list: it is people connecting. Some connections form triangles: my friend's friend also connects to me."},
-        draw(p){ starfield(80); const q=ease(p);
-          E.forEach((e,i)=>{ const al=Math.max(0,Math.min(1,q*E.length-i*0.5));
-            if(al>0) drawEdge(e.a.x,e.a.y,e.b.x,e.b.y,1.6,"#2A5560",al); });
-          N.forEach((nd,i)=>{ const al=Math.max(0,Math.min(1,q*N.length*1.5-i*0.7));
-            if(al>0) glowCircle(nd.x,nd.y,10,"#3E6E78",14,al); });
-          label(W/2,90,LANG==="es"?"¿QUIÉN CONOCE A QUIÉN?":"WHO KNOWS WHO?",MUT,13); } },
-      { d:7, cap:{es:"El coeficiente de clusterización cuenta triángulos: de las conexiones que PODÍAN cerrarse, ¿cuántas se cerraron? Célula alta = todos se conocen.",
-                  en:"The clustering coefficient counts triangles: of the connections that COULD have closed, how many did? High cell = everyone knows everyone."},
-        draw(p,t){ starfield(80);
-          E.forEach(e=>drawEdge(e.a.x,e.a.y,e.b.x,e.b.y,1.6,"#2A5560",0.9));
-          const tri=TRI[0];
-          if(p<0.5){ const q=ease(p*2);
-            drawEdge(N[tri[0]].x,N[tri[0]].y,N[tri[1]].x,N[tri[1]].y,3,TEAL,1);
-            drawEdge(N[tri[1]].x,N[tri[1]].y,N[tri[2]].x,N[tri[2]].y,3,TEAL,1);
-            drawEdge(N[tri[0]].x,N[tri[0]].y,N[tri[2]].x,N[tri[2]].y,3,AMBER,q); }
-          else { const q=ease((p-0.5)*2);
-            ctx.save(); ctx.globalAlpha=0.18*q; ctx.fillStyle=TEAL;
-            ctx.beginPath(); ctx.moveTo(N[tri[0]].x,N[tri[0]].y); ctx.lineTo(N[tri[1]].x,N[tri[1]].y); ctx.lineTo(N[tri[2]].x,N[tri[2]].y); ctx.fill(); ctx.restore(); }
+      { d:6, cap:{es:"Una red criminal no es una lista: es células. Dentro de cada célula, todos se conocen entre todos.",
+                  en:"A criminal network is not a list: it is cells. Inside each cell, everyone knows everyone."},
+        draw(p,t){ layout(); const q=ease(p);
+          E.forEach(([a,b],i)=>{ const al=Math.max(0,Math.min(1,q*E.length-i*0.6));
+            if(al>0) drawEdge(N[a].x,N[a].y,N[b].x,N[b].y,1.6,"#2A5560",al); });
+          N.forEach((nd,i)=>{ const al=Math.max(0,Math.min(1,q*N.length*1.5-i*0.8));
+            if(al>0) glowCircle(nd.x,nd.y,10,"#3E6E78",12,al); });
+          if(q>0.5) sidePanel(LANG==="es"?"LO QUE VES":"WHAT YOU SEE",[
+            LANG==="es"?"· dos grupos separados":"· two separated groups",
+            LANG==="es"?"· dentro de cada uno,":"· inside each one,",
+            LANG==="es"?"  muchas conexiones (triángulos)":"  many connections (triangles)",
+            LANG==="es"?"· entre grupos, casi nada":"· between groups, almost nothing"],(q-0.5)*2); } },
+      { d:7, cap:{es:"El coeficiente de clusterización cuenta triángulos: de las conexiones que PODÍAN cerrarse, ¿cuántas se cerraron? Alta = célula cohesionada.",
+                  en:"The clustering coefficient counts triangles: of the connections that COULD close, how many did? High = cohesive cell."},
+        draw(p,t){ layout(); starfield(80);
+          E.forEach(([a,b])=>drawEdge(N[a].x,N[a].y,N[b].x,N[b].y,1.6,"#2A5560",0.9));
           N.forEach(nd=>glowCircle(nd.x,nd.y,10,"#3E6E78",12,1));
-          tri.forEach(i=>glowCircle(N[i].x,N[i].y,11,TEAL,16,1));
-          meter(W*0.62,H*0.44,260,26,ease(p)*(TRI.length/8),TEAL,
-            LANG==="es"?"clusterización ↑":"clustering ↑","Δ Δ Δ"); } },
-      { d:7, cap:{es:"Si coloreamos por tribu, aparecen las comunidades: grupos que se conectan mucho entre sí y poco con los demás. El crimen organizado SIEMPRE forma tribus.",
-                  en:"Color by tribe and communities appear: groups that connect a lot within and little outside. Organized crime ALWAYS forms tribes."},
-        draw(p){ starfield(80); const q=ease(p);
-          E.forEach(e=>{ const c=CCOL[comm(e.a.id)];
-            drawEdge(e.a.x,e.a.y,e.b.x,e.b.y,1.6+2*q*(comm(e.a.id)===comm(e.b.id)?1:0),c,0.35+0.5*q); });
-          N.forEach(nd=>{ const c=CCOL[comm(nd.id)];
-            ctx.save(); ctx.globalAlpha=1; glowCircle(nd.x,nd.y,10+6*q,c,16,0.9); ctx.restore(); });
-          label(W*0.42,H*0.52-220,LANG==="es"?"COMUNIDAD 1":"COMMUNITY 1",TEAL,14,"center",true);
-          label(W*0.42,H*0.52+240,LANG==="es"?"COMUNIDAD 2":"COMMUNITY 2",AMBER,14,"center",true); } },
-      { d:8, cap:{es:"El ocultamiento tiene forma de red: núcleo denso por dentro, un par de hilos tenues por fuera. Nadie ve la tribu completa: solo su hilo. Ese hilo es el punto débil.",
-                  en:"Concealment has a network shape: dense core inside, a couple of thin threads outside. Nobody sees the whole tribe: only its thread. That thread is the weak point."},
-        draw(p,t){ starfield(80);
-          E.forEach(e=>{ const intra=comm(e.a.id)===comm(e.b.id);
-            drawEdge(e.a.x,e.a.y,e.b.x,e.b.y,intra?1.4:3,intra?"#22424C":AMBER,intra?0.30:0.75+0.2*Math.sin(t*3)); });
-          N.forEach(nd=>glowCircle(nd.x,nd.y,10,"#3E6E78",12,0.8));
-          if(p>0.4){ const q=ease(Math.min(1,(p-0.4)/0.4));
-            const br=E.filter(e=>comm(e.a.id)!==comm(e.b.id));
-            br.forEach(e=>{ ctx.save(); ctx.globalAlpha=q; ctx.strokeStyle=AMBER; ctx.lineWidth=2;
-              ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(e.a.x,e.a.y); ctx.lineTo(e.b.x,e.b.y); ctx.stroke(); ctx.restore(); });
-            ctx.save(); ctx.globalAlpha=q; panel(W*0.62,H*0.30,290,96,0.92);
-            label(W*0.62+16,H*0.30+30,LANG==="es"?"Patrón de ocultamiento":"Concealment pattern",AMBER,15,"left",true);
-            label(W*0.62+16,H*0.30+56,LANG==="es"?"denso por dentro · hilos por fuera":"dense inside · threads outside",TXT,13,"left");
-            label(W*0.62+16,H*0.30+80,LANG==="es"?"⇒ los puentes entre tribus delatan el sistema":"⇒ bridges between tribes betray the system",TEAL,12,"left");
-            ctx.restore(); } } },
+          const q=ease(p);
+          [[0,1,2],[5,6,7]].forEach((tr,k)=>{ const al=Math.min(1,Math.max(0,q*2-k*0.5));
+            ctx.save(); ctx.globalAlpha=0.20*al; ctx.fillStyle=CCOL[k];
+            ctx.beginPath(); ctx.moveTo(N[tr[0]].x,N[tr[0]].y); ctx.lineTo(N[tr[1]].x,N[tr[1]].y);
+            ctx.lineTo(N[tr[2]].x,N[tr[2]].y); ctx.fill(); ctx.restore();
+            tr.forEach(i=>glowCircle(N[i].x,N[i].y,11,CCOL[k],15,al)); });
+          const px=sidePanel(LANG==="es"?"CLUSTERIZACIÓN":"CLUSTERING",[
+            LANG==="es"?"triángulos cerrados / posibles":"closed triangles / possible",
+            "",
+            LANG==="es"?"Célula A: 3 de 5 posibles":"Cell A: 3 of 5 possible",
+            LANG==="es"?"Célula B: 3 de 5 posibles":"Cell B: 3 of 5 possible",
+            "",
+            LANG==="es"?"⇒ células cohesionadas":"⇒ cohesive cells"],Math.min(1,q*1.5));
+          if(px) meter(px+18,H*0.16+44+6*30+14,W*0.34-36,26,q*0.6,TEAL,
+            LANG==="es"?"clusterización global":"global clustering","CC = 0.60"); } },
+      { d:7, cap:{es:"Coloreamos por tribu: cada célula es una comunidad. El crimen organizado SIEMPRE se organiza así: denso por dentro, invisible por fuera.",
+                  en:"Color by tribe: each cell is a community. Organized crime ALWAYS organizes like this: dense inside, invisible outside."},
+        draw(p,t){ layout(); const q=ease(p); starfield(80);
+          E.forEach(([a,b])=>{ const na=N[a],nb=N[b]; const intra=na.comm===nb.comm;
+            drawEdge(na.x,na.y,nb.x,nb.y,intra?2.2:1.2,intra?CCOL[na.comm]:"#2A5560",intra?0.35+0.5*q:0.25); });
+          N.forEach(nd=>{ const col=nd.comm<0?"#7C9EB2":CCOL[nd.comm];
+            glowCircle(nd.x,nd.y,10+4*q,col,16,q); });
+          sidePanel(LANG==="es"?"COMUNIDADES":"COMMUNITIES",[
+            LANG==="es"?"◉ COMUNIDAD 1 (teal)":"◉ COMMUNITY 1 (teal)",
+            LANG==="es"?"  5 miembros · 7 conexiones internas":"  5 members · 7 internal links",
+            "",
+            LANG==="es"?"◉ COMUNIDAD 2 (ámbar)":"◉ COMMUNITY 2 (amber)",
+            LANG==="es"?"  5 miembros · 7 conexiones internas":"  5 members · 7 internal links",
+            "",
+            LANG==="es"?"◉ grises: puentes entre tribus":"◉ grey: bridges between tribes"],q); } },
+      { d:8, cap:{es:"El patrón de ocultamiento: cada tribu es invisible para la otra; solo los puentes grises las conectan. Cortar un puente aísla a la tribu. Ese es el punto débil del sistema.",
+                  en:"The concealment pattern: each tribe is invisible to the other; only the grey bridges connect them. Cutting a bridge isolates the tribe. That is the system's weak point."},
+        draw(p,t){ layout(); const q=ease(p); starfield(80);
+          E.forEach(([a,b])=>{ const na=N[a],nb=N[b]; const intra=na.comm===nb.comm;
+            drawEdge(na.x,na.y,nb.x,nb.y,intra?1.5:3,intra?"#2E5560":AMBER,intra?0.42:0.75+0.2*Math.sin(t*3)); });
+          N.forEach(nd=>{ const col=nd.comm<0?AMBER:(nd.comm===0?TEAL:"#B4762E");
+            glowCircle(nd.x,nd.y,10,col,nd.comm<0?18:12,nd.comm<0?q:0.55+0.25*q); });
+          sidePanel(LANG==="es"?"PATRÓN DE OCULTAMIENTO":"CONCEALMENT PATTERN",[
+            LANG==="es"?"· tribus densas por dentro":"· tribes dense inside",
+            LANG==="es"?"· casi sin conexión externa":"· almost no external links",
+            "",
+            LANG==="es"?"⇒ nadie ve la red completa":"⇒ nobody sees the whole network",
+            LANG==="es"?"⇒ los puentes son el mapa":"⇒ the bridges are the map",
+            LANG==="es"?"   de intervención":"   for intervention"],q); } },
     ]
   });
 })();
@@ -470,13 +508,16 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
             drawEdge(...P(...worldPos(e.a)),...P(...worldPos(e.b)),intra?1.5:1,intra?COMM_COLORS[COMM[e.s]]:"#4A6B75",intra?0.5:0.12); });
           NODES.forEach(nd=>{ const [x,y]=P(...worldPos(nd)); const c=COMM_COLORS[COMM[nd.id]||0];
             glowCircle(x,y,2.5+4.5*Math.sqrt(nd.amount/1e9),c,14,0.95); });
+          const lx=W*0.70, ly=H*0.14; ctx.save(); ctx.globalAlpha=ease(p);
+          panel(lx,ly,270,30+Object.keys(commLabel).length*30,0.9);
+          label(lx+14,ly+24,LANG==="es"?"TRIBUS DEL LAVADO":"LAUNDERING TRIBES",AMBER,13,"left",true);
           Object.keys(commLabel).forEach(ci=>{ const members=NODES.filter(nd=>COMM[nd.id]==ci);
-            if(!members.length)return; const cx=members.reduce((s,m)=>s+m.lon,0)/members.length;
-            const cy=members.reduce((s,m)=>s+m.lat,0)/members.length; const [x,y]=P(cx+members[0].jlon,-cy);
-            const amt=members.reduce((s,m)=>s+m.amount,0)/1e9;
-            ctx.save(); ctx.globalAlpha=ease(p); panel(x-95,y-52,190,48,0.88);
-            label(x,y-32,commLabel[ci],COMM_COLORS[ci],13,"center",true);
-            label(x,y-12,"$"+amt.toFixed(1)+"B",TXT,12,"center"); ctx.restore(); }); } },
+            if(!members.length)return; const amt=members.reduce((s,m)=>s+m.amount,0)/1e9;
+            const yy=ly+54+ci*30;
+            ctx.fillStyle=COMM_COLORS[ci]; ctx.beginPath(); ctx.arc(lx+24,yy-4,6,0,7); ctx.fill();
+            label(lx+40,yy,commLabel[ci],COMM_COLORS[ci],12,"left",true);
+            label(lx+256,yy,"$"+amt.toFixed(1)+"B",TXT,12,"right"); });
+          ctx.restore(); } },
       { d:7, cap:{es:"¿Casualidad? Comparamos la clusterización real con una red azarosa con las mismas conexiones. La diferencia es coordinación, no suerte.",
                   en:"Chance? We compare real clustering with a random network with the same connections. The difference is coordination, not luck."},
         draw(p){ starfield(90); graticule();
@@ -502,11 +543,14 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
             const [ax,ay]=P(...worldPos(e.a)),[bx,by]=P(...worldPos(e.b));
             drawEdge(ax,ay,bx,by,1.5+2*Math.min(3,e.a/300),AMBER,(0.3+0.5*q)*(0.7+0.3*Math.sin(t*3)));
             packets(ax,ay,bx,by,t,2,AMBER); });
-          NODES.forEach(nd=>{ if(COMM[nd.id]===undefined)return; const isBridge=EDGES_B.some(e=>
-            (e.s===nd.id||e.t===nd.id)&&COMM[e.s]!==COMM[e.b]);
+          const bridges=NODES.filter(nd=>COMM[nd.id]!==undefined&&EDGES_B.some(e=>
+            (e.s===nd.id||e.t===nd.id)&&COMM[e.s]!==COMM[e.b])).sort((a,b)=>b.btw-a.btw).slice(0,4);
+          const seen=new Set();
+          NODES.forEach(nd=>{ if(COMM[nd.id]===undefined)return; const isBridge=bridges.includes(nd);
             const [x,y]=P(...worldPos(nd));
             glowCircle(x,y,isBridge?6:3,isBridge?AMBER:"#3E6E78",isBridge?16:8,isBridge?q:0.3*q);
-            if(isBridge&&q>0.5) label(x,y-18,nd.name,AMBER,10); }); } },
+            if(isBridge&&q>0.5&&!seen.has(nd.iso)){ seen.add(nd.iso); const off=LBL_OFF[nd.iso]||[0,-14];
+              label(x+off[0]*1.5,y+off[1]*1.5,nd.name.slice(0,20),AMBER,10); } }); } },
     ]
   });
 })();

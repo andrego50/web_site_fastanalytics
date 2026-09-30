@@ -855,18 +855,49 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
     starfield(60); const q=ease(p);
     const keys=["KB_5","BTW_5","DEG_5","CI_5","RND_5"];
     const cols={KB_5:AMBER,BTW_5:TEAL,DEG_5:"#7C9EB2",CI_5:"#C99A3F",RND_5:"#4A6B75"};
-    const x0=W*0.14,y0=H*0.80,w=W*0.72,h=H*0.52;
-    ctx.strokeStyle="#1B3A44"; ctx.strokeRect(x0,y0-h,w,h);
-    keys.forEach(k=>{ const trj=DATA.disrupt[k]; ctx.strokeStyle=cols[k]; ctx.lineWidth=k==="KB_5"?3:1.8;
-      ctx.globalAlpha=q; ctx.beginPath();
-      trj.forEach((st,i)=>{ const x=x0+w*i/(trj.length-1), y=y0-st.lcc*h;
-        i?ctx.lineTo(x,y):ctx.moveTo(x,y); }); ctx.stroke(); ctx.globalAlpha=1;
-      label(x0+w+14,y0-trj[trj.length-1].lcc*h,k.split("_")[0],cols[k],12,"left",true); });
-    label(x0,y0-h-14,LANG==="es"?"tamaño del componente más grande (LCC) vs pasos":"largest component size (LCC) vs steps",MUT,13);
-    label(x0,y0+26,LANG==="es"?"protocolo raid b=5 — cada paso = 5 detenciones":"raid protocol b=5 — each step = 5 arrests",MUT,12);
-    ctx.save(); ctx.globalAlpha=q; panel(x0,84,420,74,0.9);
-    label(x0+16,110,LANG==="es"?"Secuencia recomendada por el paper":"Sequence recommended by the paper",AMBER,14,"left",true);
-    label(x0+16,136,LANG==="es"?"1) KB corta los puentes (aislar células)  →  2) DEG/BTW decapitan los núcleos":"1) KB cuts the bridges (isolate cells)  →  2) DEG/BTW decapitate the cores",TXT,12,"left");
+    const NICE={KB_5:"KB",BTW_5:"BTW",DEG_5:"DEG",CI_5:"CI",RND_5:"RND"};
+    const auc=k=>{ const trj=DATA.disrupt[k]; let s=0;
+      for(let i=1;i<trj.length;i++) s+=(trj[i-1].lcc+trj[i].lcc)/2;
+      return s/(trj.length-1); };
+    // marco del gráfico
+    const gx0=W*0.10, gy0=H*0.16, gw=W*0.68, gh=H*0.56;
+    const y0=gy0+gh; // eje x
+    ctx.save();
+    // rejilla y eje Y con porcentajes
+    [0,0.25,0.5,0.75,1].forEach(v=>{ const y=y0-v*gh;
+      ctx.strokeStyle=v===0?"#2A5560":"#16333C"; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(gx0,y); ctx.lineTo(gx0+gw,y); ctx.stroke();
+      label(gx0-12,y+4,Math.round(v*100)+"%",MUT,11,"right"); });
+    // título dentro del área
+    label(gx0+gw/2,gy0-14,LANG==="es"?"FRAGMENTACIÓN DE LA RED · RAID b=5 · cada paso = 5 detenciones":"NETWORK FRAGMENTATION · RAID b=5 · each step = 5 arrests",AMBER,13,"center",true);
+    // curvas
+    const maxSteps=Math.max(...keys.map(k=>DATA.disrupt[k].length))-1;
+    keys.forEach(k=>{ const trj=DATA.disrupt[k]; const isKB=k==="KB_5";
+      ctx.strokeStyle=cols[k]; ctx.lineWidth=isKB?3.5:2; ctx.globalAlpha=q*(isKB?1:0.85);
+      ctx.shadowColor=isKB?"#D4883A66":"#00000000"; ctx.shadowBlur=isKB?10:0;
+      ctx.beginPath();
+      trj.forEach((st,i)=>{ const x=gx0+gw*i/maxSteps, y=y0-st.lcc*gh;
+        i?ctx.lineTo(x,y):ctx.moveTo(x,y); });
+      ctx.stroke(); ctx.shadowBlur=0; ctx.globalAlpha=1; });
+    // valores finales escalonados (evitan solaparse)
+    const finals=keys.map(k=>({k,v:DATA.disrupt[k][DATA.disrupt[k].length-1].lcc}))
+      .sort((a,b)=>b.v-a.v);
+    finals.forEach((f,i)=>{ const x=gx0+gw+14, y=y0-f.v*gh+i*18-18;
+      label(x,y,NICE[f.k],cols[f.k],12,"left",true);
+      label(x+52,y,Math.round(f.v*100)+"%",MUT,11,"left"); });
+    // leyenda con AUC (la métrica del paper)
+    const lx=gx0+8, ly=gy0+10;
+    panel(lx,ly,340,58,0.88);
+    label(lx+12,ly+20,LANG==="es"?"Área bajo la curva (AUC) — menor = fragmenta más rápido":"Area under the curve (AUC) — lower = faster fragmentation","#C9D8DD",10.5,"left");
+    const order=[...keys].sort((a,b)=>auc(a)-auc(b));
+    order.forEach((k,i)=>{ const xx=lx+12+i*66;
+      ctx.fillStyle=cols[k]; ctx.fillRect(xx,ly+32,10,10);
+      label(xx+14,ly+41,NICE[k]+" "+auc(k).toFixed(2),k==="KB_5"?AMBER:MUT,10.5,"left",k==="KB_5"); });
+    ctx.restore();
+    // recuadro de la secuencia del paper
+    ctx.save(); ctx.globalAlpha=q; panel(W*0.10,H*0.80,W*0.68,54,0.9);
+    label(W*0.10+16,H*0.80+22,LANG==="es"?"Secuencia recomendada por el paper":"Sequence recommended by the paper",AMBER,13,"left",true);
+    label(W*0.10+16,H*0.80+44,LANG==="es"?"1) KB corta los puentes (aislar células)  →  2) DEG/BTW decapitan los núcleos":"1) KB cuts the bridges (isolate cells)  →  2) DEG/BTW decapitate the cores",TXT,12,"left");
     ctx.restore(); }
   const scene={
     id:"d4", tag:"datos", sim:true, curKey:"KB_5",

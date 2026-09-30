@@ -124,16 +124,18 @@
     <div id="stageWrap">
       <div id="canvasBox">
         <canvas id="cv"></canvas>
-        <div id="hints">← → paso · espacio pausa · F pantalla completa</div>
+        <div id="hints">← → paso · ⇤ ⇥ / [ ] escena · espacio pausa · F pantalla completa</div>
       </div>
       <div id="simbar"></div>
       <div id="controls">
         <div id="caption"><span class="stepno"></span><span id="capText"></span></div>
         <div id="chipRow"></div>
         <div id="ctrlRow">
+          <button class="cbtn ghost" id="prevSceneBtn" title="Escena anterior">⇤</button>
           <button class="cbtn ghost" id="prevBtn" title="Paso anterior">⏮</button>
           <button class="cbtn" id="playBtn" title="Pausa / reproducir">⏸</button>
           <button class="cbtn ghost" id="nextBtn" title="Paso siguiente">⏭</button>
+          <button class="cbtn ghost" id="nextSceneBtn" title="Escena siguiente">⇥</button>
           <div id="prog"><div id="progFill"></div><div id="progDot"></div></div>
           <div id="stepCount">0 / 0</div>
         </div>

@@ -882,7 +882,7 @@ document.getElementById("prevBtn").onclick=()=>prevStep();
 document.getElementById("menuBtn").onclick=()=>{ Stage.classList.remove("open"); Menu.classList.add("open"); playing=false; playBtn.textContent=T("play"); };
 document.getElementById("fsBtn").onclick=()=>{ if(!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); };
 document.getElementById("langBtn").onclick=function(){ LANG=LANG==="es"?"en":"es"; this.textContent=LANG==="es"?"EN":"ES";
-  document.documentElement.lang=LANG; buildMenu(); if(cur>=0){ const sc=SCENES[cur];
+  document.documentElement.lang=LANG; applyLang(); buildMenu(); if(cur>=0){ const sc=SCENES[cur];
     sceneTitle.textContent=sc.title[LANG]; capStep(); buildSim(sc); } };
 document.getElementById("sndBtn").onclick=function(){ this.textContent=AudioFX.toggle()?T("soundOn"):T("soundOff"); };
 window.addEventListener("keydown",e=>{
@@ -935,14 +935,14 @@ function applyLang(){
 window.addEventListener("load",boot);
 
 /* =====================================================================
-   ESCENA 0 — Tráiler de apertura: del caos al logo
+   ESCENA 0 — Tráiler de apertura: del caos documental al mapa del lavado
    ===================================================================== */
 (function(){
   // fragmentos documentales determinísticos
   const FRAG=[]; { let s=4242; const rnd=()=>{ s=(s*16807)%2147483647; return s/2147483647; };
     const words=["SAR #4.507","US$35,7B","LTB Bank","Rigensis AS","transferencia","Rosbank",
       "Credit Suisse","FinCEN","Caimán → HK","cuenta 04514","29-09-2015","reporte sospechoso",
-      "Amsterdam Trade"," Expobank","USD 68.343.000","banco destino","origen: RUS"];
+      "Amsterdam Trade","Expobank","USD 68.343.000","banco destino","origen: RUS"];
     for(let i=0;i<46;i++){ FRAG.push({
       x:(rnd()-0.5)*1500, y:(rnd()-0.5)*800, z:0.4+rnd()*0.9,
       w:70+rnd()*90, h:34+rnd()*30, a:rnd()*6.28, spin:(rnd()-0.5)*0.8,
@@ -963,10 +963,7 @@ window.addEventListener("load",boot);
     ctx.font=`800 ${size}px Inter,system-ui,sans-serif`; ctx.textAlign="left";
     const parts=[["F",TEAL],["a",AMBER],["stAnalyt",TEAL],["i",AMBER],["cs",TEAL]];
     let x=cx; parts.forEach(([ch,c])=>{ ctx.fillStyle=c; ctx.fillText(ch,x,cy); x+=ctx.measureText(ch).width-1; });
-    ctx.font=`600 ${size*0.30}px Inter,system-ui,sans-serif`;
-    ctx.fillStyle="#64748B"; ctx.textAlign="center";
-    ctx.fillText(LANG==="es"?"IA ESPACIOTEMPORAL PARA DECISIONES PREDICTIVAS":"SPATIOTEMPORAL AI FOR PREDICTIVE DECISIONS",cx+(x-cx)/2,cy+size*0.95);
-    ctx.restore(); }
+    ctx.restore(); return x-cx; }
   function logoMark(cx,cy,r,al){ ctx.save(); ctx.globalAlpha=al;
     ctx.strokeStyle=TEAL; ctx.lineWidth=2.4; ctx.beginPath();
     for(let i=0;i<9;i++){ const a=-Math.PI/2+i*2*Math.PI/9;
@@ -977,11 +974,40 @@ window.addEventListener("load",boot);
     ctx.fillRect(cx-r*0.08,cy-r*0.14,r*0.16,r*0.64);
     ctx.fillStyle=AMBER; ctx.fillRect(cx+r*0.14,cy-r*0.34,r*0.16,r*0.84);
     ctx.restore(); }
+  // focos geográficos del caso (lon, lat)
+  const FOCUS={ baltico:[28,56], suiza:[8,47], asia:[104,22], atlantico:[-70,19] };
+  const w2p=(lon,lat)=>[lon,-lat];
+  function camDive(cLon,cLat,zoom,q){ // q:0 alejado -> 1 cerco; suavizado
+    const e=q*q*(3-2*q);
+    fitWorld(0.10);
+    const zBase=CAM.tz;
+    const cx0=5, cy0=2;
+    camTo(cx0+(cLon-cx0)*e, cy0+(cLat-cy0)*e, zBase*(1+(1-e)*(zoom-1))); }
+  function drawWorldPulse(t,intensity,focusLon,focusLat){
+    starfield(90);
+    // halo terrestre para lectura cinematográfica en zooms alejados
+    ctx.save(); const [gx,gy]=P(15,-5); const gr=Math.min(W,H)*CAM.z*38;
+    const gg=ctx.createRadialGradient(gx,gy,gr*0.2,gx,gy,gr);
+    gg.addColorStop(0,"rgba(13,60,70,0.30)"); gg.addColorStop(1,"#00000000");
+    ctx.fillStyle=gg; ctx.fillRect(0,0,W,H); ctx.restore();
+    graticule();
+    EDGES_B.forEach(e=>{ const [ax,ay]=P(...w2p(e.a.lon+e.a.jlon,-(e.a.lat+e.a.jlat)));
+      const [bx,by]=P(...w2p(e.b.lon+e.b.jlon,-(e.b.lat+e.b.jlat)));
+      drawEdge(ax,ay,bx,by,0.7+1.8*Math.min(1,e.w/800),TEAL_D,0.22*intensity);
+      if(intensity>0.5&&e.w>400) packets(ax,ay,bx,by,t,1,AMBER); });
+    NODES.forEach(nd=>{ const [x,y]=P(...w2p(nd.lon+nd.jlon,-(nd.lat+nd.jlat)));
+      const near=focusLon!==undefined?Math.max(0,1-Math.hypot(nd.lon-focusLon,nd.lat-focusLat)/40):1;
+      glowCircle(x,y,(2.5+4.5*Math.sqrt(nd.amount/1e9))*intensity,TEAL,14*intensity,(0.4+0.6*near)*intensity); });
+    // anillo expansivo en el foco
+    if(focusLon!==undefined){ const [fx,fy]=P(...w2p(focusLon,-focusLat));
+      for(let k=0;k<3;k++){ const ph=((t*0.5+k/3)%1);
+        ctx.save(); ctx.globalAlpha=(1-ph)*0.6*intensity; ctx.strokeStyle=AMBER; ctx.lineWidth=2;
+        ctx.beginPath(); ctx.arc(fx,fy,10+ph*60,0,7); ctx.stroke(); ctx.restore(); } } }
   SCENES.unshift({
-    id:"trailer", tag:"concepto",
-    title:{es:"Escena 0 · Apertura: del caos a la red", en:"Scene 0 · Opening: from chaos to network"},
-    desc:{es:"Tráiler de apertura: el caos documental de 4.507 reportes SAR converge en una red, y la red en FastAnalytics. ~15 segundos para abrir la venta.",
-          en:"Opening trailer: the documentary chaos of 4,507 SAR filings converges into a network, and the network into FastAnalytics. ~15 seconds to open the pitch."},
+    id:"trailer", tag:"trailer",
+    title:{es:"Escena 0 · Apertura: el futuro habla en datos", en:"Scene 0 · Opening: the future speaks in data"},
+    desc:{es:"Tráiler cinematográfico: el caos de 4.507 reportes SAR, un viaje con acercamientos por el mapa del lavado y el lema de FastAnalytics. ~20 segundos.",
+          en:"Cinematic trailer: the chaos of 4,507 SAR filings, a journey with zooms across the laundering map, and the FastAnalytics motto. ~20 seconds."},
     fit(){ camTo(0,0,1); },
     steps:[
       { d:3.5, cap:{es:"4.507 reportes. 1.726 bancos. 129 países. Un sistema escondido en el papel.",
@@ -990,11 +1016,10 @@ window.addEventListener("load",boot);
           FRAG.forEach((f,i)=>{ const al=Math.max(0,Math.min(1,p*FRAG.length*0.5-i*0.28));
             if(al<=0)return; const [x,y]=fragPos(f,t);
             drawFrag(f,x+W/2,y+H*0.48,al*0.9,1); }); } },
-      { d:4.5, cap:{es:"Nadie ve la red completa: cada banco ve un fragmento. La conexión está en el tiempo.",
-                    en:"Nobody sees the whole network: each bank sees a fragment. The connection lies in time."},
+      { d:4, cap:{es:"Nadie ve la red completa: cada banco ve un fragmento. La conexión está en el tiempo.",
+                  en:"Nobody sees the whole network: each bank sees a fragment. The connection lies in time."},
         draw(p,t){ starfield(60); const q=ease(p);
-          // fragmentos convergen y se conectan
-          FRAG.forEach((f,i)=>{ const [fx,fy]=fragPos(f,t);
+          FRAG.forEach(f=>{ const [fx,fy]=fragPos(f,t);
             const tx=Math.cos(f.a)*170*(0.4+0.6*f.z), ty=Math.sin(f.a)*120*(0.4+0.6*f.z);
             const x=W/2+fx*(1-q)+tx*q, y=H*0.48+fy*(1-q)+ty*q;
             drawFrag(f,x,y,0.9,1-q*0.35); });
@@ -1006,41 +1031,51 @@ window.addEventListener("load",boot);
               const d=Math.hypot(xi-xj,yi-yj);
               if(d<95){ ctx.globalAlpha=qa*0.5*(1-d/95);
                 ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(xi,yi); ctx.lineTo(xj,yj); ctx.stroke(); } }
-            ctx.restore(); }
-          if(q>0.7) packets(W*0.2,H*0.5,W*0.8,H*0.5,t,4,AMBER); } },
-      { d:4, cap:{es:"Ordenar los eventos en el tiempo… y la red aparece. Eso es lo que hace la metodología Chronnet.",
-                  en:"Sort the events in time… and the network appears. That is what the Chronnet method does."},
-        draw(p,t){ starfield(80);
-          const q=ease(p);
-          // destello
-          if(q<0.3){ const b=q/0.3;
-            FRAG.forEach(f=>{ const tx=Math.cos(f.a)*170*(0.4+0.6*f.z), ty=Math.sin(f.a)*120*(0.4+0.6*f.z);
-              drawFrag(f,W/2+tx*(1-b*0.2),H*0.48+ty*(1-b*0.2),0.9*(1-b*0.5),0.6); });
-            const g=ctx.createRadialGradient(W/2,H*0.48,10,W/2,H*0.48,300*b+40);
-            g.addColorStop(0,`rgba(140,230,225,${0.55*b})`); g.addColorStop(1,"#00000000");
-            ctx.fillStyle=g; ctx.fillRect(0,0,W,H); }
-          else { const r=Math.min(1,(q-0.3)/0.5); glowCircle(W/2,H*0.46,3,TEAL,60*r,r);
-            // mini red que orbita
-            FRAG.slice(0,18).forEach((f,i)=>{ const a=f.a+t*0.12;
-              const x=W/2+Math.cos(a)*(60+30*f.z)*r, y=H*0.46+Math.sin(a)*(44+22*f.z)*r;
-              glowCircle(x,y,2.2,f.c,7,0.9*r);
-              for(let j=i+1;j<18;j++){ const fj=FRAG[j];
-                if(Math.hypot(Math.cos(a)*(60+30*f.z)-Math.cos(fj.a+t*0.12)*(60+30*fj.z),
-                              Math.sin(a)*(44+22*f.z)-Math.sin(fj.a+t*0.12)*(44+22*fj.z))<0.9){
-                  drawEdge(x,y,W/2+Math.cos(fj.a+t*0.12)*(60+30*fj.z)*r,H*0.46+Math.sin(fj.a+t*0.12)*(44+22*fj.z)*r,1,TEAL,0.35*r); } } }); }
-          // marca + wordmark emergen
+            ctx.restore(); } } },
+      { d:5.5, cap:{es:"Volamos al mapa. Por el corredor Báltico —Letonia, Rusia— pasó la mayor marea de dinero del caso: US$4.200 millones entre 2010 y 2015.",
+                    en:"We fly to the map. Through the Baltic corridor —Latvia, Russia— flowed the case's biggest tide of money: $4.2B between 2010 and 2015."},
+        draw(p,t){ const q=ease(p);
+          // cámara: de vista mundial a acercamiento al Báltico; al final se desplaza hacia Suiza
+          const mid=0.62;
+          if(q<mid){ camDive(FOCUS.baltico[0],-FOCUS.baltico[1],7,q/mid); }
+          else { const q2=(q-mid)/(1-mid);
+            const e=q2*q2*(3-2*q2);
+            const lon=FOCUS.baltico[0]+(FOCUS.suiza[0]-FOCUS.baltico[0])*e;
+            const lat=-(FOCUS.baltico[1]+(FOCUS.suiza[1]-FOCUS.baltico[1])*e);
+            fitWorld(0.10); camTo(lon,lat,CAM.tz*4.2); }
+          drawWorldPulse(t,0.45+0.55*q,
+            q<mid?FOCUS.baltico[0]:FOCUS.baltico[0]+(FOCUS.suiza[0]-FOCUS.baltico[0])*((q-mid)/(1-mid)),
+            q<mid?FOCUS.baltico[1]:FOCUS.baltico[1]+(FOCUS.suiza[1]-FOCUS.baltico[1])*((q-mid)/(1-mid)));
+          if(q>0.1){ ctx.save(); ctx.globalAlpha=Math.min(1,q*2);
+            label(W*0.5,H*0.14,LANG==="es"?"EL MAPA DEL LAVADO":"THE LAUNDERING MAP",AMBER,14,"center",true);
+            ctx.restore(); } } },
+      { d:4.5, cap:{es:"Ordenar los eventos en el tiempo y la red aparece: quién origina, por dónde pasa, dónde se asienta. Eso es la metodología Chronnet.",
+                    en:"Sort the events in time and the network appears: who originates, where it flows, where it settles. That is the Chronnet method."},
+        draw(p,t){ const q=ease(p);
+          camDive(8,-47,1.15+ (1-q)*1.6, q); // aleja desde Suiza a mundo completo
+          drawWorldPulse(t,0.5+0.5*q);
           if(q>0.55){ const m=Math.min(1,(q-0.55)/0.45);
-            logoMark(W/2-190*m,H*0.78,26*Math.min(1,m*1.6),m);
-            logoWord(W/2-150*m,H*0.78,34*Math.min(1,m*1.6),m); } } },
-      { d:3.5, cap:{es:"FastAnalytics · Chronnet Show — La red del lavado, construida y disruptada ante tus ojos.",
-                    en:"FastAnalytics · Chronnet Show — The laundering network, built and disrupted before your eyes."},
-        draw(p,t){ starfield(100); const q=ease(p);
-          glowCircle(W/2,H*0.40,4,TEAL,50+10*Math.sin(t*2),0.5);
-          logoMark(W/2-190,H*0.40,26,q);
-          logoWord(W/2-150,H*0.40,34,q);
-          label(W/2,H*0.62,"CHRONNET SHOW",AMBER,15+2*Math.sin(t*3),"center",true);
-          label(W/2,H*0.68,LANG==="es"?"La red del lavado, construida y disruptada ante tus ojos":"The laundering network, built and disrupted before your eyes","#C9D8DD",14,"center");
-          if(q>0.6) label(W/2,H*0.88,LANG==="es"?"→ continuar a la escena 1":"→ continue to scene 1","#64748B",13,"center"); } },
+            ctx.save(); ctx.globalAlpha=m;
+            const w1=logoWord(W/2-150*m,H*0.80,32*Math.min(1,m*1.6),m);
+            logoMark(W/2-150*m-46,H*0.80,24*Math.min(1,m*1.6),m);
+            ctx.restore(); } } },
+      { d:4, cap:{es:"El futuro habla en datos. Lo anticipamos con decisiones.",
+                  en:"The future speaks in data. We anticipate it with decisions."},
+        draw(p,t){ starfield(110); const q=ease(p);
+          glowCircle(W/2,H*0.34,4,TEAL,60+8*Math.sin(t*2),0.35+0.2*Math.sin(t*2));
+          const w1=logoWord(W/2-150,H*0.34,36,q);
+          logoMark(W/2-196,H*0.34,28,q);
+          label(W/2,H*0.52,"CHRONNET SHOW",AMBER,16+2*Math.sin(t*3),"center",true);
+          label(W/2,H*0.60,LANG==="es"?"La red del lavado, construida y disruptada ante tus ojos":"The laundering network, built and disrupted before your eyes","#C9D8DD",14,"center");
+          // lema, dos líneas con pausa visual
+          const m1=Math.max(0,Math.min(1,(q-0.25)/0.3)), m2=Math.max(0,Math.min(1,(q-0.5)/0.3));
+          ctx.save();
+          ctx.globalAlpha=m1; ctx.font="600 20px Inter,system-ui,sans-serif"; ctx.textAlign="center";
+          ctx.fillStyle="#E8F1F2"; ctx.fillText(LANG==="es"?"El futuro habla en datos.":"The future speaks in data.",W/2,H*0.72);
+          ctx.globalAlpha=m2; ctx.fillStyle=AMBER;
+          ctx.fillText(LANG==="es"?"Lo anticipamos con decisiones.":"We anticipate it with decisions.",W/2,H*0.78);
+          ctx.restore();
+          if(q>0.75) label(W/2,H*0.90,LANG==="es"?"→ continuar a la escena 1":"→ continue to scene 1","#64748B",13,"center"); } },
     ]
   });
 })();

@@ -80,16 +80,27 @@ function glowCircle(x,y,r,color,glow=14,alpha=1){ ctx.save(); ctx.globalAlpha=al
   const g=ctx.createRadialGradient(x,y,r*0.2,x,y,r+glow); g.addColorStop(0,color); g.addColorStop(1,"#00000000");
   ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,r+glow,0,7); ctx.fill(); ctx.restore(); }
 
-function drawEdge(ax,ay,bx,by,w,color,alpha=1,dash=null){ ctx.save(); ctx.globalAlpha=alpha;
+function arrowHead(x,y,ang,color,alpha,s){ ctx.save(); ctx.globalAlpha=alpha; ctx.fillStyle=color;
+  ctx.beginPath(); ctx.moveTo(x,y);
+  ctx.lineTo(x-s*Math.cos(ang-0.42),y-s*Math.sin(ang-0.42));
+  ctx.lineTo(x-s*Math.cos(ang+0.42),y-s*Math.sin(ang+0.42)); ctx.fill(); ctx.restore(); }
+function drawEdge(ax,ay,bx,by,w,color,alpha=1,dash=null,arrow=true){ ctx.save(); ctx.globalAlpha=alpha;
   ctx.strokeStyle=color; ctx.lineWidth=Math.max(0.6,w); if(dash) ctx.setLineDash(dash);
-  ctx.beginPath(); ctx.moveTo(ax,ay); ctx.lineTo(bx,by); ctx.stroke(); ctx.restore(); }
+  ctx.beginPath(); ctx.moveTo(ax,ay); ctx.lineTo(bx,by); ctx.stroke();
+  if(arrow) arrowHead(bx,by,Math.atan2(by-ay,bx-ax),color,alpha,5+2.2*w);
+  ctx.restore(); }
 
 function arcCtrl(ax,ay,bx,by){ const mx=(ax+bx)/2,my=(by+by)/2,dx=bx-ax,dy=by-ay,d=Math.hypot(dx,dy)||1;
   return [mx-dy/d*d*0.18, my+dx/d*d*0.18]; }
-function drawArc(ax,ay,bx,by,w,color,alpha=1,dash=null){ const [cx,cy]=arcCtrl(ax,ay,bx,by);
+function drawArc(ax,ay,bx,by,w,color,alpha=1,dash=null,arrow=true){ const [cx,cy]=arcCtrl(ax,ay,bx,by);
   ctx.save(); ctx.globalAlpha=alpha; ctx.strokeStyle=color; ctx.lineWidth=Math.max(0.6,w);
   if(dash) ctx.setLineDash(dash);
-  ctx.beginPath(); ctx.moveTo(ax,ay); ctx.quadraticCurveTo(cx,cy,bx,by); ctx.stroke(); ctx.restore(); }
+  ctx.beginPath(); ctx.moveTo(ax,ay); ctx.quadraticCurveTo(cx,cy,bx,by); ctx.stroke();
+  if(arrow){ const p=0.9, u=1-p;
+    const ex=u*u*ax+2*u*p*cx+p*p*bx, ey=u*u*ay+2*u*p*cy+p*p*by;
+    const dx=2*u*(cx-ax)+2*p*(bx-cx), dy=2*u*(cy-ay)+2*p*(by-cy);
+    arrowHead(ex,ey,Math.atan2(dy,dx),color,alpha,4.5+2.2*w); }
+  ctx.restore(); }
 function packetsArc(ax,ay,bx,by,t,n=2,color=AMBER){ const [cx,cy]=arcCtrl(ax,ay,bx,by);
   ctx.save(); ctx.fillStyle=color;
   for(let i=0;i<n;i++){ const p=((t*0.25+i/n)%1); const u=1-p;
@@ -547,7 +558,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
           const q=ease(p);
           EDGES_B.forEach(e=>{ const intra=COMM[e.s]===COMM[e.b]; if(intra)return;
             const [ax,ay]=P(...worldPos(e.a)),[bx,by]=P(...worldPos(e.b));
-            drawEdge(ax,ay,bx,by,1.5+2*Math.min(3,e.a/300),AMBER,(0.3+0.5*q)*(0.7+0.3*Math.sin(t*3)));
+            drawEdge(ax,ay,bx,by,1.5+2*Math.min(3,e.w/300),AMBER,(0.3+0.5*q)*(0.7+0.3*Math.sin(t*3)));
             packets(ax,ay,bx,by,t,2,AMBER); });
           const bridges=NODES.filter(nd=>COMM[nd.id]!==undefined&&EDGES_B.some(e=>
             (e.s===nd.id||e.t===nd.id)&&COMM[e.s]!==COMM[e.b])).sort((a,b)=>b.btw-a.btw).slice(0,4);

@@ -170,7 +170,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
    ESCENA C1 — La máquina ordena y conecta (concepto chronnet)
    ===================================================================== */
 (function(){
-  const ENT=[{k:"A",c:TEAL},{k:"B",c:AMBER},{k:"C",c:"#7C9EB2"},{k:"D",c:"#5FA88F"},{k:"E",c:"#C99A3F"}];
+  const ENT=[{k:"Ros",c:TEAL},{k:"ATB",c:AMBER},{k:"CS",c:"#7C9EB2"},{k:"ING",c:"#5FA88F"},{k:"Cay",c:"#C99A3F"}];
   // eventos (entidad, instante 0..11)
   const EV=[[0,0],[2,0],[0,1],[1,1],[0,2],[1,2],[2,2],[1,3],[3,3],[2,4],[4,4],[0,5],[1,5],
             [1,6],[1,7],[3,7],[2,8],[2,9],[2,10],[4,11]];
@@ -239,7 +239,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
         draw(p,t){ label(W/2,120,LANG==="es"?"W1 → W2: NACEN LAS ARISTAS":"W1 → W2: EDGES ARE BORN",MUT,13);
           const yA=H*0.34, yB=H*0.72;
           ACT[0].forEach(i=>{ const x=180+i*70; glowCircle(x,yA,10,ENT[i].c,12,Math.min(1,p*2)); label(x,yA-26,"W1 · "+ENT[i].k,MUT,11); });
-          ACT[1].forEach(i=>{ const x=180+i*70; glowCircle(x,yB,10,ENT[i].c,12,Math.min(1,p*2)); label(x,yB+36,"W2 · "+ENT[i].k,MUT,11); });
+          ACT[1].forEach(i=>{ const x=180+i*70; glowCircle(x,yB,10,ENT[i].c,12,Math.min(1,p*2)); label(x,yB+36,"W2 · "+ENT[i].k,MUT,10); });
           if(p>0.35){ const q=ease(Math.min(1,(p-0.35)/0.55));
             ACT[0].forEach(i=>ACT[1].forEach(j=>{ if(Math.abs(i-j)<=1.5)
               arrow([180+i*70,yA+14],[180+j*70,yB-14],i===0&&j===1?AMBER:TEAL,q*0.8,i===0&&j===1?3:1.4); })); } } },
@@ -249,13 +249,13 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
           const yA=H*0.30, yB=H*0.62, yC=H*0.86;
           ACT[0].forEach(i=>{ glowCircle(260+i*110,yA,9,ENT[i].c,10,1); });
           ACT[1].forEach(i=>{ glowCircle(260+i*110,yB,9,ENT[i].c,10,1); });
-          ACT[2].forEach(i=>{ glowCircle(260+i*110,yC,9,ENT[i].c,10,Math.min(1,p*2)); label(260+i*110,yC+30,"W3 · "+ENT[i].k,MUT,11); });
+          ACT[2].forEach(i=>{ glowCircle(260+i*110,yC,9,ENT[i].c,10,Math.min(1,p*2)); label(260+i*110,yC+30,"W3 · "+ENT[i].k,MUT,10); });
           ACT[0].forEach(i=>ACT[1].forEach(j=>{ if(Math.abs(i-j)<=1.5) arrow([260+i*110,yA+12],[260+j*110,yB-12],i===0&&j===1?AMBER:TEAL,0.55,i===0&&j===1?3:1.2); }));
           if(p>0.3){ const q=ease(Math.min(1,(p-0.3)/0.5));
             ACT[1].forEach(i=>ACT[2].forEach(j=>{ if(Math.abs(i-j)<=1.5) arrow([260+i*110,yB+12],[260+j*110,yC-12],TEAL,q*0.6,1.2); })); }
           if(p>0.45){ ctx.save(); ctx.globalAlpha=ease(Math.min(1,(p-0.45)/0.3));
             panel(W/2-120,70,240,54,0.92);
-            label(W/2,94,"A → B",AMBER,16,"center",true);
+            label(W/2,94,"Ros → ATB",AMBER,16,"center",true);
             label(W/2,116,LANG==="es"?"peso w = 2 repeticiones":"weight w = 2 repetitions",TXT,12);
             ctx.restore(); } } },
       { d:6, cap:{es:"¿Alguien activo dos ventanas seguidas? La máquina dibuja un self-loop: actividad sostenida, la rutina operativa de un nodo.",
@@ -263,29 +263,35 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
         draw(p,t){ label(W/2,120,LANG==="es"?"SELF-LOOP · RUTINA OPERATIVA":"SELF-LOOP · OPERATIONAL ROUTINE",MUT,13);
           const [cx,cy]=[W/2,H*0.55];
           glowCircle(cx,cy,26,ENT[2].c,20,Math.min(1,p*1.5));
-          label(cx,cy+6,"C",TXT,22,"center",true);
+          label(cx,cy+6,"CS",TXT,16,"center",true);
           if(p>0.25){ const q=ease(Math.min(1,(p-0.25)/0.5));
             ctx.save(); ctx.strokeStyle=AMBER; ctx.lineWidth=3; ctx.globalAlpha=q;
             ctx.beginPath(); ctx.arc(cx+34,cy-30,26,-0.6,Math.PI*1.15); ctx.stroke();
             const ang=Math.PI*1.15; const ex=cx+34+26*Math.cos(ang), ey=cy-30+26*Math.sin(ang);
             ctx.fillStyle=AMBER; ctx.beginPath(); ctx.moveTo(ex,ey);
             ctx.lineTo(ex-8*Math.cos(ang-0.4),ey-8*Math.sin(ang-0.4)); ctx.lineTo(ex-8*Math.cos(ang+0.4),ey-8*Math.sin(ang+0.4)); ctx.fill(); ctx.restore(); }
-          label(cx,cy+70,LANG==="es"?"C estuvo activo en W1, W2 y W3 → w_cc = 2":"C was active in W1, W2 and W3 → w_cc = 2",MUT,13); } },
-      { d:8, cap:{es:"Resultado: lo que la máquina entrega. No fórmulas en la pantalla del analista: un grafo con vértices, aristas y pesos, listo para analizar.",
-                  en:"Result: what the machine delivers. No formulas on the analyst's screen: a graph with vertices, edges and weights, ready for analysis."},
-        draw(p,t){ label(W/2,70,LANG==="es"?"EL GRAFO QUE ENTREGA LA MÁQUINA":"THE GRAPH THE MACHINE DELIVERS",MUT,13);
+          label(cx,cy+70,LANG==="es"?"CS estuvo activo en W1, W2 y W3 → w_cc = 2":"CS was active in W1, W2 and W3 → w_cc = 2",MUT,13); } },
+      { d:8, cap:{es:"Resultado: la ruta del dinero, contada por la máquina. Origen en Rusia, paso por Letonia y los bancos centrales, destino final en el paraíso. Sin fórmulas: vértices, aristas y pesos.",
+                  en:"Result: the money route, as told by the machine. Origin in Russia, a stop in Latvia and the core banks, final destination in the offshore haven. No formulas: vertices, edges and weights."},
+        draw(p,t){ label(W/2,70,LANG==="es"?"LA RUTA QUE ENTREGA LA MÁQUINA":"THE ROUTE THE MACHINE DELIVERS",MUT,13);
           const q=ease(p);
-          Object.keys(GW).forEach((k,idx)=>{ const [a,b]=k.split(">").map(Number); const pa=GPOS(a),pb=GPOS(b);
-            const al=Math.max(0,Math.min(1,q*Object.keys(GW).length-idx))*0.75;
-            if(al>0) drawEdge(pa[0],pa[1],pb[0],pb[1],1+GW[k]*1.6,GW[k]>=2?AMBER:TEAL,al); });
-          for(let i=0;i<5;i++){ const g=GPOS(i); glowCircle(g[0],g[1],16,ENT[i].c,18,Math.min(1,q*3-i*0.3));
-            label(g[0],g[1]+6,ENT[i].k,"#08222A",15,"center",true); }
-          ctx.save(); panel(60,H*0.3,240,170,0.9);
-          label(80,H*0.3+30,LANG==="es"?"Lo que ya sabemos":"What we already know",AMBER,14,"left",true);
-          label(80,H*0.3+58,LANG==="es"?"· A→B y B→C se repiten":"· A→B and B→C repeat",TXT,13,"left");
-          label(80,H*0.3+82,LANG==="es"?"· C trabaja sin parar":"· C works non-stop",TXT,13,"left");
-          label(80,H*0.3+106,LANG==="es"?"· E solo aparece al final":"· E only appears at the end",TXT,13,"left");
-          label(80,H*0.3+140,LANG==="es"?"Ahora: el dataset real →":"Now: the real dataset →",TEAL,13,"left",true);
+          const ROUTE=[["Ros",0.26,0.52],["ATB",0.42,0.36],["CS",0.56,0.54],["ING",0.70,0.38],["Cay",0.80,0.60]];
+          const REDGE=[["Ros","ATB",2],["ATB","CS",2],["CS","Cay",2],["Ros","CS",1],["CS","ING",1],["ING","Cay",1]];
+          REDGE.forEach(([a,b,w],idx)=>{ const pa=ROUTE.find(r=>r[0]===a),pb=ROUTE.find(r=>r[0]===b);
+            const al=Math.max(0,Math.min(1,q*REDGE.length*1.2-idx));
+            if(al>0) drawArc(pa[1]*W,pa[2]*H,pb[1]*W,pb[2]*H,1.5+w*1.8,w>=2?AMBER:TEAL,al*0.85);
+            if(al>0.9&&w>=2) packetsArc(pa[1]*W,pa[2]*H,pb[1]*W,pb[2]*H,t,1,AMBER); });
+          ROUTE.forEach(([k,x,y],i)=>{ const c=ENT.find(e=>e.k===k).c;
+            const al=Math.min(1,q*3-i*0.35);
+            glowCircle(x*W,y*H,15,c,18,al);
+            label(x*W,y*H+5,k,"#08222A",12,"center",true);
+            const names={Ros:LANG==="es"?"Rusia (origen)":"Russia (origin)",ATB:"Letonia",CS:LANG==="es"?"banco central":"core bank",ING:LANG==="es"?"banco central":"core bank",Cay:LANG==="es"?"Caimán (destino)":"Cayman (destination)"};
+            if(al>0.7) label(x*W,y*H+34,names[k],MUT,10.5); });
+          ctx.save(); panel(60,H*0.30,250,132,0.9);
+          label(80,H*0.30+28,LANG==="es"?"Lo que ya sabemos":"What we already know",AMBER,14,"left",true);
+          label(80,H*0.30+56,LANG==="es"?"· Ros↔ATB y ATB↔CS se repiten":"· Ros↔ATB and ATB↔CS repeat",TXT,12.5,"left");
+          label(80,H*0.30+80,LANG==="es"?"· CS opera sin parar":"· CS works non-stop",TXT,12.5,"left");
+          label(80,H*0.30+104,LANG==="es"?"· Cay solo al final (salida)":"· Cay only at the end (exit)",TXT,12.5,"left");
           ctx.restore(); } },
     ]
   });
@@ -556,81 +562,96 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
 })();
 
 /* =====================================================================
-   ESCENA C3 — Quién importa en una red (centralidad, concepto)
+   ESCENA C3 — Quién importa en una red (centralidad con grafo de lavado)
    ===================================================================== */
 (function(){
-  const N=toyGraph(9,180,0,0);
-  const E=toyEdges(N,[[0,1],[0,2],[0,3],[1,2],[1,4],[2,4],[3,5],[4,6],[5,6],[5,7],[6,8],[7,8],[3,4],[4,5]]);
-  function pathsThrough(src,dst){ // BFS caminos más cortos, retorna frecuencia de paso por nodo
-    const adj={}; E.forEach(e=>{ (adj[e.a.id]=adj[e.a.id]||[]).push(e.b.id); (adj[e.b.id]=adj[e.b.id]||[]).push(e.a.id); });
-    const dist={[src]:0}, q=[src];
-    while(q.length){ const u=q.shift(); adj[u].forEach(v=>{ if(dist[v]===undefined){dist[v]=dist[u]+1;q.push(v);} }); }
-    const count={}; const walk=u=>{ if(u===dst)return 1;
-      let tot=0; adj[u].forEach(v=>{ if(dist[v]===dist[u]+1){ tot+=walk(v); } }); count[u]=(count[u]||0)+tot; return tot; };
-    walk(src); return count; }
+  // grafo concreto: la cadena del lavado con roles reconocibles
+  const N=[
+    {id:"prod",  x:0.14,y:0.38,c:TEAL},
+    {id:"mula1", x:0.20,y:0.62,c:TEAL},
+    {id:"mula2", x:0.22,y:0.22,c:TEAL},
+    {id:"tes",   x:0.32,y:0.42,c:TEAL},
+    {id:"puen",  x:0.47,y:0.50,c:"#7C9EB2"},
+    {id:"jefe",  x:0.63,y:0.38,c:AMBER},
+    {id:"soc1",  x:0.68,y:0.63,c:AMBER},
+    {id:"soc2",  x:0.77,y:0.48,c:AMBER},
+    {id:"para",  x:0.88,y:0.30,c:"#C99A3F"}];
+  const IX={}; N.forEach((nd,i)=>IX[nd.id]=i);
+  const E=[["prod","mula1"],["mula1","tes"],["prod","tes"],["prod","mula2"],["mula2","tes"],
+           ["tes","puen"],["puen","jefe"],["jefe","soc1"],["soc1","soc2"],["soc2","jefe"],
+           ["jefe","para"],["soc2","para"]];
+  const RNAMES={es:{prod:"Productor",mula1:"Mula 1",mula2:"Mula 2",tes:"Tesorero",puen:"Puente",
+                    jefe:"Jefe de célula",soc1:"Socio 1",soc2:"Socio 2",para:"Paraíso fiscal"},
+                en:{prod:"Producer",mula1:"Mule 1",mula2:"Mule 2",tes:"Treasurer",puen:"Bridge",
+                    jefe:"Cell boss",soc1:"Partner 1",soc2:"Partner 2",para:"Offshore haven"}};
+  const POS=()=>N.map(nd=>({x:nd.x*W,y:nd.y*H}));
+  function edgePath(s,d){ // camino más corto (BFS) para los paquetes
+    const adj={}; E.forEach(([a,b])=>{ (adj[a]=adj[a]||[]).push(b); (adj[b]=adj[b]||[]).push(a); });
+    const prev={ [s]:null }, q=[s];
+    while(q.length){ const u=q.shift(); if(u===d)break;
+      adj[u].forEach(v=>{ if(!(v in prev)){ prev[v]=u; q.push(v); } }); }
+    if(!(d in prev)) return [s,d]; const path=[d]; let cur=d;
+    while(prev[cur]){ cur=prev[cur]; path.unshift(cur); } return path; }
+  const MAIN_PATH=edgePath("prod","para");
+  function drawBase(t,hl,opts={}){ starfield(80); const P=POS();
+    E.forEach(([a,b])=>{ const ia=IX[a],ib=IX[b];
+      drawEdge(P[ia].x,P[ia].y,P[ib].x,P[ib].y,1.6,"#2A5560",0.9); });
+    if(opts.flow){ for(let i=0;i<MAIN_PATH.length-1;i++){
+      packets(P[IX[MAIN_PATH[i]]].x,P[IX[MAIN_PATH[i]]].y,P[IX[MAIN_PATH[i+1]]].x,P[IX[MAIN_PATH[i+1]]].y,t+i*0.22,2,AMBER); } }
+    N.forEach((nd,i)=>{ const hot=hl&&hl.has(nd.id);
+      glowCircle(P[i].x,P[i].y,hot?14:10,hot?AMBER:nd.c,hot?20:12,hot?1:0.9);
+      label(P[i].x,P[i].y+30,RNAMES[LANG][nd.id],hot?AMBER:MUT,hot?12:10.5,"center",hot);
+      if(hot&&opts.ring){ ctx.save(); ctx.globalAlpha=0.4+0.4*Math.sin(t*5); ctx.strokeStyle=AMBER;
+        ctx.lineWidth=2; ctx.beginPath(); ctx.arc(P[i].x,P[i].y,20,0,7); ctx.stroke(); ctx.restore(); } }); }
   SCENES.push({
     id:"c3", tag:"concepto",
     title:{es:"Concepto 3 · Quién importa en una red", en:"Concept 3 · Who matters in a network"},
-    desc:{es:"Tres formas de medir importancia — grado, intermediación, influencia — y por qué cada una encuentra actores distintos.",
-          en:"Three ways to measure importance — degree, betweenness, influence — and why each one finds different actors."},
-    fit(){ camTo(0,0,1); relayout(N,W*0.40,H*0.52); },
+    desc:{es:"Las tres medidas de centralidad sobre una sola cadena de lavado: tesorero, puente y jefe son actores distintos.",
+          en:"Three centrality measures on one laundering chain: treasurer, bridge and boss are different actors."},
+    fit(){ camTo(0,0,1); },
     steps:[
-      { d:7, cap:{es:"Medida 1 · GRADO: ¿cuántas conexiones tiene alguien? Es el conteo más simple: el que más manos toca, más veces aparece en el expediente.",
-                  en:"Measure 1 · DEGREE: how many connections does someone have? The simplest count: whoever shakes the most hands shows up most in the files."},
-        draw(p,t){ starfield(80);
-          E.forEach(e=>drawEdge(e.a.x,e.a.y,e.b.x,e.b.y,1.5,"#2A5560",0.9));
-          const degs={}; E.forEach(e=>{ degs[e.a.id]=(degs[e.a.id]||0)+1; degs[e.b.id]=(degs[e.b.id]||0)+1; });
-          const maxD=Math.max(...Object.values(degs)); const q=ease(p);
-          N.forEach(nd=>{ const d=degs[nd.id]||0; const r=8+16*q*d/maxD;
-            glowCircle(nd.x,nd.y,r,AMBER,16,0.4+0.6*q);
-            if(q>0.6&&d===maxD) label(nd.x,nd.y-r-12,LANG==="es"?"mayor grado":"highest degree",AMBER,12); });
-          label(W/2,90,LANG==="es"?"MEDIDA 1 · GRADO = Nº DE CONEXIONES":"MEASURE 1 · DEGREE = Nº OF CONNECTIONS",MUT,13); } },
-      { d:8, cap:{es:"Medida 2 · INTERMEDIACIÓN: ¿por quién pasa el tráfico entre las partes de la red? Los paquetes viajan por caminos cortos: los nodos que todos cruzan son puentes.",
-                  en:"Measure 2 · BETWEENNESS: who does the traffic between parts of the network pass through? Packets travel along shortest paths: nodes everyone crosses are bridges."},
-        draw(p,t){ starfield(80);
-          E.forEach(e=>drawEdge(e.a.x,e.a.y,e.b.x,e.b.y,1.5,"#2A5560",0.9));
-          if(p>0.15){ const q=Math.min(1,(p-0.15)/0.7);
-            const flows=pathsThrough(2,8); const maxF=Math.max(...Object.values(flows));
-            const pairs=[[2,8]];
-            pairs.forEach(([s,d])=>{ ctx.save(); ctx.strokeStyle=TEAL; ctx.globalAlpha=0.3;
-              ctx.setLineDash([5,7]); ctx.beginPath(); ctx.moveTo(N[s].x,N[s].y);
-              ctx.lineTo(N[4].x,N[4].y); ctx.lineTo(N[5].x,N[5].y); ctx.lineTo(N[d].x,N[d].y); ctx.stroke(); ctx.restore();
-              packets(N[s].x,N[s].y,N[4].x,N[4].y,t,2); packets(N[4].x,N[4].y,N[5].x,N[5].y,t+0.3,2); packets(N[5].x,N[5].y,N[d].x,N[d].y,t+0.6,2); });
-            N.forEach(nd=>{ const f=flows[nd.id]||0; const r=8+14*q*f/maxF;
-              glowCircle(nd.x,nd.y,r,f>0?AMBER:"#3E6E78",16,f>0?0.85:0.7);
-              if(f===maxF&&q>0.7) label(nd.x,nd.y-r-12,LANG==="es"?"puente":"bridge",AMBER,12,"center",true); }); }
-          label(W/2,90,LANG==="es"?"MEDIDA 2 · INTERMEDIACIÓN = TRÁFICO QUE CRUZA":"MEASURE 2 · BETWEENNESS = CROSSING TRAFFIC",MUT,13); } },
-      { d:8, cap:{es:"Medida 3 · INFLUENCIA (Katz): la importancia se contagia con el tiempo: mis conexiones me suman, las de mis conexiones suman menos, las de las suyas, menos aún.",
-                  en:"Measure 3 · INFLUENCE (Katz): importance is contagious over time: my connections add to me, my connections' connections add less, and so on."},
-        draw(p,t){ starfield(80);
-          E.forEach(e=>drawEdge(e.a.x,e.a.y,e.b.x,e.b.y,1.5,"#2A5560",0.9));
-          const center=N[0]; const q=ease(p);
-          N.forEach((nd,i)=>{ if(i===0)return; const dist=Math.min(2,Math.ceil(i/3));
-            const d1=dist===1&&q>0.2, d2=dist===2&&q>0.6;
-            if(d1||d2){ const k=d1?1:0.55; const r=8+10*k;
-              glowCircle(nd.x,nd.y,r,d1?AMBER:"#C99A3F",14,k*(0.5+0.5*Math.sin(t*3))); } });
-          glowCircle(center.x,center.y,18,AMBER,24,q);
-          label(W/2,90,LANG==="es"?"MEDIDA 3 · INFLUENCIA QUE DECAE CON LA DISTANCIA":"MEASURE 3 · INFLUENCE THAT DECAYS WITH DISTANCE",MUT,13);
-          if(q>0.5){ ctx.save(); panel(W*0.64,H*0.40,260,110,0.9);
-            label(W*0.64+16,H*0.40+30,"Katz-Bonacich",AMBER,15,"left",true);
-            label(W*0.64+16,H*0.40+58,LANG==="es"?"yo = 1 + 0.1·(mis vecinos)":"me = 1 + 0.1·(my neighbors)",TXT,13,"left");
-            label(W*0.64+16,H*0.40+82,LANG==="es"?"+ 0.01·(vecinos de mis vecinos)":"+ 0.01·(neighbors of neighbors)",TXT,13,"left");
-            ctx.restore(); } } },
-      { d:7, cap:{es:"Las tres medidas encuentran actores distintos: el más conectado no siempre es el puente, y el puente no siempre es el influyente. Por eso se usan juntas.",
-                  en:"The three measures find different actors: the most connected is not always the bridge, and the bridge is not always the influential one. That is why they are used together."},
-        draw(p,t){ starfield(80);
-          E.forEach(e=>drawEdge(e.a.x,e.a.y,e.b.x,e.b.y,1.5,"#2A5560",0.9));
-          const roles=[[0,LANG==="es"?"influyente":"influential",AMBER],[4,LANG==="es"?"puente":"bridge",TEAL],[0,null,null]];
-          N.forEach((nd,i)=>glowCircle(nd.x,nd.y,9,"#3E6E78",12,0.8));
-          glowCircle(N[0].x,N[0].y,17,AMBER,20,ease(p));
-          glowCircle(N[4].x,N[4].y,15,TEAL,18,ease(p));
-          label(N[0].x,N[0].y-42,LANG==="es"?"influyente":"influential",AMBER,13,"center",true);
-          label(N[4].x,N[4].y-40,LANG==="es"?"puente":"bridge",TEAL,13,"center",true);
-          const degs={}; E.forEach(e=>{ degs[e.a.id]=(degs[e.a.id]||0)+1; degs[e.b.id]=(degs[e.b.id]||0)+1; });
-          const maxD=Math.max(...Object.values(degs));
-          const hid=Number(Object.keys(degs).find(k=>degs[k]===maxD));
-          glowCircle(N[hid].x,N[hid].y,16,"#7C9EB2",18,ease(p));
-          label(N[hid].x,N[hid].y-44,LANG==="es"?"más conexiones":"most connections","#7C9EB2",13,"center",true); } },
+      { d:7, cap:{es:"Esta es la cadena del lavado: el productor mueve, el tesorero concentra, un puente cruza a la otra célula, y al final el dinero sale al paraíso fiscal. Misma red, tres preguntas.",
+                  en:"This is the laundering chain: the producer moves, the treasurer concentrates, a bridge crosses to the other cell, and at the end the money exits to the offshore haven. Same network, three questions."},
+        draw(p,t){ const q=ease(p); const P=POS();
+          E.forEach(([a,b],i)=>{ const al=Math.max(0,Math.min(1,q*E.length-i*0.8));
+            if(al>0){ const ia=IX[a],ib=IX[b];
+              drawEdge(P[ia].x,P[ia].y,P[ib].x,P[ib].y,1.6,"#2A5560",al); } });
+          N.forEach((nd,i)=>{ const al=Math.max(0,Math.min(1,q*N.length*1.2-i*0.6));
+            if(al>0){ glowCircle(P[i].x,P[i].y,10,nd.c,12,al);
+              if(al>0.7) label(P[i].x,P[i].y+30,RNAMES[LANG][nd.id],MUT,10.5,"center"); } }); } },
+      { d:7, cap:{es:"Medida 1 · GRADO: ¿cuántas conexiones tiene cada uno? El tesorero toca 4 manos; las mulas, solo una. El que más toca es el que más ve del negocio.",
+                  en:"Measure 1 · DEGREE: how many connections does each one have? The treasurer touches 4 hands; the mules, only one. Whoever touches the most sees the most of the business."},
+        draw(p,t){ const q=ease(p); const P=POS();
+          const deg={}; E.forEach(([a,b])=>{ deg[a]=(deg[a]||0)+1; deg[b]=(deg[b]||0)+1; });
+          drawBase(t,null,{});
+          N.forEach((nd,i)=>{ const d=deg[nd.id]||0; const r=9+13*q*d/4;
+            glowCircle(P[i].x,P[i].y,r,nd.id==="tes"?AMBER:nd.c,nd.id==="tes"?22:12,0.95); });
+          const iT=IX.tes; label(P[iT].x,P[iT].y-34,LANG==="es"?"grado 4: el que más conoce":"degree 4: the best connected",AMBER,12.5,"center",true);
+          [[IX.mula1,LANG==="es"?"grado 1":"degree 1"],[IX.mula2,""]].forEach(([i,txt])=>{ if(txt&&q>0.6) label(P[i].x,P[i].y-26,txt,MUT,10.5,"center"); }); } },
+      { d:8, cap:{es:"Medida 2 · INTERMEDIACIÓN: ¿por quién pasa el tráfico? Sigue el dinero: todo viaje del productor al paraíso cruza por el puente. Ese nodo no es el más grande: es el más insustituible.",
+                  en:"Measure 2 · BETWEENNESS: who does the traffic pass through? Follow the money: every trip from producer to haven crosses the bridge. That node is not the biggest: it is the most irreplaceable."},
+        draw(p,t){ const q=ease(p); drawBase(t,new Set(q>0.25?["puen"]:[]),{flow:q>0.35,ring:q>0.6});
+          if(q>0.6){ const P=POS(); const i=IX.puen;
+            label(P[i].x,P[i].y-38,LANG==="es"?"puente: todo pasa por aquí":"bridge: everything passes here",AMBER,12.5,"center",true); } } },
+      { d:8, cap:{es:"Medida 3 · INFLUENCIA (Katz): la importancia se contagia con decaimiento. El tesorero influye directo a 4; el jefe hereda influencia a través del puente, una fracción por salto.",
+                  en:"Measure 3 · INFLUENCE (Katz): importance is contagious with decay. The treasurer directly influences 4; the boss inherits influence through the bridge, a fraction per hop."},
+        draw(p,t){ const q=ease(p); drawBase(t,null,{});
+          const P=POS(); const dist={tes:0,prod:1,mula1:1,mula2:1,puen:1,jefe:2,soc1:3,soc2:3,para:3};
+          N.forEach((nd,i)=>{ const d=dist[nd.id]; const al=(d===0&&q>0.15)?1:(d===1&&q>0.35)?0.8:(d===2&&q>0.6)?0.6:(d===3&&q>0.8)?0.4:0;
+            if(al>0) glowCircle(P[i].x,P[i].y,10+8*(1-d/3),AMBER,16,al*(0.4+0.6*(1-d/3))); });
+          const iT=IX.tes; if(q>0.2) label(P[iT].x,P[iT].y-34,LANG==="es"?"influencia directa":"direct influence",AMBER,12,"center",true);
+          const iJ=IX.jefe; if(q>0.65) label(P[iJ].x,P[iJ].y-34,LANG==="es"?"influencia heredada":"inherited influence","#C99A3F",12,"center",true); } },
+      { d:7, cap:{es:"Tres medidas, tres respuestas: el tesorero sabe más, el puente lo sostiene todo, el jefe influye más lejos. Por eso el análisis usa las tres — y por eso la disrupción empieza por el puente.",
+                  en:"Three measures, three answers: the treasurer knows the most, the bridge holds everything together, the boss influences furthest. That is why analysis uses all three — and why disruption starts with the bridge."},
+        draw(p,t){ const q=ease(p); drawBase(t,new Set(q>0.3?["tes","puen","jefe"]:[]),{});
+          const P=POS();
+          if(q>0.5){ label(P[IX.tes].x,P[IX.tes].y-34,LANG==="es"?"1º grado":"1º degree",AMBER,12,"center",true);
+            label(P[IX.puen].x,P[IX.puen].y-40,LANG==="es"?"1º intermediación":"1º betweenness",AMBER,12,"center",true);
+            label(P[IX.jefe].x,P[IX.jefe].y-34,LANG==="es"?"1º influencia":"1º influence",AMBER,12,"center",true); }
+          ctx.save(); ctx.globalAlpha=Math.max(0,q-0.4); panel(W*0.30,H*0.78,W*0.40,58,0.9);
+          label(W/2,H*0.78+24,LANG==="es"?"Mismo grafo · tres mapas de importancia":"Same graph · three importance maps",TXT,13,"center",true);
+          label(W/2,H*0.78+46,LANG==="es"?"⇒ en la Escena 3, esto sobre el dataset real":"⇒ in Scene 3, this on the real dataset",TEAL,12,"center");
+          ctx.restore(); } },
     ]
   });
 })();

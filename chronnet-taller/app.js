@@ -84,6 +84,17 @@ function drawEdge(ax,ay,bx,by,w,color,alpha=1,dash=null){ ctx.save(); ctx.global
   ctx.strokeStyle=color; ctx.lineWidth=Math.max(0.6,w); if(dash) ctx.setLineDash(dash);
   ctx.beginPath(); ctx.moveTo(ax,ay); ctx.lineTo(bx,by); ctx.stroke(); ctx.restore(); }
 
+function arcCtrl(ax,ay,bx,by){ const mx=(ax+bx)/2,my=(by+by)/2,dx=bx-ax,dy=by-ay,d=Math.hypot(dx,dy)||1;
+  return [mx-dy/d*d*0.18, my+dx/d*d*0.18]; }
+function drawArc(ax,ay,bx,by,w,color,alpha=1,dash=null){ const [cx,cy]=arcCtrl(ax,ay,bx,by);
+  ctx.save(); ctx.globalAlpha=alpha; ctx.strokeStyle=color; ctx.lineWidth=Math.max(0.6,w);
+  if(dash) ctx.setLineDash(dash);
+  ctx.beginPath(); ctx.moveTo(ax,ay); ctx.quadraticCurveTo(cx,cy,bx,by); ctx.stroke(); ctx.restore(); }
+function packetsArc(ax,ay,bx,by,t,n=2,color=AMBER){ const [cx,cy]=arcCtrl(ax,ay,bx,by);
+  ctx.save(); ctx.fillStyle=color;
+  for(let i=0;i<n;i++){ const p=((t*0.25+i/n)%1); const u=1-p;
+    const x=u*u*ax+2*u*p*cx+p*p*bx, y=u*u*ay+2*u*p*cy+p*p*by;
+    ctx.globalAlpha=Math.sin(p*Math.PI); ctx.beginPath(); ctx.arc(x,y,2.2,0,7); ctx.fill(); } ctx.restore(); }
 function packets(ax,ay,bx,by,t,n=3,color=AMBER){ ctx.save(); ctx.fillStyle=color;
   for(let i=0;i<n;i++){ const p=((t*0.25+i/n)%1); const x=ax+(bx-ax)*p, y=ay+(by-ay)*p;
     ctx.globalAlpha=Math.sin(p*Math.PI); ctx.beginPath(); ctx.arc(x,y,2.2,0,7); ctx.fill(); } ctx.restore(); }
@@ -113,6 +124,23 @@ const EIDX={}; NODES.forEach((nd,i)=>EIDX[nd.id]=i);
 const EDGES_B=DATA.edgesB.map(e=>({...e, a:NODES[EIDX[e.s]], b:NODES[EIDX[e.t]], alpha:0}));
 const EDGES_A=DATA.edgesA.map(e=>({...e, a:NODES[EIDX[e.s]], b:NODES[EIDX[e.t]], alpha:0}));
 const COMM=DATA.node2comm;
+const LBL_OFF={LVA:[0,-16],RUS:[14,-10],CHE:[-16,0],NLD:[0,-16],GBR:[-16,-8],DEU:[12,-8],CYP:[0,-14],CYM:[0,-14],HKG:[12,2],SGP:[0,14],ARE:[14,-4],USA:[-16,2],CHN:[12,2],TUR:[0,-14],AUT:[0,-14],FRA:[-12,2],ITA:[0,12],ESP:[0,-14],UKR:[10,-6],BLR:[0,-14],EST:[0,-14],SWE:[0,-14],NOR:[0,-14],POL:[0,-14],HRV:[0,-14],GRC:[0,12],EGY:[0,-14],ISR:[0,-14],SAU:[0,-14],QAT:[0,-14],IND:[0,-14],THA:[0,-14],VNM:[0,-14],MYS:[0,-14],IDN:[0,-14],JPN:[0,-14],KOR:[0,-14],TWN:[0,-14],MAC:[0,-14],BRA:[0,-14],MEX:[0,-14],COL:[0,-14],ARG:[0,-14],CHL:[0,-14],PER:[0,-14],PAN:[0,-14],CRI:[0,-14],URY:[0,-14],CAN:[0,-14],DNK:[0,-14],FIN:[0,-14],IRL:[-12,2],PRT:[0,12],BEL:[0,-14],LUX:[0,-14],MLT:[0,-14],ISL:[0,-14]};
+function countryLabel(iso,name,x,y,alpha=1,size=10.5){
+  if(alpha<=0)return; const off=LBL_OFF[iso]||[0,-12];
+  ctx.save(); ctx.globalAlpha=Math.min(1,alpha);
+  ctx.font=`600 ${size}px Inter,system-ui,sans-serif`;
+  const w=ctx.measureText(name).width;
+  ctx.fillStyle="rgba(7,18,22,0.72)"; rr(ctx,x+off[0]-w/2-5,y+off[1]-9,w+10,14,4); ctx.fill();
+  ctx.fillStyle="#9FB6BE"; ctx.textAlign="center"; ctx.fillText(name,x+off[0],y+off[1]+2);
+  ctx.restore(); }
+function topCountries(nodes,n=14){ const c={};
+  nodes.forEach(nd=>{ if(!c[nd.iso]) c[nd.iso]={iso:nd.iso,name:nd.country,lon:nd.lon,lat:nd.lat,amt:0};
+    c[nd.iso].amt+=nd.amount; });
+  return Object.values(c).sort((a,b)=>b.amt-a.amt).slice(0,n); }
+const TOP_ROUTES=(()=>{ const c={};
+  EDGES_B.forEach(e=>{ if(e.a.iso!==e.b.iso){ const k=e.a.iso+"→"+e.b.iso;
+    if(!c[k]) c[k]={e,amt:0}; c[k].amt+=e.a; c[k].e=e; } });
+  return Object.values(c).sort((a,b)=>b.amt-a.amt).slice(0,6); })();
 const NW=DATA.meta.ventanas.length;
 
 function activateNode(nd,upTo,from=0){ nd.evCount=nd.ev.slice(0,upTo).reduce((s,c)=>s+c,0); }
@@ -277,13 +305,15 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
     starfield(90); graticule();
     edges.forEach(e=>{ const al=Math.min(1,(e.alpha+=0.2));
       const [ax,ay]=P(...worldPos(e.a)),[bx,by]=P(...worldPos(e.b));
-      drawEdge(ax,ay,bx,by,0.5+Math.min(4,e._c*0.5),TEAL_D,0.30*al);
-      if(e._c>=3&&al>0.5) packets(ax,ay,bx,by,t,2,AMBER); });
-    const top12=[...NODES].sort((a,b)=>b.amount-a.amount).slice(0,12);
+      drawArc(ax,ay,bx,by,0.5+Math.min(4,e._c*0.5),TEAL_D,0.30*al);
+      if(e._c>=3&&al>0.5) packetsArc(ax,ay,bx,by,t,2,AMBER); });
     nodes.forEach(nd=>{ nd.alpha=Math.min(1,(nd.alpha||0)+0.22);
       const [x,y]=P(...worldPos(nd));
       glowCircle(x,y,rAmt(nd),TEAL,14,0.95*nd.alpha);
-      if(top12.includes(nd)) label(x,y-rAmt(nd)-10,nd.name,MUT,10); });
+      });
+    if(opt.win===undefined||opt.win>NW*0.35)
+      topCountries(nodes,opt.win===undefined?14:9).forEach(c=>{ const [x,y]=P(c.lon,-c.lat);
+        countryLabel(c.iso,c.name,x,y,opt.win===undefined?0.9:0.75,10); });
     if(opt.win!==undefined){ panel(W/2-90,16,180,34,0.85);
       label(W/2,38,DATA.meta.ventanas[opt.win]+(opt.win<NW-1?" → "+DATA.meta.ventanas[opt.win+1]:""),AMBER,13,"center",true); } }
   SCENES.push({
@@ -318,7 +348,11 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
         draw(p,t){ const [nodes,edges]=upto(NW-1); fitWorld(0.10);
           edges.forEach(e=>e.alpha=Math.min(1,e.alpha+0.25));
           nodes.forEach(nd=>nd.alpha=Math.min(1,nd.alpha+0.25));
-          drawMap(nodes,edges,p,t,{}); } });
+          drawMap(nodes,edges,p,t,{});
+          if(p>0.4){ TOP_ROUTES.slice(0,5).forEach(({e})=>{ const [ax,ay]=P(...worldPos(e.a)),[bx,by]=P(...worldPos(e.b));
+            const [cx,cy]=arcCtrl(ax,ay,bx,by);
+            label(cx,cy-8,e.a.iso+" → "+e.b.iso,AMBER,11,"center",true); });
+            label(W*0.5,H*0.10,LANG==="es"?"PRINCIPALES RUTAS TRANSNACIONALES":"TOP TRANSNATIONAL ROUTES",AMBER,13,"center",true); } } });
       return steps; })()
   });
 })();
@@ -791,7 +825,7 @@ function buildMenu(){
     d.innerHTML=`<div class="num">${String(i+1).padStart(2,"0")}</div>
       <div class="k">${sc.tag==="concepto"?T("conceptoTag"):sc.tag==="trailer"?T("trailerTag"):T("datosTag")}</div>
       <h3>${sc.title[LANG]}</h3><p>${sc.desc[LANG]}</p>`;
-    d.onclick=()=>loadScene(i,true); g.appendChild(d); });
+    d.onclick=()=>loadScene(i,false); g.appendChild(d); });
 }
 function loadScene(i,autoplay){
   cur=i; const sc=SCENES[i]; stepIdx=0; progStep=0;
@@ -877,6 +911,10 @@ prog.addEventListener("pointerdown",e=>{ const r=prog.getBoundingClientRect();
 
 playBtn.onclick=()=>{ playing=!playing; playBtn.textContent=playing?T("pause"):T("play");
   if(playing) AudioFX.ensure(); };
+function prevScene(){ if(cur>0) loadScene(cur-1,false); };
+function nextScene(){ if(cur<SCENES.length-1) loadScene(cur+1,false); };
+document.getElementById("prevSceneBtn").onclick=prevScene;
+document.getElementById("nextSceneBtn").onclick=nextScene;
 document.getElementById("nextBtn").onclick=()=>nextStep();
 document.getElementById("prevBtn").onclick=()=>prevStep();
 document.getElementById("menuBtn").onclick=()=>{ Stage.classList.remove("open"); Menu.classList.add("open"); playing=false; playBtn.textContent=T("play"); };
@@ -889,6 +927,8 @@ window.addEventListener("keydown",e=>{
   if(e.code==="Space"){ e.preventDefault(); playBtn.onclick(); }
   else if(e.key==="ArrowRight") nextStep();
   else if(e.key==="ArrowLeft") prevStep();
+  else if(e.key==="["||e.key==="{"||e.key==="PageDown") prevScene();
+  else if(e.key==="]"||e.key==="}"||e.key==="PageUp") nextScene();
   else if(e.key.toLowerCase()==="f") document.getElementById("fsBtn").onclick();
   else if(e.key==="Escape") document.getElementById("menuBtn").onclick(); });
 
@@ -983,8 +1023,15 @@ window.addEventListener("load",boot);
     const zBase=CAM.tz;
     const cx0=5, cy0=2;
     camTo(cx0+(cLon-cx0)*e, cy0+(cLat-cy0)*e, zBase*(1+(1-e)*(zoom-1))); }
+  const EDGE_FIRST={}; BUILD.forEach((s,k)=>s.newEdges.forEach(e=>{ if(EDGE_FIRST[e]===undefined) EDGE_FIRST[e]=k; }));
+  function drawRouteLabels(al){ if(al<=0)return;
+    TOP_ROUTES.forEach(({e})=>{ const [ax,ay]=P(...worldPos(e.a)),[bx,by]=P(...worldPos(e.b));
+      const [cx,cy]=arcCtrl(ax,ay,bx,by);
+      label(cx,cy-8,e.a.iso+" → "+e.b.iso,AMBER,11,"center",true); }); }
   function drawWorldPulse(t,intensity,focusLon,focusLat){
     starfield(90);
+    if(intensity>0.55) topCountries(NODES,10).forEach(c=>{ const [x,y]=P(c.lon,-c.lat);
+      countryLabel(c.iso,c.name,x,y,(intensity-0.55)*2.2,9.5); });
     // halo terrestre para lectura cinematográfica en zooms alejados
     ctx.save(); const [gx,gy]=P(15,-5); const gr=Math.min(W,H)*CAM.z*38;
     const gg=ctx.createRadialGradient(gx,gy,gr*0.2,gx,gy,gr);
@@ -993,8 +1040,8 @@ window.addEventListener("load",boot);
     graticule();
     EDGES_B.forEach(e=>{ const [ax,ay]=P(...w2p(e.a.lon+e.a.jlon,-(e.a.lat+e.a.jlat)));
       const [bx,by]=P(...w2p(e.b.lon+e.b.jlon,-(e.b.lat+e.b.jlat)));
-      drawEdge(ax,ay,bx,by,0.7+1.8*Math.min(1,e.w/800),TEAL_D,0.22*intensity);
-      if(intensity>0.5&&e.w>400) packets(ax,ay,bx,by,t,1,AMBER); });
+      drawArc(ax,ay,bx,by,0.7+1.8*Math.min(1,e.w/800),TEAL_D,0.30*intensity);
+      if(intensity>0.5&&e.w>400) packetsArc(ax,ay,bx,by,t,1,AMBER); });
     NODES.forEach(nd=>{ const [x,y]=P(...w2p(nd.lon+nd.jlon,-(nd.lat+nd.jlat)));
       const near=focusLon!==undefined?Math.max(0,1-Math.hypot(nd.lon-focusLon,nd.lat-focusLat)/40):1;
       glowCircle(x,y,(2.5+4.5*Math.sqrt(nd.amount/1e9))*intensity,TEAL,14*intensity,(0.4+0.6*near)*intensity); });
@@ -1032,23 +1079,59 @@ window.addEventListener("load",boot);
               if(d<95){ ctx.globalAlpha=qa*0.5*(1-d/95);
                 ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(xi,yi); ctx.lineTo(xj,yj); ctx.stroke(); } }
             ctx.restore(); } } },
-      { d:5.5, cap:{es:"Volamos al mapa. Por el corredor Báltico —Letonia, Rusia— pasó la mayor marea de dinero del caso: US$4.200 millones entre 2010 y 2015.",
-                    en:"We fly to the map. Through the Baltic corridor —Latvia, Russia— flowed the case's biggest tide of money: $4.2B between 2010 and 2015."},
+      { d:6.5, cap:{es:"Aquí está la matemática, sin fórmulas: la máquina corta 6 años en ventanas de tiempo. Quien actúa en una ventana se conecta con quien actúa en la siguiente. Cada repetición engrosa la línea: ese contador es el peso.",
+                    en:"Here is the math, without formulas: the machine slices 6 years into time windows. Whoever acts in one window connects to whoever acts in the next. Every repetition thickens the line: that counter is the weight."},
         draw(p,t){ const q=ease(p);
-          // cámara: de vista mundial a acercamiento al Báltico; al final se desplaza hacia Suiza
           const mid=0.62;
-          if(q<mid){ camDive(FOCUS.baltico[0],-FOCUS.baltico[1],7,q/mid); }
-          else { const q2=(q-mid)/(1-mid);
-            const e=q2*q2*(3-2*q2);
+          if(q<mid){ camDive(FOCUS.baltico[0],-FOCUS.baltico[1],6,q/mid); }
+          else { const q2=(q-mid)/(1-mid); const e=q2*q2*(3-2*q2);
             const lon=FOCUS.baltico[0]+(FOCUS.suiza[0]-FOCUS.baltico[0])*e;
             const lat=-(FOCUS.baltico[1]+(FOCUS.suiza[1]-FOCUS.baltico[1])*e);
             fitWorld(0.10); camTo(lon,lat,CAM.tz*4.2); }
-          drawWorldPulse(t,0.45+0.55*q,
-            q<mid?FOCUS.baltico[0]:FOCUS.baltico[0]+(FOCUS.suiza[0]-FOCUS.baltico[0])*((q-mid)/(1-mid)),
-            q<mid?FOCUS.baltico[1]:FOCUS.baltico[1]+(FOCUS.suiza[1]-FOCUS.baltico[1])*((q-mid)/(1-mid)));
-          if(q>0.1){ ctx.save(); ctx.globalAlpha=Math.min(1,q*2);
-            label(W*0.5,H*0.14,LANG==="es"?"EL MAPA DEL LAVADO":"THE LAUNDERING MAP",AMBER,14,"center",true);
-            ctx.restore(); } } },
+          // fondo
+          ctx.save(); const [gx,gy]=P(15,-5); const gr=Math.min(W,H)*CAM.z*38;
+          const gg=ctx.createRadialGradient(gx,gy,gr*0.2,gx,gy,gr);
+          gg.addColorStop(0,"rgba(13,60,70,0.30)"); gg.addColorStop(1,"#00000000");
+          ctx.fillStyle=gg; ctx.fillRect(0,0,W,H); ctx.restore();
+          starfield(90); graticule();
+          // BARRIDO DE VENTANAS: conexiones nacen cuando el barrido las alcanza
+          const wSweep=q*(NW-1);
+          NODES.forEach(nd=>{ const fw=nd.ev.findIndex(c=>c>0); if(fw<0||wSweep<fw-0.5)return;
+            const al=Math.min(1,(wSweep-fw)/1.5);
+            const [x,y]=P(...worldPos(nd));
+            glowCircle(x,y,2.5+4.5*Math.sqrt(nd.amount/1e9),TEAL,12,al*0.95); });
+          EDGES_A.forEach(e=>{ const fw=EDGE_FIRST[e]; if(fw===undefined||wSweep<fw)return;
+            const al=Math.min(1,(wSweep-fw)/2);
+            const [ax,ay]=P(...worldPos(e.a)),[bx,by]=P(...worldPos(e.b));
+            drawArc(ax,ay,bx,by,0.8+Math.min(3,e._c*0.35),"#14B8A6",0.55*al);
+            if(e._c>=4&&al>0.4) packetsArc(ax,ay,bx,by,t,1,AMBER); });
+          // anillo de foco
+          const fLon=q<mid?FOCUS.baltico[0]:FOCUS.baltico[0]+(FOCUS.suiza[0]-FOCUS.baltico[0])*((q-mid)/(1-mid));
+          const fLat=q<mid?FOCUS.baltico[1]:FOCUS.baltico[1]+(FOCUS.suiza[1]-FOCUS.baltico[1])*((q-mid)/(1-mid));
+          const [fx,fy]=P(...w2p(fLon,-fLat));
+          for(let k=0;k<3;k++){ const ph=((t*0.5+k/3)%1);
+            ctx.save(); ctx.globalAlpha=(1-ph)*0.55; ctx.strokeStyle=AMBER; ctx.lineWidth=2;
+            ctx.beginPath(); ctx.arc(fx,fy,10+ph*55,0,7); ctx.stroke(); ctx.restore(); }
+          // línea de tiempo inferior: el corazón de la explicación
+          const tx0=W*0.14, tx1=W*0.86, ty=H*0.90;
+          ctx.save();
+          ctx.strokeStyle="#1B3A44"; ctx.lineWidth=3;
+          ctx.beginPath(); ctx.moveTo(tx0,ty); ctx.lineTo(tx1,ty); ctx.stroke();
+          for(let y=2010;y<=2015;y++){ const x=tx0+(tx1-tx0)*(y-2010)/5;
+            ctx.strokeStyle="#2A5560"; ctx.lineWidth=1;
+            ctx.beginPath(); ctx.moveTo(x,ty-6); ctx.lineTo(x,ty+6); ctx.stroke();
+            label(x,ty+24,String(y),MUT,10); }
+          const px=tx0+(tx1-tx0)*q;
+          ctx.strokeStyle=AMBER; ctx.lineWidth=2;
+          ctx.beginPath(); ctx.moveTo(px,ty-14); ctx.lineTo(px,ty+10); ctx.stroke();
+          glowCircle(px,ty-14,3,AMBER,10,0.9);
+          const wIdx=Math.min(NW-1,Math.round(wSweep));
+          label(tx0,ty-30,(LANG==="es"?"ventana ":"window ")+DATA.meta.ventanas[wIdx],AMBER,12,"left",true);
+          label(tx1,ty-30,LANG==="es"?"Δt = trimestre":"Δt = quarter",MUT,11,"right");
+          ctx.restore();
+          if(q>0.5) topCountries(NODES,9).forEach(c=>{ const [x,y]=P(c.lon,-c.lat);
+            countryLabel(c.iso,c.name,x,y,(q-0.5)*2,9.5); });
+          label(W*0.5,H*0.10,LANG==="es"?"EL MAPA DEL LAVADO · CÓMO NACE UNA CONEXIÓN":"THE LAUNDERING MAP · HOW A CONNECTION IS BORN",AMBER,14,"center",true); } },
       { d:4.5, cap:{es:"Ordenar los eventos en el tiempo y la red aparece: quién origina, por dónde pasa, dónde se asienta. Eso es la metodología Chronnet.",
                     en:"Sort the events in time and the network appears: who originates, where it flows, where it settles. That is the Chronnet method."},
         draw(p,t){ const q=ease(p);

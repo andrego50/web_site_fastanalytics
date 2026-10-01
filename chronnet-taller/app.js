@@ -167,6 +167,8 @@ const BUILD=(()=>{ const steps=[];
 /* Cada escena: {id, title:{es,en}, tag:'concepto'|'datos', desc:{es,en}, chips?, sim?,
    fit(cam), steps:[{d, cap:{es,en}, draw(p,t)}] }                          */
 const SCENES=[];
+const FORMULAS={};
+["c1","c2","c3","c4"].forEach(k=>{ const im=new Image(); im.src="formulas/f_"+k+".png"; FORMULAS[k]=im; });
 
 /* ---------- utilidad: grafo de juguete ---------- */
 function toyGraph(n,radius,cx,cy){ const nodes=[];
@@ -206,7 +208,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
   const GW={ "0>1":2, "1>2":2, "2>1":2, "2>2":2, "2>4":2, "0>2":1, "1>0":1, "2>0":1, "0>3":1, "3>2":1, "1>3":1, "4>2":1 };
 
   SCENES.push({
-    id:"c1", tag:"concepto",
+    id:"c1", formula:"c1", tag:"concepto",
     title:{es:"Concepto 1 · La máquina ordena y conecta", en:"Concept 1 · The machine sorts and connects"},
     desc:{es:"Qué hace la metodología chronnet paso a paso: ordenar eventos, cortar ventanas, conectar consecutivos y contar — sin una sola fórmula.",
           en:"What the chronnet method does step by step: sort events, slice windows, connect consecutive ones and count — without a single formula."},
@@ -333,7 +335,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
     if(opt.win!==undefined){ panel(W/2-90,16,180,34,0.85);
       label(W/2,38,DATA.meta.ventanas[opt.win]+(opt.win<NW-1?" → "+DATA.meta.ventanas[opt.win+1]:""),AMBER,13,"center",true); } }
   SCENES.push({
-    id:"d1", tag:"datos",
+    id:"d1", formula:"c1", tag:"datos",
     title:{es:"Escena 1 · Construcción: la red del lavado", en:"Scene 1 · Construction: the laundering network"},
     desc:{es:"Los 48 bancos de mayor monto del dataset FinCEN, conectados ventana a ventana (chronnet puro) ante tus ojos, 2010–2015.",
           en:"The top 48 banks by amount in the FinCEN dataset, connected window by window (pure chronnet), 2010–2015."},
@@ -409,7 +411,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
       if(nd.comm<0&&spotlight){ ctx.save(); ctx.strokeStyle=AMBER; ctx.globalAlpha=0.5+0.5*Math.sin(t*4);
         ctx.lineWidth=2; ctx.beginPath(); ctx.arc(nd.x,nd.y,16,0,7); ctx.stroke(); ctx.restore(); } }); }
   SCENES.push({
-    id:"c2", tag:"concepto",
+    id:"c2", formula:"c2", tag:"concepto",
     title:{es:"Concepto 2 · Triángulos y tribus", en:"Concept 2 · Triangles and tribes"},
     desc:{es:"Clusterización y comunidades explicados con dos células separadas: denso por dentro, hilos por fuera.",
           en:"Clustering and communities explained with two separated cells: dense inside, threads outside."},
@@ -503,7 +505,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
   let CCR=0,CCS=0;
   const commLabel={0:"LVA·RUS",1:"CHE·SGP",2:"GBR·CYM",3:"HKG·ARE"};
   SCENES.push({
-    id:"d2", tag:"datos",
+    id:"d2", formula:"c2", tag:"datos",
     title:{es:"Escena 2 · Estructura: tribus del lavado", en:"Scene 2 · Structure: laundering tribes"},
     desc:{es:"Las comunidades que emergen del dataset, su densidad frente al azar y los hilos que conectan las células.",
           en:"The communities that emerge from the dataset, their density versus chance, and the threads connecting cells."},
@@ -614,7 +616,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
       if(hot&&opts.ring){ ctx.save(); ctx.globalAlpha=0.4+0.4*Math.sin(t*5); ctx.strokeStyle=AMBER;
         ctx.lineWidth=2; ctx.beginPath(); ctx.arc(P[i].x,P[i].y,20,0,7); ctx.stroke(); ctx.restore(); } }); }
   SCENES.push({
-    id:"c3", tag:"concepto",
+    id:"c3", formula:"c3", tag:"concepto",
     title:{es:"Concepto 3 · Quién importa en una red", en:"Concept 3 · Who matters in a network"},
     desc:{es:"Las tres medidas de centralidad sobre una sola cadena de lavado: tesorero, puente y jefe son actores distintos.",
           en:"Three centrality measures on one laundering chain: treasurer, bridge and boss are different actors."},
@@ -692,7 +694,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
       label(W-90,124+i*30,String(Math.round(nd.btw)),MUT,11,"right"); });
     ctx.restore(); }
   SCENES.push({
-    id:"d3", tag:"datos",
+    id:"d3", formula:"c3", tag:"datos",
     title:{es:"Escena 3 · Actores clave en el lavado", en:"Scene 3 · Key players in the laundering network"},
     desc:{es:"Los mismos 48 bancos, tres mapas de importancia: grado, intermediación e influencia (Katz).",
           en:"The same 48 banks, three importance maps: degree, betweenness and influence (Katz)."},
@@ -741,7 +743,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
       else glowCircle(nd.x,nd.y,10,"#64748B",12,1); });
     meter(W*0.70,H*0.30,260,26,lcc,AMBER,T("legendLCC"),Math.round(lcc*100)+"%"); }
   SCENES.push({
-    id:"c4", tag:"concepto",
+    id:"c4", formula:"c4", tag:"concepto",
     title:{es:"Concepto 4 · Cortar la red", en:"Concept 4 · Cutting the network"},
     desc:{es:"El componente conectado más grande (LCC) y por qué el protocolo de intervención — individual o raid — cambia todo.",
           en:"The largest connected component (LCC) and why the intervention protocol — individual or raid — changes everything."},
@@ -899,7 +901,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
     label(W*0.10+16,H*0.80+44,LANG==="es"?"1) KB corta los puentes (aislar células)  →  2) DEG/BTW decapitan los núcleos":"1) KB cuts the bridges (isolate cells)  →  2) DEG/BTW decapitate the cores",TXT,12,"left");
     ctx.restore(); }
   const scene={
-    id:"d4", tag:"datos", sim:true, curKey:"KB_5",
+    id:"d4", formula:"c4", tag:"datos", sim:true, curKey:"KB_5",
     title:{es:"Escena 4 · Disrupción de la red del lavado", en:"Scene 4 · Disrupting the laundering network"},
     desc:{es:"Simulador: las 5 estrategias del paper (DEG, BTW, KB, CI, RND), protocolos individual y raid, sobre la red real. Usa la barra del simulador.",
           en:"Simulator: the paper's 5 strategies (DEG, BTW, KB, CI, RND), individual and raid protocols, on the real network. Use the simulator bar."},
@@ -921,7 +923,8 @@ const prog=document.getElementById("prog"), progFill=document.getElementById("pr
 const playBtn=document.getElementById("playBtn"), stepCount=document.getElementById("stepCount");
 const chipRow=document.getElementById("chipRow"), simbar=document.getElementById("simbar");
 
-let cur=-1, stepIdx=0, progStep=0, playing=false, tGlob=0, lastTs=0;
+let cur=-1, stepIdx=0, progStep=0, playing=false, tGlob=0, lastTs=0, freezeT=null;
+function clearFreeze(){ freezeT=null; }
 const DEBUG=new URLSearchParams(location.search).has("debug");
 
 function buildMenu(){
@@ -934,7 +937,7 @@ function buildMenu(){
     d.onclick=()=>loadScene(i,false); g.appendChild(d); });
 }
 function loadScene(i,autoplay){
-  cur=i; const sc=SCENES[i]; stepIdx=0; progStep=0;
+  clearFreeze(); cur=i; const sc=SCENES[i]; stepIdx=0; progStep=0;
   sceneTitle.textContent=sc.title[LANG];
   sceneKicker.textContent=(sc.tag==="concepto"?"◈ ":"▣ ")+T("kicker");
   Menu.classList.remove("open"); Stage.classList.add("open");
@@ -999,7 +1002,7 @@ function capStep(){ const sc=SCENES[cur]; if(!sc)return;
   const st=sc.steps[Math.min(stepIdx,sc.steps.length-1)];
   stepNo.textContent=`${stepIdx+1}/${sc.steps.length}`;
   capText.textContent=st.cap[LANG]; stepCount.textContent=`${stepIdx+1} / ${sc.steps.length}`; }
-function jumpStep(i){ const sc=SCENES[cur]; stepIdx=Math.max(0,Math.min(i,sc.steps.length-1)); progStep=0; capStep(); AudioFX.blip(520); }
+function jumpStep(i){ clearFreeze(); const sc=SCENES[cur]; stepIdx=Math.max(0,Math.min(i,sc.steps.length-1)); progStep=0; capStep(); AudioFX.blip(520); }
 function nextStep(){ const sc=SCENES[cur]; if(stepIdx<sc.steps.length-1) jumpStep(stepIdx+1); else { playing=false; playBtn.textContent=T("play"); } }
 function prevStep(){ if(progStep>0.02){ progStep=0; } else jumpStep(stepIdx-1); }
 
@@ -1016,7 +1019,7 @@ prog.addEventListener("pointerdown",e=>{ const r=prog.getBoundingClientRect();
   window.addEventListener("pointermove",mv); window.addEventListener("pointerup",up); });
 
 playBtn.onclick=()=>{ playing=!playing; playBtn.textContent=playing?T("pause"):T("play");
-  if(playing) AudioFX.ensure(); };
+  if(playing){ AudioFX.ensure(); clearFreeze(); } };
 function prevScene(){ if(cur>0) loadScene(cur-1,false); };
 function nextScene(){ if(cur<SCENES.length-1) loadScene(cur+1,false); };
 document.getElementById("prevSceneBtn").onclick=prevScene;
@@ -1044,14 +1047,30 @@ function frame(ts){
   if(Stage.classList.contains("open")&&cur>=0){
     const sc=SCENES[cur]; const st=sc.steps[stepIdx];
     if(playing){ progStep+=dt/st.d;
-      if(progStep>=1){ progStep=0; if(stepIdx<sc.steps.length-1){ stepIdx++; capStep(); AudioFX.blip(760);} else { playing=false; playBtn.textContent=T("play"); } } }
+      if(progStep>=1){ progStep=0; if(stepIdx<sc.steps.length-1){ stepIdx++; capStep(); AudioFX.blip(760);} else { playing=false; playBtn.textContent=T("play"); freezeT=tGlob; } } }
+    const frozen = freezeT!==null;
+    const tDraw = frozen ? freezeT : tGlob;
     ctx.clearRect(0,0,W,H);
     const g=ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,"#FFFFFF"); g.addColorStop(1,"#F8FAFC");
     ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
     camTick(dt);
-    try{ st.draw(progStep,tGlob); }catch(err){ ctx.save(); ctx.fillStyle="#FF5555"; ctx.font="13px monospace";
+    try{ st.draw(progStep,tDraw); }catch(err){ ctx.save(); ctx.fillStyle="#FF5555"; ctx.font="13px monospace";
       ctx.fillText("DRAW ERROR step "+stepIdx+": "+err.message,20,60); ctx.restore(); if(DEBUG) console.error(err); }
     vignette();
+    if(frozen && sc.formula && FORMULAS[sc.formula] && FORMULAS[sc.formula].complete){
+      const im=FORMULAS[sc.formula];
+      const iw=Math.min(W*0.52, 620), ih=iw*im.height/im.width;
+      const px=W/2-iw/2-18, py=H-ih-64;
+      ctx.save();
+      ctx.fillStyle="rgba(255,255,255,0.96)"; rr(ctx,px,py,iw+36,ih+52,10); ctx.fill();
+      ctx.strokeStyle="#CBD5E1"; ctx.lineWidth=1; rr(ctx,px,py,iw+36,ih+52,10); ctx.stroke();
+      ctx.font="700 12px Inter,system-ui,sans-serif"; ctx.fillStyle="#006D6D";
+      ctx.textAlign="left"; ctx.fillText(LANG==="es"?"LA MATEMÁTICA":"THE MATH", px+18, py+22);
+      ctx.drawImage(im, px+18, py+34, iw, ih);
+      ctx.font="500 11px Inter,system-ui,sans-serif"; ctx.fillStyle="#64748B";
+      ctx.textAlign="right"; ctx.fillText(LANG==="es"?"⏸ congelado — explica, luego →":"⏸ frozen — explain, then →", px+iw+18, py+22);
+      ctx.restore();
+    }
     if(DEBUG){ ctx.save(); ctx.fillStyle="#FF5555"; ctx.font="14px monospace";
       ctx.fillText(`W=${W} H=${H} camZ=${CAM.z.toFixed(2)} step=${stepIdx} p=${progStep.toFixed(2)}`,20,40); ctx.restore(); }
     const f=curFrac(); progFill.style.width=(f*100)+"%"; progDot.style.left=(f*100)+"%";
@@ -1072,7 +1091,8 @@ function boot(){
   const sid=q.get("scene");
   if(sid){ const i=SCENES.findIndex(s=>s.id===sid); if(i>=0){ loadScene(i,false);
     const st=parseInt(q.get("step")||"0"); if(st>0) jumpStep(st);
-    progStep=parseFloat(q.get("p")||"0"); } }
+    progStep=parseFloat(q.get("p")||"0");
+    if(q.has("freeze")){ stepIdx=SCENES[cur].steps.length-1; progStep=1; playing=false; freezeT=tGlob; capStep(); } } }
   requestAnimationFrame(frame);
 }
 function applyLang(){

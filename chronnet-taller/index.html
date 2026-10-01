@@ -7,8 +7,8 @@
 <style>
   :root{
     --teal:#006D6D; --teal2:#0F766E; --teal3:#0D9488; --amber:#D4883A; --amber2:#B45309;
-    --slate:#64748B; --bg:#071216; --bg2:#0B1C22; --panel:#0E242C; --line:#1B3A44;
-    --txt:#E8F1F2; --mut:#8FA6AD;
+    --slate:#64748B; --bg:#FFFFFF; --bg2:#F8FAFC; --panel:#FFFFFF; --line:#E2E8F0;
+    --txt:#0F172A; --mut:#64748B;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%;background:var(--bg);color:var(--txt);
@@ -16,15 +16,15 @@
   #app{display:flex;flex-direction:column;height:100vh}
   /* ---------- top bar ---------- */
   #topbar{display:flex;align-items:center;gap:14px;padding:10px 18px;
-    background:linear-gradient(180deg,#0B1C22,#0B1C2200);border-bottom:1px solid var(--line);z-index:20}
+    background:#FFFFFF;border-bottom:1px solid var(--line);z-index:20}
   #topbar .brand{display:flex;align-items:center;gap:10px;min-width:0}
   #topbar svg{height:26px;flex:none}
   #sceneTitle{font-size:15px;font-weight:700;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #sceneKicker{font-size:11px;color:var(--amber);letter-spacing:1.6px;text-transform:uppercase}
   .spacer{flex:1}
-  .tbtn{background:#123038;border:1px solid var(--line);color:var(--txt);border-radius:8px;
+  .tbtn{background:#F1F5F9;border:1px solid var(--line);color:var(--txt);border-radius:8px;
     padding:6px 12px;font-size:12px;cursor:pointer;font-weight:600}
-  .tbtn:hover{background:#1A424E}
+  .tbtn:hover{background:#E2E8F0}
   .tbtn.on{background:var(--teal);border-color:var(--teal)}
   /* ---------- main ---------- */
   #main{flex:1;display:flex;min-height:0}
@@ -35,9 +35,9 @@
   #menu h1 .a{color:var(--amber)}
   #menu .sub{margin-top:12px;font-size:16px;color:var(--mut);max-width:720px;line-height:1.5}
   .mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;max-width:1150px}
-  .mcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;
+  .mcard{background:#FFFFFF;border:1px solid var(--line);box-shadow:0 1px 3px rgba(15,23,42,0.06);border-radius:14px;padding:16px;
     cursor:pointer;transition:.18s;position:relative}
-  .mcard:hover{transform:translateY(-3px);border-color:var(--teal3)}
+  .mcard:hover{transform:translateY(-3px);border-color:var(--teal3);box-shadow:0 8px 20px rgba(0,109,109,0.12)}
   .mcard .num{font-size:11px;font-weight:800;color:var(--amber);letter-spacing:1px}
   .mcard .k{font-size:10px;color:var(--teal3);text-transform:uppercase;letter-spacing:1.4px;margin-top:6px;font-weight:700}
   .mcard h3{font-size:15px;margin-top:4px;line-height:1.3}
@@ -51,30 +51,30 @@
   canvas{position:absolute;inset:0;width:100%;height:100%}
   /* ---------- simulator bar (scene D4) ---------- */
   #simbar{display:none;gap:8px;align-items:center;padding:8px 14px;border-top:1px solid var(--line);
-    background:var(--bg2);flex-wrap:wrap}
+    background:#F8FAFC;flex-wrap:wrap}
   #simbar.open{display:flex}
   #simbar .lab{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:1px}
-  .sbtn{background:#123038;border:1px solid var(--line);color:var(--txt);border-radius:7px;
+  .sbtn{background:#F1F5F9;border:1px solid var(--line);color:var(--txt);border-radius:7px;
     padding:5px 10px;font-size:12px;cursor:pointer;font-weight:700;font-family:"JetBrains Mono",monospace}
   .sbtn.on{background:var(--amber);color:#1A1005;border-color:var(--amber)}
   /* ---------- bottom controls ---------- */
-  #controls{border-top:1px solid var(--line);background:var(--bg2);padding:10px 18px 12px;z-index:20}
+  #controls{border-top:1px solid var(--line);background:#F8FAFC;padding:10px 18px 12px;z-index:20}
   #caption{font-size:16px;font-weight:600;min-height:44px;display:flex;align-items:center;line-height:1.4}
   #caption .stepno{color:var(--amber);font-family:monospace;margin-right:10px;font-size:13px}
   #ctrlRow{display:flex;align-items:center;gap:10px;margin-top:8px}
   .cbtn{width:42px;height:42px;border-radius:50%;background:var(--teal);border:none;color:#fff;
     font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none}
   .cbtn:hover{background:var(--teal3)}
-  .cbtn.ghost{background:#123038;border:1px solid var(--line);color:var(--txt)}
-  #prog{flex:1;height:8px;background:#123038;border-radius:6px;position:relative;cursor:pointer}
+  .cbtn.ghost{background:#F1F5F9;border:1px solid var(--line);color:var(--txt)}
+  #prog{flex:1;height:8px;background:#E2E8F0;border-radius:6px;position:relative;cursor:pointer}
   #progFill{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal3));border-radius:6px;width:0%}
   #progDot{position:absolute;top:-4px;width:16px;height:16px;background:var(--amber);border-radius:50%;
     transform:translateX(-8px);box-shadow:0 0 10px #D4883AAA;left:0%}
   #stepCount{font-size:12px;color:var(--mut);min-width:64px;text-align:right;font-family:monospace}
   #hints{position:absolute;top:12px;right:14px;font-size:11px;color:var(--mut);
-    background:#0B1C22CC;padding:6px 10px;border-radius:8px;line-height:1.6;z-index:5}
+    background:#FFFFFFDD;border:1px solid var(--line);padding:6px 10px;border-radius:8px;line-height:1.6;z-index:5}
   #chipRow{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-  .chip{background:#123038;border:1px solid var(--line);color:var(--mut);border-radius:20px;
+  .chip{background:#F1F5F9;border:1px solid var(--line);color:var(--mut);border-radius:20px;
     padding:4px 12px;font-size:12px;cursor:pointer;font-weight:600}
   .chip.on{background:var(--teal);color:#fff;border-color:var(--teal)}
 </style>

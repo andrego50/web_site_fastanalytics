@@ -53,7 +53,7 @@ function resize(){ DPR=Math.min(window.devicePixelRatio||1,2);
   W=cv.clientWidth; H=cv.clientHeight; cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
 window.addEventListener("resize",resize);
 
-const TEAL="#0D9488", TEAL_D="#006D6D", AMBER="#D4883A", SLATE="#64748B", TXT="#E8F1F2", MUT="#8FA6AD";
+const TEAL="#0D9488", TEAL_D="#006D6D", AMBER="#D4883A", SLATE="#64748B", TXT="#0F172A", MUT="#64748B";
 const COMM_COLORS=["#0D9488","#D4883A","#7C9EB2","#B4553A","#5FA88F","#C99A3F"];
 
 let CAM={x:0,y:0,z:1,tx:0,ty:0,tz:1};
@@ -63,12 +63,11 @@ function P(wx,wy){ return [ (wx-CAM.x)*CAM.z+W/2, (wy-CAM.y)*CAM.z+H/2 ]; }
 
 function rr(c,x,y,w,h,r){ c.beginPath(); c.moveTo(x+r,y); c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r); c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath(); }
 
-function vignette(){ const g=ctx.createRadialGradient(W/2,H/2,Math.min(W,H)*0.45,W/2,H/2,Math.max(W,H)*0.75);
-  g.addColorStop(0,"#00000000"); g.addColorStop(1,"#02090BCC"); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); }
+function vignette(){ }
 
 function starfield(seedN=140){ ctx.save(); let s=1234; const rnd=()=>{ s=(s*16807)%2147483647; return s/2147483647; };
-  for(let i=0;i<seedN;i++){ const x=rnd()*W,y=rnd()*H,r=rnd()*1.3+0.3,a=rnd()*0.35+0.08;
-    ctx.fillStyle=`rgba(150,200,205,${a})`; ctx.beginPath(); ctx.arc(x,y,r,0,7); ctx.fill(); } ctx.restore(); }
+  for(let i=0;i<Math.min(seedN,40);i++){ const x=rnd()*W,y=rnd()*H,r=rnd()*1.2+0.3,a=rnd()*0.10+0.04;
+    ctx.fillStyle=`rgba(100,116,139,${a})`; ctx.beginPath(); ctx.arc(x,y,r,0,7); ctx.fill(); } ctx.restore(); }
 
 function graticule(){ ctx.save(); ctx.strokeStyle="rgba(20,70,80,0.35)"; ctx.lineWidth=1;
   for(let lon=-180;lon<=180;lon+=30){ const [x1,y1]=P(lon,-85),[x2,y2]=P(lon,85);
@@ -114,10 +113,10 @@ function label(x,y,text,color=TXT,size=12,align="center",bold=false){ ctx.save()
   ctx.font=`${bold?"700 ":""}${size}px Inter,system-ui,sans-serif`; ctx.fillStyle=color; ctx.textAlign=align;
   ctx.fillText(text,x,y); ctx.restore(); }
 
-function panel(x,y,w,h,alpha=0.85){ ctx.save(); ctx.globalAlpha=alpha; ctx.fillStyle="#0E242C";
-  rr(ctx,x,y,w,h,12); ctx.fill(); ctx.strokeStyle="#1B3A44"; ctx.lineWidth=1; ctx.stroke(); ctx.restore(); }
+function panel(x,y,w,h,alpha=0.85){ ctx.save(); ctx.globalAlpha=alpha; ctx.fillStyle="#FFFFFF";
+  rr(ctx,x,y,w,h,12); ctx.fill(); ctx.strokeStyle="#CBD5E1"; ctx.lineWidth=1; ctx.stroke(); ctx.restore(); }
 
-function meter(x,y,w,h,frac,color,txtL,txtR){ ctx.save(); ctx.fillStyle="#123038"; rr(ctx,x,y,w,h,6); ctx.fill();
+function meter(x,y,w,h,frac,color,txtL,txtR){ ctx.save(); ctx.fillStyle="#E2E8F0"; rr(ctx,x,y,w,h,6); ctx.fill();
   ctx.fillStyle=color; if(frac>0.005){ rr(ctx,x,y,w*Math.min(1,frac),h,6); ctx.fill(); }
   label(x+8,y+h-6,txtL,MUT,10,"left"); label(x+w-8,y+h-6,txtR,TXT,11,"right",true); ctx.restore(); }
 
@@ -141,7 +140,7 @@ function countryLabel(iso,name,x,y,alpha=1,size=10.5){
   ctx.save(); ctx.globalAlpha=Math.min(1,alpha);
   ctx.font=`600 ${size}px Inter,system-ui,sans-serif`;
   const w=ctx.measureText(name).width;
-  ctx.fillStyle="rgba(7,18,22,0.72)"; rr(ctx,x+off[0]-w/2-5,y+off[1]-9,w+10,14,4); ctx.fill();
+  ctx.fillStyle="rgba(255,255,255,0.85)"; rr(ctx,x+off[0]-w/2-5,y+off[1]-9,w+10,14,4); ctx.fill();
   ctx.fillStyle="#9FB6BE"; ctx.textAlign="center"; ctx.fillText(name,x+off[0],y+off[1]+2);
   ctx.restore(); }
 function topCountries(nodes,n=14){ const c={};
@@ -220,16 +219,16 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
       { d:6, cap:{es:"Paso 1 de la máquina: ordenar todo en el tiempo. Ahora cada evento tiene su lugar en una línea.",
                   en:"Machine step 1: sort everything in time. Now every event has its place on a line."},
         draw(p){ starfield(); label(W/2,120,LANG==="es"?"ORDENAR EN EL TIEMPO":"SORT IN TIME",MUT,13);
-          ctx.strokeStyle="#1B3A44"; ctx.beginPath(); ctx.moveTo(120,H*0.62-70); ctx.lineTo(W-120,H*0.62-70); ctx.stroke();
+          ctx.strokeStyle="#CBD5E1"; ctx.beginPath(); ctx.moveTo(120,H*0.62-70); ctx.lineTo(W-120,H*0.62-70); ctx.stroke();
           EV.forEach((e,i)=>entDot(i,0,p,"tl")); } },
       { d:6, cap:{es:"Paso 2: cortar la línea en ventanas de tiempo Δt. Lo que ocurre dentro de una ventana cuenta como simultáneo.",
                   en:"Step 2: slice the line into time windows Δt. Whatever happens inside one window counts as simultaneous."},
         draw(p){ this.__proto__; label(W/2,120,LANG==="es"?"VENTANAS Δt":"WINDOWS Δt",MUT,13);
-          ctx.strokeStyle="#1B3A44"; ctx.beginPath(); ctx.moveTo(120,H*0.62-70); ctx.lineTo(W-120,H*0.62-70); ctx.stroke();
+          ctx.strokeStyle="#CBD5E1"; ctx.beginPath(); ctx.moveTo(120,H*0.62-70); ctx.lineTo(W-120,H*0.62-70); ctx.stroke();
           const q=ease(p); ctx.save(); ctx.fillStyle="rgba(13,148,136,0.12)";
           const x1=120,x2=120+((W-300)/11+1)*2.5+30; ctx.fillRect(x1,H*0.62-100,(x2-x1)*q,140); ctx.restore();
           WINB.forEach(b=>{ const x=150+(b-0.5)*((W-300)/11);
-            ctx.strokeStyle="#2A5560"; ctx.beginPath(); ctx.moveTo(x,H*0.62-100); ctx.lineTo(x,H*0.62+60); ctx.stroke(); });
+            ctx.strokeStyle="#94A3B8"; ctx.beginPath(); ctx.moveTo(x,H*0.62-100); ctx.lineTo(x,H*0.62+60); ctx.stroke(); });
           EV.forEach((e,i)=>entDot(i,0,1,"tl")); } },
       { d:7, cap:{es:"Paso 3: recorrer las ventanas. En cada una, la máquina anota quién está activo.",
                   en:"Step 3: sweep the windows. In each one, the machine notes who is active."},
@@ -295,7 +294,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
           ROUTE.forEach(([k,x,y],i)=>{ const c=ENT.find(e=>e.k===k).c;
             const al=Math.min(1,q*3-i*0.35);
             glowCircle(x*W,y*H,15,c,18,al);
-            label(x*W,y*H+5,k,"#08222A",12,"center",true);
+            label(x*W,y*H+5,k,"#FFFFFF",12,"center",true);
             const names={Ros:LANG==="es"?"Rusia (origen)":"Russia (origin)",ATB:"Letonia",CS:LANG==="es"?"banco central":"core bank",ING:LANG==="es"?"banco central":"core bank",Cay:LANG==="es"?"Caimán (destino)":"Cayman (destination)"};
             if(al>0.7) label(x*W,y*H+34,names[k],MUT,10.5); });
           ctx.save(); panel(60,H*0.30,250,132,0.9);
@@ -401,7 +400,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
   function drawCells(t,spotlight){ starfield(80);
     E.forEach(([a,b])=>{ const na=N[a],nb=N[b]; const intra=na.comm===nb.comm;
       const isBr=spotlight&&!intra;
-      drawEdge(na.x,na.y,nb.x,nb.y,intra?1.6:3,isBr?AMBER:(intra?CCOL[na.comm]:"#2A5560"),
+      drawEdge(na.x,na.y,nb.x,nb.y,intra?1.6:3,isBr?AMBER:(intra?CCOL[na.comm]:"#94A3B8"),
         isBr?0.8+0.2*Math.sin(t*3):(intra?0.75:0.28));
       if(isBr){ ctx.save(); ctx.globalAlpha=0.9; ctx.strokeStyle=AMBER; ctx.lineWidth=2; ctx.setLineDash([7,7]);
         ctx.beginPath(); ctx.moveTo(na.x,na.y); ctx.lineTo(nb.x,nb.y); ctx.stroke(); ctx.restore(); } });
@@ -420,9 +419,9 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
                   en:"A criminal network is not a list: it is cells. Inside each cell, everyone knows everyone."},
         draw(p,t){ layout(); const q=ease(p);
           E.forEach(([a,b],i)=>{ const al=Math.max(0,Math.min(1,q*E.length-i*0.6));
-            if(al>0) drawEdge(N[a].x,N[a].y,N[b].x,N[b].y,1.6,"#2A5560",al); });
+            if(al>0) drawEdge(N[a].x,N[a].y,N[b].x,N[b].y,1.6,"#94A3B8",al); });
           N.forEach((nd,i)=>{ const al=Math.max(0,Math.min(1,q*N.length*1.5-i*0.8));
-            if(al>0) glowCircle(nd.x,nd.y,10,"#3E6E78",12,al); });
+            if(al>0) glowCircle(nd.x,nd.y,10,"#64748B",12,al); });
           if(q>0.5) sidePanel(LANG==="es"?"LO QUE VES":"WHAT YOU SEE",[
             LANG==="es"?"· dos grupos separados":"· two separated groups",
             LANG==="es"?"· dentro de cada uno,":"· inside each one,",
@@ -431,8 +430,8 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
       { d:7, cap:{es:"El coeficiente de clusterización cuenta triángulos: de las conexiones que PODÍAN cerrarse, ¿cuántas se cerraron? Alta = célula cohesionada.",
                   en:"The clustering coefficient counts triangles: of the connections that COULD close, how many did? High = cohesive cell."},
         draw(p,t){ layout(); starfield(80);
-          E.forEach(([a,b])=>drawEdge(N[a].x,N[a].y,N[b].x,N[b].y,1.6,"#2A5560",0.9));
-          N.forEach(nd=>glowCircle(nd.x,nd.y,10,"#3E6E78",12,1));
+          E.forEach(([a,b])=>drawEdge(N[a].x,N[a].y,N[b].x,N[b].y,1.6,"#94A3B8",0.9));
+          N.forEach(nd=>glowCircle(nd.x,nd.y,10,"#64748B",12,1));
           const q=ease(p);
           [[0,1,2],[5,6,7]].forEach((tr,k)=>{ const al=Math.min(1,Math.max(0,q*2-k*0.5));
             ctx.save(); ctx.globalAlpha=0.20*al; ctx.fillStyle=CCOL[k];
@@ -452,7 +451,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
                   en:"Color by tribe: each cell is a community. Organized crime ALWAYS organizes like this: dense inside, invisible outside."},
         draw(p,t){ layout(); const q=ease(p); starfield(80);
           E.forEach(([a,b])=>{ const na=N[a],nb=N[b]; const intra=na.comm===nb.comm;
-            drawEdge(na.x,na.y,nb.x,nb.y,intra?2.2:1.2,intra?CCOL[na.comm]:"#2A5560",intra?0.35+0.5*q:0.25); });
+            drawEdge(na.x,na.y,nb.x,nb.y,intra?2.2:1.2,intra?CCOL[na.comm]:"#94A3B8",intra?0.35+0.5*q:0.25); });
           N.forEach(nd=>{ const col=nd.comm<0?"#7C9EB2":CCOL[nd.comm];
             glowCircle(nd.x,nd.y,10+4*q,col,16,q); });
           sidePanel(LANG==="es"?"COMUNIDADES":"COMMUNITIES",[
@@ -467,7 +466,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
                   en:"The concealment pattern: each tribe is invisible to the other; only the grey bridges connect them. Cutting a bridge isolates the tribe. That is the system's weak point."},
         draw(p,t){ layout(); const q=ease(p); starfield(80);
           E.forEach(([a,b])=>{ const na=N[a],nb=N[b]; const intra=na.comm===nb.comm;
-            drawEdge(na.x,na.y,nb.x,nb.y,intra?1.5:3,intra?"#2E5560":AMBER,intra?0.42:0.75+0.2*Math.sin(t*3)); });
+            drawEdge(na.x,na.y,nb.x,nb.y,intra?1.5:3,intra?"#94A3B8":AMBER,intra?0.42:0.75+0.2*Math.sin(t*3)); });
           N.forEach(nd=>{ const col=nd.comm<0?AMBER:(nd.comm===0?TEAL:"#B4762E");
             glowCircle(nd.x,nd.y,10,col,nd.comm<0?18:12,nd.comm<0?q:0.55+0.25*q); });
           sidePanel(LANG==="es"?"PATRÓN DE OCULTAMIENTO":"CONCEALMENT PATTERN",[
@@ -515,14 +514,14 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
         draw(p,t){ starfield(90); graticule(); const q=ease(p);
           EDGES_B.forEach(e=>{ const ca=COMM[e.s],cb=COMM[e.b]; const intra=ca===cb;
             const al=intra?0.34+0.3*q:0.12+0.1*q;
-            drawEdge(...P(...worldPos(e.a)),...P(...worldPos(e.b)),intra?1.5:1,intra?COMM_COLORS[ca]:"#4A6B75",al); });
+            drawEdge(...P(...worldPos(e.a)),...P(...worldPos(e.b)),intra?1.5:1,intra?COMM_COLORS[ca]:"#94A3B8",al); });
           NODES.forEach(nd=>{ const [x,y]=P(...worldPos(nd)); const c=COMM_COLORS[COMM[nd.id]||0];
             glowCircle(x,y,2.5+4.5*Math.sqrt(nd.amount/1e9),c,14,q*0.95); }); } },
       { d:7, cap:{es:"Cuatro tribus dominan el mapa: la báltica (Letonia–Rusia), la suiza-asiática, la anglosajona de paraísos y la ruta Hong Kong–Emiratos.",
                   en:"Four tribes dominate the map: the Baltic (Latvia–Russia), the Swiss-Asian, the Anglo-Saxon offshore tribe, and the Hong Kong–UAE route."},
         draw(p,t){ starfield(90); graticule();
           EDGES_B.forEach(e=>{ const intra=COMM[e.s]===COMM[e.b];
-            drawEdge(...P(...worldPos(e.a)),...P(...worldPos(e.b)),intra?1.5:1,intra?COMM_COLORS[COMM[e.s]]:"#4A6B75",intra?0.5:0.12); });
+            drawEdge(...P(...worldPos(e.a)),...P(...worldPos(e.b)),intra?1.5:1,intra?COMM_COLORS[COMM[e.s]]:"#94A3B8",intra?0.5:0.12); });
           NODES.forEach(nd=>{ const [x,y]=P(...worldPos(nd)); const c=COMM_COLORS[COMM[nd.id]||0];
             glowCircle(x,y,2.5+4.5*Math.sqrt(nd.amount/1e9),c,14,0.95); });
           const lx=W*0.70, ly=H*0.14; ctx.save(); ctx.globalAlpha=ease(p);
@@ -541,11 +540,11 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
           const bx=W*0.28, by=H*0.55, bw=140, bh=300;
           const hR=ease(Math.min(1,p*1.4))*CCR/Math.max(CCR,CCS), hS=(p>0.5?ease((p-0.5)*2):0)*CCS/Math.max(CCR,CCS);
           ctx.fillStyle=TEAL; ctx.fillRect(bx,by-hR*bh,bw,hR*bh);
-          ctx.fillStyle="#4A6B75"; ctx.fillRect(bx+bw+60,by-hS*bh,bw,hS*bh);
+          ctx.fillStyle="#94A3B8"; ctx.fillRect(bx+bw+60,by-hS*bh,bw,hS*bh);
           label(bx+bw/2,by+24,LANG==="es"?"red real":"real network",TEAL,13,"center",true);
-          label(bx+bw+60+bw/2,by+24,LANG==="es"?"azar (misma forma)":"random (same shape)","#7A939B",13,"center",true);
+          label(bx+bw+60+bw/2,by+24,LANG==="es"?"azar (misma forma)":"random (same shape)","#94A3B8",13,"center",true);
           label(bx+bw/2,by-hR*bh-14,"CC = "+CCR.toFixed(2),TXT,15,"center",true);
-          label(bx+bw+60+bw/2,by-hS*bh-14,"CC = "+CCS.toFixed(2),"#9FB4BA",15,"center",true);
+          label(bx+bw+60+bw/2,by-hS*bh-14,"CC = "+CCS.toFixed(2),"#64748B",15,"center",true);
           ctx.save(); panel(W*0.60,H*0.24,300,120,0.9);
           label(W*0.60+18,H*0.24+32,LANG==="es"?"Lectura":"Reading",AMBER,15,"left",true);
           label(W*0.60+18,H*0.24+60,LANG==="es"?"La red cierra más triángulos":"The network closes more triangles",TXT,13,"left");
@@ -565,7 +564,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
           const seen=new Set();
           NODES.forEach(nd=>{ if(COMM[nd.id]===undefined)return; const isBridge=bridges.includes(nd);
             const [x,y]=P(...worldPos(nd));
-            glowCircle(x,y,isBridge?6:3,isBridge?AMBER:"#3E6E78",isBridge?16:8,isBridge?q:0.3*q);
+            glowCircle(x,y,isBridge?6:3,isBridge?AMBER:"#64748B",isBridge?16:8,isBridge?q:0.3*q);
             if(isBridge&&q>0.5&&!seen.has(nd.iso)){ seen.add(nd.iso); const off=LBL_OFF[nd.iso]||[0,-14];
               label(x+off[0]*1.5,y+off[1]*1.5,nd.name.slice(0,20),AMBER,10); } }); } },
     ]
@@ -606,7 +605,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
   const MAIN_PATH=edgePath("prod","para");
   function drawBase(t,hl,opts={}){ starfield(80); const P=POS();
     E.forEach(([a,b])=>{ const ia=IX[a],ib=IX[b];
-      drawEdge(P[ia].x,P[ia].y,P[ib].x,P[ib].y,1.6,"#2A5560",0.9); });
+      drawEdge(P[ia].x,P[ia].y,P[ib].x,P[ib].y,1.6,"#94A3B8",0.9); });
     if(opts.flow){ for(let i=0;i<MAIN_PATH.length-1;i++){
       packets(P[IX[MAIN_PATH[i]]].x,P[IX[MAIN_PATH[i]]].y,P[IX[MAIN_PATH[i+1]]].x,P[IX[MAIN_PATH[i+1]]].y,t+i*0.22,2,AMBER); } }
     N.forEach((nd,i)=>{ const hot=hl&&hl.has(nd.id);
@@ -626,7 +625,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
         draw(p,t){ const q=ease(p); const P=POS();
           E.forEach(([a,b],i)=>{ const al=Math.max(0,Math.min(1,q*E.length-i*0.8));
             if(al>0){ const ia=IX[a],ib=IX[b];
-              drawEdge(P[ia].x,P[ia].y,P[ib].x,P[ib].y,1.6,"#2A5560",al); } });
+              drawEdge(P[ia].x,P[ia].y,P[ib].x,P[ib].y,1.6,"#94A3B8",al); } });
           N.forEach((nd,i)=>{ const al=Math.max(0,Math.min(1,q*N.length*1.2-i*0.6));
             if(al>0){ glowCircle(P[i].x,P[i].y,10,nd.c,12,al);
               if(al>0.7) label(P[i].x,P[i].y+30,RNAMES[LANG][nd.id],MUT,10.5,"center"); } }); } },
@@ -677,11 +676,11 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
     starfield(90); graticule();
     EDGES_B.forEach(e=>{ const a=(hl&&hl.set.has(e.s))||(hl&&hl.set.has(e.t))?0.55:0.16;
       const [ax,ay]=P(...worldPos(e.a)),[bx,by]=P(...worldPos(e.b));
-      drawEdge(ax,ay,bx,by,0.8+2.5*Math.min(1,e.w/800),hl?TEAL_D:"#2A5560",a);
+      drawEdge(ax,ay,bx,by,0.8+2.5*Math.min(1,e.w/800),hl?TEAL_D:"#94A3B8",a);
       if(packetsOn&&(hl&&(hl.set.has(e.s)||hl.set.has(e.t)))) packets(ax,ay,bx,by,t,1,AMBER); });
     NODES.forEach(nd=>{ const [x,y]=P(...worldPos(nd));
       const isHl=hl&&hl.set.has(nd.id);
-      glowCircle(x,y,2.5+4.5*Math.sqrt(nd.amount/1e9),isHl?AMBER:"#3E6E78",isHl?20:10,isHl?1:0.55);
+      glowCircle(x,y,2.5+4.5*Math.sqrt(nd.amount/1e9),isHl?AMBER:"#64748B",isHl?20:10,isHl?1:0.55);
       if(isHl) label(x,y-16,nd.name,AMBER,10); });
     NODES.forEach(nd=>{ if(!hl||!hl.set.has(nd.id))return; const [x,y]=P(...worldPos(nd));
       ctx.save(); ctx.globalAlpha=0.5+0.5*Math.sin(t*5); ctx.strokeStyle=AMBER; ctx.lineWidth=1.5;
@@ -689,7 +688,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
   function rankPanel(list,p,title){
     ctx.save(); ctx.globalAlpha=Math.min(1,p*2); panel(W-300,70,280,44+list.length*30,0.9);
     label(W-284,96,title,AMBER,14,"left",true);
-    list.forEach((nd,i)=>{ label(W-284,124+i*30,`${i+1}. ${nd.name}`,"#C9D8DD",12,"left");
+    list.forEach((nd,i)=>{ label(W-284,124+i*30,`${i+1}. ${nd.name}`,"#334155",12,"left");
       label(W-90,124+i*30,String(Math.round(nd.btw)),MUT,11,"right"); });
     ctx.restore(); }
   SCENES.push({
@@ -718,7 +717,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
           cols.forEach(([f,ti,col],ci)=>{ const l=top5(f); const x0=70+ci*300;
             ctx.save(); ctx.globalAlpha=q; panel(x0,110,280,240,0.9);
             label(x0+16,140,ti,col,14,"left",true);
-            l.forEach((nd,i)=>label(x0+16,170+i*30,`${i+1}. ${nd.name}`,"#C9D8DD",12,"left"));
+            l.forEach((nd,i)=>label(x0+16,170+i*30,`${i+1}. ${nd.name}`,"#334155",12,"left"));
             ctx.restore(); });
           label(W/2,H-80,LANG==="es"?"¿Coinciden los nº 1? Míralo con tu público.":"Do the #1s match? Look at it with your audience.",MUT,14); } },
     ]
@@ -736,10 +735,10 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
   function drawNet(t){
     starfield(80);
     E.forEach(e=>{ const gone=dead.has(e.a.id)||dead.has(e.b.id);
-      if(!gone) drawEdge(e.a.x,e.a.y,e.b.x,e.b.y,1.6,"#2A5560",0.9); });
+      if(!gone) drawEdge(e.a.x,e.a.y,e.b.x,e.b.y,1.6,"#94A3B8",0.9); });
     N.forEach(nd=>{ if(dead.has(nd.id)){ ctx.save(); ctx.globalAlpha=0.15;
-        glowCircle(nd.x,nd.y,9,"#555",8,1); ctx.restore(); }
-      else glowCircle(nd.x,nd.y,10,"#3E6E78",12,1); });
+        glowCircle(nd.x,nd.y,9,"#CBD5E1",8,1); ctx.restore(); }
+      else glowCircle(nd.x,nd.y,10,"#64748B",12,1); });
     meter(W*0.70,H*0.30,260,26,lcc,AMBER,T("legendLCC"),Math.round(lcc*100)+"%"); }
   SCENES.push({
     id:"c4", tag:"concepto",
@@ -836,7 +835,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
     const flash=stepIdx>=0?Math.max(0,1-p*2):0;
     EDGES_B.forEach(e=>{ if(removed.has(e.s)||removed.has(e.t))return;
       const [ax,ay]=P(...worldPos(e.a)),[bx,by]=P(...worldPos(e.b));
-      drawEdge(ax,ay,bx,by,0.8+2*Math.min(1,e.w/800),"#2A5560",0.5); });
+      drawEdge(ax,ay,bx,by,0.8+2*Math.min(1,e.w/800),"#94A3B8",0.5); });
     NODES.forEach(nd=>{ if(removed.has(nd.id)){ ctx.save(); ctx.globalAlpha=0.10;
         glowCircle(...P(...worldPos(nd)),4,"#666",6,1); ctx.restore(); return; }
       const isVictim=st.removed&&st.removed.includes(nd.id);
@@ -849,12 +848,12 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
     const bx=W*0.70,by=H*0.62;
     meter(bx,by,280,24,st.edges,TEAL,T("legendEdges"),Math.round(st.edges*100)+"%");
     meter(bx,by+40,280,24,Math.min(1,st.cc*4),AMBER,T("legendCC"),st.cc.toFixed(2));
-    meter(bx,by+80,280,24,st.lcc,"#C9D8DD",T("legendLCC"),Math.round(st.lcc*100)+"%");
+    meter(bx,by+80,280,24,st.lcc,"#334155",T("legendLCC"),Math.round(st.lcc*100)+"%");
     label(bx,by-12,strat+" · "+(DATA.disrupt? "" :""),MUT,12,"left"); }
   function curvePanel(p,t){
     starfield(60); const q=ease(p);
     const keys=["KB_5","BTW_5","DEG_5","CI_5","RND_5"];
-    const cols={KB_5:AMBER,BTW_5:TEAL,DEG_5:"#7C9EB2",CI_5:"#C99A3F",RND_5:"#4A6B75"};
+    const cols={KB_5:AMBER,BTW_5:TEAL,DEG_5:"#7C9EB2",CI_5:"#C99A3F",RND_5:"#94A3B8"};
     const NICE={KB_5:"KB",BTW_5:"BTW",DEG_5:"DEG",CI_5:"CI",RND_5:"RND"};
     const auc=k=>{ const trj=DATA.disrupt[k]; let s=0;
       for(let i=1;i<trj.length;i++) s+=(trj[i-1].lcc+trj[i].lcc)/2;
@@ -865,7 +864,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
     ctx.save();
     // rejilla y eje Y con porcentajes
     [0,0.25,0.5,0.75,1].forEach(v=>{ const y=y0-v*gh;
-      ctx.strokeStyle=v===0?"#2A5560":"#16333C"; ctx.lineWidth=1;
+      ctx.strokeStyle=v===0?"#94A3B8":"#E2E8F0"; ctx.lineWidth=1;
       ctx.beginPath(); ctx.moveTo(gx0,y); ctx.lineTo(gx0+gw,y); ctx.stroke();
       label(gx0-12,y+4,Math.round(v*100)+"%",MUT,11,"right"); });
     // título dentro del área
@@ -888,7 +887,7 @@ function toyEdges(nodes,pairs){ return pairs.map(([a,b])=>({a:nodes[a],b:nodes[b
     // leyenda con AUC (la métrica del paper)
     const lx=gx0+8, ly=gy0+10;
     panel(lx,ly,340,58,0.88);
-    label(lx+12,ly+20,LANG==="es"?"Área bajo la curva (AUC) — menor = fragmenta más rápido":"Area under the curve (AUC) — lower = faster fragmentation","#C9D8DD",10.5,"left");
+    label(lx+12,ly+20,LANG==="es"?"Área bajo la curva (AUC) — menor = fragmenta más rápido":"Area under the curve (AUC) — lower = faster fragmentation","#334155",10.5,"left");
     const order=[...keys].sort((a,b)=>auc(a)-auc(b));
     order.forEach((k,i)=>{ const xx=lx+12+i*66;
       ctx.fillStyle=cols[k]; ctx.fillRect(xx,ly+32,10,10);
@@ -994,7 +993,7 @@ function simSeqDraw(st,removed,p,t,stepIdx=0){
     if(isVictim){ ctx.save(); ctx.globalAlpha=flash; ctx.strokeStyle="#E4572E"; ctx.lineWidth=3;
       ctx.beginPath(); ctx.arc(x,y,8+30*p,0,7); ctx.stroke(); ctx.restore(); glowCircle(x,y,5,"#E4572E",18,flash); }
     else glowCircle(x,y,2.5+4.5*Math.sqrt(nd.amount/1e9),stepIdx<5?TEAL:AMBER,10,0.9); });
-  meter(W*0.70,H*0.62,280,24,st.lcc,"#C9D8DD",T("legendLCC"),Math.round(st.lcc*100)+"%"); }
+  meter(W*0.70,H*0.62,280,24,st.lcc,"#334155",T("legendLCC"),Math.round(st.lcc*100)+"%"); }
 
 function capStep(){ const sc=SCENES[cur]; if(!sc)return;
   const st=sc.steps[Math.min(stepIdx,sc.steps.length-1)];
@@ -1047,7 +1046,7 @@ function frame(ts){
     if(playing){ progStep+=dt/st.d;
       if(progStep>=1){ progStep=0; if(stepIdx<sc.steps.length-1){ stepIdx++; capStep(); AudioFX.blip(760);} else { playing=false; playBtn.textContent=T("play"); } } }
     ctx.clearRect(0,0,W,H);
-    const g=ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,"#0A181E"); g.addColorStop(1,"#071216");
+    const g=ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,"#FFFFFF"); g.addColorStop(1,"#F8FAFC");
     ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
     camTick(dt);
     try{ st.draw(progStep,tGlob); }catch(err){ ctx.save(); ctx.fillStyle="#FF5555"; ctx.font="13px monospace";
@@ -1098,9 +1097,9 @@ window.addEventListener("load",boot);
   function fragPos(f,t){ return [ f.x+Math.sin(t*0.3*f.z+f.a)*26, f.y+Math.cos(t*0.23*f.z+f.a*2)*20 ]; }
   function drawFrag(f,x,y,al,scale){ ctx.save(); ctx.globalAlpha=al;
     ctx.translate(x,y); ctx.rotate(Math.sin(f.a)*0.12); ctx.scale(scale*f.z,scale*f.z);
-    ctx.fillStyle="#0E242C"; rr(ctx,-f.w/2,-f.h/2,f.w,f.h,4); ctx.fill();
-    ctx.strokeStyle="#1B3A44"; ctx.lineWidth=1; ctx.stroke();
-    for(let i=0;i<f.lines;i++){ ctx.fillStyle=i===0?"#3E6E78":"#22424C";
+    ctx.fillStyle="#FFFFFF"; rr(ctx,-f.w/2,-f.h/2,f.w,f.h,4); ctx.fill();
+    ctx.strokeStyle="#CBD5E1"; ctx.lineWidth=1; ctx.stroke();
+    for(let i=0;i<f.lines;i++){ ctx.fillStyle=i===0?"#64748B":"#CBD5E1";
       ctx.fillRect(-f.w/2+7,-f.h/2+9+i*8,(f.w-14)*(i===0?0.9:0.55+0.3*Math.sin(f.a+i)),3); }
     if(f.z>0.95){ ctx.fillStyle=f.c; ctx.font="7px monospace"; ctx.globalAlpha=al*0.85;
       ctx.fillText(f.txt,-f.w/2+7,f.h/2-6); }
@@ -1142,7 +1141,7 @@ window.addEventListener("load",boot);
     // halo terrestre para lectura cinematográfica en zooms alejados
     ctx.save(); const [gx,gy]=P(15,-5); const gr=Math.min(W,H)*CAM.z*38;
     const gg=ctx.createRadialGradient(gx,gy,gr*0.2,gx,gy,gr);
-    gg.addColorStop(0,"rgba(13,60,70,0.30)"); gg.addColorStop(1,"#00000000");
+    gg.addColorStop(0,"rgba(0,109,109,0.10)"); gg.addColorStop(1,"#00000000");
     ctx.fillStyle=gg; ctx.fillRect(0,0,W,H); ctx.restore();
     graticule();
     EDGES_B.forEach(e=>{ const [ax,ay]=P(...w2p(e.a.lon+e.a.jlon,-(e.a.lat+e.a.jlat)));
@@ -1198,7 +1197,7 @@ window.addEventListener("load",boot);
           // fondo
           ctx.save(); const [gx,gy]=P(15,-5); const gr=Math.min(W,H)*CAM.z*38;
           const gg=ctx.createRadialGradient(gx,gy,gr*0.2,gx,gy,gr);
-          gg.addColorStop(0,"rgba(13,60,70,0.30)"); gg.addColorStop(1,"#00000000");
+          gg.addColorStop(0,"rgba(0,109,109,0.10)"); gg.addColorStop(1,"#00000000");
           ctx.fillStyle=gg; ctx.fillRect(0,0,W,H); ctx.restore();
           starfield(90); graticule();
           // BARRIDO DE VENTANAS: conexiones nacen cuando el barrido las alcanza
@@ -1222,10 +1221,10 @@ window.addEventListener("load",boot);
           // línea de tiempo inferior: el corazón de la explicación
           const tx0=W*0.14, tx1=W*0.86, ty=H*0.90;
           ctx.save();
-          ctx.strokeStyle="#1B3A44"; ctx.lineWidth=3;
+          ctx.strokeStyle="#CBD5E1"; ctx.lineWidth=3;
           ctx.beginPath(); ctx.moveTo(tx0,ty); ctx.lineTo(tx1,ty); ctx.stroke();
           for(let y=2010;y<=2015;y++){ const x=tx0+(tx1-tx0)*(y-2010)/5;
-            ctx.strokeStyle="#2A5560"; ctx.lineWidth=1;
+            ctx.strokeStyle="#94A3B8"; ctx.lineWidth=1;
             ctx.beginPath(); ctx.moveTo(x,ty-6); ctx.lineTo(x,ty+6); ctx.stroke();
             label(x,ty+24,String(y),MUT,10); }
           const px=tx0+(tx1-tx0)*q;
@@ -1256,7 +1255,7 @@ window.addEventListener("load",boot);
           const w1=logoWord(W/2-150,H*0.34,36,q);
           logoMark(W/2-196,H*0.34,28,q);
           label(W/2,H*0.52,"CHRONNET SHOW",AMBER,16+2*Math.sin(t*3),"center",true);
-          label(W/2,H*0.60,LANG==="es"?"La red del lavado, construida y disruptada ante tus ojos":"The laundering network, built and disrupted before your eyes","#C9D8DD",14,"center");
+          label(W/2,H*0.60,LANG==="es"?"La red del lavado, construida y disruptada ante tus ojos":"The laundering network, built and disrupted before your eyes","#334155",14,"center");
           // lema, dos líneas con pausa visual
           const m1=Math.max(0,Math.min(1,(q-0.25)/0.3)), m2=Math.max(0,Math.min(1,(q-0.5)/0.3));
           ctx.save();

@@ -79,6 +79,17 @@
   .chip{background:#F1F5F9;border:1px solid var(--line);color:var(--mut);border-radius:20px;
     padding:4px 12px;font-size:12px;cursor:pointer;font-weight:600}
   .chip.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+  /* ---- sección de medios generados ---- */
+  .mediaSec{margin-top:34px;max-width:1150px}
+  .mediaSec h2{font-size:20px;font-weight:800;color:var(--ink)}
+  .mediaSec .mh{font-size:12px;color:var(--teal3);text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:4px}
+  .mediaSec .msub{font-size:13px;color:var(--mut);margin-top:6px}
+  .mgrid2{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+  .mcard2{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,.06)}
+  .mcard2 video,.mcard2 img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#0B1C22}
+  .mcard2 .mt{padding:10px 14px 12px}
+  .mcard2 .mt b{font-size:13.5px;color:var(--ink);display:block}
+  .mcard2 .mt span{font-size:11.5px;color:var(--mut)}
 </style>
 </head>
 <body>
@@ -119,6 +130,25 @@
       <p class="sub" data-es="Ayudas audiovisuales del taller. Cuatro conceptos explicados como la máquina los ejecuta —sin fórmulas— y cuatro escenas con el dataset real de reportes de actividad sospechosa (FinCEN/ICIJ). Controles de presentador: pausa, avance paso a paso y barra de tiempo."
          data-en="Audiovisual aids for the workshop. Four concepts explained as the machine executes them —no formulas— and four scenes on the real suspicious activity reports dataset (FinCEN/ICIJ). Presenter controls: pause, step forward and a timeline scrubber."></p>
       <div class="mgrid" id="mgrid"></div>
+      <div class="mediaSec">
+        <div class="mh" data-es="GENERADO EN TU GPU LOCAL · WAN 14B + FLUX" data-en="GENERATED ON YOUR LOCAL GPU · WAN 14B + FLUX">GENERADO EN TU GPU LOCAL · WAN 14B + FLUX</div>
+        <h2 data-es="Recursos cinematográficos del taller" data-en="Cinematic assets of the workshop">Recursos cinematográficos del taller</h2>
+        <p class="msub" data-es="Clips 720p del modelo Wan 14B y tarjetas FLUX — todos reproducibles aquí o descargables." data-en="720p clips from the Wan 14B model and FLUX cards — playable here or downloadable."></p>
+        <div class="mgrid2">
+          <div class="mcard2"><video src="media/clip1_la_red_720p.mp4" controls preload="metadata"></video>
+            <div class="mt"><b data-es="La red del lavado" data-en="The laundering network">La red del lavado</b><span>720p · 5 s · Wan 14B</span></div></div>
+          <div class="mcard2"><video src="media/clip2_el_raid_720p.mp4" controls preload="metadata"></video>
+            <div class="mt"><b data-es="El raid" data-en="The raid">El raid</b><span>720p · 5 s · Wan 14B</span></div></div>
+          <div class="mcard2"><video src="media/clip3_actores_clave_720p.mp4" controls preload="metadata"></video>
+            <div class="mt"><b data-es="Actores clave" data-en="Key players">Actores clave</b><span>720p · 5 s · Wan 14B</span></div></div>
+          <div class="mcard2"><img src="media/portada.png" alt="Portada">
+            <div class="mt"><b data-es="Portada del taller" data-en="Workshop cover">Portada del taller</b><span>FLUX + tipografía</span></div></div>
+          <div class="mcard2"><img src="media/lema.png" alt="Lema">
+            <div class="mt"><b data-es="El lema" data-en="The motto">El lema</b><span>FLUX + tipografía</span></div></div>
+          <div class="mcard2"><img src="media/cierre.png" alt="Cierre">
+            <div class="mt"><b data-es="Cierre" data-en="Closing">Cierre</b><span>FLUX + tipografía</span></div></div>
+        </div>
+      </div>
       <p class="sub" style="margin-top:26px;font-size:12px" data-es="Dataset: 4.507 reportes SAR · 1.726 bancos · 129 países · 2010–2015. Escenas 2, 4, 6 y 8 usan los 48 bancos de mayor monto. Flechas del teclado ← → para avanzar o retroceder."
          data-en="Dataset: 4,507 SAR filings · 1,726 banks · 129 countries · 2010–2015. Scenes 2, 4, 6 and 8 use the top 48 banks by amount. Keyboard arrows ← → to step back or forward."></p>
     </div>

@@ -33,13 +33,9 @@
       }
     });
 
-    // Update page title
-    var titles = {
-      es: 'FastAnalytics | IA espaciotemporal para decisiones predictivas',
-      en: 'FastAnalytics | Spatiotemporal AI for Predictive Decisions',
-      fr: 'FastAnalytics | IA spatiotemporelle pour des décisions prédictives'
-    };
-    document.title = titles[lang] || titles.es;
+    // Nota: el <title> ya no se redefine aquí. Hay un único título por página,
+    // fijado en el HTML (rediseño home 2026: "FastAnalytics | Ciencia de datos
+    // e IA para seguridad, defensa y riesgos").
   }
 
   var langCycle = ['es', 'en', 'fr'];

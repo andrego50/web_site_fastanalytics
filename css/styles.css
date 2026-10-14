@@ -3040,3 +3040,195 @@ ul {
     transform: none;
   }
 }
+
+/* ===== Rediseño home 2026 (v14): hero de una idea, cifras verificadas,
+   3 capacidades, banda del fundador y formación. Solo aditivo: no modifica
+   reglas previas para no afectar las demás páginas del sitio. ===== */
+
+/* --- S1 · Hero centrado, una sola idea por pantalla --- */
+.hero-content--solo {
+  grid-template-columns: minmax(0, 1fr);
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.hero-content--solo .hero-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-cta--solo {
+  justify-content: center;
+  margin-bottom: 22px;
+}
+.hero-proof-link {
+  display: inline-block;
+  justify-self: center; /* es grid-item del hero: evita que el subrayado hover ocupe todo el ancho */
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color var(--transition), border-color var(--transition);
+}
+.hero-proof-link:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+/* El canvas ya va atenuado desde JS (~30 % de nodos, sin repulsión);
+   esta opacidad global lo deja definitivamente detrás del texto. */
+#heroCanvas { opacity: 0.7; }
+
+/* --- S2 · Cifras verificadas (estáticas, sin carrusel) --- */
+.cifras-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.cifra {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  text-align: center;
+}
+.cifra-value {
+  display: block;
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+.cifra-unit { font-size: 0.45em; font-weight: 700; }
+.cifra-value--warm { color: var(--accent); }
+.cifra-label {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+.cifras-extra {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  max-width: 720px;
+  margin: 0 auto 28px;
+}
+.cifras-fuentes { justify-content: center; margin-top: 0; }
+.cifras-atribucion {
+  text-align: center;
+  margin: 28px auto 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text-muted);
+  max-width: 720px;
+}
+@media (max-width: 900px) {
+  .cifras-grid { grid-template-columns: 1fr; }
+}
+
+/* --- S3 · Capacidades (numeración 01/02/03) --- */
+.cap-num {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.cap-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.cap-link:hover { text-decoration: underline; }
+
+/* --- S5 · Banda del fundador --- */
+.fundador-research {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  border-left: 3px solid var(--accent);
+  padding-left: 14px;
+  margin-bottom: 24px;
+}
+.fundador-links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.fundador-pub-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+.fundador-pub-link:hover { text-decoration: underline; }
+
+/* --- S6 · Formación --- */
+.formacion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.formacion-card {
+  display: block;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.formacion-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+}
+.formacion-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+.formacion-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.formacion-card p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+.formacion-link {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+@media (max-width: 768px) {
+  .formacion-grid { grid-template-columns: 1fr; }
+}
+
+/* --- Anchors legados: otras páginas enlazan a index.html#servicios,
+   #casos, #equipo, #investigacion y #cursos; estos spans invisibles
+   mantienen vivos esos destinos en la nueva estructura. --- */
+.legacy-anchor {
+  display: block;
+  height: 0;
+  visibility: hidden;
+  scroll-margin-top: var(--nav-height);
+}

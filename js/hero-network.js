@@ -1,4 +1,9 @@
 (function () {
+  // Red de fondo del hero — versión atenuada (rediseño home 2026):
+  // · ~30 % de la densidad original de nodos (80 → 24 desktop, 35 → 12 móvil)
+  // · Opacidad reducida en nodos, halos y conexiones
+  // · SIN interacción con el mouse (ni repulsión ni líneas al cursor)
+  // · En móvil (<768 px) la red es ESTÁTICA: se dibuja una vez, sin loop de animación
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -6,13 +11,17 @@
   const PRIMARY = { r: 13, g: 148, b: 136 };
   const ACCENT = { r: 212, g: 136, b: 58 };
   const CONNECTION_DIST = 150;
-  const NODE_COUNT_DESKTOP = 80;
-  const NODE_COUNT_MOBILE = 35;
-  const MOUSE_RADIUS = 200;
+  const NODE_COUNT_DESKTOP = 24;   // ~30 % de 80
+  const NODE_COUNT_MOBILE = 12;    // ~30 % de 35
+  const CONNECTION_OPACITY = 0.12; // antes 0.22
+  const GLOW_OPACITY = 0.08;       // antes 0.15
+  const SPEED = 0.3;               // deriva más calmada (antes 0.4)
 
-  let width, height, nodes, mouse, animId;
+  let width, height, nodes, animId;
 
-  mouse = { x: -9999, y: -9999 };
+  function isMobile() {
+    return width < 768;
+  }
 
   function resize() {
     const rect = canvas.parentElement.getBoundingClientRect();
@@ -21,7 +30,7 @@
   }
 
   function createNodes() {
-    const count = width < 768 ? NODE_COUNT_MOBILE : NODE_COUNT_DESKTOP;
+    const count = isMobile() ? NODE_COUNT_MOBILE : NODE_COUNT_DESKTOP;
     nodes = [];
     for (let i = 0; i < count; i++) {
       const isAccent = Math.random() < 0.15;
@@ -29,11 +38,11 @@
       nodes.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
+        vx: (Math.random() - 0.5) * SPEED,
+        vy: (Math.random() - 0.5) * SPEED,
         radius: Math.random() * 2 + 1,
         color: color,
-        alpha: Math.random() * 0.5 + 0.3,
+        alpha: Math.random() * 0.32 + 0.18, // antes 0.3–0.8
         pulse: Math.random() * Math.PI * 2
       });
     }
@@ -50,7 +59,7 @@
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < CONNECTION_DIST) {
-          const opacity = (1 - dist / CONNECTION_DIST) * 0.22;
+          const opacity = (1 - dist / CONNECTION_DIST) * CONNECTION_OPACITY;
           const c = nodes[i].color;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -62,34 +71,17 @@
       }
     }
 
-    // Draw mouse connections
-    for (let i = 0; i < nodes.length; i++) {
-      const dx = mouse.x - nodes[i].x;
-      const dy = mouse.y - nodes[i].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < MOUSE_RADIUS) {
-        const opacity = (1 - dist / MOUSE_RADIUS) * 0.35;
-        ctx.beginPath();
-        ctx.moveTo(mouse.x, mouse.y);
-        ctx.lineTo(nodes[i].x, nodes[i].y);
-        ctx.strokeStyle = 'rgba(' + ACCENT.r + ',' + ACCENT.g + ',' + ACCENT.b + ',' + opacity + ')';
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-    }
-
     // Draw nodes
     for (let i = 0; i < nodes.length; i++) {
       const n = nodes[i];
       n.pulse += 0.02;
-      const pulseAlpha = n.alpha + Math.sin(n.pulse) * 0.15;
+      const pulseAlpha = n.alpha + Math.sin(n.pulse) * 0.12;
       const c = n.color;
 
       // Glow
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.radius * 3, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + (pulseAlpha * 0.15) + ')';
+      ctx.fillStyle = 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + (pulseAlpha * GLOW_OPACITY) + ')';
       ctx.fill();
 
       // Core
@@ -105,16 +97,6 @@
       const n = nodes[i];
       n.x += n.vx;
       n.y += n.vy;
-
-      // Mouse repulsion
-      const dx = n.x - mouse.x;
-      const dy = n.y - mouse.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < MOUSE_RADIUS && dist > 0) {
-        const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.02;
-        n.vx += (dx / dist) * force;
-        n.vy += (dy / dist) * force;
-      }
 
       // Damping
       n.vx *= 0.999;
@@ -137,27 +119,21 @@
   function init() {
     resize();
     createNodes();
-    animate();
+    if (isMobile()) {
+      draw(); // móvil: un solo frame estático, sin requestAnimationFrame
+    } else {
+      animate();
+    }
   }
 
   // Events
   window.addEventListener('resize', function () {
     resize();
     createNodes();
+    if (isMobile()) draw(); // redibujar el frame estático tras rotación/resize
   });
 
-  canvas.parentElement.addEventListener('mousemove', function (e) {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-
-  canvas.parentElement.addEventListener('mouseleave', function () {
-    mouse.x = -9999;
-    mouse.y = -9999;
-  });
-
-  // Pause when tab hidden or canvas outside viewport
+  // Pause when tab hidden or canvas outside viewport (solo aplica al loop de escritorio)
   let running = true;
   let inViewport = true;
 
@@ -169,7 +145,7 @@
   }
 
   function resume() {
-    if (!running && !document.hidden && inViewport) {
+    if (!running && !document.hidden && inViewport && !isMobile()) {
       running = true;
       animate();
     }

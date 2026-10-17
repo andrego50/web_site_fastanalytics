@@ -20,7 +20,6 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"FastAnalytics — Ecosistema de Seguridad, Defensa y Riesgos","url":"https://fastanalytics.co/demo-seguridad-urbana","description":"Demo inmersiva del ecosistema FastAnalytics de seguridad, defensa y riesgos: del reporte ciudadano a la decisión anticipativa con IA soberana.","inLanguage":"es","isPartOf":{"@type":"WebSite","name":"FastAnalytics","url":"https://fastanalytics.co/"}}
 </script>
-<noscript><style>#hookOverlay{display:none!important}</style></noscript>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -140,6 +139,33 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 #narrCaption{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);z-index:60;max-width:min(92vw,720px);display:none;background:rgba(8,12,20,.88);border:1px solid rgba(0,191,166,.35);border-radius:14px;padding:10px 16px;backdrop-filter:blur(10px);box-shadow:0 8px 30px rgba(0,0,0,.5)}
 #narrCaptionText{font-size:12px;line-height:1.5;color:#E2E8F0}
 
+/* ── Detalle técnico plegable: el mensaje primero, lo técnico disponible ── */
+details.tech-detail{border:1px solid rgba(0,109,109,.3);background:rgba(0,109,109,.05);border-radius:14px;overflow:hidden}
+details.tech-detail>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.55rem;padding:.8rem 1rem;font-weight:700;font-size:.85rem;color:#2DD4BF;user-select:none;-webkit-tap-highlight-color:transparent}
+details.tech-detail>summary::-webkit-details-marker{display:none}
+details.tech-detail>summary:hover{background:rgba(0,109,109,.1)}
+details.tech-detail>summary:focus-visible{outline:2px solid rgba(45,212,191,.6);outline-offset:-2px}
+details.tech-detail .td-chev{margin-left:auto;color:#D4883A;font-size:.8rem;transition:transform .25s;flex-shrink:0}
+details.tech-detail[open]>summary .td-chev{transform:rotate(90deg)}
+details.tech-detail .td-body{padding:.9rem 1rem 1rem;border-top:1px solid rgba(255,255,255,.06)}
+
+/* ── Chip de asistente del PMU (icono + nombre + rol; detalle expandible) ── */
+details.agent-chip{border:1px solid rgba(124,108,220,.28);background:rgba(124,108,220,.05);border-radius:14px;overflow:hidden;transition:box-shadow .3s}
+details.agent-chip>summary{cursor:pointer;list-style:none;display:flex;align-items:flex-start;gap:.7rem;padding:.9rem 1rem;user-select:none;-webkit-tap-highlight-color:transparent}
+details.agent-chip>summary::-webkit-details-marker{display:none}
+details.agent-chip>summary:hover{background:rgba(124,108,220,.09)}
+details.agent-chip>summary:focus-visible{outline:2px solid rgba(159,145,232,.6);outline-offset:-2px}
+details.agent-chip[open]{box-shadow:0 0 24px rgba(124,108,220,.12)}
+details.agent-chip .td-chev{margin-left:auto;color:#9F91E8;font-size:.8rem;transition:transform .25s;flex-shrink:0;margin-top:.2rem}
+details.agent-chip[open]>summary .td-chev{transform:rotate(90deg)}
+details.agent-chip .td-body{padding:.4rem 1rem 1rem;border-top:1px solid rgba(255,255,255,.06)}
+
+/* ── Macro-fases del Eneágono (3 momentos, lenguaje llano) ── */
+.macro-fase{border-radius:16px;padding:1rem 1.1rem;background:rgba(255,255,255,.03);border:1px solid var(--mf,rgba(0,191,166,.25));text-align:left}
+.macro-fase .mf-icon{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0}
+.mf-phase-btn{display:inline-flex;align-items:center;gap:.3rem;padding:.32rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#CBD5E1;font-size:.68rem;font-weight:600;cursor:pointer;transition:all .2s}
+.mf-phase-btn:hover{border-color:var(--mf,#00BFA6);color:#fff;transform:translateY(-1px)}
+
 /* ── Accesibilidad: movimiento reducido ── */
 @media (prefers-reduced-motion:reduce){
 .radar,.radar-wedge,.flow-edge,.heat-blob,.chip-run,.alert-glow,.anim-float,.anim-pulse,.anim-blink,.anim-l,.anim-r,.anim-up{animation:none!important}
@@ -156,55 +182,6 @@ body{background-image:radial-gradient(1200px 600px at 80% -10%,rgba(45,212,191,.
 <div class="grid-overlay"></div>
 <div id="sceneProgress"></div>
 <audio id="bgMusic" src="assets/demo/cinematic-theme.mp3" loop preload="none"></audio>
-
-<!-- MINI DEMO HOOK: video listo con UN clic -->
-<div id="hookOverlay" style="position:fixed;inset:0;z-index:200;background:rgba(5,10,14,.97);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)">
-  <button onclick="hookEnterFn()" aria-label="Cerrar introducción" style="position:absolute;top:16px;right:18px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#cbd5e1;font-size:1.05rem;cursor:pointer;line-height:1">&#10005;</button>
-  <div style="max-width:860px;width:92%;text-align:center">
-    <h2 data-i18n="introH" style="font-size:1.6rem;font-weight:800;margin-bottom:.6rem;background:linear-gradient(90deg,#D4883A,#00BFA6);-webkit-background-clip:text;background-clip:text;color:transparent">Primero: 1 minuto de contexto</h2>
-    <p data-i18n="introP" style="color:#94a3b8;font-size:.95rem;margin-bottom:1.2rem">Este mini video muestra el ecosistema de seguridad, defensa y gestión de riesgos en acción, y cómo navegar el demo.</p>
-    <div id="hookVideoWrap" style="position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(0,191,166,.35);box-shadow:0 20px 60px rgba(0,0,0,.6);cursor:pointer" onclick="hookPlayFn()">
-      <video id="hookVideo" src="assets/demo/mini-demo-v10.mp4" poster="assets/demo/hook-poster.jpg" preload="none" playsinline style="width:100%;display:block;background:#000"></video>
-      <div id="hookBigPlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(5,10,14,.25)">
-        <div style="width:92px;height:92px;border-radius:50%;background:linear-gradient(135deg,#D4883A,#b96f2e);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 40px rgba(212,138,58,.55);border:3px solid rgba(255,255,255,.85)">
-          <svg width="38" height="38" viewBox="0 0 24 24" fill="#fff" style="margin-left:5px"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-      </div>
-    </div>
-    <div style="margin-top:.7rem"><span data-i18n="introPlay" style="color:#64748b;font-size:.8rem">&#9654; Ver la intro (1 min)</span></div>
-    <div style="margin-top:1.1rem">
-      <button id="hookEnter" onclick="hookEnterFn()" style="background:transparent;color:#00BFA6;font-weight:700;padding:.85rem 1.8rem;border-radius:12px;border:1px solid rgba(0,191,166,.5);cursor:pointer;font-size:1rem" data-i18n="introSkip">Entrar directamente al demo &#8594;</button>
-    </div>
-  </div>
-</div>
-<script>
-// Gate de entrada: solo primera visita. Si ya vio la intro, el overlay se retira antes del primer pintado.
-try{if(localStorage.getItem('fa_demo_seen')==='1'){var _ho=document.getElementById('hookOverlay');if(_ho)_ho.remove();}}catch(e){}
-var hookStarted=false;
-function hookPlayFn(){
-  if(hookStarted) return; hookStarted=true;
-  var v=document.getElementById('hookVideo'),bp=document.getElementById('hookBigPlay'),w=document.getElementById('hookVideoWrap');
-  bp.style.display='none'; w.style.cursor='default'; v.controls=true;
-  if(typeof faTrack==='function')faTrack('video_play',{video:'hook_intro'});
-  var pr=v.play();
-  v.onerror=function(){ w.style.display='none'; };
-  if(pr&&pr.catch)pr.catch(function(){ if(v.error) w.style.display='none'; });
-  v.onended=function(){
-    var e=document.getElementById('hookEnter');
-    e.textContent=(typeof TT==='function')?TT('introEnter','Entrar al caso real \u2192'):'Entrar al caso real \u2192';
-    e.style.background='linear-gradient(135deg,#006D6D,#00BFA6)';e.style.color='#fff';e.style.border='none';
-    e.scrollIntoView({behavior:'smooth',block:'center'});
-  };
-}
-function hookEnterFn(){
-  try{localStorage.setItem('fa_demo_seen','1')}catch(e){}
-  if(typeof faTrack==='function')faTrack('cta_click',{cta:'gate_enter'});
-  var v=document.getElementById('hookVideo'); if(v){v.pause();}
-  var o=document.getElementById('hookOverlay'); if(!o) return;
-  o.style.transition='opacity .5s'; o.style.opacity='0';
-  setTimeout(function(){ if(o.parentNode) o.remove(); },520);
-}
-</script>
 
 <!-- HEADER -->
 <header class="fixed top-0 w-full z-50 glass border-b border-white/5">
@@ -268,25 +245,25 @@ function hookEnterFn(){
     <div class="text-center text-xs uppercase tracking-[.18em] text-slate-500 mb-3 font-semibold" data-i18n="lineTitle">Elija qué quiere ver</div>
     <div class="grid grid-cols-2 gap-3 sm:gap-4" style="max-width:560px;margin:0 auto">
         <button onclick="goLine(1,0)" class="glass-teal rounded-xl overflow-hidden text-left hover:scale-[1.04] transition-transform cursor-pointer">
-            <img src="assets/demo/escucha-ciudadano.webp" alt="Escucha" class="w-full h-28 sm:h-40 object-cover">
+            <img src="assets/demo/paso-escucha.webp" alt="Escucha" width="1024" height="640" loading="lazy" class="w-full h-28 sm:h-40 object-cover">
             <div class="p-3 sm:p-4"><div class="text-sm sm:text-base font-bold uppercase tracking-wider" style="color:#00BFA6" data-i18n="line1">01 · Escucha</div>
             <div class="text-xs text-slate-400 mt-1">AlejoSeguro + CatheAsiste</div>
             <div class="text-[11px] text-slate-400 mt-1.5 leading-snug" data-i18n="line1b">El ciudadano reporta por Telegram o llamada, sin instalar nada; cada reporte llega con evidencia y GPS.</div></div>
         </button>
         <button onclick="goLine(1,1)" class="glass rounded-xl overflow-hidden text-left hover:scale-[1.04] transition-transform cursor-pointer" style="border-color:rgba(59,155,217,.3)">
-            <img src="assets/demo/investiga-red.webp" alt="Investiga" class="w-full h-28 sm:h-40 object-cover">
+            <img src="assets/demo/paso-investiga.webp" alt="Investiga" width="1024" height="640" loading="lazy" class="w-full h-28 sm:h-40 object-cover">
             <div class="p-3 sm:p-4"><div class="text-sm sm:text-base font-bold uppercase tracking-wider" style="color:#3B9BD9" data-i18n="line2">02 · Investiga</div>
             <div class="text-xs text-slate-400 mt-1">MileInvestiga</div>
             <div class="text-[11px] text-slate-400 mt-1.5 leading-snug" data-i18n="line2b">Identifica al sospechoso, su vehículo y su red en segundos, no en semanas.</div></div>
         </button>
         <button onclick="goLine(2,null)" class="glass-violet rounded-xl overflow-hidden text-left hover:scale-[1.04] transition-transform cursor-pointer">
-            <img src="assets/demo/coordina-pmu.webp" alt="Coordina" class="w-full h-28 sm:h-40 object-cover">
+            <img src="assets/demo/paso-coordina.webp" alt="Coordina" width="1024" height="640" loading="lazy" class="w-full h-28 sm:h-40 object-cover">
             <div class="p-3 sm:p-4"><div class="text-sm sm:text-base font-bold uppercase tracking-wider" style="color:#9F91E8" data-i18n="line3">03 · Coordina</div>
             <div class="text-xs text-slate-400 mt-1">GusCoordina</div>
             <div class="text-[11px] text-slate-400 mt-1.5 leading-snug" data-i18n="line3b">Policía, Gaula, Fiscalía y Alcaldía en un solo tablero, en tiempo real.</div></div>
         </button>
         <button onclick="goLine(3,null)" class="glass-orange rounded-xl overflow-hidden text-left hover:scale-[1.04] transition-transform cursor-pointer">
-            <img src="assets/demo/predice-ciudad.webp" alt="Predice" class="w-full h-28 sm:h-40 object-cover">
+            <img src="assets/demo/paso-predice.webp" alt="Predice" width="1024" height="640" loading="lazy" class="w-full h-28 sm:h-40 object-cover">
             <div class="p-3 sm:p-4"><div class="text-sm sm:text-base font-bold uppercase tracking-wider" style="color:#D4883A" data-i18n="line4">04 · Predice</div>
             <div class="text-xs text-slate-400 mt-1">GabyPredice</div>
             <div class="text-[11px] text-slate-400 mt-1.5 leading-snug" data-i18n="line4b">Le dice dónde y cuándo golpeará el delito la próxima semana.</div></div>
@@ -453,6 +430,9 @@ function hookEnterFn(){
     <div class="space-y-4">
         <h3 class="text-xl font-bold text-white flex items-center gap-2"><img src="assets/demo/logo-mileinvestiga.webp" width="512" height="512" loading="lazy" alt="MileInvestiga" class="w-9 h-9 rounded-full bg-white p-0.5"><span data-i18n="h3s2">2. La IA investiga la evidencia — MileInvestiga</span></h3>
         <p class="text-slate-400 text-sm"><span data-i18n="p1s2"><strong style="color:#3B9BD9">MileInvestiga</strong> identifica al sospechoso, su vehículo y su red en <strong class="text-white">menos de 2 segundos</strong> — más de 20 modelos de IA trabajando sobre la evidencia.</span></p>
+        <details class="tech-detail">
+            <summary><span data-i18n="techDetail">Ver detalle técnico</span><span class="td-chev">▸</span></summary>
+            <div class="td-body space-y-4">
         <div class="rounded-xl px-3 py-2.5 flex flex-wrap items-center gap-1.5" style="background:rgba(0,109,109,.06);border:1px solid rgba(0,109,109,.18)">
             <span class="text-[10px] font-bold mr-1" style="color:#00BFA6">⚙️ PIPELINE EN VIVO</span>
             <span class="chip-run text-[9px] px-2 py-0.5 rounded-full" style="animation-delay:0s">👁 Visión</span>
@@ -536,6 +516,8 @@ function hookEnterFn(){
             <p class="text-xs text-slate-300 italic">"Ayer como a las seis de la tarde llegó un tipo en moto, dejó un sobre en la puerta del local y se fue rápido. El sobre tenía un papel pidiendo dos millones o queman la tienda. Ya van tres vecinos que les pasa lo mismo."</p>
             <div class="text-[10px] text-slate-500 mt-1">Transcripción automática · Confianza: 97%</div>
         </div>
+            </div>
+        </details>
     </div>
     <div class="space-y-4">
         <div class="rounded-xl p-4 relative overflow-hidden" style="background:#04070d;border:1px solid rgba(212,136,58,.35);box-shadow:inset 0 0 50px rgba(0,0,0,.7)">
@@ -610,8 +592,11 @@ function hookEnterFn(){
                 <span class="text-[11px] text-emerald-300">🚔 <strong>Patrulla despachada</strong> por GusCoordina · llega en 4 min · Gaula y Fiscalía notificados</span>
             </div>
         </div>
+        <details class="tech-detail">
+            <summary><span data-i18n="techDetail">Ver detalle técnico</span><span class="td-chev">▸</span></summary>
+            <div class="td-body space-y-4">
         <div class="glass rounded-xl p-4">
-            <div class="text-xs font-semibold text-white mb-3">Historial de avistamientos</div>
+            <div class="text-xs font-semibold text-white mb-3" data-i18n="sightH">Historial de avistamientos</div>
             <div class="space-y-2">
                 <div class="flex items-center gap-3 text-xs">
                     <div class="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold" style="background:rgba(212,136,58,.2);color:#D4883A">EF</div>
@@ -631,6 +616,17 @@ function hookEnterFn(){
                 </div>
             </div>
         </div>
+        <div class="glass rounded-xl p-4">
+            <div class="text-xs font-semibold text-white mb-3" data-i18n="distH">Lo que reporta la comunidad (ejemplo)</div>
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded flex-shrink-0" style="background:rgba(239,68,68,.4)"></span><span class="text-slate-300 flex-1" data-i18n="dist1">Extorsión a comerciantes</span><span class="text-slate-500 font-mono">38%</span></div>
+                <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded flex-shrink-0" style="background:rgba(245,158,11,.4)"></span><span class="text-slate-300 flex-1" data-i18n="dist2">Venta de drogas cerca de colegios</span><span class="text-slate-500 font-mono">24%</span></div>
+                <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded flex-shrink-0" style="background:rgba(212,136,58,.4)"></span><span class="text-slate-300 flex-1" data-i18n="dist3">Hurto a personas y locales</span><span class="text-slate-500 font-mono">21%</span></div>
+                <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded flex-shrink-0" style="background:rgba(168,85,247,.4)"></span><span class="text-slate-300 flex-1" data-i18n="dist4">Falta de acceso a la justicia</span><span class="text-slate-500 font-mono">17%</span></div>
+            </div>
+        </div>
+            </div>
+        </details>
     </div>
     <div class="space-y-4">
         <div class="rounded-xl p-4 relative overflow-hidden" style="background:#04070d;border:1px solid rgba(45,212,191,.3);box-shadow:inset 0 0 50px rgba(0,0,0,.7)">
@@ -670,19 +666,11 @@ function hookEnterFn(){
                 <path d="M100 90 L160 140 L220 80" fill="none" stroke="#D4883A" stroke-width="1.5" stroke-dasharray="5 3" opacity=".4"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite"/></path>
                 <path d="M160 140 L200 140 L200 200 L260 200" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="6 3" opacity=".6"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.5s" repeatCount="indefinite"/></path>
                 <text x="262" y="198" fill="#10B981" font-size="7">Ruta segura &#8594;</text>
-                <g transform="translate(8,210)">
-                    <text x="0" y="0" fill="rgba(255,255,255,.25)" font-size="7" font-weight="600">LO QUE REPORTA LA COMUNIDAD:</text>
-                    <g transform="translate(0,12)"><rect width="8" height="8" rx="2" fill="rgba(239,68,68,.3)"/><text x="12" y="7" fill="rgba(255,255,255,.4)" font-size="6">Extorsión a comerciantes (38% · ejemplo)</text></g>
-                    <g transform="translate(0,24)"><rect width="8" height="8" rx="2" fill="rgba(245,158,11,.3)"/><text x="12" y="7" fill="rgba(255,255,255,.4)" font-size="6">Venta de drogas cerca de colegios (24% · ejemplo)</text></g>
-                    <g transform="translate(0,36)"><rect width="8" height="8" rx="2" fill="rgba(212,136,58,.3)"/><text x="12" y="7" fill="rgba(255,255,255,.4)" font-size="6">Hurto a personas y locales (21% · ejemplo)</text></g>
-                    <g transform="translate(0,48)"><rect width="8" height="8" rx="2" fill="rgba(168,85,247,.3)"/><text x="12" y="7" fill="rgba(255,255,255,.4)" font-size="6">Falta de acceso a la justicia (17% · ejemplo)</text></g>
-                </g>
                 <g transform="translate(8,280)"><circle cx="4" cy="4" r="3" fill="#ef4444"/><text x="12" y="7" fill="rgba(255,255,255,.3)" font-size="6">Extorsión</text><circle cx="80" cy="4" r="3" fill="#D4883A"/><text x="88" y="7" fill="rgba(255,255,255,.3)" font-size="6">Sospechoso</text><circle cx="170" cy="4" r="3" fill="#10B981"/><text x="178" y="7" fill="rgba(255,255,255,.3)" font-size="6">Zona segura</text></g>
-                <!-- Barrido radar + unidad en camino -->
-                <g class="radar-wedge" opacity=".22"><path d="M160 140 L160 45 A95 95 0 0 1 227 73 Z" fill="#2DD4BF"/></g>
+                <!-- Unidad en camino hacia la ruta segura -->
                 <circle r="4.5" fill="#10B981" stroke="#064e3b" stroke-width="1.5"><animateMotion dur="6s" repeatCount="indefinite" path="M160 140 L200 140 L200 200 L260 200"/></circle>
                 <circle r="8" fill="none" stroke="#10B981" stroke-width="1" opacity=".5"><animateMotion dur="6s" repeatCount="indefinite" path="M160 140 L200 140 L200 200 L260 200"/><animate attributeName="r" values="5;11" dur="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0" dur="1.2s" repeatCount="indefinite"/></circle>
-                <text x="10" y="18" fill="rgba(45,212,191,.7)" font-size="7" font-weight="700">● RADAR ACTIVO — UNIDAD EN RUTA</text>
+                <text x="10" y="18" fill="rgba(45,212,191,.7)" font-size="7" font-weight="700">● UNIDAD EN RUTA</text>
             </svg>
             <div class="absolute bottom-0 inset-x-0 h-3" style="background:repeating-linear-gradient(90deg,#000 0 10px,#111 10px 20px)"></div>
         </div>
@@ -722,7 +710,7 @@ function hookEnterFn(){
         <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#7C6CDC"></span><span data-i18n="badge2">Acto 2 · Usted es el comandante — GusCoordina · Puesto de Mando Unificado</span>
     </div>
     <h2 class="text-3xl font-bold text-white" data-i18n="h2act2">La alerta llega a su puesto de mando</h2>
-    <p class="text-slate-400 mt-2 max-w-2xl mx-auto"><span data-i18n="sub2">Seis asistentes de IA reparten el trabajo entre las instituciones en tiempo real. Haga clic en cada uno.</span></p>
+    <p class="text-slate-400 mt-2 max-w-2xl mx-auto"><span data-i18n="sub2">Seis asistentes de IA reparten el trabajo entre las instituciones, en tiempo real y sin que usted tenga que coordinar nada.</span></p>
 </div>
 <div class="rounded-xl overflow-hidden relative mb-6" style="border:1px solid rgba(124,108,220,.35);box-shadow:0 0 30px rgba(124,108,220,.12)">
     <video autoplay muted loop playsinline preload="metadata" aria-hidden="true" class="w-full block" style="aspect-ratio:16/9;object-fit:cover">
@@ -730,35 +718,21 @@ function hookEnterFn(){
     </video>
     <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">Tu Puesto de Mando Unificado, en tiempo real · video generado con IA</div>
 </div>
-<div class="grid lg:grid-cols-5 gap-6">
-    <div class="lg:col-span-2 flex justify-center items-start">
-        <svg id="comandoSvg" width="100%" viewBox="0 0 380 400" style="max-width:380px">
-            <defs><filter id="cGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-            <g id="comandoEdges"></g><g id="comandoNodes"></g>
-            <circle cx="190" cy="195" r="38" fill="rgba(124,108,220,.08)" stroke="rgba(124,108,220,.3)" stroke-width="1.5" stroke-dasharray="3 3"/>
-            <text x="190" y="192" text-anchor="middle" fill="rgba(159,145,232,.6)" font-size="10" font-weight="700">PMU</text>
-            <text x="190" y="205" text-anchor="middle" fill="rgba(255,255,255,.25)" font-size="7">Orquestador</text>
-        </svg>
+<!-- Cuadrícula simple de asistentes: icono + nombre + rol; el detalle técnico se despliega por chip -->
+<div id="agentChips" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-6"></div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+    <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold" style="color:#9F91E8">4</div><div class="text-[10px] text-slate-500">Instituciones convocadas</div></div>
+    <div class="glass rounded-xl p-3 text-center anim-fade delay-1"><div class="text-xl font-bold" style="color:#9F91E8">6</div><div class="text-[10px] text-slate-500">Asistentes especializados</div></div>
+    <div class="glass rounded-xl p-3 text-center anim-fade delay-2"><div class="text-xl font-bold text-amber-400">3</div><div class="text-[10px] text-slate-500">Interfaces en tiempo real</div></div>
+    <div class="glass rounded-xl p-3 text-center anim-fade delay-3"><div class="text-xl font-bold text-emerald-400">24/7</div><div class="text-[10px] text-slate-500">Centro de comando activo</div></div>
+</div>
+<!-- Boletín generado por IA, escrito en vivo -->
+<div class="glass-violet rounded-xl p-4">
+    <div class="flex items-center gap-2 mb-2">
+        <span class="w-2 h-2 rounded-full animate-pulse flex-shrink-0" style="background:#9F91E8"></span>
+        <span class="text-[10px] uppercase tracking-wider font-bold" style="color:#9F91E8">Boletín generado por IA · escribiéndose en vivo</span>
     </div>
-    <div class="lg:col-span-3 space-y-4">
-        <div class="glass-violet rounded-2xl p-6" id="agentDetail">
-            <div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧭</div><h3 class="text-lg font-semibold text-white/60" data-i18n="agentPromptH">Seleccione un asistente del PMU</h3><p class="text-sm text-slate-500 mt-2" data-i18n="agentPromptP">Cada asistente coordina una capacidad del PMU en tiempo real</p></div>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold" style="color:#9F91E8">4</div><div class="text-[10px] text-slate-500">Instituciones convocadas</div></div>
-            <div class="glass rounded-xl p-3 text-center anim-fade delay-1"><div class="text-xl font-bold" style="color:#9F91E8">6</div><div class="text-[10px] text-slate-500">Asistentes especializados</div></div>
-            <div class="glass rounded-xl p-3 text-center anim-fade delay-2"><div class="text-xl font-bold text-amber-400">3</div><div class="text-[10px] text-slate-500">Interfaces en tiempo real</div></div>
-            <div class="glass rounded-xl p-3 text-center anim-fade delay-3"><div class="text-xl font-bold text-emerald-400">24/7</div><div class="text-[10px] text-slate-500">Centro de comando activo</div></div>
-        </div>
-        <!-- Boletín generado por IA, escrito en vivo -->
-        <div class="glass-violet rounded-xl p-4">
-            <div class="flex items-center gap-2 mb-2">
-                <span class="w-2 h-2 rounded-full animate-pulse flex-shrink-0" style="background:#9F91E8"></span>
-                <span class="text-[10px] uppercase tracking-wider font-bold" style="color:#9F91E8">Boletín generado por IA · escribiéndose en vivo</span>
-            </div>
-            <pre id="boletinText" class="type-pre text-[11px] leading-relaxed text-slate-300 whitespace-pre-wrap"></pre>
-        </div>
-    </div>
+    <pre id="boletinText" class="type-pre text-[11px] leading-relaxed text-slate-300 whitespace-pre-wrap"></pre>
 </div>
 <div class="flex justify-between items-center mt-8 flex-wrap gap-2">
     <button onclick="goScene(1)" class="glass rounded-xl px-4 sm:px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg> <span class="hidden sm:inline" data-i18n="navBack1">Caso ciudadano</span><span class="sm:hidden" data-i18n="navBackLbl">Atrás</span></button>
@@ -779,7 +753,7 @@ function hookEnterFn(){
         <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#D4883A"></span><span data-i18n="badge3">Acto 2 · Usted es el comandante — GabyPredice · Estrategia</span>
     </div>
     <h2 class="text-3xl font-bold text-white" data-i18n="h2act3">Decida con anticipación: el Eneágono Decisional</h2>
-    <p class="text-slate-400 mt-2 max-w-2xl mx-auto"><span data-i18n="sub3">El método de 9 pasos que convierte miles de reportes en una orden de operación con fecha y hora. Haga clic en cada fase.</span></p>
+    <p class="text-slate-400 mt-2 max-w-2xl mx-auto"><span data-i18n="sub3">Tres grandes momentos llevan de miles de reportes a una orden de operación con fecha y hora. Explore las 9 fases si quiere el detalle.</span></p>
 </div>
 <div class="rounded-xl overflow-hidden relative mb-6" style="border:1px solid rgba(212,136,58,.35);box-shadow:0 0 30px rgba(212,136,58,.12)">
     <video autoplay muted loop playsinline preload="metadata" aria-hidden="true" class="w-full block" style="aspect-ratio:16/9;object-fit:cover">
@@ -787,21 +761,8 @@ function hookEnterFn(){
     </video>
     <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">GabyPredice: la zona de riesgo de los próximos días, antes de que ocurra · video generado con IA</div>
 </div>
-<div class="grid lg:grid-cols-5 gap-6">
-    <div class="lg:col-span-2 flex justify-center items-start">
-        <svg id="eneagonoSvg" width="100%" viewBox="0 0 380 400" style="max-width:380px">
-            <defs><filter id="nGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-            <g id="eneagonoEdges"></g><g id="eneagonoNodes"></g>
-            <text x="190" y="195" text-anchor="middle" fill="rgba(255,255,255,.12)" font-size="10" font-weight="600">ENEÁGONO</text>
-            <text x="190" y="210" text-anchor="middle" fill="rgba(255,255,255,.08)" font-size="8">DECISIONAL</text>
-        </svg>
-    </div>
-    <div class="lg:col-span-3 space-y-4">
-        <div class="glass-teal rounded-2xl p-6" id="phaseDetail">
-            <div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60" data-i18n="phasePromptH">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2" data-i18n="phasePromptP">Cada fase muestra su propia visualización, sincronizada con la narración</p></div>
-        </div>
-        <!-- Así se ve anticipar: histórico + proyección -->
-        <div class="glass-teal rounded-2xl p-4" id="anticiparPanel">
+<!-- Así se ve anticipar: histórico + proyección — el visual principal de la escena -->
+<div class="glass-teal rounded-2xl p-4 mb-6" id="anticiparPanel">
             <div class="flex items-center justify-between mb-1">
                 <span class="text-[10px] uppercase tracking-wider font-bold" style="color:#00BFA6">Así se ve anticipar · extorsiones por semana</span>
                 <span class="text-[10px] text-slate-500">Suroccidente</span>
@@ -840,16 +801,32 @@ function hookEnterFn(){
                 <text x="40" y="172" fill="rgba(45,212,191,.8)" font-size="9">— Histórico real (8 semanas)</text>
                 <text x="40" y="184" fill="rgba(255,255,255,.3)" font-size="8">3 puntos calientes predichos · cobros viernes 5–7 PM</text>
             </svg>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold" style="color:#006D6D">47K<span class="text-xs align-top">*</span></div><div class="text-[10px] text-slate-500">Reportes activos</div></div>
-            <div class="glass rounded-xl p-3 text-center anim-fade delay-1"><div class="text-xl font-bold" style="color:#D4883A">156<span class="text-xs align-top">*</span></div><div class="text-[10px] text-slate-500">Decisiones en curso</div></div>
-            <div class="glass rounded-xl p-3 text-center anim-fade delay-2"><div class="text-xl font-bold text-amber-400">23<span class="text-xs align-top">*</span></div><div class="text-[10px] text-slate-500">Alertas predictivas</div></div>
-            <div class="glass rounded-xl p-3 text-center anim-fade delay-3"><div class="text-xl font-bold text-emerald-400">91.7%<span class="text-xs align-top">*</span></div><div class="text-[10px] text-slate-500">Alertas confirmadas en campo (piloto)</div></div>
-        </div>
-        <div class="text-xs text-slate-500 italic text-center mt-2" data-i18n="statsNote">* Cifras de ejemplo para ilustrar el piloto. Los resultados verificables están citados con fuentes de prensa.</div>
-    </div>
 </div>
+<!-- 3 macro-fases en lenguaje llano: sin clic obligatorio; las 9 fases quedan a un clic opcional -->
+<div id="macroFases" class="grid sm:grid-cols-3 gap-3 sm:gap-4 mb-6"></div>
+<!-- Panel de fase individual: solo aparece si el visitante la explora -->
+<div class="glass-teal rounded-2xl p-6 mb-6" id="phaseDetail" style="display:none">
+    <div class="text-center py-12"><div class="text-4xl mb-4 anim-float">🧠</div><h3 class="text-lg font-semibold text-white/60" data-i18n="phasePromptH">Seleccione una fase del Eneágono</h3><p class="text-sm text-slate-500 mt-2" data-i18n="phasePromptP">Cada fase muestra su propia visualización, sincronizada con la narración</p></div>
+</div>
+<!-- Mapa técnico del método (eneágono completo), plegado -->
+<details class="tech-detail mb-6">
+    <summary><span data-i18n="techDetail">Ver detalle técnico</span><span class="td-chev">▸</span></summary>
+    <div class="td-body flex justify-center">
+        <svg id="eneagonoSvg" width="100%" viewBox="0 0 380 400" style="max-width:380px">
+            <defs><filter id="nGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+            <g id="eneagonoEdges"></g><g id="eneagonoNodes"></g>
+            <text x="190" y="195" text-anchor="middle" fill="rgba(255,255,255,.12)" font-size="10" font-weight="600">ENEÁGONO</text>
+            <text x="190" y="210" text-anchor="middle" fill="rgba(255,255,255,.08)" font-size="8">DECISIONAL</text>
+        </svg>
+    </div>
+</details>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+    <div class="glass rounded-xl p-3 text-center anim-fade"><div class="text-xl font-bold" style="color:#006D6D">47K<span class="text-xs align-top">*</span></div><div class="text-[10px] text-slate-500">Reportes activos</div></div>
+    <div class="glass rounded-xl p-3 text-center anim-fade delay-1"><div class="text-xl font-bold" style="color:#D4883A">156<span class="text-xs align-top">*</span></div><div class="text-[10px] text-slate-500">Decisiones en curso</div></div>
+    <div class="glass rounded-xl p-3 text-center anim-fade delay-2"><div class="text-xl font-bold text-amber-400">23<span class="text-xs align-top">*</span></div><div class="text-[10px] text-slate-500">Alertas predictivas</div></div>
+    <div class="glass rounded-xl p-3 text-center anim-fade delay-3"><div class="text-xl font-bold text-emerald-400">91.7%<span class="text-xs align-top">*</span></div><div class="text-[10px] text-slate-500">Alertas confirmadas en campo (piloto)</div></div>
+</div>
+<div class="text-xs text-slate-500 italic text-center mt-2" data-i18n="statsNote">* Cifras de ejemplo para ilustrar el piloto. Los resultados verificables están citados con fuentes de prensa.</div>
 <div class="flex justify-between items-center mt-8 flex-wrap gap-2">
     <button onclick="goScene(2)" class="glass rounded-xl px-6 py-3 text-sm text-slate-400 hover:text-white transition flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg><span data-i18n="navPMU">PMU</span></button>
     <a href="https://guscoordina.fastanalytics.co/" target="_blank" rel="noopener" class="inline-flex glass rounded-xl px-4 py-3 text-xs font-semibold transition items-center gap-2 hover:brightness-125" style="color:#9F91E8">
@@ -1116,12 +1093,7 @@ function hookEnterFn(){
     <div class="text-xs text-slate-400 mt-6 pt-5 text-center leading-relaxed" style="border-top:1px solid rgba(255,255,255,.08)" data-i18n="afterForm"><strong class="text-white">Después de enviar:</strong> 1) Le respondemos en 24 h hábiles. 2) Sesión de 45 minutos con datos de su territorio. 3) Propuesta de piloto en 2 semanas.</div>
 </div>
 
-<div class="rounded-2xl overflow-hidden relative mb-8" style="border:1px solid rgba(0,191,166,.3);box-shadow:0 0 40px rgba(0,109,109,.15)">
-    <video controls loop muted playsinline preload="none" poster="assets/demo/ciclo-hero.webp" onplay="if(typeof faTrack==='function')faTrack('video_play',{video:'trailer_ecosistema'})" class="w-full block" style="max-height:440px;object-fit:cover;background:#000">
-        <source src="assets/demo/trailer-ecosistema.mp4" type="video/mp4">
-    </video>
-    <div class="absolute bottom-0 inset-x-0 px-3 py-2 text-[11px] text-slate-300 pointer-events-none" style="background:linear-gradient(transparent,rgba(8,12,20,.9))">Tráiler del ecosistema · Escucha → Investiga → Coordina → Predice · todo generado con IA en GPU local</div>
-</div>
+<!-- NOTA: el tráiler trailer-ecosistema.mp4 se retiró del cierre (redundante con el video institucional del hero). El archivo permanece en el servidor sin uso. -->
 <!-- LEMA OFICIAL DE MARCA · firma de cierre -->
 <div class="text-center mb-8 anim-fade">
     <p class="text-lg sm:text-xl font-bold" style="color:#E4A968" data-i18n="lemaCierre">El futuro habla en datos ¡Lo anticipamos con decisiones!</p>
@@ -1337,6 +1309,10 @@ function toggleVoice(){
 // ============ i18n (ES/EN/FR) ============
 var LANG=localStorage.getItem('fa-lang')||'es';
 var I18N={"en": {"st": {"lemaCierre": "The future speaks in data. We anticipate it with decisions!", "badge0": "Immersive demo · One ecosystem for security, defense and risk management", "h1a": "An extortion leaflet.", "h1b": "A frightened citizen.", "h1c": "And a State that", "h1d": "responds in time.", "heroSub": "First you are <strong class=\"text-white\">the shopkeeper who reports</strong>; then <strong class=\"text-white\">the commander who decides</strong>. The case is extortion, but the same ecosystem works for drug trafficking, smuggling and emergencies.", "ctaStart": "Start the experience &#8594;", "ctaFull": "Or live the full experience, scene by scene &#8594;", "lineTitle": "Choose what you want to see", "line1": "01 · Listens", "line2": "02 · Investigates", "line3": "03 · Coordinates", "line4": "04 · Predicts", "line1b": "Citizens report via Telegram or a phone call — no app to install; every report arrives with evidence and GPS.", "line2b": "Identifies the suspect, their vehicle and their network in seconds, not weeks.", "line3b": "Police, anti-extortion unit, prosecutor and city hall on one real-time board.", "line4b": "Tells you where and when crime will strike next week.", "feedNote": "Illustrative simulation", "afterForm": "<strong class=\"text-white\">After you send:</strong> 1) We reply within one business day. 2) A 45-minute session with your territory's data. 3) A pilot proposal within 2 weeks.", "vsH": "What changes vs. today?", "vsP": "Today reports get lost in calls and spreadsheets, and analysis arrives weeks later, after the crime. With the ecosystem, every report arrives with processed evidence, response is coordinated in minutes, and next week is decided before Friday.", "urgP": "A 3–6 month pilot delivers measurable results within this term. Every month without analytics is one more month of extortion without response.", "fRole": "Your role", "fRole0": "Select…", "fRole1": "Mayor / Governor", "fRole2": "Secretary of Security", "fRole3": "Police / Public force", "fRole4": "Private company", "fRole5": "Other", "fWhats": "Message us on WhatsApp", "gusReal": "Open the real GusCoordina", "gusReal2": "See the real product: GusCoordina", "chain1h": "Listens", "badge1": "Act 1 · You are the shopkeeper — Extortion in the southwest of the city", "h2act1": "From citizen report to action on the ground", "h3s1": "1. The citizen reports — AlejoSeguro listens", "p1s1": "A shopkeeper reports an extortion from Telegram: photos, video and audio, all geolocated.", "p1s1b": "And if they have no app or data? <strong>CatheAsiste</strong> answers the call, transcribes the voice live and routes it as structured data: voice, text, video and image, through any channel.", "btn1": "See how the AI processes the evidence", "h3s2": "2. The AI investigates the evidence — MileInvestiga", "p1s2": "<strong style=\"color:#3B9BD9\">MileInvestiga</strong> identifies the suspect, their vehicle and their network in <strong class=\"text-white\">under 2 seconds</strong> — 20+ AI models working on the evidence.", "cap2": "MileInvestiga reveals the network behind the reports · AI-generated video", "btn2": "See the response on the ground", "h3s3": "3. Coordinated response on the ground", "p1s3": "Authorities receive the alert with all the evidence already processed.", "btn3": "See how the institutional response is coordinated", "h3s4": "From the street to institutional coordination", "p1s4": "Every report activates <strong class=\"text-white\">GusCoordina</strong>: six AI assistants that bring institutions together in real time.", "btn4": "Coordinate the response at the Command Post &#8594;", "badge2": "Act 2 · You are the commander — GusCoordina · Unified Command Post", "h2act2": "The alert reaches your command post", "sub2": "Six AI assistants split the work across institutions in real time. Click each one.", "agentPromptH": "Select a Command Post assistant", "agentPromptP": "Each assistant coordinates a Command Post capability in real time", "badge3": "Act 2 · You are the commander — GabyPredice · Strategy", "h2act3": "You decide with anticipation: the Decisional Nonagon", "sub3": "The 9-step method that turns thousands of reports into an operation order with a date and time. Click each phase.", "phasePromptH": "Select a phase of the Nonagon", "phasePromptP": "Each phase shows its own visualization, synced with the narration", "navBack1": "Citizen case", "navBackLbl": "Back", "navNext1": "National Strategy", "navNextLbl": "Next", "navPMU": "Command Post", "navImpact": "National Impact", "h2cierre": "You lived the ecosystem<br><span style=\"color:#006D6D\">from the inside.</span>", "sub4": "From the citizen's phone to the presidential desk: this is how data-driven security, defense and risk management come together.", "badge4": "Real impact · This is not a simulation", "h3impact": "This already happened.", "pimpact": "As Director of Analytics of the National Police of Colombia, our founder designed and deployed the strategies based on these models. Generals and mayors held the press conferences. These were the results.", "badge5": "Not just press · published evidence", "h3pubs": "The operational results,<br class=\"sm:hidden\"> in books and scientific journals", "hdrProducts": "Products", "hdrReset": "&#8635; Restart", "heroDef": "A single ecosystem for security, defense and risk management: from the urban neighborhood to the rural village.", "catChips": "CatheAsiste routes any channel", "fb_s0": "Back to the start of the case: AlejoSeguro listens to the citizen on Telegram, and CatheAsiste routes voice, text, video and image into structured data.", "netSub": "Spatio-temporal tracking of the network: who operates, where and how often.", "netSub2": "Extortion, organized crime or armed structures: the same engine dismantles them.", "backStep": "← Back", "fb_s2": "Authorities receive the alert with all the evidence already processed: risk eight out of ten, twelve similar cases and five linked actors. GusCoordina dispatches the nearest patrol — four minutes away — and notifies the Gaula and the Prosecutor's Office. The situation map shows the prediction and the safe route.", "fb_s3": "From the street to institutional coordination: every report activates GusCoordina, the Unified Command Post, whose six AI assistants bring institutions together in real time.", "fb_mile": "MileInvestiga supports the investigation: more than twenty AI models process image, video, audio and text in under two seconds. It identifies the suspect's face — alias El Flaco — and the motorcycle plate; and through criminal network analysis it reveals the full structure: five linked actors and their central node. The same network engine dismantles organized crime structures and threats to territorial defense.", "techH": "State-ready, secure by design", "tech1h": "Data sovereignty", "tech1p": "Sensitive data stays in the entity's datacenter; AI runs on FastAnalytics' GPUs.", "tech2h": "Two classes of AI", "tech2p": "Deep reasoning for correlation and anticipatory decisions; a compact high-concurrency model classifies and routes every report.", "tech3h": "Pilot in 3–6 months", "tech3p": "One prioritized zone with ~300 concurrent users, scalable to 1,000; final sizing in the technical proposal. <strong>Success metrics defined by you from day one: if the indicators don't move, it doesn't scale.</strong>", "tech4h": "Transfer & support", "tech4p": "Documentation in institutional doctrine, training and tiered support with a 15-minute SLA for severity 1.", "hdrAgenda": "Book the pilot", "hdrAgendaM": "Demo", "hdrMusic": "🎵 Music", "vReady": "🔊 Narration", "vMuted": "🔇 Muted", "vSpeaking": "🔊 Narrating…", "voiceOn": "Enable narration", "voiceOff": "Mute narration", "eneSub": "Decisional Nonagon", "chain1": "Telegram or call", "paso1h": "01 · Listens — AlejoSeguro + CatheAsiste", "ps1b1": "Reports via Telegram or call, no barriers", "ps1b2": "Every report, geolocated", "ps1b3": "Audio transcribed instantly", "ps1b4": "Risk thermometer and safe routes", "paso2h": "02 · Investigates — MileInvestiga", "ps2b1": "20+ AI models on the evidence", "ps2b2": "Faces, plates and scenes in real time", "ps2b3": "Criminal network with centrality analysis", "ps2b4": "Spatio-temporal patterns (Chronnet)", "paso3h": "03 · Coordinates — GusCoordina", "ps3b1": "Six specialized AI assistants per incident", "ps3b2": "A single real-time situation board", "ps3b3": "Several simultaneous operations", "ps3b4": "AI-generated bulletins", "paso4h": "04 · Predicts — GabyPredice", "ps4b1": "Decision Enneagon: 9 phases (F0–F8)", "ps4b2": "Hotspots and anomalies before they happen", "ps4b3": "Committee with dashboard and qualified signals", "ps4b4": "Orders with a community-impact traffic light", "callTr": "Live transcription &#8594; structured data", "chain1b": "Call &#8594; structured data", "chain2b": "Investigates the criminal network", "evidTitle": "Evidence collected", "motoCap": "Extortionist on a motorcycle intimidates the shopkeeper · AI-generated video", "statsNote": "* Sample figures to illustrate the pilot. Verifiable results are cited with press sources.", "chain2": "AI processes evidence", "chain3": "Inter-institutional coordination", "chain4": "Anticipatory decisions", "chain5": "Informed decisions", "sumTitle": "What you just saw in this demonstration", "sum1h": "Citizen reports processed", "sum1p": "Photos, videos, audios and locations analyzed in real time", "sum2h": "Phases of the Decisional Nonagon", "sum2p": "From strategic posture to executive order with impact assessment", "sum3h": "Unified Command Post AI assistants", "sum3p": "Inter-institutional coordination in real time per incident", "ecoH": "Products that work as one", "ecoP": "AlejoSeguro and CatheAsiste listen · MileInvestiga investigates · GusCoordina coordinates · GabyPredice predicts", "introH": "First: 1 minute of context", "introP": "This short video shows the security, defense and risk management ecosystem in action, and how to navigate the demo.", "introPlay": "&#9654; Watch the intro (1 min)", "introSkip": "Skip straight to the demo &#8594;", "introEnter": "Enter the real case &#8594;", "fb_intro": "Welcome. FastAnalytics presents Intelligent Security and Defense: an ecosystem of five AI products working as one. AlejoSeguro and CatheAsiste listen to citizens on the street. MileInvestiga investigates the evidence. GusCoordina coordinates the institutional response in real time. And GabyPredice turns what is learned into decisions that anticipate the future. From data, to coordination, to decision.", "fb_scene1": "Scene one: a shopkeeper in the southwest of the city receives an extortion leaflet and reports it from his phone through AlejoSeguro, all geolocated. And if he has no app or data, CatheAsiste routes reports of voice, text, video and image: it answers his call, transcribes his voice live and turns it into structured data. MileInvestiga supports the investigation, processing the evidence with more than twenty AI models in seconds, and immediately activates the Unified Command Post.", "fb_scene2": "Scene two: GusCoordina, the Unified Command Post. Six AI assistants coordinate institutions in real time.", "fb_scene3": "Scene three: GabyPredice, the organizational decision system. Nine phases, one nonagon, decisions ahead of time.", "fb_scene4": "Colombia can decide with data. AlejoSeguro collects, GusCoordina coordinates, GabyPredice anticipates.", "proofT": "This already happened — verify it:", "proof1": "municipalities with zero homicides · Dec 2021", "proof2": "years without such a safe December", "proof3": "years: Bogotá's homicide low", "proof4": "years: record in Cali", "proofAttr": "Results from our founder's track record as Director of Analytics of the National Police of Colombia.", "ctaProof": "See the real proof &#8595;", "ctaFormH": "Book your pilot", "ctaFormP": "Tell us who you are and which risk you want to anticipate. We'll write back to schedule the session.", "fName": "Name *", "fEmail": "Email *", "fOrg": "Organization / company", "fCity": "City / territory", "fMsg": "Which risk do you want to anticipate?", "fSend": "Send request", "fAlt": "or write to us:", "vidH": "The ecosystem in 110 seconds", "vidCap": "Institutional video · security, defense and risk management"}, "ph": {"F0": {"name": "Strategic Posture", "desc": "The director writes his concern in free text; the AI extracts zone, actors, issue and constraints.", "speech": "Phase zero. Everything starts with a concern, in the director's own words. The system turns it into zone, actors, issue and constraints. A clear strategy, from the very first sentence."}, "F1": {"name": "Environment and perception", "desc": "Crosses official figures with citizen perception and detects trends with statistical rigor.", "speech": "Phase one. We cross-referenced eight hundred and forty-seven citizen reports with official figures. The result: extortion grew three hundred and forty percent. The environment is no longer an intuition: it is a number."}, "F2": {"name": "What is to be decided", "desc": "Classifies the decision and defines its scope: local, subnational or national.", "speech": "Phase two. What kind of decision is this? Public and citizen security — or defense — with subnational scope: the same network operates in two departments. And that brings the Public Force to the table."}, "F3": {"name": "Focus Actors and Issues", "desc": "The actor-issue graph with centrality reveals who is the key node of the network.", "speech": "Phase three. The graph speaks: El Flaco has the highest centrality in the network. And a key discovery: La Mona runs a second cell in another city. The operation now has two fronts. The same graph dismantles organized crime structures and threats to territorial defense."}, "F4": {"name": "Articulate Information", "desc": "Checkpoint: the decision-maker approves, requests a review or issues a direct order.", "speech": "Phase four. Checkpoint. The director reviews the evidence and orders: run the predictive models. We want to know where the network will strike, before it strikes."}, "F5": {"name": "Predictive Signals", "desc": "The brain of the Nonagon: the models predict where and when the network will strike.", "speech": "Phase five. The models predict three hotspots for next week, with eighty-nine percent confidence. Collections repeat on Fridays, between five and seven in the evening. The recommendation is clear: take the case to the committee."}, "F6": {"name": "Institutional Memory", "desc": "Cross-cutting memory: what worked before and what didn't, always before deciding.", "speech": "Phase six. Institutional memory warns: a similar operation captured eight people, but the network came back in forty-five days. The lesson: this time we also go after the money."}, "F7": {"name": "Decision committee", "desc": "The committee deliberates with qualified signals and decides: approve, request more info or refocus.", "speech": "Phase seven. The committee deliberates with every signal on screen. Five criteria, one decision: simultaneous operation approved for next Friday."}, "F8": {"name": "Dissemination and Action", "desc": "The formal order with an action plan and a human-development impact traffic light.", "speech": "Phase eight. The order is issued and classified. What, when, where, why and for what purpose. And with one guarantee: the impact on people is measured with twenty-two variables before acting."}}, "ag": {"IN": {"name": "Intake", "desc": "Receives the AlejoSeguro report and activates the Unified Command Post, summoning institutions in seconds.", "speech": "Intake Agent. Eight point four seconds: that's how long it takes for the citizen's report to become an active Command Post, with Police, Gaula, Prosecutor's Office and City Hall already summoned."}, "IT": {"name": "Intelligence", "desc": "A single common operating picture: cross-checks the evidence with what each institution contributes.", "speech": "Intelligence Agent. The motorcycle's plate has just been cross-checked with the city's cameras: it passed two checkpoints in the last twenty minutes. Everyone in the command post sees the same thing, at the same time."}, "SI": {"name": "Simulation", "desc": "Simulates routes and times to decide which unit responds and along which path.", "speech": "Simulation Agent. Three possible routes, one decision: the nearest patrol arrives in four point two minutes via Carrera forty-six. Before the motorcycle leaves the neighborhood."}, "AU": {"name": "Audio", "desc": "Listens to the radio, detects risk words and alerts the Command Center.", "speech": "Audio Agent. No one can listen to every radio channel at once; this agent can. It has just detected two words on the Police channel: visual contact. And the command center already knows."}, "CO": {"name": "Control", "desc": "Traffic light per institution: escalates if a checkpoint falls behind.", "speech": "Control Agent. Every institution has a traffic light and every minute counts. Police arrived in six minutes: green checkpoint. If something falls behind, the alert escalates on its own."}, "PA": {"name": "Dashboard", "desc": "Every institution sees the same live map, with no conflicting versions.", "speech": "Screen Agent. One same map, the same units, the same truth for every institution, updated forty milliseconds ago. This is how a State coordinates in real time."}}}, "fr": {"st": {"lemaCierre": "Le futur parle en données. Nous l'anticipons avec des décisions !", "badge0": "Démo immersive · Un seul écosystème pour la sécurité, la défense et la gestion des risques", "h1a": "Un tract d'extorsion.", "h1b": "Un citoyen qui a peur.", "h1c": "Et un État qui", "h1d": "répond à temps.", "heroSub": "D'abord vous êtes <strong class=\"text-white\">le commerçant qui signale</strong> ; ensuite, <strong class=\"text-white\">le commandant qui décide</strong>. Le cas est une extorsion, mais le même écosystème sert pour le narcotrafic, la contrebande et les urgences.", "ctaStart": "Lancer l'expérience &#8594;", "ctaFull": "Ou vivez l'expérience complète, scène par scène &#8594;", "lineTitle": "Choisissez ce que vous voulez voir", "line1": "01 · Écoute", "line2": "02 · Enquête", "line3": "03 · Coordonne", "line4": "04 · Prédit", "line1b": "Le citoyen signale par Telegram ou appel, sans rien installer ; chaque signalement arrive avec preuves et GPS.", "line2b": "Identifie le suspect, son véhicule et son réseau en secondes, pas en semaines.", "line3b": "Police, unité anti-extorsion, parquet et mairie sur un seul tableau en temps réel.", "line4b": "Vous dit où et quand le crime frappera la semaine prochaine.", "feedNote": "Simulation illustrative", "afterForm": "<strong class=\"text-white\">Après l'envoi :</strong> 1) réponse sous 24 h ouvrées. 2) Session de 45 minutes avec les données de votre territoire. 3) Proposition de pilote sous 2 semaines.", "vsH": "Qu'est-ce qui change ?", "vsP": "Aujourd'hui les signalements se perdent dans les appels et les tableurs, et l'analyse arrive des semaines plus tard. Avec l'écosystème, chaque signalement arrive avec les preuves traitées, la réponse se coordonne en minutes et la semaine prochaine se décide avant vendredi.", "urgP": "Un pilote de 3–6 mois donne des résultats mesurables pendant ce mandat. Chaque mois sans analytique est un mois d'extorsion sans réponse.", "fRole": "Votre rôle", "fRole0": "Sélectionnez…", "fRole1": "Maire / Gouverneur", "fRole2": "Secrétaire de Sécurité", "fRole3": "Police / Force publique", "fRole4": "Entreprise privée", "fRole5": "Autre", "fWhats": "Écrivez-nous sur WhatsApp", "gusReal": "Ouvrir le vrai GusCoordina", "gusReal2": "Voir le produit réel : GusCoordina", "chain1h": "Écoute", "badge1": "Acte 1 · Vous êtes le commerçant — Extorsion dans le sud-ouest de la ville", "h2act1": "Du signalement citoyen à l'action sur le terrain", "h3s1": "1. Le citoyen signale — AlejoSeguro écoute", "p1s1": "Un commerçant signale une extorsion depuis Telegram : photos, vidéo et audio, le tout géolocalisé.", "p1s1b": "Et sans application ni données ? <strong>CatheAsiste</strong> prend l'appel, transcrit la voix en direct et l'achemine comme donnée structurée : voix, texte, vidéo et image, par tout canal.", "btn1": "Voir comment l'IA traite les preuves", "h3s2": "2. L'IA enquête sur les preuves — MileInvestiga", "p1s2": "<strong style=\"color:#3B9BD9\">MileInvestiga</strong> identifie le suspect, son véhicule et son réseau en <strong class=\"text-white\">moins de 2 secondes</strong> — plus de 20 modèles d'IA sur les preuves.", "cap2": "MileInvestiga révèle le réseau derrière les signalements · vidéo générée par IA", "btn2": "Voir la réponse sur le terrain", "h3s3": "3. Réponse coordonnée sur le terrain", "p1s3": "Les autorités reçoivent l'alerte avec toutes les preuves déjà traitées.", "btn3": "Voir comment se coordonne la réponse institutionnelle", "h3s4": "De la rue à la coordination institutionnelle", "p1s4": "Chaque signalement active <strong class=\"text-white\">GusCoordina</strong> : six assistants IA qui articulent les institutions en temps réel.", "btn4": "Coordonner la réponse au Poste de Commandement &#8594;", "badge2": "Acte 2 · Vous êtes le commandant — GusCoordina · Poste de Commandement Unifié", "h2act2": "L'alerte arrive à votre poste de commandement", "sub2": "Six assistants IA répartissent le travail entre les institutions en temps réel. Cliquez sur chacun.", "agentPromptH": "Sélectionnez un assistant du Poste de Commandement", "agentPromptP": "Chaque assistant coordonne une capacité du PCU en temps réel", "badge3": "Acte 2 · Vous êtes le commandant — GabyPredice · Stratégie", "h2act3": "Vous décidez par anticipation : l'Ennéagone Décisionnel", "sub3": "La méthode en 9 étapes qui transforme des milliers de signalements en ordre d'opération avec date et heure. Cliquez sur chaque phase.", "phasePromptH": "Sélectionnez une phase de l'Ennéagone", "phasePromptP": "Chaque phase affiche sa propre visualisation, synchronisée avec la narration", "navBack1": "Affaire citoyenne", "navBackLbl": "Retour", "navNext1": "Stratégie Nationale", "navNextLbl": "Suivant", "navPMU": "Poste de Commandement", "navImpact": "Impact National", "h2cierre": "Vous avez vécu l'écosystème<br><span style=\"color:#006D6D\">de l'intérieur.</span>", "sub4": "Du téléphone du citoyen au bureau présidentiel : ainsi s'articulent la sécurité, la défense et la gestion des risques fondées sur les données.", "badge4": "Impact réel · Ceci n'est pas une simulation", "h3impact": "Cela s'est déjà produit.", "pimpact": "En tant que Directeur de l'Analytique de la Police Nationale de Colombie, notre fondateur a conçu et déployé les stratégies fondées sur ces modèles. Généraux et maires ont donné les conférences de presse. Voici les résultats.", "badge5": "Pas seulement la presse · preuves publiées", "h3pubs": "Les résultats opérationnels,<br class=\"sm:hidden\"> dans des livres et revues scientifiques", "hdrProducts": "Produits", "hdrReset": "&#8635; Recommencer", "heroDef": "Un seul écosystème de sécurité, défense et gestion des risques : du quartier urbain au village rural.", "catChips": "CatheAsiste achemine tout canal", "fb_s0": "Retour au début du cas : AlejoSeguro écoute le citoyen sur Telegram, et CatheAsiste achemine voix, texte, vidéo et image en données structurées.", "netSub": "Suivi spatio-temporel du réseau : qui opère, où et avec quelle fréquence.", "netSub2": "Extorsion, crime organisé ou structures armées : le même moteur les démantèle.", "backStep": "← Retour", "fb_s2": "Les autorités reçoivent l'alerte avec toutes les preuves déjà traitées : risque huit sur dix, douze cas similaires et cinq acteurs liés. GusCoordina dépêche la patrouille la plus proche — à quatre minutes — et notifie le Gaula et le Parquet. La carte de situation montre la prédiction et l'itinéraire sûr.", "fb_s3": "De la rue à la coordination institutionnelle : chaque signalement active GusCoordina, le Poste de Commandement Unifié, dont les six assistants IA articulent les institutions en temps réel.", "fb_mile": "MileInvestiga apporte son appui à l'investigation : plus de vingt modèles d'IA traitent image, vidéo, audio et texte en moins de deux secondes. Il identifie le visage du suspect — alias El Flaco — et la plaque de la moto ; et par l'analyse de réseaux criminels, il révèle toute la structure : cinq acteurs liés et leur nœud central. Le même moteur de réseaux démantèle les structures du crime organisé et les menaces à la défense territoriale.", "techH": "Prêt pour l'État, sûr par conception", "tech1h": "Souveraineté des données", "tech1p": "Les données sensibles restent dans le datacenter de l'entité ; l'IA tourne sur les GPU de FastAnalytics.", "tech2h": "Deux classes d'IA", "tech2p": "Raisonnement profond pour la corrélation et la décision anticipée ; un modèle compact à haute concurrence classe et achemine chaque signalement.", "tech3h": "Pilote en 3–6 mois", "tech3p": "Une zone prioritaire avec ~300 utilisateurs simultanés, extensible à 1 000 ; dimensionnement final dans la proposition technique. <strong>Indicateurs de succès définis par vous dès le premier jour : si les indicateurs ne bougent pas, pas d'extension.</strong>", "tech4h": "Transfert et support", "tech4p": "Documentation en doctrine institutionnelle, formation et support par niveaux avec SLA de 15 minutes pour la sévérité 1.", "hdrAgenda": "Planifier le pilote", "hdrAgendaM": "Démo", "hdrMusic": "🎵 Musique", "vReady": "🔊 Narration", "vMuted": "🔇 Coupée", "vSpeaking": "🔊 Lecture…", "voiceOn": "Activer la narration", "voiceOff": "Couper la narration", "eneSub": "Ennéagone Décisionnel", "chain1": "Telegram ou appel", "paso1h": "01 · Écoute — AlejoSeguro + CatheAsiste", "ps1b1": "Signalements par Telegram ou appel, sans barrières", "ps1b2": "Chaque signalement, géolocalisé", "ps1b3": "Audio transcrit instantanément", "ps1b4": "Thermomètre de risque et itinéraires sûrs", "paso2h": "02 · Enquête — MileInvestiga", "ps2b1": "Plus de 20 modèles d'IA sur les preuves", "ps2b2": "Visages, plaques et scènes en temps réel", "ps2b3": "Réseau criminel avec analyse de centralité", "ps2b4": "Motifs spatio-temporels (Chronnet)", "paso3h": "03 · Coordonne — GusCoordina", "ps3b1": "Six assistants IA spécialisés par incident", "ps3b2": "Un seul tableau de situation en temps réel", "ps3b3": "Plusieurs opérations simultanées", "ps3b4": "Bulletins générés par IA", "paso4h": "04 · Prédit — GabyPredice", "ps4b1": "Ennéagone décisionnel : 9 phases (F0–F8)", "ps4b2": "Points chauds et anomalies avant qu'ils n'arrivent", "ps4b3": "Comité avec tableau de bord et signaux qualifiés", "ps4b4": "Ordres avec feu tricolore d'impact sur la communauté", "callTr": "Transcription en direct &#8594; donnée structurée", "chain1b": "Appel &#8594; donnée structurée", "chain2b": "Enquête sur le réseau criminel", "evidTitle": "Preuves collectées", "motoCap": "Un extorsionniste à moto intimide le commerçant · vidéo générée par IA", "statsNote": "* Chiffres d'exemple pour illustrer le pilote. Les résultats vérifiables sont cités avec sources de presse.", "chain2": "L'IA traite les preuves", "chain3": "Coordination interinstitutionnelle", "chain4": "Décisions anticipées", "chain5": "Décisions éclairées", "sumTitle": "Ce que vous venez de voir dans cette démonstration", "sum1h": "Signalements citoyens traités", "sum1p": "Photos, vidéos, audios et localisations analysés en temps réel", "sum2h": "Phases de l'Ennéagone Décisionnel", "sum2p": "De la posture stratégique à l'ordre exécutif avec évaluation d'impact", "sum3h": "Assistants IA du Poste de Commandement Unifié", "sum3p": "Coordination interinstitutionnelle en temps réel par incident", "ecoH": "Des produits qui travaillent comme un seul", "ecoP": "AlejoSeguro et CatheAsiste écoutent · MileInvestiga enquête · GusCoordina coordonne · GabyPredice prédit", "fb_intro": "Bienvenue. FastAnalytics présente la Sécurité et la Défense Intelligentes : un écosystème de cinq produits d'intelligence artificielle qui travaillent comme un seul. AlejoSeguro et CatheAsiste écoutent le citoyen sur le terrain. MileInvestiga enquête sur les preuves. GusCoordina coordonne la réponse institutionnelle en temps réel. Et GabyPredice transforme ce qui est appris en décisions qui anticipent l'avenir. De la donnée, à la coordination, à la décision.", "fb_scene1": "Scène un : un commerçant du sud-ouest de la ville reçoit un tract d'extorsion et le signale depuis son téléphone via AlejoSeguro, le tout géolocalisé. Et sans application ni données, CatheAsiste achemine les signalements de voix, texte, vidéo et image : elle prend son appel, transcrit sa voix en direct et la convertit en donnée structurée. MileInvestiga apporte son appui à l'investigation, traitant les preuves avec plus de vingt modèles d'IA en quelques secondes, et active immédiatement le Poste de Commandement Unifié.", "fb_scene2": "Scène deux : GusCoordina, le Poste de Commandement Unifié. Six assistants IA coordonnent les institutions en temps réel.", "fb_scene3": "Scène trois : GabyPredice, le système de décisions organisationnelles. Neuf phases, un ennéagone, des décisions en avance.", "fb_scene4": "La Colombie peut décider avec des données. AlejoSeguro collecte, GusCoordina coordonne, GabyPredice anticipe.", "introH": "D'abord : 1 minute de contexte", "introP": "Cette mini vidéo présente l'écosystème de sécurité, défense et gestion des risques en action, et comment naviguer dans la démo.", "introSkip": "Entrer directement dans la démo &#8594;", "introEnter": "Entrer dans l'affaire réelle &#8594;", "introPlay": "&#9654; Regarder l'intro (1 min)", "proofT": "Cela s'est déjà produit — vérifiez-le :", "proof1": "municipalités sans un seul homicide · déc. 2021", "proof2": "ans sans un décembre aussi sûr", "proof3": "ans : plus bas niveau d'homicides à Bogotá", "proof4": "ans : record à Cali", "proofAttr": "Résultats issus du parcours de notre fondateur comme Directeur de l'Analytique de la Police Nationale de Colombie.", "ctaProof": "Voir la preuve réelle &#8595;", "ctaFormH": "Planifiez votre pilote", "ctaFormP": "Dites-nous qui vous êtes et quel risque vous voulez anticiper. Nous vous écrirons pour planifier la session.", "fName": "Nom *", "fEmail": "E-mail *", "fOrg": "Organisation / entreprise", "fCity": "Ville / territoire", "fMsg": "Quel risque voulez-vous anticiper ?", "fSend": "Envoyer la demande", "fAlt": "ou écrivez-nous :", "vidH": "L'écosystème en 110 secondes", "vidCap": "Vidéo institutionnelle · sécurité, défense et gestion des risques"}, "ph": {"F0": {"name": "Posture Stratégique", "desc": "Le directeur écrit sa préoccupation en texte libre ; l'IA extrait zone, acteurs, sujet et contraintes.", "speech": "Phase zéro. Tout commence par une préoccupation, dans les mots du directeur. Le système la transforme en zone, acteurs, sujet et contraintes. Une stratégie claire, dès la première phrase."}, "F1": {"name": "Environnement et perception", "desc": "Croise les chiffres officiels avec la perception citoyenne et détecte les tendances avec rigueur statistique.", "speech": "Phase un. Nous avons croisé huit cent quarante-sept signalements citoyens avec les chiffres officiels. Le résultat : l'extorsion a augmenté de trois cent quarante pour cent. L'environnement n'est plus une intuition : c'est un chiffre."}, "F2": {"name": "Ce qui va être décidé", "desc": "Classe la décision et définit sa portée : locale, infranationale ou nationale.", "speech": "Phase deux. Quel type de décision ? Sécurité publique et citoyenne — ou défense — à portée sous-nationale : le même réseau opère dans deux départements. Et cela amène la Force publique à la table."}, "F3": {"name": "Focaliser Acteurs et Sujets", "desc": "Le graphe acteur-sujet avec centralité révèle qui est le nœud clé du réseau.", "speech": "Phase trois. Le graphe parle : El Flaco a la plus forte centralité du réseau. Et une découverte clé : La Mona opère une deuxième cellule dans une autre ville. L'opération a désormais deux fronts. Le même graphe démantèle les structures du crime organisé et les menaces à la défense territoriale."}, "F4": {"name": "Articuler l'Information", "desc": "Point de contrôle : le décideur approuve, demande une révision ou émet un ordre direct.", "speech": "Phase quatre. Point de contrôle. Le directeur examine les preuves et ordonne : exécuter les modèles prédictifs. Nous voulons savoir où le réseau frappera, avant qu'il ne frappe."}, "F5": {"name": "Signaux Prédictifs", "desc": "Le cerveau de l'Ennéagone : les modèles prédisent où et quand le réseau frappera.", "speech": "Phase cinq. Les modèles prédisent trois foyers pour la semaine prochaine, avec quatre-vingt-neuf pour cent de confiance. Les collectes se répètent le vendredi, entre dix-sept et dix-neuf heures. La recommandation est claire : porter l'affaire devant le comité."}, "F6": {"name": "Mémoire Institutionnelle", "desc": "Mémoire transversale : ce qui a fonctionné avant et ce qui n'a pas marché, toujours avant de décider.", "speech": "Phase six. La mémoire institutionnelle avertit : une opération similaire a capturé huit personnes, mais le réseau est revenu en quarante-cinq jours. La leçon : cette fois, nous attaquons aussi l'argent."}, "F7": {"name": "Comité de décision", "desc": "Le comité délibère avec des signaux qualifiés et décide : approuver, demander plus d'info ou refocaliser.", "speech": "Phase sept. Le comité délibère avec tous les signaux à l'écran. Cinq critères, une décision : opération simultanée approuvée pour vendredi prochain."}, "F8": {"name": "Diffusion et Action", "desc": "L'ordre formel avec plan d'action et feu tricolore d'impact sur le développement humain.", "speech": "Phase huit. L'ordre est émis et classifié. Quoi, quand, où, pourquoi et dans quel but. Et avec une garantie : l'impact sur les personnes est mesuré avec vingt-deux variables avant d'agir."}}, "ag": {"IN": {"name": "Admission", "desc": "Reçoit le signalement d'AlejoSeguro et active le Poste de Commandement Unifié en convoquant les institutions en quelques secondes.", "speech": "Agent d'Admission. Huit virgule quatre secondes : c'est le temps qu'il faut pour que le signalement du citoyen devienne un Poste de Commandement actif, avec la Police, le Gaula, le Parquet et la Mairie déjà convoqués."}, "IT": {"name": "Renseignement", "desc": "Un seul tableau de situation : croise les preuves avec ce qu'apporte chaque institution.", "speech": "Agent de Renseignement. La plaque de la moto vient d'être croisée avec les caméras de la ville : elle est passée par deux points de contrôle au cours des vingt dernières minutes. Tout le monde au poste de commandement voit la même chose, au même moment."}, "SI": {"name": "Simulation", "desc": "Simule itinéraires et temps pour décider quelle unité répond et par où.", "speech": "Agent de Simulation. Trois itinéraires possibles, une décision : la patrouille la plus proche arrive en quatre virgule deux minutes par la Carrera quarante-six. Avant que la moto ne quitte le quartier."}, "AU": {"name": "Audio", "desc": "Écoute la radio, détecte les mots à risque et alerte le Centre de Commandement.", "speech": "Agent Audio. Personne ne peut écouter tous les canaux radio à la fois ; cet agent, si. Il vient de détecter deux mots sur le canal de la Police : contact visuel. Et le centre de commandement le sait déjà."}, "CO": {"name": "Contrôle", "desc": "Feu tricolore par institution : escalade si un point de contrôle prend du retard.", "speech": "Agent de Contrôle. Chaque institution a un feu tricolore et chaque minute compte. La Police est arrivée en six minutes : point de contrôle au vert. Si quelque chose prend du retard, l'alerte s'escalade toute seule."}, "PA": {"name": "Tableau de bord", "desc": "Toutes les institutions voient la même carte en direct, sans versions divergentes.", "speech": "Agent d'Écran. Une même carte, les mêmes unités, la même vérité pour toutes les institutions, mise à jour il y a quarante millisecondes. C'est ainsi qu'un État se coordonne en temps réel."}}}};
+// ── Claves i18n del rediseño "una idea por pantalla" (se fusionan con el diccionario base) ──
+(function(){var en={"techDetail":"View technical detail","sightH":"Sighting history","distH":"What the community reports (example)","dist1":"Extortion of shopkeepers","dist2":"Drug dealing near schools","dist3":"Theft from people and shops","dist4":"Lack of access to justice","mf1t":"Understand the territory","mf1d":"What is happening, where and who is behind it.","mf2t":"Decide the operation","mf2d":"Models predict the next strike and you approve the plan.","mf3t":"Act and learn","mf3d":"The order goes out with a date and time; every result feeds the institutional memory.","sub2":"Six AI assistants split the work across institutions, in real time — without you having to coordinate anything.","sub3":"Three big moves turn thousands of reports into an operation order with a date and time. Explore the 9 phases if you want the detail."};
+var fr={"techDetail":"Voir le détail technique","sightH":"Historique des observations","distH":"Ce que signale la communauté (exemple)","dist1":"Extorsion de commerçants","dist2":"Vente de drogue près des écoles","dist3":"Vol de personnes et de commerces","dist4":"Manque d'accès à la justice","mf1t":"Comprendre le territoire","mf1d":"Ce qui se passe, où et qui est derrière.","mf2t":"Décider l'opération","mf2d":"Les modèles prédisent le prochain coup et vous approuvez le plan.","mf3t":"Agir et apprendre","mf3d":"L'ordre part avec date et heure ; chaque résultat nourrit la mémoire institutionnelle.","sub2":"Six assistants IA répartissent le travail entre les institutions, en temps réel — sans que vous ayez à coordonner quoi que ce soit.","sub3":"Trois grandes étapes transforment des milliers de signalements en ordre d'opération avec date et heure. Explorez les 9 phases pour le détail."};
+try{var k;for(k in en)I18N.en.st[k]=en[k];for(k in fr)I18N.fr.st[k]=fr[k]}catch(e){}})();
 function TT(k,es){var D=I18N[LANG];return(D&&D.st[k])||es}
 var _esSnap=null;
 function setLang(l){
@@ -1347,6 +1323,8 @@ function setLang(l){
     var D=I18N[l];
     phases.forEach(function(p,i){var s=_esSnap.ph[i];p.name=s.name;p.desc=s.desc;p.speech=s.speech;var t=D&&D.ph[p.id];if(t){p.name=t.name;p.desc=t.desc;p.speech=t.speech}});
     agents.forEach(function(a,i){var s=_esSnap.ag[i];a.name=s.name;a.desc=s.desc;a.speech=s.speech;var t=D&&D.ag[a.id];if(t){a.name=t.name;a.desc=t.desc;a.speech=t.speech}});
+    if(typeof buildAgentChips==='function')buildAgentChips();
+    if(typeof buildMacroFases==='function')buildMacroFases();
     document.querySelectorAll('[data-i18n]').forEach(function(el){
         var k=el.getAttribute('data-i18n');
         if(el.dataset.es===undefined)el.dataset.es=el.innerHTML;
@@ -1365,7 +1343,7 @@ document.addEventListener('DOMContentLoaded',function(){
     if(LANG!=='es'){setTimeout(function(){setLang(LANG)},300)}
     else{document.querySelectorAll('#langSel .lang-btn').forEach(function(b){var on=b.getAttribute('data-lang')==='es';b.style.background=on?'#006D6D':'transparent';b.style.color=on?'#fff':'#94a3b8'})}
 });
-var NARR_KEYS=['intro','scene1','scene2','scene3','scene4','f0','f1','f2','f3','f4','f5','f6','f7','f8','ag0','ag1','ag2','ag3','ag4','ag5','s0','s1mile','s2terr','s3inst'];
+var NARR_KEYS=['intro','scene1','scene2','scene3','scene4','f0','f1','f2','f3','f4','f5','f6','f7','f8','ag0','ag1','ag2','ag3','ag4','ag5'];
 var narrAudio=new Audio();narrAudio.preload='none';
 var speakSeq=0;
 function speak(key,fallback){
@@ -1424,8 +1402,8 @@ function goScene(n){
     var labels=['','Escucha · AlejoSeguro + CatheAsiste','Coordina · GusCoordina (PMU)','Predice · GabyPredice','Impacto Nacional'];
     var sl=document.getElementById('sceneLabel');sl.textContent=labels[n]||'';sl.classList.toggle('hidden',n===0);
     if(n===1){skipS0=true;resetSteps();showStep(0);animateChat();}
-    if(n===2){buildComando();flowEdges('#comandoEdges');typeBoletin();countUp('#scene2');}
-    if(n===3){var ap=document.getElementById('anticiparPanel');if(ap)ap.style.display='block';buildEneagono();flowEdges('#eneagonoEdges');countUp('#scene3');replayChart();}
+    if(n===2){buildAgentChips();typeBoletin();countUp('#scene2');}
+    if(n===3){var ap=document.getElementById('anticiparPanel');if(ap)ap.style.display='block';buildEneagono();flowEdges('#eneagonoEdges');buildMacroFases();countUp('#scene3');replayChart();}
     speakSceneIntro(n);
 }
 
@@ -1554,28 +1532,55 @@ function buildEneagono(){
 
 function selectPhase(idx,quiet){
     if(!quiet)playNotif();var p=phases[idx];
-    var ap=document.getElementById('anticiparPanel');if(ap)ap.style.display='none';
     document.querySelectorAll('.eneagono-node').forEach(function(n,i){n.classList.remove('active-node');if(i<idx)n.classList.add('completed');if(i===idx)n.classList.add('active-node')});
-    var panel=document.getElementById('phaseDetail');
+    var panel=document.getElementById('phaseDetail');if(!panel)return;panel.style.display='block';
     var extra=p.example||'';
     var vz=PHASE_VIZ[idx];
     var vblock=vz?'<div class="rounded-xl p-3 mt-3" style="background:rgba(255,255,255,.03);border:1px solid rgba(0,191,166,.15)"><div class="text-[10px] font-bold mb-2" style="color:'+p.color+'">'+vz.t+'</div>'+vz.h+'</div>':'';
     panel.innerHTML='<div class="anim-fade"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:'+p.color+'30;border:1px solid '+p.color+'50">'+p.id+'</div><div><div class="text-base font-bold text-white">'+p.name+'</div><div class="text-xs" style="color:'+p.color+'">'+p.id+' · '+TT('eneSub','Eneágono Decisional')+'</div></div></div><p class="text-sm text-slate-300 leading-relaxed mb-4">'+p.desc+'</p>'+vblock+extra+'</div>';
-    if(!quiet)speak('f'+idx,p.speech);
+    if(!quiet){panel.scrollIntoView({behavior:'smooth',block:'nearest'});speak('f'+idx,p.speech);}
 }
 
-function buildComando(){
-    if(comandoBuilt)return;comandoBuilt=true;
-    var cx=190,cy=195,r=140,edgesG=document.getElementById('comandoEdges'),nodesG=document.getElementById('comandoNodes');
-    var pts=agents.map(function(_,i){var a=-Math.PI/2+(2*Math.PI*i/6);return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)}});
-    // Cada agente se conecta con el orquestador central (PMU)
-    pts.forEach(function(p){var l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',p.x);l.setAttribute('y1',p.y);l.setAttribute('x2',cx);l.setAttribute('y2',cy);l.setAttribute('stroke','rgba(124,108,220,.2)');l.setAttribute('stroke-width','1.5');l.setAttribute('stroke-dasharray','4 3');edgesG.appendChild(l)});
-    pts.forEach(function(p,i){
-        var g=document.createElementNS('http://www.w3.org/2000/svg','g');g.classList.add('agent-node');g.setAttribute('filter','url(#cGlow)');g.setAttribute('role','button');g.setAttribute('tabindex','0');g.setAttribute('aria-label','Asistente '+agents[i].name);g.onclick=function(){selectAgent(i)};g.onkeydown=function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();selectAgent(i)}};
-        var c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',p.x);c.setAttribute('cy',p.y);c.setAttribute('r','20');c.setAttribute('fill','rgba(255,255,255,.04)');c.setAttribute('stroke',agents[i].color);c.setAttribute('stroke-width','1.5');
-        var t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',p.x);t.setAttribute('y',p.y+1);t.setAttribute('text-anchor','middle');t.setAttribute('dominant-baseline','middle');t.setAttribute('fill',agents[i].color);t.setAttribute('font-size','10');t.setAttribute('font-weight','700');t.textContent=agents[i].id;
-        var lb=document.createElementNS('http://www.w3.org/2000/svg','text');lb.setAttribute('x',p.x);lb.setAttribute('y',p.y<cy?p.y-28:p.y+32);lb.setAttribute('text-anchor','middle');lb.setAttribute('fill','rgba(255,255,255,.4)');lb.setAttribute('font-size','7');lb.setAttribute('font-weight','500');lb.textContent=agents[i].name;
-        g.appendChild(c);g.appendChild(t);g.appendChild(lb);nodesG.appendChild(g);g.style.opacity='0';setTimeout(function(gg){return function(){gg.style.opacity='1';gg.style.transition='opacity .3s'}}(g),i*120)
+// ── Cuadrícula de chips del PMU: icono + nombre + rol; detalle técnico expandible por chip ──
+function buildAgentChips(){
+    var wrap=document.getElementById('agentChips');if(!wrap)return;
+    wrap.innerHTML='';
+    agents.forEach(function(a,i){
+        var vz=AGENT_VIZ[i];
+        var vblock=vz?'<div class="rounded-xl p-3 mt-3" style="background:rgba(255,255,255,.03);border:1px solid rgba(159,145,232,.18)"><div class="text-[10px] font-bold mb-2" style="color:'+a.color+'">'+vz.t+'</div>'+vz.h+'</div>':'';
+        var det=document.createElement('details');det.className='agent-chip';
+        det.innerHTML='<summary>'
+            +'<span class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-xs flex-shrink-0" style="background:'+a.color+'30;border:1px solid '+a.color+'55">'+a.id+'</span>'
+            +'<span class="min-w-0"><span class="block text-sm font-bold text-white">'+a.name+'</span>'
+            +'<span class="block text-[11px] text-slate-400 leading-snug mt-0.5">'+a.desc+'</span></span>'
+            +'<span class="td-chev">▸</span></summary>'
+            +'<div class="td-body"><p class="text-[11px] text-slate-400 leading-relaxed">'+a.detail+'</p>'+(a.example||'')+vblock+'</div>';
+        det.addEventListener('toggle',function(){
+            if(det.open){if(typeof faTrack==='function')faTrack('chip_open',{agent:a.id});speak('ag'+i,a.speech)}
+        });
+        wrap.appendChild(det);
+    });
+}
+
+// ── 3 macro-fases del Eneágono en lenguaje llano (F0–F2 · F3–F5 · F6–F8) ──
+var MACRO_FASES=[
+    {icon:'🧭',color:'#00BFA6',tk:'mf1t',dk:'mf1d',tEs:'Entender el territorio',dEs:'Qué está pasando, dónde y quién está detrás.',ph:[0,1,2]},
+    {icon:'🎯',color:'#D4883A',tk:'mf2t',dk:'mf2d',tEs:'Decidir la operación',dEs:'Los modelos predicen el próximo golpe y usted aprueba el plan.',ph:[3,4,5]},
+    {icon:'🚀',color:'#10B981',tk:'mf3t',dk:'mf3d',tEs:'Actuar y aprender',dEs:'La orden sale con fecha y hora; cada resultado alimenta la memoria institucional.',ph:[6,7,8]}
+];
+function buildMacroFases(){
+    var wrap=document.getElementById('macroFases');if(!wrap)return;
+    wrap.innerHTML='';
+    MACRO_FASES.forEach(function(m){
+        var card=document.createElement('div');card.className='macro-fase';card.style.setProperty('--mf',m.color+'40');
+        var btns=m.ph.map(function(i){
+            return '<button type="button" class="mf-phase-btn" style="--mf:'+m.color+'" onclick="selectPhase('+i+')" aria-label="Fase '+phases[i].id+': '+phases[i].name+'"><b style="color:'+m.color+'">'+phases[i].id+'</b>&nbsp;'+phases[i].name+'</button>'
+        }).join('');
+        card.innerHTML='<div class="flex items-center gap-3 mb-2"><div class="mf-icon" style="background:'+m.color+'18;border:1px solid '+m.color+'45">'+m.icon+'</div>'
+            +'<div class="text-sm font-black text-white leading-tight">'+TT(m.tk,m.tEs)+'</div></div>'
+            +'<p class="text-[11px] text-slate-400 leading-snug mb-3">'+TT(m.dk,m.dEs)+'</p>'
+            +'<div class="flex flex-wrap gap-1.5">'+btns+'</div>';
+        wrap.appendChild(card);
     });
 }
 
@@ -1615,7 +1620,7 @@ function replayChart(){
 
 function selectAgent(idx,quiet){    if(!quiet)playNotif();var p=agents[idx];
     document.querySelectorAll('.agent-node').forEach(function(n,i){n.classList.remove('active-node');if(i<idx)n.classList.add('completed');if(i===idx)n.classList.add('active-node')});
-    var panel=document.getElementById('agentDetail');
+    var panel=document.getElementById('agentDetail');if(!panel){if(!quiet)speak('ag'+idx,p.speech);return}
     var extra=p.example||'';
     var vz=AGENT_VIZ[idx];
     var vblock=vz?'<div class="rounded-xl p-3 mt-3" style="background:rgba(255,255,255,.03);border:1px solid rgba(159,145,232,.18)"><div class="text-[10px] font-bold mb-2" style="color:'+p.color+'">'+vz.t+'</div>'+vz.h+'</div>':'';

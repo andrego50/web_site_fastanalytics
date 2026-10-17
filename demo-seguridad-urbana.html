@@ -1365,7 +1365,7 @@ document.addEventListener('DOMContentLoaded',function(){
     if(LANG!=='es'){setTimeout(function(){setLang(LANG)},300)}
     else{document.querySelectorAll('#langSel .lang-btn').forEach(function(b){var on=b.getAttribute('data-lang')==='es';b.style.background=on?'#006D6D':'transparent';b.style.color=on?'#fff':'#94a3b8'})}
 });
-var NARR_KEYS=['intro','scene1','scene2','scene3','scene4','f0','f1','f2','f3','f4','f5','f6','f7','f8','ag0','ag1','ag2','ag3','ag4','ag5'];
+var NARR_KEYS=['intro','scene1','scene2','scene3','scene4','f0','f1','f2','f3','f4','f5','f6','f7','f8','ag0','ag1','ag2','ag3','ag4','ag5','s0','s1mile','s2terr','s3inst'];
 var narrAudio=new Audio();narrAudio.preload='none';
 var speakSeq=0;
 function speak(key,fallback){

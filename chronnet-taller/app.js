@@ -152,9 +152,12 @@ function pintarEnlaceMaterial() {
 function pintarPaso(paso, total) {  const info = p.escenas[escenaActual];
   const cap = info && info.pasos[paso] ? T(info.pasos[paso].cap) : '';
   $('capText').textContent = cap;
-  $('caption').querySelector('.stepno').textContent =
-    total > 0 ? `${LANG === 'es' ? 'Paso' : 'Step'} ${paso}/${total}` : '—';
-  $('stepCount').textContent = `${paso} / ${total}`;
+  // El nombre de la página Quarto acompaña el paso: en charla, primero la
+  // animación y luego la explicación del material con el mismo nombre.
+  const mat = escenaActual >= 0 ? CODIGO[escenaActual][1].replace('taller/', '') : '';
+  const etiqueta = total > 0 ? `${LANG === 'es' ? 'Paso' : 'Step'} ${paso}/${total}` : '—';
+  $('caption').querySelector('.stepno').textContent = mat ? `${mat} · ${etiqueta}` : etiqueta;
+  $('stepCount').textContent = mat ? `${mat} · ${paso} / ${total}` : `${paso} / ${total}`;
 }
 
 function pintarProgreso(prog) {

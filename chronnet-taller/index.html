@@ -15,7 +15,7 @@
     font-family:"Inter",-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
   #app{display:flex;flex-direction:column;height:100vh}
   /* ---------- top bar ---------- */
-  #topbar{display:flex;align-items:center;gap:14px;padding:10px 18px;
+  #topbar{display:flex;align-items:center;gap:10px;padding:10px 18px;
     background:#FFFFFF;border-bottom:1px solid var(--line);z-index:20}
   #topbar .brand{display:flex;align-items:center;gap:10px;min-width:0}
   #topbar svg{height:26px;flex:none}
@@ -23,15 +23,15 @@
   #sceneKicker{font-size:11px;color:var(--amber);letter-spacing:1.6px;text-transform:uppercase}
   .spacer{flex:1}
   .tbtn{background:#F1F5F9;border:1px solid var(--line);color:var(--txt);border-radius:8px;
-    padding:6px 12px;font-size:12px;cursor:pointer;font-weight:600}
+    padding:6px 12px;font-size:12px;cursor:pointer;font-weight:600;white-space:nowrap}
   .tbtn:hover{background:#E2E8F0}
-  .tbtn.on{background:var(--teal);border-color:var(--teal)}
+  .tbtn.on{background:var(--teal);border-color:var(--teal);color:#fff}
   /* ---------- main ---------- */
   #main{flex:1;display:flex;min-height:0}
   /* ---------- menu (portada) ---------- */
   #menu{flex:1;overflow:auto;padding:34px 44px;display:none}
   #menu.open{display:block}
-  #menu h1{font-size:34px;font-weight:800;line-height:1.15;max-width:760px}
+  #menu h1{font-size:34px;font-weight:800;line-height:1.15;max-width:760px;letter-spacing:-0.5px}
   #menu h1 .a{color:var(--amber)}
   #menu .sub{margin-top:12px;font-size:16px;color:var(--mut);max-width:720px;line-height:1.5}
   .mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;max-width:1150px}
@@ -42,27 +42,28 @@
   .mcard .k{font-size:10px;color:var(--teal3);text-transform:uppercase;letter-spacing:2.2px;margin-top:8px;font-weight:700}
   .mcard h3{font-size:17px;font-weight:700;color:var(--txt);margin-top:6px;line-height:1.3}
   .mcard p{font-size:12.5px;color:var(--mut);margin-top:8px;line-height:1.5}
-  #menu h1{font-weight:800;letter-spacing:-0.5px}
-  #caption{font-weight:600;letter-spacing:0.1px}
+  .mcard .codigo{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;color:var(--teal3);text-decoration:none}
+  .mcard .codigo:hover{color:var(--amber);text-decoration:underline}
   .mcard.concepto{border-left:3px solid var(--teal3)}
   .mcard.datos{border-left:3px solid var(--amber)}
   /* ---------- stage ---------- */
   #stageWrap{flex:1;display:none;flex-direction:column;min-width:0}
   #stageWrap.open{display:flex}
-  #canvasBox{flex:1;position:relative;min-height:0}
-  canvas{position:absolute;inset:0;width:100%;height:100%}
-  /* ---------- simulator bar (scene D4) ---------- */
+  #canvasBox{flex:1;position:relative;min-height:0;background:#F8FAFC}
+  canvas#cv{position:absolute;inset:0;width:100%;height:100%;display:block}
+  #matFrame{position:absolute;inset:0;width:100%;height:100%;border:none;display:none;background:#fff;z-index:6}
+  #matFrame.open{display:block}
+  #matTab{position:absolute;top:12px;right:14px;z-index:7;display:none;font-size:12px;font-weight:700}
+  #matTab.open{display:inline-block}
+  /* ---------- scene controls bar (controles específicos del motor) ---------- */
   #simbar{display:none;gap:8px;align-items:center;padding:8px 14px;border-top:1px solid var(--line);
     background:#F8FAFC;flex-wrap:wrap}
   #simbar.open{display:flex}
-  #simbar .lab{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:1px}
-  .sbtn{background:#F1F5F9;border:1px solid var(--line);color:var(--txt);border-radius:7px;
-    padding:5px 10px;font-size:12px;cursor:pointer;font-weight:700;font-family:"JetBrains Mono",monospace}
-  .sbtn.on{background:var(--amber);color:#1A1005;border-color:var(--amber)}
+  #simbar:empty{display:none}
   /* ---------- bottom controls ---------- */
   #controls{border-top:1px solid var(--line);background:#F8FAFC;padding:10px 18px 12px;z-index:20}
   #caption{font-size:16px;font-weight:600;min-height:44px;display:flex;align-items:center;line-height:1.4}
-  #caption .stepno{color:var(--amber);font-family:monospace;margin-right:10px;font-size:13px}
+  #caption .stepno{color:var(--amber);font-family:monospace;margin-right:10px;font-size:13px;flex:none}
   #ctrlRow{display:flex;align-items:center;gap:10px;margin-top:8px}
   .cbtn{width:42px;height:42px;border-radius:50%;background:var(--teal);border:none;color:#fff;
     font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none}
@@ -76,20 +77,32 @@
   #hints{position:absolute;top:12px;right:14px;font-size:11px;color:var(--mut);
     background:#FFFFFFDD;border:1px solid var(--line);padding:6px 10px;border-radius:8px;line-height:1.6;z-index:5}
   #chipRow{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-  .chip{background:#F1F5F9;border:1px solid var(--line);color:var(--mut);border-radius:20px;
-    padding:4px 12px;font-size:12px;cursor:pointer;font-weight:600}
-  .chip.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+  /* Señal de correspondencia con el material Quarto de la escena */
+  #matRow{margin-top:6px}
+  #matLink{display:inline-block;font-size:12px;font-weight:700;color:var(--teal);
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;text-decoration:none;
+    border:1px solid var(--teal);border-radius:20px;padding:3px 12px;background:#fff}
+  #matLink:hover{background:var(--teal);color:#fff}
+  .chipwarn{background:#FFF7ED;border:1px solid #D4883A;color:#B45309;border-radius:20px;
+    padding:4px 12px;font-size:12px;font-weight:700}
   /* ---- sección de medios generados ---- */
   .mediaSec{margin-top:34px;max-width:1150px}
-  .mediaSec h2{font-size:20px;font-weight:800;color:var(--ink)}
+  .mediaSec h2{font-size:20px;font-weight:800;color:var(--txt)}
   .mediaSec .mh{font-size:12px;color:var(--teal3);text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:4px}
   .mediaSec .msub{font-size:13px;color:var(--mut);margin-top:6px}
   .mgrid2{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
-  .mcard2{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,.06)}
+  .mcard2{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,.06);position:relative}
   .mcard2 video,.mcard2 img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#0B1C22}
   .mcard2 .mt{padding:10px 14px 12px}
-  .mcard2 .mt b{font-size:13.5px;color:var(--ink);display:block}
+  .mcard2 .mt b{font-size:13.5px;color:var(--txt);display:block}
   .mcard2 .mt span{font-size:11.5px;color:var(--mut)}
+  .mcard2 .badge{position:absolute;top:10px;left:10px;background:#B45309;color:#fff;font-size:10.5px;
+    font-weight:800;letter-spacing:1px;padding:4px 10px;border-radius:6px;text-transform:uppercase;z-index:2}
+  @media (max-width:980px){
+    .mgrid{grid-template-columns:repeat(2,1fr)}
+    .mgrid2{grid-template-columns:repeat(2,1fr)}
+    #menu{padding:22px}
+  }
 </style>
 </head>
 <body>
@@ -115,9 +128,11 @@
       </div>
     </div>
     <div class="spacer"></div>
-    <button class="tbtn" id="menuBtn">☰ Menú</button>
+    <button class="tbtn" id="codeBtn" title="taller/">⟨/⟩ <span data-es="Código del análisis" data-en="Analysis code">Código del análisis</span></button>
+    <button class="tbtn" id="matBtn" title="./taller/index.html"><span data-es="Material del taller" data-en="Workshop material">Material del taller</span> ⇄ <span data-es="Animación 3D" data-en="3D animation">Animación 3D</span></button>
+    <button class="tbtn" id="menuBtn">☰ <span data-es="Menú" data-en="Menu">Menú</span></button>
     <button class="tbtn" id="langBtn">EN</button>
-    <button class="tbtn" id="sndBtn">🔇</button>
+    <button class="tbtn" id="sndBtn" title="(inerte)">🔇</button>
     <button class="tbtn" id="fsBtn">⛶</button>
   </div>
 
@@ -127,41 +142,62 @@
       <h1>La red del lavado, <span class="a">construida y disruptada</span> ante tus ojos</h1>
       <p class="sub" style="margin-top:18px;font-size:17px;color:#D4883A;font-weight:600" data-es="El futuro habla en datos. Lo anticipamos con decisiones." data-en="The future speaks in data. We anticipate it with decisions."></p>
       <p class="sub" style="margin-top:16px;font-size:14px;color:#0D9488;font-weight:700;letter-spacing:1.5px" data-es="TALLER · ANALÍTICA DE REDES E INTELIGENCIA FINANCIERA CONTRA EL CRIMEN ORGANIZADO" data-en="WORKSHOP · NETWORK ANALYTICS AND FINANCIAL INTELLIGENCE AGAINST ORGANIZED CRIME"></p>
-      <p class="sub" data-es="Ayudas audiovisuales del taller. Cuatro conceptos explicados como la máquina los ejecuta —sin fórmulas— y cuatro escenas con el dataset real de reportes de actividad sospechosa (FinCEN/ICIJ). Controles de presentador: pausa, avance paso a paso y barra de tiempo."
-         data-en="Audiovisual aids for the workshop. Four concepts explained as the machine executes them —no formulas— and four scenes on the real suspicious activity reports dataset (FinCEN/ICIJ). Presenter controls: pause, step forward and a timeline scrubber."></p>
+      <p class="sub" data-es="Página de presentación del taller con motor 3D real: apertura, los 6 módulos con las cifras del análisis final (dataset FinCEN/ICIJ) y cierre. Cada tarjeta abre su escena 3D y enlaza el código Quarto del módulo. Controles de presentador: pausa, avance paso a paso y barra de tiempo."
+         data-en="Presentation page of the workshop with a real 3D engine: opening, the 6 modules with the figures of the final analysis (FinCEN/ICIJ dataset) and closing. Each card opens its 3D scene and links the Quarto code of the module. Presenter controls: pause, step forward and a timeline scrubber."></p>
       <div class="mgrid" id="mgrid"></div>
       <div class="mediaSec">
-        <div class="mh" data-es="GENERADO EN TU GPU LOCAL · WAN 14B + FLUX" data-en="GENERATED ON YOUR LOCAL GPU · WAN 14B + FLUX">GENERADO EN TU GPU LOCAL · WAN 14B + FLUX</div>
+        <div class="mh" data-es="RENDERIZADOS EN BLENDER · MOTOR 3D PROPIO" data-en="RENDERED IN BLENDER · OWN 3D ENGINE">RENDERIZADOS EN BLENDER · MOTOR 3D PROPIO</div>
         <h2 data-es="Recursos cinematográficos del taller" data-en="Cinematic assets of the workshop">Recursos cinematográficos del taller</h2>
-        <p class="msub" data-es="Clips 720p del modelo Wan 14B y tarjetas FLUX — todos reproducibles aquí o descargables." data-en="720p clips from the Wan 14B model and FLUX cards — playable here or downloadable."></p>
+        <p class="msub" data-es="Clips y láminas del taller, reproducibles aquí o descargables." data-en="Workshop clips and stills, playable here or downloadable."></p>
         <div class="mgrid2">
-          <div class="mcard2"><video src="media/clip1_la_red_720p.mp4" controls preload="metadata"></video>
-            <div class="mt"><b data-es="La red del lavado" data-en="The laundering network">La red del lavado</b><span>720p · 5 s · Wan 14B</span></div></div>
-          <div class="mcard2"><video src="media/clip2_el_raid_720p.mp4" controls preload="metadata"></video>
-            <div class="mt"><b data-es="El raid" data-en="The raid">El raid</b><span>720p · 5 s · Wan 14B</span></div></div>
-          <div class="mcard2"><video src="media/clip3_actores_clave_720p.mp4" controls preload="metadata"></video>
-            <div class="mt"><b data-es="Actores clave" data-en="Key players">Actores clave</b><span>720p · 5 s · Wan 14B</span></div></div>
-          <div class="mcard2"><img src="media/portada.png" alt="Portada">
-            <div class="mt"><b data-es="Portada del taller" data-en="Workshop cover">Portada del taller</b><span>FLUX + tipografía</span></div></div>
-          <div class="mcard2"><img src="media/lema.png" alt="Lema">
-            <div class="mt"><b data-es="El lema" data-en="The motto">El lema</b><span>FLUX + tipografía</span></div></div>
-          <div class="mcard2"><img src="media/cierre.png" alt="Cierre">
-            <div class="mt"><b data-es="Cierre" data-en="Closing">Cierre</b><span>FLUX + tipografía</span></div></div>
+          <div class="mcard2">
+            <span class="badge" data-es="EN PRODUCCIÓN" data-en="IN PRODUCTION" style="display:none">EN PRODUCCIÓN</span>
+            <video data-media="media/clip1_la_red_del_lavado.mp4" controls preload="metadata"></video>
+            <div class="mt"><b data-es="La red del lavado" data-en="The laundering network">La red del lavado</b><span>Blender · taller_3d</span></div>
+          </div>
+          <div class="mcard2">
+            <span class="badge" data-es="EN PRODUCCIÓN" data-en="IN PRODUCTION">EN PRODUCCIÓN</span>
+            <video data-media="media/clip2_el_raid.mp4" controls preload="metadata"></video>
+            <div class="mt"><b data-es="El raid" data-en="The raid">El raid</b><span>Blender · taller_3d</span></div>
+          </div>
+          <div class="mcard2">
+            <span class="badge" data-es="EN PRODUCCIÓN" data-en="IN PRODUCTION">EN PRODUCCIÓN</span>
+            <video data-media="media/clip3_actores_clave.mp4" controls preload="metadata"></video>
+            <div class="mt"><b data-es="Actores clave" data-en="Key players">Actores clave</b><span>Blender · taller_3d</span></div>
+          </div>
+          <div class="mcard2">
+            <span class="badge" data-es="EN PRODUCCIÓN" data-en="IN PRODUCTION">EN PRODUCCIÓN</span>
+            <img data-media="media/still_portada.png" alt="Portada">
+            <div class="mt"><b data-es="Portada del taller" data-en="Workshop cover">Portada del taller</b><span>Blender · still</span></div>
+          </div>
+          <div class="mcard2">
+            <span class="badge" data-es="EN PRODUCCIÓN" data-en="IN PRODUCTION">EN PRODUCCIÓN</span>
+            <img data-media="media/still_lema.png" alt="Lema">
+            <div class="mt"><b data-es="El lema" data-en="The motto">El lema</b><span>Blender · still</span></div>
+          </div>
+          <div class="mcard2">
+            <span class="badge" data-es="EN PRODUCCIÓN" data-en="IN PRODUCTION">EN PRODUCCIÓN</span>
+            <img data-media="media/still_cierre.png" alt="Cierre">
+            <div class="mt"><b data-es="Cierre" data-en="Closing">Cierre</b><span>Blender · still</span></div>
+          </div>
         </div>
       </div>
-      <p class="sub" style="margin-top:26px;font-size:12px" data-es="Dataset: 4.507 reportes SAR · 1.726 bancos · 129 países · 2010–2015. Escenas 2, 4, 6 y 8 usan los 48 bancos de mayor monto. Flechas del teclado ← → para avanzar o retroceder."
-         data-en="Dataset: 4,507 SAR filings · 1,726 banks · 129 countries · 2010–2015. Scenes 2, 4, 6 and 8 use the top 48 banks by amount. Keyboard arrows ← → to step back or forward."></p>
+      <p class="sub" style="margin-top:26px;font-size:12px" data-es="Dataset: 4.501 filas · 534 SAR · 2.275 bancos · 129 países · 2000–2017. Las escenas 3D usan redes de demostración con datos sintéticos donde no es el dataset real; las cifras impresas provienen del análisis final. Flechas del teclado ← → para avanzar o retroceder."
+         data-en="Dataset: 4,501 rows · 534 SARs · 2,275 banks · 129 countries · 2000–2017. The 3D scenes use demonstration networks with synthetic data where not the real dataset; printed figures come from the final analysis. Keyboard arrows ← → to step back or forward."></p>
     </div>
 
     <!-- ============ ESCENARIO ============ -->
     <div id="stageWrap">
       <div id="canvasBox">
         <canvas id="cv"></canvas>
-        <div id="hints">← → paso · ⇤ ⇥ / [ ] escena · espacio pausa · F pantalla completa</div>
+        <iframe id="matFrame" title="Material del taller" src="about:blank"></iframe>
+        <a class="tbtn" id="matTab" href="./taller/index.html" target="_blank" rel="noopener"><span data-es="abrir en pestaña ↗" data-en="open in new tab ↗">abrir en pestaña ↗</a>
+        <div id="hints">← → <span data-es="paso" data-en="step">paso</span> · ⇤ ⇥ / [ ] <span data-es="escena" data-en="scene">escena</span> · <span data-es="espacio pausa · F pantalla completa" data-en="space pause · F fullscreen">espacio pausa · F pantalla completa</span></div>
       </div>
       <div id="simbar"></div>
       <div id="controls">
         <div id="caption"><span class="stepno"></span><span id="capText"></span></div>
+        <div id="matRow"><a id="matLink" style="display:none"></a></div>
         <div id="chipRow"></div>
         <div id="ctrlRow">
           <button class="cbtn ghost" id="prevSceneBtn" title="Escena anterior">⇤</button>
@@ -176,6 +212,6 @@
     </div>
   </div>
 </div>
-<script src="app.js"></script>
+<script type="module" src="app.js"></script>
 </body>
 </html>

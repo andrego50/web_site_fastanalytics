@@ -37,16 +37,27 @@ const DESCS = [
     en: 'What do we observe? What hypothesis does it raise? What must we verify? Models prioritize questions; they do not determine guilt.' },
 ];
 const CODIGO = [
-  [{ es: 'index ↗', en: 'index ↗' }, 'taller/index.html'],
-  [{ es: '00_datos ↗', en: '00_data ↗' }, 'taller/00_datos.html'],
-  [{ es: '01_cronologica ↗', en: '01_chronological ↗' }, 'taller/01_cronologica.html'],
-  [{ es: '02_exploratorio ↗', en: '02_exploratory ↗' }, 'taller/02_exploratorio.html',
-   { es: '03_topologia ↗', en: '03_topology ↗' }, 'taller/03_topologia.html'],
-  [{ es: '03_topologia ↗', en: '03_topology ↗' }, 'taller/03_topologia.html',
-   { es: 'índice ↗', en: 'index ↗' }, 'taller/index.html'],
-  [{ es: '04_actores_clave ↗', en: '04_key_players ↗' }, 'taller/04_actores_clave.html'],
-  [{ es: '05_disrupcion ↗', en: '05_disruption ↗' }, 'taller/05_disrupcion.html'],
-  [{ es: 'index ↗', en: 'index ↗' }, 'taller/index.html'],
+  [{ es: 'Inicio ↗', en: 'Home ↗' }, 'taller/index.html'],
+  [{ es: '1. Datos ↗', en: '1. Data ↗' }, 'taller/00_datos.html'],
+  [{ es: '2. Chronnet ↗', en: '2. Chronnet ↗' }, 'taller/01_cronologica.html'],
+  [{ es: '3. Caracterización ↗', en: '3. Characterization ↗' }, 'taller/02_exploratorio.html',
+   { es: '4. Comunidades ↗', en: '4. Communities ↗' }, 'taller/03_topologia.html'],
+  [{ es: '4. Comunidades ↗', en: '4. Communities ↗' }, 'taller/03_topologia.html',
+   { es: 'Inicio ↗', en: 'Home ↗' }, 'taller/index.html'],
+  [{ es: '5. Actores clave ↗', en: '5. Key players ↗' }, 'taller/04_actores_clave.html'],
+  [{ es: '6. Disrupción ↗', en: '6. Disruption ↗' }, 'taller/05_disrupcion.html'],
+  [{ es: 'Inicio ↗', en: 'Home ↗' }, 'taller/index.html'],
+];
+// Título de la pestaña Quarto principal de cada escena (para el caption de pasos).
+const PESTANA = [
+  { es: 'Inicio', en: 'Home' },
+  { es: '1. Datos', en: '1. Data' },
+  { es: '2. Chronnet', en: '2. Chronnet' },
+  { es: '3. Caracterización', en: '3. Characterization' },
+  { es: '4. Comunidades', en: '4. Communities' },
+  { es: '5. Actores clave', en: '5. Key players' },
+  { es: '6. Disrupción', en: '6. Disruption' },
+  { es: 'Inicio', en: 'Home' },
 ];
 const AVISOS = {
   es: ['Sospecha ≠ delito', 'Presencia en la red ≠ culpabilidad', 'Dataset filtrado · uso académico'],
@@ -153,8 +164,11 @@ function pintarEnlaceMaterial() {
 function pintarPaso(paso, total) {  const info = p.escenas[escenaActual];
   const cap = info && info.pasos[paso] ? T(info.pasos[paso].cap) : '';
   $('capText').textContent = cap;
+  // Mismo título que la pestaña Quarto del módulo: en charla, la animación
+  // y su material llevan el mismo nombre.
+  const pestana = escenaActual >= 0 ? `${T(PESTANA[escenaActual])} · ` : '';
   $('caption').querySelector('.stepno').textContent =
-    total > 0 ? `${LANG === 'es' ? 'Paso' : 'Step'} ${paso}/${total}` : '—';
+    total > 0 ? `${pestana}${LANG === 'es' ? 'Paso' : 'Step'} ${paso}/${total}` : '—';
   $('stepCount').textContent = `${paso} / ${total}`;
 }
 

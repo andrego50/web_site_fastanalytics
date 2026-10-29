@@ -182,6 +182,7 @@ function toggleMaterial() {
     $('cv').style.display = 'none';
     $('hints').style.display = 'none';
     $('matTab').classList.add('open');
+    $('matBack').classList.add('open');
     $('matBtn').classList.add('on');
     p.fijarActivo(false); // el 3D se pausa mientras está oculto
   } else {
@@ -189,6 +190,7 @@ function toggleMaterial() {
     $('cv').style.display = '';
     $('hints').style.display = '';
     $('matTab').classList.remove('open');
+    $('matBack').classList.remove('open');
     $('matBtn').classList.remove('on');
     if (!enMenu) p.fijarActivo(true);
   }
@@ -276,6 +278,7 @@ async function boot() {
   $('menuBtn').addEventListener('click', mostrarMenu);
   $('codeBtn').addEventListener('click', () => window.open('taller/', '_blank', 'noopener'));
   $('matBtn').addEventListener('click', toggleMaterial);
+  $('matBack').addEventListener('click', toggleMaterial);
   $('langBtn').addEventListener('click', () => {
     LANG = LANG === 'es' ? 'en' : 'es';
     p.fijarIdioma(LANG);
@@ -292,6 +295,7 @@ async function boot() {
 
   window.addEventListener('keydown', (e) => {
     if (enMenu || e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+    if (e.key === 'Escape' && materialMode) { toggleMaterial(); return; }
     switch (e.key) {
       case ' ':
         e.preventDefault();

@@ -55,6 +55,12 @@
   #matFrame.open{display:block}
   #matTab{position:absolute;top:12px;right:14px;z-index:7;display:none;font-size:12px;font-weight:700}
   #matTab.open{display:inline-block}
+  /* Botón flotante de regreso: visible sobre el iframe, también a pantalla completa. */
+  #matBack{position:absolute;top:12px;left:14px;z-index:8;display:none;font-size:13px;font-weight:700;
+    background:var(--teal);color:#fff;border:none;border-radius:8px;padding:8px 14px;cursor:pointer;
+    box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  #matBack:hover{background:var(--teal2)}
+  #matBack.open{display:inline-block}
   /* ---------- scene controls bar (controles específicos del motor) ---------- */
   #simbar{display:none;gap:8px;align-items:center;padding:8px 14px;border-top:1px solid var(--line);
     background:#F8FAFC;flex-wrap:wrap}
@@ -192,6 +198,7 @@
         <canvas id="cv"></canvas>
         <iframe id="matFrame" title="Material del taller" src="about:blank"></iframe>
         <a class="tbtn" id="matTab" href="./taller/index.html" target="_blank" rel="noopener"><span data-es="abrir en pestaña ↗" data-en="open in new tab ↗">abrir en pestaña ↗</a>
+        <button id="matBack" type="button"><span data-es="✕ Volver a la animación 3D" data-en="✕ Back to the 3D animation">✕ Volver a la animación 3D</span></button>
         <div id="hints">← → <span data-es="paso" data-en="step">paso</span> · ⇤ ⇥ / [ ] <span data-es="escena" data-en="scene">escena</span> · <span data-es="espacio pausa · F pantalla completa" data-en="space pause · F fullscreen">espacio pausa · F pantalla completa</span></div>
       </div>
       <div id="simbar"></div>

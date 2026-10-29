@@ -156,9 +156,10 @@ const deVuelta = await page.evaluate(() => ({
 }));
 prueba('Material: el toggle regresa a la animación 3D', deVuelta.frameCerrado && deVuelta.canvasVisible, JSON.stringify(deVuelta));
 
-// --- Botón "Código del análisis" ---------------------------------------------------
-const hrefCodigo = await page.locator('#codeBtn').getAttribute('title');
-prueba('Topbar: botón "Código del análisis" apunta a taller/', hrefCodigo === 'taller/', hrefCodigo);
+// --- Topbar: sin botón "Código del análisis" (el conmutador Material ⇄ 3D lo cubre) --
+const botonesTopbar = await page.locator('#topbar button').allTextContents();
+prueba('Topbar: sin botón "Código del análisis" (lo cubre el conmutador)',
+  !botonesTopbar.some((t) => t.includes('⟨/⟩')), botonesTopbar.join(' | '));
 
 // --- Clips de medios ----------------------------------------------------------------
 const clipsConSrc = await page.locator('.mcard2 video[data-media]').evaluateAll((els) =>

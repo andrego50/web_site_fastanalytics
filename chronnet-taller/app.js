@@ -154,11 +154,12 @@ function pintarEnlaceMaterial() {
   if (escenaActual < 0) { enlace.style.display = 'none'; return; }
   const destino = CODIGO[escenaActual][1];
   enlace.style.display = '';
-  enlace.href = destino;
-  enlace.dataset.dest = destino;
+  // Sin hipervínculo: se muestra el nombre del material pero no navega.
+  enlace.removeAttribute('href');
+  enlace.style.cursor = 'default';
   enlace.textContent =
     (LANG === 'es' ? 'Material de esta escena: ' : 'Material for this scene: ') +
-    destino.replace('taller/', '') + ' ↗';
+    destino.replace('taller/', '');
 }
 
 function pintarPaso(paso, total) {  const info = p.escenas[escenaActual];
